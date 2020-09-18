@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             mc:Ignorable="d"
+             x:Class="APP_HOATHO.Views.ThongTinThietBi">
+    <ContentPage.Content>
+        <tabView:SfTabView BackgroundColor="White" 
+                           OverflowMode="DropDown"
+                           DisplayMode="ImageWithText"
+                           VisibleHeaderCount="3">
+            <tabView:SfTabItem Title="Thông Tin" ImageSource="information.png">
+                <tabView:SfTabItem.Content>
+                    <Grid BackgroundColor="Gray" x:Name="AllContactsGrid" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="Favorites">
+                <tabView:SfTabItem.Content>
+                    <Grid BackgroundColor="Green" x:Name="FavoritesGrid" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="Contacts">
+                <tabView:SfTabItem.Content>
+                    <Grid BackgroundColor="Blue" x:Name="ContactsGrid" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+        </tabView:SfTabView>
+    </ContentPage.Content>
+</ContentPage>
