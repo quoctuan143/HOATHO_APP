@@ -42,7 +42,7 @@
                     <sfDataGrid:SfDataGrid x:Name="listThietBi"                                           
                                             ItemsSource="{Binding Items}"                         
                                             AutoGenerateColumns="False"
-                                            GroupCaptionTextFormat="{}{ColumnName}: {Key}"
+                                            GroupCaptionTextFormat="{}{}{Key} - {ItemsCount} mã"
                                             GridStyle="{StaticResource dark}"                                            
                                             CanUseViewFilter="True"
                                             AllowSorting="True"                          

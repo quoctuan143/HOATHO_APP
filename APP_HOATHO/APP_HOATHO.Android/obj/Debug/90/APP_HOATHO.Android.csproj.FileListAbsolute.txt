@@ -1504,3 +1504,5 @@ D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_Conv
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+E:\TUAN_SOURCE\GIT_HUB\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\android\typemaps.armeabi-v7a-shared.inc
+E:\TUAN_SOURCE\GIT_HUB\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\android\typemaps.x86_64.o

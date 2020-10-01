@@ -7,8 +7,9 @@
        xmlns:local="clr-namespace:APP_HOATHO.Views"      
        Title="APP_HOATHO"
        BackgroundColor="#06264c"   
-       FlyoutBackgroundImage="flybackroud.png"
+       FlyoutBackgroundImage="hinhnen.jpg"
        FlyoutBackgroundImageAspect="AspectFill"
+       FlyoutHeaderBehavior="CollapseOnScroll"
        x:Class="APP_HOATHO.AppShell">
 
     <!-- 
