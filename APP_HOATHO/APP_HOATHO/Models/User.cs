@@ -14,5 +14,6 @@ namespace APP_HOATHO.Models
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string SourceCode { get; set; }
+        public string MaXuong { get; set; }
     }
 }

@@ -10,10 +10,11 @@ namespace APP_HOATHO.Models
         public string No_2 { get; set; }
         public string No_3 { get; set; }
         public string NameVN { get; set; }
+        public string Description { get; set; } 
         public string LinkVideo { get; set; }
-        public string Picture { get; set; }
-        public string ManufacturerCode { get; set; }
-        public string CountryofOriginCode { get; set; }
-        public string QualityMeasureCode { get; set; }
+        public string Picture { get; set; } // link ảnh
+        public string ManufacturerCode { get; set; } //hãng sản xuất
+        public string CountryofOriginCode { get; set; } //xuất xứ
+        public string QualityMeasureCode { get; set; } // công suất
     }
 }

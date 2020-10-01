@@ -7,6 +7,6 @@
              Title="Home"
              x:Class="APP_HOATHO.Views.Main">
     <ContentPage.Content>
-        <Image Source="home.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+        <Image Source="trangchu.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
     </ContentPage.Content>
 </ContentPage>

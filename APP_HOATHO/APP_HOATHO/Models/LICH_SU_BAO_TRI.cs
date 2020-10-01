@@ -11,9 +11,10 @@ namespace APP_HOATHO.Models
         public string NOI_DUNG { get; set; }
         public string NGUOI_THUC_HIEN { get; set; }
         public int BAO_DUONG_DINH_KY { get; set; }
+        public int STATUS { get; set; }
         public string TINH_TRANG_HIEN_TAI { get; set; }
         public string NGUOI_XAC_NHAN { get; set; }
-        public string NGAY_GIO { get; set; }
+        public DateTime NGAY_GIO { get; set; }
         public string IMAGE_LINK { get; set; }
         public string MA_NHA_MAY { get; set; }
         public string MA_XUONG { get; set; }

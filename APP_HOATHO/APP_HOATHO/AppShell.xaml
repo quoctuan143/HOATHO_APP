@@ -4,9 +4,9 @@
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
-       xmlns:local="clr-namespace:APP_HOATHO.Views"
+       xmlns:local="clr-namespace:APP_HOATHO.Views"      
        Title="APP_HOATHO"
-       BackgroundColor="#149C62"   
+       BackgroundColor="#06264c"   
        FlyoutBackgroundImage="flybackroud.png"
        FlyoutBackgroundImageAspect="AspectFill"
        x:Class="APP_HOATHO.AppShell">
@@ -16,7 +16,7 @@
     -->
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="NavigationPrimary">#149C62</Color>
+            <Color x:Key="NavigationPrimary">#06264c</Color>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
@@ -31,7 +31,9 @@
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
-
+    <Shell.FlyoutHeader>
+        <local:HeaderTemplate ></local:HeaderTemplate>
+    </Shell.FlyoutHeader>
     <!-- Your Pages -->
     <FlyoutItem Title="Kiểm Tra DCU" 
                 Shell.TabBarIsVisible="False"
@@ -39,10 +41,13 @@
                 FlyoutIcon="ic_back.png"
                 
                 >
-        <ShellContent Title="Trang Chủ"  IsTabStop="True" Icon="home.png" ContentTemplate="{DataTemplate local:Main }">
+        <ShellContent Title="Trang Chủ"  IsTabStop="True" Icon="logo.png" ContentTemplate="{DataTemplate local:Main }">
 
         </ShellContent>
         <ShellContent Title="Danh Mục Thiết Bị"  IsTabStop="True" Icon="ic_check.png" ContentTemplate="{DataTemplate local:Danh_Muc_Thiet_Bi }">
+
+        </ShellContent>
+        <ShellContent Title="Kế Hoạch Bảo Trì"  IsTabStop="True" Icon="list.png" ContentTemplate="{DataTemplate local:KeHoachBaoTri}">
 
         </ShellContent>
     </FlyoutItem>

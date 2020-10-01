@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rpEoOkB7lAGTUSothQMSvphEDi53egnH9hYtWfcg1cUTJL5XPfdsaZKu5arqw0L6fAI+UitUdBTf1/Up6YA72w==",
+  "dgSpecHash": "LJn6Fj26ghLDl1MtrPaxkcVsXAylNjer7iozAByYzXoGBPn6Uz6/TuQ/G24xLCoW90BIxtFOK22xBjB5kXkdNQ==",
   "success": true,
-  "projectFilePath": "D:\\SOURCE CODE\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj",
+  "projectFilePath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tuan\\.nuget\\packages\\com.airbnb.xamarin.forms.lottie\\3.0.4\\com.airbnb.xamarin.forms.lottie.3.0.4.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
@@ -20,6 +20,8 @@
     "C:\\Users\\Tuan\\.nuget\\packages\\syncfusion.xamarin.sfcombobox\\18.2.0.55\\syncfusion.xamarin.sfcombobox.18.2.0.55.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\syncfusion.xamarin.sfdatagrid\\18.2.0.55\\syncfusion.xamarin.sfdatagrid.18.2.0.55.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\syncfusion.xamarin.sfnumerictextbox\\18.2.0.55\\syncfusion.xamarin.sfnumerictextbox.18.2.0.55.nupkg.sha512",
+    "C:\\Users\\Tuan\\.nuget\\packages\\syncfusion.xamarin.sfpicker\\18.2.0.55\\syncfusion.xamarin.sfpicker.18.2.0.55.nupkg.sha512",
+    "C:\\Users\\Tuan\\.nuget\\packages\\syncfusion.xamarin.sfpopuplayout\\18.2.0.55\\syncfusion.xamarin.sfpopuplayout.18.2.0.55.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\syncfusion.xamarin.sfpulltorefresh\\18.2.0.55\\syncfusion.xamarin.sfpulltorefresh.18.2.0.55.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\syncfusion.xamarin.sftabview\\18.2.0.55\\syncfusion.xamarin.sftabview.18.2.0.55.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -65,8 +67,11 @@
     "C:\\Users\\Tuan\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\xam.plugin.connectivity\\3.2.0\\xam.plugin.connectivity.3.2.0.nupkg.sha512",
+    "C:\\Users\\Tuan\\.nuget\\packages\\xam.plugin.media\\5.0.1\\xam.plugin.media.5.0.1.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
-    "C:\\Users\\Tuan\\.nuget\\packages\\xamarin.forms\\4.8.0.1451\\xamarin.forms.4.8.0.1451.nupkg.sha512"
+    "C:\\Users\\Tuan\\.nuget\\packages\\xamarin.forms\\4.8.0.1451\\xamarin.forms.4.8.0.1451.nupkg.sha512",
+    "C:\\Users\\Tuan\\.nuget\\packages\\zxing.net.mobile\\2.4.1\\zxing.net.mobile.2.4.1.nupkg.sha512",
+    "C:\\Users\\Tuan\\.nuget\\packages\\zxing.net.mobile.forms\\2.4.1\\zxing.net.mobile.forms.2.4.1.nupkg.sha512"
   ],
   "logs": []
 }

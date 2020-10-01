@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Plugin.Media;
+using Syncfusion.SfPicker.XForms.iOS;
 using Syncfusion.SfPullToRefresh.XForms.iOS;
+using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 
@@ -22,7 +25,7 @@ namespace APP_HOATHO.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
-        public override bool FinishedLaunching(UIApplication app, NSDictionary options)
+        public override  bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
@@ -36,6 +39,9 @@ namespace APP_HOATHO.iOS
             SfPullToRefreshRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+            SfPickerRenderer.Init();
+            Syncfusion.XForms.iOS.PopupLayout.SfPopupLayoutRenderer.Init();
+            SfCheckBoxRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

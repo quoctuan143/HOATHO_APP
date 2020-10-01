@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfCheckbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             mc:Ignorable="d"
+             x:Class="APP_HOATHO.Views.TaoLichSuBaoTri"
+                     
+             InputTransparent="False"
+             Title="Cập nhật bảo trì">    
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView Orientation="Vertical">
+                <StackLayout>
+                    <sfinputText:SfTextInputLayout Hint="Phụ tùng thay thế"      
+                                               ContainerType="Outlined"                                                
+                                               Grid.Column="0"
+                                              >
+                        <Entry x:Name="entryPhuTung" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
+                        <sfinputText:SfTextInputLayout.HintLabelStyle>
+                            <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                        </sfinputText:SfTextInputLayout.HintLabelStyle>
+                    </sfinputText:SfTextInputLayout>
+
+                    <sfinputText:SfTextInputLayout Hint="Nội dung bảo trì"      
+                                               ContainerType="Outlined" 
+                                               Grid.Column="0"
+                                              >
+                        <Entry x:Name="entryNoiDung" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
+                        <sfinputText:SfTextInputLayout.HintLabelStyle>
+                            <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                        </sfinputText:SfTextInputLayout.HintLabelStyle>
+                    </sfinputText:SfTextInputLayout>
+
+                    <sfCheckbox:SfCheckBox x:Name="chkBaoDuong" IsChecked="False" Text="Bảo Dưỡng Định Kỳ" FontSize="16" FontAttributes="Bold"></sfCheckbox:SfCheckBox>
+
+                    <sfinputText:SfTextInputLayout Hint="Tình trạng hiện tại"      
+                                               ContainerType="Outlined" 
+                                               Grid.Column="0"
+                                              >
+                        <Entry x:Name="entryTinhTrang" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
+                        <sfinputText:SfTextInputLayout.HintLabelStyle>
+                            <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                        </sfinputText:SfTextInputLayout.HintLabelStyle>
+                    </sfinputText:SfTextInputLayout>
+                    <StackLayout Padding="10">
+                        <Frame CornerRadius="20" 
+                           Padding="0"
+                           IsClippedToBounds="True">
+                            <Image x:Name="imagePicture" Source="noimage.jpg" Aspect="AspectFit" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="Cập Nhật" Clicked="Save_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
+           
+        </StackLayout>
+      
+    </ContentPage.Content>
+    
+</ContentPage>

@@ -28,7 +28,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <Image Source="logo.jpg" Grid.Row="0"></Image>
+            <Image Source="logo.png" Grid.Row="0"></Image>
 
 
             <StackLayout Orientation="Vertical" Padding="10,5,10,0" Grid.Row="1">
@@ -66,7 +66,7 @@
 
             </StackLayout>
             <StackLayout Grid.Row="3"   Padding="10,5,10,5" >
-                <RelativeLayout AnchorX="5">
+                <!--<RelativeLayout AnchorX="5">
                     <sfbutton:SfSwitch VisualType="Material" x:Name="swRememer" IsEnabled="True" HeightRequest="30">
 
                     </sfbutton:SfSwitch>
@@ -75,22 +75,22 @@
                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent , ElementName=swRememer,Property=Width,Factor =0.14}"
                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent , ElementName=swRememer,Property = Height,Factor =0.1}"
                      />
-                </RelativeLayout>
-
+                </RelativeLayout>-->
+                <sfbutton:SfCheckBox IsChecked="True" Text="Ghi nhớ" x:Name="swRememer" ></sfbutton:SfCheckBox>
 
             </StackLayout>
             <StackLayout Grid.Row="6" VerticalOptions="Fill" Padding="10,5,10,5">
 
                 <sfbutton:SfButton Text="Đăng Nhập"                                    
                     CornerRadius="60"                   
-                    BackgroundColor="ForestGreen"                   
+                    Style="{StaticResource styleButton}"                  
                     Clicked="SfButton_Clicked"
                     TextColor="White"
                     FontSize="Large"/>
             </StackLayout>
 
             <StackLayout Grid.Row="8" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-                <Label Text="Phần mềm được thiết kế bởi bộ phận IT"/>
+                <Label Text="Quản lý thiết bị thông minh" HorizontalTextAlignment="Center"/>
                 <Label Text="@2020 HOA THO CORP" HorizontalTextAlignment="Center"/>
 
             </StackLayout>

@@ -31,7 +31,7 @@
                                                ContainerType="Outlined">
                 <Entry x:Name="search" HorizontalOptions="FillAndExpand"  
                            Style="{StaticResource styleSearch}"
-                            ClearButtonVisibility="WhileEditing"
+                            ClearButtonVisibility="WhileEditing"                       
                            TextChanged="search_TextChanged"/>
                 <sfinputtext:SfTextInputLayout.LeadingView>
                     <Image Source="search.png"></Image>
@@ -39,23 +39,23 @@
             </sfinputtext:SfTextInputLayout>
             <Grid x:Name="mGridLayout" AbsoluteLayout.LayoutFlags="All"
           AbsoluteLayout.LayoutBounds="1,1,1,1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                       <sfDataGrid:SfDataGrid x:Name="listThietBi"                                           
-                                          ItemsSource="{Binding Items}"                         
-                                          AutoGenerateColumns="False"
-                                           GridStyle="{StaticResource dark}"
-                                           AllowSorting="True"                          
-                                           AllowDraggingRow="True"
-                                           AllowMultiSorting="True"
-                                           AllowDraggingColumn="True"                          
-                                           SelectionMode="Single"                          
-                                           ColumnSizer="Auto"               
-                                           AllowGroupExpandCollapse="True"
-                                           AutoExpandGroups="False"                                          
-                                           AllowPullToRefresh="True"
-                                           PullToRefreshCommand="{Binding LoadMoreCommand}"
-                                           AllowTriStateSorting="True"
-                                           AllowDiagonalScrolling="True"
-                                           VerticalOverScrollMode="None">           
+                    <sfDataGrid:SfDataGrid x:Name="listThietBi"                                           
+                                            ItemsSource="{Binding Items}"                         
+                                            AutoGenerateColumns="False"
+                                            GroupCaptionTextFormat="{}{ColumnName}: {Key}"
+                                            GridStyle="{StaticResource dark}"                                            
+                                            CanUseViewFilter="True"
+                                            AllowSorting="True"                          
+                                            AllowDraggingRow="True"
+                                            AllowMultiSorting="True"
+                                            AllowDraggingColumn="True"                          
+                                            SelectionMode="Single"                          
+                                            ColumnSizer="Auto"               
+                                            AllowGroupExpandCollapse="True"
+                                            AutoExpandGroups="False"   
+                                            AllowTriStateSorting="True"
+                                            AllowDiagonalScrolling="True"                                                              
+                                            VerticalOverScrollMode="None">           
                     <sfDataGrid:SfDataGrid.Columns>                            
 
                             <sfDataGrid:GridTextColumn MappingName="No_2" HeaderText="Model" HeaderFontAttribute="Bold" Width="120"   HeaderCellTextSize="16">
@@ -126,12 +126,15 @@
                     <ActivityIndicator x:Name="mIndicator" IsRunning="{Binding IsRunning}" Color="CornflowerBlue" VerticalOptions="Center"
                            HorizontalOptions="Center"   />
                 </Grid>
-                <StackLayout Orientation="Horizontal">
-                    <sfbutton:SfButton Text="Kiểm Tra" x:Name="btnGuiYeuCau" Clicked="btnGuiYeuCau_Clicked" 
+                <StackLayout Orientation="Horizontal" Opacity="0.7">
+                    <sfbutton:SfButton Text="Xem Chi Tiết" x:Name="btnGuiYeuCau" Clicked="btnGuiYeuCau_Clicked" FontSize="16"
                         CornerRadius="60" HorizontalOptions="FillAndExpand"
-                        TextColor="White" BackgroundColor="#149C62"></sfbutton:SfButton>                    
+                        TextColor="White" BackgroundColor="#149C62"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="Scan Barcode" x:Name="btnScan" Clicked="btnScan_Clicked" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                        TextColor="White" BackgroundColor="#149C62"></sfbutton:SfButton>
 
-                </StackLayout>
+            </StackLayout>
 
             </StackLayout>
         </ContentPage.Content>

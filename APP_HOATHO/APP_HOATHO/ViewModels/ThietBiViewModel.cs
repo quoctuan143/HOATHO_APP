@@ -12,12 +12,13 @@ using Xamarin.Essentials;
 using Newtonsoft.Json;
 using APP_HOATHO.Dialog;
 using Syncfusion.SfDataGrid.XForms;
+using System.Linq;
 
 namespace APP_HOATHO.ViewModels
 {
     public class ThietBiViewModel : BaseViewModel
     {
-        int size = 0;
+        int size = 0;      
         ObservableCollection<DanhMuc_ThietBi> _items;
         public ObservableCollection<DanhMuc_ThietBi> Items { get =>  _items; set { _items = value; OnPropertyChanged(nameof(Items)); }}
 
@@ -61,7 +62,7 @@ namespace APP_HOATHO.ViewModels
             try
             {
                 Items.Clear();
-                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.DonVi ,"")).Result;
+                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay ,"")).Result;
                 await Task.Delay(3000);
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
@@ -69,22 +70,8 @@ namespace APP_HOATHO.ViewModels
                     Int32 from = _json.IndexOf("[");
                     Int32 to = _json.IndexOf("]");
                     string result = _json.Substring(from, to - from + 1);
-                    ketqua = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(result);
-                    if (ketqua.Count <= 100)
-                    {
-                        Items = ketqua;
-                        size = Items.Count;
-                    }    
-                        
-                    
-                    else
-                    {
-                        for (int i =0; i<100; i++ )
-                        {
-                            Items.Add(ketqua[i]);                           
-                        }
-                        size = Items.Count;
-                    }                                     
+                    Items = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(result);
+                                                
                 }
                 else
                 {
@@ -102,33 +89,21 @@ namespace APP_HOATHO.ViewModels
                 IsRunning = false;
             }
         }
-    }
 
-    public class CustomLoadMoreView : LoadMoreView
-    {
-        private Button loadMoreView;
-
-        public CustomLoadMoreView()
+        public bool FilterRecords(object o)
         {
-            this.BackgroundColor = Color.Red;
-            loadMoreView = new Button();
-            loadMoreView.Text = "LoadItems";
-            this.Children.Add(loadMoreView);
-            loadMoreView.Clicked += loadMoreView_Tapped;
-        }
+            string filterText = "Germany";
+            var item = o as DanhMuc_ThietBi;
 
-        void loadMoreView_Tapped(object sender, EventArgs e)
-        {
-            if (this.LoadMoreCommand != null)
+            if (item != null)
             {
-                this.LoadMoreCommand.Execute(null);
-            }
-        }
 
-        protected override void LayoutChildren(double x, double y, double width, double height)
-        {
-            loadMoreView.Layout(new Rectangle(x, y, width, height));
+                if (item.No_2.Equals(filterText))
+                    return true;
+            }
+            return false;
         }
     }
 
+ 
 }

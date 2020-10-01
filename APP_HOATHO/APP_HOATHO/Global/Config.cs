@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace APP_HOATHO.Global
 {
@@ -12,7 +15,8 @@ namespace APP_HOATHO.Global
         public static string Role = "Role";
         public static string PhoneNumber = "PhoneNumber";
         public static string Token { get; set; }
-        public static string DonVi = "DonVi";
+        public static string NhaMay = "NhaMay";
+        public static string MaXuong = "MaXuong";
         public static System.Net.Http.HttpClient client;
       
         public Config()
@@ -23,6 +27,7 @@ namespace APP_HOATHO.Global
             }
             
         }
+        
 
     }
 

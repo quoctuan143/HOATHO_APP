@@ -41,14 +41,15 @@ namespace APP_HOATHO.Views
                     Int32 to = _json.IndexOf("]");
                     string result = _json.Substring(from, to - from + 1);
                    List< User> user = JsonConvert.DeserializeObject<List<User>>(result);
-                    if (swRememer.IsOn == true)
+                    if (swRememer.IsChecked  == true)
                     {
                         Preferences.Set(Config.User, btnusername.Text);
-                        Preferences.Set(Config.Password, btnpassword.Text);
-                        Preferences.Set(Config.Role,user[0].Role.ToString() );
-                        Preferences.Set(Config.PhoneNumber, user[0].PhoneNumber );
-                        Preferences.Set(Config.DonVi, user[0].SourceCode);
+                        Preferences.Set(Config.Password, btnpassword.Text);                       
                     }
+                    Preferences.Set(Config.Role, user[0].Role.ToString());
+                    Preferences.Set(Config.PhoneNumber, user[0].PhoneNumber);
+                    Preferences.Set(Config.NhaMay, user[0].SourceCode);
+                    Preferences.Set(Config.MaXuong, user[0].MaXuong);
                     App.Current.MainPage = new AppShell();
                 }
                 else
