@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj": {}
+    "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj": {}
   },
   "projects": {
-    "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj": {
+    "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
+        "projectUniqueName": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
         "projectName": "APP_HOATHO.Android",
-        "projectPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\obj\\",
+        "projectPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -27,13 +27,13 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj": {
-                "projectPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj"
+              "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj": {
+                "projectPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj"
               }
             }
           }
@@ -126,20 +126,21 @@
         }
       }
     },
-    "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj": {
+    "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj",
+        "projectUniqueName": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj",
         "projectName": "APP_HOATHO",
-        "projectPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\obj\\",
+        "projectPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -148,7 +149,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "netstandard2.0": {

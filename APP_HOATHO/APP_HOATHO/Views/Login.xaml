@@ -75,7 +75,7 @@
             </StackLayout>
 
             <StackLayout Grid.Row="8" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-                <Label Text="Quản lý thiết bị thông minh" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                <Label Text="Quản lý thiết bị thông minh" HorizontalTextAlignment="Center" FontAttributes="Italic,Bold" />
                 <Label Text="@2020 HOA THO CORP" HorizontalTextAlignment="Center"/>
 
             </StackLayout>

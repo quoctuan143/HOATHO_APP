@@ -12,6 +12,8 @@ namespace APP_HOATHO.Models
         public string NameVN { get; set; }
         public int Thang { get; set; }
         public string Code { get; set; }
+        public string LoaiBaoTri { get; set; } 
         public Boolean Da_Bao_Tri { get; set; }  
+        public string ItemCategoryCode { get; set; }
     }
 }

@@ -6925,24 +6925,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Users\\Tuan\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
+      "projectUniqueName": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
       "projectName": "APP_HOATHO.Android",
-      "projectPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\obj\\",
+      "projectPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\APP_HOATHO.Android.csproj",
+      "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+      "outputPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -6951,13 +6951,13 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj": {
-              "projectPath": "E:\\TUAN_SOURCE\\GIT_HUB\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj"
+            "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj": {
+              "projectPath": "D:\\SOURCE CODE\\HOATHO_APP\\APP_HOATHO\\APP_HOATHO\\APP_HOATHO.csproj"
             }
           }
         }

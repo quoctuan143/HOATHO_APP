@@ -85,7 +85,7 @@
                                                    HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding Code}"  XAlign="Start" YAlign="Center"  TextColor="Black" />
+                                    <Label Text="{Binding LoaiBaoTri}"  XAlign="Start" YAlign="Center"  TextColor="Black" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                         </sfDataGrid:GridTemplateColumn>
@@ -97,7 +97,7 @@
                                                    HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <sfCheck:SfCheckBox  IsChecked="{Binding Da_Bao_Tri}"  TextColor="Black" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                    <CheckBox  IsChecked="{Binding Da_Bao_Tri}" IsEnabled="False" HorizontalOptions="Center"/>
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                         </sfDataGrid:GridTemplateColumn>

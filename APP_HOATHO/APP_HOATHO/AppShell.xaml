@@ -7,8 +7,7 @@
        xmlns:local="clr-namespace:APP_HOATHO.Views"      
        Title="APP_HOATHO"
        BackgroundColor="#06264c"   
-       FlyoutBackgroundImage="hinhnen.jpg"
-       FlyoutBackgroundImageAspect="AspectFill"
+       FlyoutBackgroundColor="LightSkyBlue"
        FlyoutHeaderBehavior="CollapseOnScroll"
        x:Class="APP_HOATHO.AppShell">
 
@@ -28,6 +27,7 @@
                 <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="Red"/>
+               
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
@@ -49,6 +49,9 @@
 
         </ShellContent>
         <ShellContent Title="Kế Hoạch Bảo Trì"  IsTabStop="True" Icon="list.png" ContentTemplate="{DataTemplate local:KeHoachBaoTri}">
+
+        </ShellContent>
+        <ShellContent Title="Lịch Sử Bảo Trì"  IsTabStop="True" Icon="history.png" ContentTemplate="{DataTemplate local:LichSuBaoTri}">
 
         </ShellContent>
     </FlyoutItem>

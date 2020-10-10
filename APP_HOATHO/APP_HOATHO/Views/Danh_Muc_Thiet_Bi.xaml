@@ -23,8 +23,8 @@
         </ContentPage.BindingContext>
         <ContentPage.Content>
 
-            <StackLayout Margin="0">
-            <sfinputtext:SfTextInputLayout Hint="Nhập số serial để tìm" 
+            <StackLayout Spacing="0">
+            <sfinputtext:SfTextInputLayout Hint="Nhập tên, số serial, model để tìm" 
                                                Grid.Row="2"
                                                LeadingViewPosition="Inside"
                                                HeightRequest="50"

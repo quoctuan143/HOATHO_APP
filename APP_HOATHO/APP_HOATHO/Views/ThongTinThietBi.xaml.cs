@@ -44,7 +44,7 @@ namespace APP_HOATHO.Views
             }
             if (e.TabItem.Title == "KH Bảo Trì")
             {
-                if (viewModel.KE_HOACH_BAO_TRI.Count == 0)
+                if (viewModel.KE_HOACH_BAO_TRIs.Count == 0)
                     viewModel.LoadKeHoachBaoTri.Execute(DateTime.Now.Year.ToString());
             }    
         }
@@ -62,7 +62,12 @@ namespace APP_HOATHO.Views
 
         private async void addSuCo_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TaoLichSuBaoTri(viewModel.Item.No_));
+             
+            APP_HOATHO.Models.KeHoachBaoTri item = listKeHoach.SelectedItem as APP_HOATHO.Models.KeHoachBaoTri;
+            if (item != null)
+            {
+                await Navigation.PushAsync(new TaoLichSuBaoTri(item));
+            }
         }
 
         private async void uploadImage_Clicked(object sender, EventArgs e)       

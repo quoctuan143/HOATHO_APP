@@ -39,7 +39,7 @@ namespace APP_HOATHO.Views
           APP_HOATHO.Models.KeHoachBaoTri  item = listThietBi.SelectedItem as APP_HOATHO.Models.KeHoachBaoTri;
             if (item != null )
             {
-                await Navigation.PushAsync(new TaoLichSuBaoTri(item.No_));
+                await Navigation.PushAsync(new TaoLichSuBaoTri(item ));
             }    
            
         }

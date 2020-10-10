@@ -28,16 +28,19 @@ namespace APP_HOATHO.ViewModels
                 OnPropertyChanged(nameof(QUY_TRINH_BAO_TRIs));
             } 
         }
-        ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri> _kehoachbaotri;
-        public ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri> KE_HOACH_BAO_TRI
+        ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri> _kehoachbaotris;
+       
+
+        public ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri> KE_HOACH_BAO_TRIs
         {
-            get => _kehoachbaotri;
+            get => _kehoachbaotris;
             set
             {
-                _kehoachbaotri = value;
-                OnPropertyChanged(nameof(KE_HOACH_BAO_TRI));
+                _kehoachbaotris = value;
+                OnPropertyChanged(nameof(KE_HOACH_BAO_TRIs));
             }
         }
+      
         public Command<string> LoadKeHoachBaoTri { get; set; }
         public Command<string> LoadLichSuBaoTri { get; set; }
         public Command<string> LoadQuyTrinhBaoTri { get; set; }      
@@ -46,7 +49,7 @@ namespace APP_HOATHO.ViewModels
            
             Item = _item;
             Title = Item.NameVN;
-            KE_HOACH_BAO_TRI = new ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri>();
+            KE_HOACH_BAO_TRIs = new ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri>();
             
             lICH_SU_BAO_TRIs = new ObservableCollection<LICH_SU_BAO_TRI>();
             QUY_TRINH_BAO_TRIs = new ObservableCollection<QUY_TRINH_BAO_TRI>();
@@ -92,7 +95,7 @@ namespace APP_HOATHO.ViewModels
             {
                 QUY_TRINH_BAO_TRIs.Clear();
                 var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getQuyTrinhBaoTri?mathietbi=" +Item.No_).Result;
-                await Task.Delay(3000);
+              //  await Task.Delay(3000);
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {
@@ -122,7 +125,7 @@ namespace APP_HOATHO.ViewModels
             {
                 lICH_SU_BAO_TRIs.Clear();
                 var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getLichSuBaoTri?mathietbi=" + Item.No_).Result;
-                await Task.Delay(3000);
+              //  await Task.Delay(3000);
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {
@@ -150,16 +153,16 @@ namespace APP_HOATHO.ViewModels
             IsRunning = true;
             try
             {
-                KE_HOACH_BAO_TRI.Clear();
+                KE_HOACH_BAO_TRIs.Clear();
                 var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getKeHoachBaoTri_ThietBi?mathietbi=" + Item.No_  + "&nam=" + year).Result;
-                await Task.Delay(3000);
+               // await Task.Delay(3000);
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {
                     Int32 from = _json.IndexOf("[");
                     Int32 to = _json.IndexOf("]");
                     string result = _json.Substring(from, to - from + 1);
-                    KE_HOACH_BAO_TRI = JsonConvert.DeserializeObject<ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri>>(result);
+                    KE_HOACH_BAO_TRIs = JsonConvert.DeserializeObject<ObservableCollection<APP_HOATHO.Models.KeHoachBaoTri>>(result);
                 }
 
             }

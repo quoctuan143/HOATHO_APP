@@ -40,7 +40,11 @@ namespace APP_HOATHO.Views
         private async void btnGuiYeuCau_Clicked(object sender, EventArgs e)
         {
             DanhMuc_ThietBi item = listThietBi.SelectedItem  as DanhMuc_ThietBi;
-           await Navigation.PushAsync(new ThongTinThietBi(item));
+            if (item != null )
+            {
+                await Navigation.PushAsync(new ThongTinThietBi(item));
+            }    
+          
         }
         public bool FilterRecords(object o)
         {

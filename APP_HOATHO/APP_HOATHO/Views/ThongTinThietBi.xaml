@@ -152,7 +152,7 @@
                                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                                     </sfDataGrid:GridTemplateColumn>
                                     <sfDataGrid:GridTemplateColumn MappingName="TINH_TRANG_HIEN_TAI" 
-                                                   Width="140"
+                                                   Width="160"
                                                    HeaderText="Tình Trạng Hiện Tại" 
                                                    HeaderFontAttribute="Bold" 
                                                    HeaderCellTextSize="16">
@@ -162,12 +162,17 @@
                                             </DataTemplate>
                                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                                     </sfDataGrid:GridTemplateColumn>
-                                    <sfDataGrid:GridTextColumn  HeaderText="Người Xác Nhận"                                                 
+                                    <sfDataGrid:GridTemplateColumn  HeaderText="Người Xác Nhận"                                                 
                                                         MappingName="NGUOI_XAC_NHAN" 
                                                         HeaderFontAttribute="Bold" 
                                                         HeaderCellTextSize="16"
-                                                        Width="80">
-                                    </sfDataGrid:GridTextColumn>
+                                                        Width="120">
+                                    <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Text="{Binding NGUOI_XAC_NHAN}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                        </DataTemplate>
+                                    </sfDataGrid:GridTemplateColumn.CellTemplate>
+                                </sfDataGrid:GridTemplateColumn>
 
                                 </sfDataGrid:SfDataGrid.Columns>
 
@@ -181,41 +186,50 @@
                 </tabView:SfTabItem>
                 <tabView:SfTabItem Title="Quy Trình" ImageSource="pdf.png">
                     <tabView:SfTabItem.Content>
-                        <ListView ItemsSource="{Binding QUY_TRINH_BAO_TRIs}"                              
-                              IsRefreshing="{Binding Running}"
-                              RefreshCommand="{Binding LoadQuyTrinhBaoTri}"
-                              HasUnevenRows="True">
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Label LineBreakMode="WordWrap" Padding="10" FontSize="16">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding Code}" 
-                                                      FontAttributes="Bold"
-                                                      TextColor="Black" >
-                                                    </Span>
-                                                    <Span Text=" : "></Span>
-                                                    <Span Text="{Binding Description}"
-                                                      
-                                                      TextColor="Blue"  >
-                                                    </Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </tabView:SfTabItem.Content>
+                    <Grid x:Name="mGridLayoutquytrinh" AbsoluteLayout.LayoutFlags="All"
+                               AbsoluteLayout.LayoutBounds="1,1,1,1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <sfDataGrid:SfDataGrid x:Name="listquytrinh"                                           
+                                          ItemsSource="{Binding QUY_TRINH_BAO_TRIs}"   
+                                            AutoGenerateColumns="False"                                             
+                                            GroupCaptionTextFormat="{}{}{Key}"
+                                            GridStyle="{StaticResource dark}"                                            
+                                            CanUseViewFilter="True"
+                                            AllowSorting="True"                          
+                                            AllowDraggingRow="True"
+                                            AllowMultiSorting="True"
+                                            AllowDraggingColumn="True"                          
+                                            SelectionMode="Single"                          
+                                            ColumnSizer="LastColumnFill"               
+                                            AllowGroupExpandCollapse="True"
+                                            AutoExpandGroups="True"   
+                                            AllowTriStateSorting="True"
+                                            AllowDiagonalScrolling="True"                                                              
+                                            VerticalOverScrollMode="None">
+                            <sfDataGrid:SfDataGrid.Columns>
+                                <sfDataGrid:GridTemplateColumn  MappingName="NOI_DUNG" HeaderText="Nội Dung"   HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                                    <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Text="{Binding Description}" TextColor="Black" Padding="5,0,0,0" HorizontalOptions="StartAndExpand"   XAlign="Start" YAlign="Center" />
+                                        </DataTemplate>
+                                    </sfDataGrid:GridTemplateColumn.CellTemplate>
+                                </sfDataGrid:GridTemplateColumn>
+                            </sfDataGrid:SfDataGrid.Columns>
+                            <sfDataGrid:SfDataGrid.GroupColumnDescriptions>
+                                <sfDataGrid:GroupColumnDescription ColumnName="Name" />
+                            </sfDataGrid:SfDataGrid.GroupColumnDescriptions>
+                        </sfDataGrid:SfDataGrid>
+                        <ActivityIndicator x:Name="mIndicatorbt" IsRunning="{Binding IsRunning}" Color="CornflowerBlue" VerticalOptions="Center"
+                           HorizontalOptions="Center"   />
+                    </Grid>
+                </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
                 <tabView:SfTabItem Title="KH Bảo Trì" ImageSource="list.png" x:Name="KeHoachBaoTri">
                     <tabView:SfTabItem.Content>
                         <Grid AbsoluteLayout.LayoutFlags="All"
                               AbsoluteLayout.LayoutBounds="1,1,1,1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                            <sfDataGrid:SfDataGrid                                          
-                                          ItemsSource="{Binding KE_HOACH_BAO_TRI}"                         
+                            <sfDataGrid:SfDataGrid    
+                                           x:Name="listKeHoach"
+                                          ItemsSource="{Binding KE_HOACH_BAO_TRIs}"                         
                                           AutoGenerateColumns="False"
                                            GridStyle="{StaticResource dark}"
                                            AllowSorting="True"                          
@@ -226,6 +240,7 @@
                                            AutoExpandGroups="True"   
                                            SelectionMode="Single"                          
                                            ColumnSizer="Auto"    
+                                           
                                            AllowTriStateSorting="True"
                                            AllowDiagonalScrolling="True"
                                            VerticalOverScrollMode="None">
@@ -267,7 +282,7 @@
                                                    HeaderCellTextSize="16">
                                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Label Text="{Binding Code}"  XAlign="Start" YAlign="Center"  TextColor="Black" />
+                                            <Label Text="{Binding LoaiBaoTri}"  XAlign="Start" YAlign="Center"  TextColor="Black" />
                                             </DataTemplate>
                                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                                     </sfDataGrid:GridTemplateColumn>
@@ -279,7 +294,7 @@
                                                    HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <sfCheck:SfCheckBox  IsChecked="{Binding Da_Bao_Tri}" IsEnabled="False" CheckedColor="Red"  TextColor="Black" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                                            <CheckBox  IsChecked="{Binding Da_Bao_Tri}" IsEnabled="False" HorizontalOptions="Center"/>
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>

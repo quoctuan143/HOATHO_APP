@@ -10,6 +10,7 @@ namespace APP_HOATHO.Models
 
     {
         public string Code { get; set; }
+        public string Name { get; set; } 
         string _description;
         public string Description { get => _description; set { _description = value;
                 if (_description !=  null)

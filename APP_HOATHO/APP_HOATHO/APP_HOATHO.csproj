@@ -28,13 +28,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Dialog\ShowImage.xaml.cs">
+      <DependentUpon>ShowImage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TaoLichSuBaoTri.xaml.cs">
       <DependentUpon>TaoLichSuBaoTri.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Dialog\CapNhatBaoTri.xaml">
+    <EmbeddedResource Update="Dialog\ShowImage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Dialog\MessageBox.xaml">
@@ -50,6 +53,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\KeHoachBaoTri.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LichSuBaoTri.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Login.xaml">

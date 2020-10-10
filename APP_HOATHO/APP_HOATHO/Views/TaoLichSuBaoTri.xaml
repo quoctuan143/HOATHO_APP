@@ -4,12 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:sfCheckbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:sfCheckbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:sfcombox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              mc:Ignorable="d"
              x:Class="APP_HOATHO.Views.TaoLichSuBaoTri"
-                     
+             xmlns:local="clr-namespace:APP_HOATHO.Views"       
              InputTransparent="False"
-             Title="Cập nhật bảo trì">    
+             Title="Cập nhật bảo trì">
     
     <ContentPage.Content>
         <StackLayout>
@@ -25,21 +25,38 @@
                         </sfinputText:SfTextInputLayout.HintLabelStyle>
                     </sfinputText:SfTextInputLayout>
 
-                    <sfinputText:SfTextInputLayout Hint="Nội dung bảo trì"      
-                                               ContainerType="Outlined" 
-                                               Grid.Column="0"
+                    <sfcombox:SfComboBox  x:Name="cbNoiDung" Watermark="Chọn nội dung bảo trì" WatermarkColor="Gray"                             
+                             Grid.Row="0"
+                             DataSource="{Binding QUY_TRINH_BAO_TRIs , Mode=TwoWay}"                            
+                             HorizontalOptions="FillAndExpand"                              
+                             NoResultsFoundText="Không tìm thấy kết quả" 
+                             DisplayMemberPath="Description" 
+                             MultiSelectMode="Token"
+                                              IsEditableMode="False"
+                                              EnableAutoSize="True"
+                                              TokensWrapMode="Wrap"                                             
+                             Style="{StaticResource styleCombobox}">
+                        <sfcombox:SfComboBox.TokenSettings>
+                            <sfcombox:TokenSettings FontSize="16" BackgroundColor="#66ccff" 
+                                        TextColor="White" SelectedBackgroundColor="#ffffe0" 
+                                        DeleteButtonColor="Color.Brown" IsCloseButtonVisible="true" 
+                                                        
+                                        CornerRadius="15" DeleteButtonPlacement="Right">
+                            </sfcombox:TokenSettings>
+                        </sfcombox:SfComboBox.TokenSettings>
+                    </sfcombox:SfComboBox>
+                    <sfinputText:SfTextInputLayout Hint="Nội dung khác"      
+                                               ContainerType="Outlined"                                              
                                               >
-                        <Entry x:Name="entryNoiDung" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
+                        <Entry x:Name="entryNoiDungKhac" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
                         <sfinputText:SfTextInputLayout.HintLabelStyle>
                             <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
                         </sfinputText:SfTextInputLayout.HintLabelStyle>
                     </sfinputText:SfTextInputLayout>
-
                     <sfCheckbox:SfCheckBox x:Name="chkBaoDuong" IsChecked="False" Text="Bảo Dưỡng Định Kỳ" FontSize="16" FontAttributes="Bold"></sfCheckbox:SfCheckBox>
 
                     <sfinputText:SfTextInputLayout Hint="Tình trạng hiện tại"      
-                                               ContainerType="Outlined" 
-                                               Grid.Column="0"
+                                               ContainerType="Outlined"                                                
                                               >
                         <Entry x:Name="entryTinhTrang" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
                         <sfinputText:SfTextInputLayout.HintLabelStyle>

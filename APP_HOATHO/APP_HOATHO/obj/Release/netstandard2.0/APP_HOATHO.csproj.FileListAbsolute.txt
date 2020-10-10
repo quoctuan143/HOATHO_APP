@@ -4,15 +4,16 @@ D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\bin\Release\netstandard2.0\ref\A
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\bin\Release\netstandard2.0\APP_HOATHO.pdb
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\App.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\AppShell.xaml.g.cs
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Dialog\CapNhatBaoTri.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Dialog\MessageBox.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Dialog\MessageYesNo.xaml.g.cs
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Dialog\ShowImage.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\AboutPage.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\Danh_Muc_Thiet_Bi.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\HeaderTemplate.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\ItemDetailPage.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\ItemsPage.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\KeHoachBaoTri.xaml.g.cs
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\LichSuBaoTri.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\Login.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\Main.xaml.g.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO\obj\Release\netstandard2.0\Views\TaoLichSuBaoTri.xaml.g.cs
