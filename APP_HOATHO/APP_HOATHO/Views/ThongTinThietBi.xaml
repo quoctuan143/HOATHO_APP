@@ -147,7 +147,7 @@
                                                    HeaderCellTextSize="16">
                                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <CheckBox IsChecked="{Binding BAO_DUONG_DINH_KY}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  />
+                                            <CheckBox IsChecked="{Binding BAO_DUONG_DINH_KY}" Color="#06264c" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  />
                                             </DataTemplate>
                                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                                     </sfDataGrid:GridTemplateColumn>
@@ -294,7 +294,7 @@
                                                    HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox  IsChecked="{Binding Da_Bao_Tri}" IsEnabled="False" HorizontalOptions="Center"/>
+                                            <CheckBox  IsChecked="{Binding Da_Bao_Tri}" Color="#06264c" IsEnabled="False" HorizontalOptions="Center"/>
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>

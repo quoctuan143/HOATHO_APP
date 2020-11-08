@@ -4,13 +4,36 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               xmlns:sfcombox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-             xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfButton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:syncTheme="clr-namespace:Syncfusion.XForms.Themes;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="APP_HOATHO.App">
     <Application.Resources>
         <ResourceDictionary>
+            <syncTheme:SyncfusionThemeDictionary x:Key="styleHint">
+
+                <syncTheme:SyncfusionThemeDictionary.MergedDictionaries>
+
+                    <ResourceDictionary>
+
+                        <x:String x:Key="SfTextInputLayoutTheme">CustomTheme</x:String>
+
+                        <Color x:Key="SyncPrimaryLightColor">Green</Color>
+
+                        <Color x:Key="SyncPrimaryColor">Red</Color>
+
+                        <Color x:Key="SfTextInputLayoutHintColor">Blue</Color>
+
+                        <Color x:Key="SfTextInputLayoutLineColor">Aqua</Color>
+
+                    </ResourceDictionary>
+
+                </syncTheme:SyncfusionThemeDictionary.MergedDictionaries>
+
+            </syncTheme:SyncfusionThemeDictionary>
+
             <Style TargetType="sfcombox:SfComboBox" x:Key="styleCombobox">
-                <Setter Property="TextColor" Value="#0F8523"></Setter>
+                <Setter Property="TextColor" Value="#06264c"></Setter>
                 <Setter Property="ShowClearButton" Value="True"></Setter>
                 <Setter Property="BorderColor" Value="#1976d2"></Setter>
                 <!--<Setter Property="BorderColor" Value="White"></Setter>-->
@@ -23,20 +46,21 @@
                 <Setter Property="IsEditableMode" Value="True"></Setter>
                 <Setter Property="AllowFiltering" Value="True"></Setter>
                 <Setter Property="ClearButtonColor" Value="Red"></Setter>
-                <Setter Property="WatermarkColor" Value="Gray"></Setter>
+                <Setter Property="WatermarkColor" Value="#06264c"></Setter>
             </Style>
             <Style TargetType="SearchBar" x:Key="styleSearch">
-                <Setter Property="TextColor" Value="#0F8523"></Setter>
+                <Setter Property="TextColor" Value="#06264c"></Setter>
                 <Setter Property="FontSize" Value="16"></Setter>
                 <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             </Style>
             <Style TargetType="sfinputText:SfTextInputLayout" x:Key="styleInputText">
-                <Setter Property="ContainerType" Value="Outlined"></Setter>
-            </Style>
+                <Setter Property="ContainerType" Value="Outlined"></Setter>               
+            </Style>            
             <Style TargetType="Entry" x:Key="styleEntry">
-                <Setter Property="TextColor" Value="#0F8523"></Setter>
+                <Setter Property="TextColor" Value="#06264c"></Setter>
                 <Setter Property="FontSize" Value="16"></Setter>
                 <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="PlaceholderColor" Value="#06264c"></Setter>
             </Style>
 
             <Style TargetType="Page" x:Key="ParentBackgroup">
@@ -44,6 +68,13 @@
                 <Setter Property="Opacity" Value="2" ></Setter>
             </Style>
             <Style TargetType="Button" x:Key="styleButton">
+                <Setter Property="BackgroundColor" Value="#06264c"></Setter>
+                <Setter Property="TextColor" Value="White" ></Setter>
+                <Setter Property="FontSize" Value="16" ></Setter>
+                <Setter Property="FontAttributes" Value="Bold" ></Setter>
+            </Style>
+
+            <Style TargetType="sfButton:SfButton" x:Key="stylesfButton">
                 <Setter Property="BackgroundColor" Value="#06264c"></Setter>
                 <Setter Property="TextColor" Value="White" ></Setter>
                 <Setter Property="FontSize" Value="16" ></Setter>

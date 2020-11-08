@@ -13,6 +13,7 @@ namespace APP_HOATHO.Global
         public static string User = "User";
         public static string Password = "Password";
         public static string Role = "Role";
+        public static string FullName = "FullName";
         public static string PhoneNumber = "PhoneNumber";
         public static string Token { get; set; }
         public static string NhaMay = "NhaMay";

@@ -217,54 +217,54 @@
 	.section	.rodata.map_aname.36,"aMS",%progbits,1
 	.type	.L.map_aname.36, %object
 .L.map_aname.36:
-	.asciz	"Xamarin.Android.Arch.Lifecycle.Common"
-	.size	.L.map_aname.36, 38
+	.asciz	"APP_HOATHO.Android"
+	.size	.L.map_aname.36, 19
 
 	.section	.rodata.map_aname.37,"aMS",%progbits,1
 	.type	.L.map_aname.37, %object
 .L.map_aname.37:
-	.asciz	"Syncfusion.SfPullToRefresh.XForms.Android"
-	.size	.L.map_aname.37, 42
+	.asciz	"Xamarin.Android.Arch.Lifecycle.Common"
+	.size	.L.map_aname.37, 38
 
 	.section	.rodata.map_aname.38,"aMS",%progbits,1
 	.type	.L.map_aname.38, %object
 .L.map_aname.38:
-	.asciz	"Syncfusion.Buttons.XForms.Android"
-	.size	.L.map_aname.38, 34
+	.asciz	"Syncfusion.SfPullToRefresh.XForms.Android"
+	.size	.L.map_aname.38, 42
 
 	.section	.rodata.map_aname.39,"aMS",%progbits,1
 	.type	.L.map_aname.39, %object
 .L.map_aname.39:
-	.asciz	"Lottie.Forms"
-	.size	.L.map_aname.39, 13
+	.asciz	"Syncfusion.Buttons.XForms.Android"
+	.size	.L.map_aname.39, 34
 
 	.section	.rodata.map_aname.40,"aMS",%progbits,1
 	.type	.L.map_aname.40, %object
 .L.map_aname.40:
-	.asciz	"Xamarin.Android.Support.Design"
-	.size	.L.map_aname.40, 31
+	.asciz	"Lottie.Forms"
+	.size	.L.map_aname.40, 13
 
 	.section	.rodata.map_aname.41,"aMS",%progbits,1
 	.type	.L.map_aname.41, %object
 .L.map_aname.41:
-	.asciz	"Xamarin.Android.Arch.Lifecycle.ViewModel"
-	.size	.L.map_aname.41, 41
+	.asciz	"Xamarin.Android.Support.Design"
+	.size	.L.map_aname.41, 31
 
 	.section	.rodata.map_aname.42,"aMS",%progbits,1
 	.type	.L.map_aname.42, %object
 .L.map_aname.42:
-	.asciz	"FastAndroidCamera"
-	.size	.L.map_aname.42, 18
+	.asciz	"Xamarin.Android.Arch.Lifecycle.ViewModel"
+	.size	.L.map_aname.42, 41
 
 	.section	.rodata.map_aname.43,"aMS",%progbits,1
 	.type	.L.map_aname.43, %object
 .L.map_aname.43:
-	.asciz	"AndHUD"
-	.size	.L.map_aname.43, 7
+	.asciz	"FastAndroidCamera"
+	.size	.L.map_aname.43, 18
 
 	.section	.rodata.map_aname.44,"aMS",%progbits,1
 	.type	.L.map_aname.44, %object
 .L.map_aname.44:
-	.asciz	"APP_HOATHO.Android"
-	.size	.L.map_aname.44, 19
+	.asciz	"AndHUD"
+	.size	.L.map_aname.44, 7
 

@@ -115,8 +115,22 @@
                                                         HeaderCellTextSize="16"
                                                         Width="80">                               
                             </sfDataGrid:GridTextColumn>
-                          
-                        </sfDataGrid:SfDataGrid.Columns>
+                        <sfDataGrid:GridTemplateColumn  MappingName="KhoNhaMay" HeaderText="Kho Nhà Máy" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding KhoNhaMay}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
+                        </sfDataGrid:GridTemplateColumn>
+
+                        <sfDataGrid:GridTemplateColumn  MappingName="TinhTrangThietBi" HeaderText="Tình Trạng TB" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding TinhTrangThietBi}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
+                        </sfDataGrid:GridTemplateColumn>
+                    </sfDataGrid:SfDataGrid.Columns>
 
                         <sfDataGrid:SfDataGrid.GroupColumnDescriptions>
                         <sfDataGrid:GroupColumnDescription ColumnName="NameVN"/>
@@ -126,13 +140,13 @@
                     <ActivityIndicator x:Name="mIndicator" IsRunning="{Binding IsRunning}" Color="CornflowerBlue" VerticalOptions="Center"
                            HorizontalOptions="Center"   />
                 </Grid>
-                <StackLayout Orientation="Horizontal" Opacity="0.7">
+                <StackLayout Orientation="Horizontal">
                     <sfbutton:SfButton Text="Xem Chi Tiết" x:Name="btnGuiYeuCau" Clicked="btnGuiYeuCau_Clicked" FontSize="16"
                         CornerRadius="60" HorizontalOptions="FillAndExpand"
-                        TextColor="White" BackgroundColor="#149C62"></sfbutton:SfButton>
-                <sfbutton:SfButton Text="Scan Barcode" x:Name="btnScan" Clicked="btnScan_Clicked" FontSize="16"
+                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="Scan Barcode" x:Name="btnScan" Clicked="btnScan_Clicked" FontSize="16" 
                         CornerRadius="60" HorizontalOptions="FillAndExpand"
-                        TextColor="White" BackgroundColor="#149C62"></sfbutton:SfButton>
+                        Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
 
             </StackLayout>
 

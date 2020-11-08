@@ -18,9 +18,11 @@ namespace APP_HOATHO.Views
         public KeHoachBaoTri()
         {
             InitializeComponent();
+            entryThang.SelectedIndex = 0;
+            entryNam.Text = DateTime.Now.Year.ToString();
             BindingContext = viewModel = new KeHoachBaoTriViewModel();
         }
-
+       
         private void Nam_DateSelected(object sender, DateChangedEventArgs e)
         {
 
@@ -45,29 +47,41 @@ namespace APP_HOATHO.Views
         }
 
         Boolean filter;
+        int thang;
         public bool FilterRecords(object o)
         {
 
             var item = o as APP_HOATHO.Models.KeHoachBaoTri;
-
-            if (item != null)
-            {
+            thang = entryThang.SelectedIndex;          
+            if (item != null)            {
+                
+                
                 if (radChuaBaoTri.IsChecked == true)
                 {
+                    
                     filter = false;
                     
                 }
-                if (radDaBaoTri.IsChecked == true)
+                else if (radDaBaoTri.IsChecked == true)
                 {
-                    filter = true;
-                    
+                    filter = true;                    
                 }
-                if (radTatCa.IsChecked == true)
+                
+                if (thang == 0)
+                {                  
+                    if (radTatCa.IsChecked == true )
+                        return true;
+                    else if (item.Da_Bao_Tri == filter) return true;
+                }   
+                else if (radTatCa.IsChecked == true)
                 {
-                    return true;
+                    if (item.Thang == thang) return true;
+                }    
+                else
+                {
+                    if (item.Da_Bao_Tri == filter && item.Thang == thang ) return true;
                 }
-                if (item.Da_Bao_Tri == filter )
-                    return true;
+               
             }
             return false;
         }
@@ -75,22 +89,8 @@ namespace APP_HOATHO.Views
         {
             try
             {
-                if (radChuaBaoTri.IsChecked == true)
-                {
-                    filter = false;
-                    listThietBi.View.Filter = FilterRecords;
-                    listThietBi.View.RefreshFilter();
-                }
-                if (radDaBaoTri.IsChecked == true)
-                {
-                    filter = true;
-                    listThietBi.View.Filter = FilterRecords;
-                    listThietBi.View.RefreshFilter();
-                }
-                if (radTatCa.IsChecked == true)
-                {
-                    listThietBi.View.RefreshFilter();
-                }
+                listThietBi.View.Filter = FilterRecords;
+                listThietBi.View.RefreshFilter();
             }
             catch (Exception)
             {
@@ -98,6 +98,26 @@ namespace APP_HOATHO.Views
                
             }
             
+        }
+
+        private void entryNam_TextChanged(object sender, TextChangedEventArgs e)
+        {
+             
+           
+        }
+
+        private void entryThang_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
+        {
+            listThietBi.View.Filter = FilterRecords;
+            listThietBi.View.RefreshFilter();
+        }
+
+        private void entryNam_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (viewModel != null)
+            {
+                viewModel.LoadKeHoachBaoTri.Execute(entryNam.Text );
+            }
         }
     }
 }

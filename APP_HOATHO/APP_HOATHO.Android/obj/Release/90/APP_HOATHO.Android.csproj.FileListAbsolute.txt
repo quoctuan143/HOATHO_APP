@@ -124,6 +124,7 @@ D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\res\drawa
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\res\drawable\camera.png
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\res\xml\file_paths.xml
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\res\drawable\noimage.jpg
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\res\drawable\menu.png
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\uploadflags.txt
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\resolvedassemblies.hash
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Release\90\link.flag

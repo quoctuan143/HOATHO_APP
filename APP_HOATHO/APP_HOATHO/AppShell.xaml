@@ -45,7 +45,7 @@
         <ShellContent Title="Trang Chủ"  IsTabStop="True" Icon="logo.png" ContentTemplate="{DataTemplate local:Main }">
 
         </ShellContent>
-        <ShellContent Title="Danh Mục Thiết Bị"  IsTabStop="True" Icon="ic_check.png" ContentTemplate="{DataTemplate local:Danh_Muc_Thiet_Bi }">
+        <ShellContent Title="Danh Mục Thiết Bị"  IsTabStop="True" Icon="menu.png" ContentTemplate="{DataTemplate local:Danh_Muc_Thiet_Bi }">
 
         </ShellContent>
         <ShellContent Title="Kế Hoạch Bảo Trì"  IsTabStop="True" Icon="list.png" ContentTemplate="{DataTemplate local:KeHoachBaoTri}">

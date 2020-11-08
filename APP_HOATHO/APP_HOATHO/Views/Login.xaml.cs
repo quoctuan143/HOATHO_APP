@@ -50,6 +50,7 @@ namespace APP_HOATHO.Views
                     Preferences.Set(Config.PhoneNumber, user[0].PhoneNumber);
                     Preferences.Set(Config.NhaMay, user[0].SourceCode);
                     Preferences.Set(Config.MaXuong, user[0].MaXuong);
+                    Preferences.Set(Config.FullName, user[0].FullName);
                     App.Current.MainPage = new AppShell();
                 }
                 else

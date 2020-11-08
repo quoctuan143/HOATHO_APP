@@ -17,7 +17,7 @@
                 <StackLayout>
                     <sfinputText:SfTextInputLayout Hint="Phụ tùng thay thế"      
                                                ContainerType="Outlined"                                                
-                                               Grid.Column="0"
+                                               Grid.Column="0"                                           
                                               >
                         <Entry x:Name="entryPhuTung" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
                         <sfinputText:SfTextInputLayout.HintLabelStyle>
@@ -25,7 +25,7 @@
                         </sfinputText:SfTextInputLayout.HintLabelStyle>
                     </sfinputText:SfTextInputLayout>
 
-                    <sfcombox:SfComboBox  x:Name="cbNoiDung" Watermark="Chọn nội dung bảo trì" WatermarkColor="Gray"                             
+                    <sfcombox:SfComboBox  x:Name="cbNoiDung" Watermark="Chọn nội dung bảo trì" WatermarkColor="#06264c"                             
                              Grid.Row="0"
                              DataSource="{Binding QUY_TRINH_BAO_TRIs , Mode=TwoWay}"                            
                              HorizontalOptions="FillAndExpand"                              
@@ -37,9 +37,9 @@
                                               TokensWrapMode="Wrap"                                             
                              Style="{StaticResource styleCombobox}">
                         <sfcombox:SfComboBox.TokenSettings>
-                            <sfcombox:TokenSettings FontSize="16" BackgroundColor="#66ccff" 
+                            <sfcombox:TokenSettings FontSize="16" BackgroundColor="#06264c" 
                                         TextColor="White" SelectedBackgroundColor="#ffffe0" 
-                                        DeleteButtonColor="Color.Brown" IsCloseButtonVisible="true" 
+                                        DeleteButtonColor="White" IsCloseButtonVisible="true" 
                                                         
                                         CornerRadius="15" DeleteButtonPlacement="Right">
                             </sfcombox:TokenSettings>
@@ -53,7 +53,7 @@
                             <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
                         </sfinputText:SfTextInputLayout.HintLabelStyle>
                     </sfinputText:SfTextInputLayout>
-                    <sfCheckbox:SfCheckBox x:Name="chkBaoDuong" IsChecked="False" Text="Bảo Dưỡng Định Kỳ" FontSize="16" FontAttributes="Bold"></sfCheckbox:SfCheckBox>
+                    <sfCheckbox:SfCheckBox x:Name="chkBaoDuong" IsChecked="False" Text="Bảo Dưỡng Định Kỳ" FontSize="16" FontAttributes="Bold" TextColor="#06264c"></sfCheckbox:SfCheckBox>
 
                     <sfinputText:SfTextInputLayout Hint="Tình trạng hiện tại"      
                                                ContainerType="Outlined"                                                

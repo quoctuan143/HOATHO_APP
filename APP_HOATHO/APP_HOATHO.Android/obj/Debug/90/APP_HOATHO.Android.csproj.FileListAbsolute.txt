@@ -700,6 +700,14 @@ D:\SOURCE CODE\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\android\src\crc64f72eb
 D:\SOURCE CODE\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\android\src\crc64f72ebd847d591cfa\TabHeaderView.java
 E:\TUAN_SOURCE\GIT_HUB\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\android\typemaps.armeabi-v7a-shared.inc
 E:\TUAN_SOURCE\GIT_HUB\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\android\typemaps.x86_64.o
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.Android.dll
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.Android.pdb
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho.apk
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho.aab
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho-Signed.aab
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho-Signed.apk
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.dll
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.pdb
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\build.props
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\adb.props
@@ -763,14 +771,6 @@ D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\flata\compi
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\R.txt
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\R.cs.flag
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\APP_HOATHO.Android.csproj.CoreCompileInputs.cache
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.Android.dll
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.Android.pdb
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho.apk
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho.aab
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho-Signed.aab
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\com.companyname.app_hoatho-Signed.apk
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.dll
-D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\bin\Debug\APP_HOATHO.pdb
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\APP_HOATHO.Android.csproj.CopyComplete
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\APP_HOATHO.Android.dll
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\APP_HOATHO.Android.pdb
@@ -1506,3 +1506,4 @@ D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_Conv
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+D:\SOURCE CODE\HOATHO_APP\APP_HOATHO\APP_HOATHO.Android\obj\Debug\90\res\drawable\menu.png

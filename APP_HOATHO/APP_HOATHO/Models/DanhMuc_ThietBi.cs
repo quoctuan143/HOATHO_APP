@@ -16,5 +16,7 @@ namespace APP_HOATHO.Models
         public string ManufacturerCode { get; set; } //hãng sản xuất
         public string CountryofOriginCode { get; set; } //xuất xứ
         public string QualityMeasureCode { get; set; } // công suất
+        public string KhoNhaMay { get; set; } // công suất 
+        public string TinhTrangThietBi { get; set; } // công suất 
     }
 }

@@ -15,7 +15,7 @@ namespace APP_HOATHO.Style
 
         public override Color GetHeaderBackgroundColor()
         {
-            return Color.FromHex("#149C62");
+            return Color.FromHex("#06264c");
         }
 
         public override Color GetHeaderForegroundColor()

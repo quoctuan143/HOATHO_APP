@@ -36,8 +36,11 @@
                 <sfDataGrid:SfDataGrid x:Name="listThietBi"                                           
                                           ItemsSource="{Binding  LichSus}"                         
                                           AutoGenerateColumns="False"
+                                           GroupCaptionTextFormat="{}{}{Key} - {ItemsCount} lần"
                                            GridStyle="{StaticResource dark}"                                        
                                            SelectionChanged="listThietBi_SelectionChanged"
+                                           AllowGroupExpandCollapse="True"
+                                           AutoExpandGroups="False"   
                                            AllowSorting="True"                          
                                            AllowDraggingRow="True"
                                            AllowMultiSorting="True"
@@ -116,8 +119,8 @@
                                                    HeaderFontAttribute="Bold" 
                                                    HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
-                                <DataTemplate> 
-                                    <CheckBox IsChecked="{Binding BAO_DUONG_DINH_KY}" IsEnabled="False" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  />
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding BAO_DUONG_DINH_KY}" Color="#06264c" IsEnabled="False" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                         </sfDataGrid:GridTemplateColumn>
@@ -147,7 +150,9 @@
                     </sfDataGrid:SfDataGrid.Columns>
 
 
-
+                    <sfDataGrid:SfDataGrid.GroupColumnDescriptions>
+                        <sfDataGrid:GroupColumnDescription ColumnName="TEN_THIET_BI"/>
+                    </sfDataGrid:SfDataGrid.GroupColumnDescriptions>
                 </sfDataGrid:SfDataGrid>
                 <ActivityIndicator x:Name="mIndicator" IsRunning="{Binding IsRunning}" Color="CornflowerBlue" VerticalOptions="Center"
                            HorizontalOptions="Center"   />

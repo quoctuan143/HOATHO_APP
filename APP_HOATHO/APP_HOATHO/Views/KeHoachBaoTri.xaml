@@ -5,7 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
              xmlns:sfCheck= "clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:local1="clr-namespace:APP_HOATHO.Style" xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             
+             xmlns:local1="clr-namespace:APP_HOATHO.Style" xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              mc:Ignorable="d"
              Title="{Binding Title}"
              x:Class="APP_HOATHO.Views.KeHoachBaoTri">
@@ -17,14 +20,51 @@
             <local1:GridStyle x:Key="dark" />          
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <sfCheck:SfRadioGroup Orientation="Horizontal" CheckedChanged="SfRadioGroup_CheckedChanged">
-                    <sfCheck:SfRadioButton Text="Đã Bảo Trì" IsChecked="False" x:Name="radDaBaoTri"/>
-                    <sfCheck:SfRadioButton Text="Chưa Bảo Trì" x:Name="radChuaBaoTri" />
-                    <sfCheck:SfRadioButton Text="Tất Cả" IsChecked="True" x:Name="radTatCa" />
+    <ContentPage.Content>       
+        <StackLayout Spacing="0">
+            <StackLayout Spacing="0" >
+                <StackLayout Orientation="Horizontal">
+                    <Grid ColumnDefinitions="5*,5*" HorizontalOptions="FillAndExpand" >
+                        <combobox:SfComboBox x:Name="entryThang" Grid.Column="0"  IsEditableMode="False" SelectionChanged="entryThang_SelectionChanged" ShowBorder="False" Style="{StaticResource styleCombobox}"  Watermark="Chọn Tháng" >
+                            <combobox:SfComboBox.ComboBoxSource>
+                                <ListCollection:List x:TypeArguments="x:String">
+                                    <x:String>Tất Cả</x:String>
+                                    <x:String>Tháng 1</x:String>
+                                    <x:String>Tháng 2</x:String>
+                                    <x:String>Tháng 3</x:String>
+                                    <x:String>Tháng 4</x:String>
+                                    <x:String>Tháng 5</x:String>
+                                    <x:String>Tháng 6</x:String>
+                                    <x:String>Tháng 7</x:String>
+                                    <x:String>Tháng 8</x:String>
+                                    <x:String>Tháng 9</x:String>
+                                    <x:String>Tháng 10</x:String>
+                                    <x:String>Tháng 11</x:String>
+                                    <x:String>Tháng 12</x:String>
+                                </ListCollection:List>
+                            </combobox:SfComboBox.ComboBoxSource>
+                        </combobox:SfComboBox>
+
+
+                        <sfinputtext:SfTextInputLayout Hint="Năm" Grid.Column="1"  
+                                                       ContainerType="Outlined" 
+                                                       IsHintAlwaysFloated="True" >
+                            <Entry x:Name="entryNam" Style="{StaticResource styleEntry}" Unfocused="entryNam_Unfocused" TextChanged="entryNam_TextChanged" Keyboard="Numeric" Grid.Column="1"  Placeholder="Năm" Text="2020" ClearButtonVisibility="WhileEditing"></Entry>
+                            <sfinputtext:SfTextInputLayout.HintLabelStyle>
+                                <sfinputtext:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                            </sfinputtext:SfTextInputLayout.HintLabelStyle>
+                        </sfinputtext:SfTextInputLayout>
+                        
+                    </Grid>
+                    
+                    
+                </StackLayout>
+                <sfCheck:SfRadioGroup Orientation="Horizontal"  CheckedChanged="SfRadioGroup_CheckedChanged">
+                    <sfCheck:SfRadioButton Text="Đã Bảo Trì" IsChecked="False" x:Name="radDaBaoTri" VerticalOptions="Center"/>
+                    <sfCheck:SfRadioButton Text="Chưa Bảo Trì" x:Name="radChuaBaoTri" VerticalOptions="Center"/>
+                    <sfCheck:SfRadioButton Text="Tất Cả" x:Name="radTatCa" VerticalOptions="Center" IsChecked="True"/>
                 </sfCheck:SfRadioGroup>
+
             </StackLayout>
             <Grid x:Name="mGridLayout" AbsoluteLayout.LayoutFlags="All"
           AbsoluteLayout.LayoutBounds="1,1,1,1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -97,7 +137,7 @@
                                                    HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox  IsChecked="{Binding Da_Bao_Tri}" IsEnabled="False" HorizontalOptions="Center"/>
+                                    <CheckBox  IsChecked="{Binding Da_Bao_Tri}" Color="#06264c" IsEnabled="False" HorizontalOptions="Center"/>
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                         </sfDataGrid:GridTemplateColumn>
