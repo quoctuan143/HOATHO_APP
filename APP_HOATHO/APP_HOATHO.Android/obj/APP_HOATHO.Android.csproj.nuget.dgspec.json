@@ -46,9 +46,21 @@
               "target": "Package",
               "version": "[1.4.2, )"
             },
+            "AndHUD": {
+              "target": "Package",
+              "version": "[1.4.2, )"
+            },
             "Com.Airbnb.Android.Lottie": {
               "target": "Package",
               "version": "[3.0.6, )"
+            },
+            "Com.Airbnb.Android.Lottie": {
+              "target": "Package",
+              "version": "[3.0.6, )"
+            },
+            "Com.Airbnb.Xamarin.Forms.Lottie": {
+              "target": "Package",
+              "version": "[3.0.4, )"
             },
             "Com.Airbnb.Xamarin.Forms.Lottie": {
               "target": "Package",
@@ -58,11 +70,27 @@
               "target": "Package",
               "version": "[5.2.7, )"
             },
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Rg.Plugins.Popup": {
+              "target": "Package",
+              "version": "[2.0.0.5, )"
+            },
             "Rg.Plugins.Popup": {
               "target": "Package",
               "version": "[2.0.0.5, )"
             },
             "Syncfusion.Licensing": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
+            "Syncfusion.Licensing": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
+            "Syncfusion.Xamarin.Buttons": {
               "target": "Package",
               "version": "[18.2.0.55, )"
             },
@@ -74,7 +102,19 @@
               "target": "Package",
               "version": "[18.2.0.55, )"
             },
+            "Syncfusion.Xamarin.Core": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
             "Syncfusion.Xamarin.SfComboBox": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
+            "Syncfusion.Xamarin.SfComboBox": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
+            "Syncfusion.Xamarin.SfDataGrid": {
               "target": "Package",
               "version": "[18.2.0.55, )"
             },
@@ -86,7 +126,19 @@
               "target": "Package",
               "version": "[18.2.0.55, )"
             },
+            "Syncfusion.Xamarin.SfPicker": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
             "Syncfusion.Xamarin.SfPopupLayout": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
+            "Syncfusion.Xamarin.SfPopupLayout": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
+            "Syncfusion.Xamarin.SfPullToRefresh": {
               "target": "Package",
               "version": "[18.2.0.55, )"
             },
@@ -98,9 +150,21 @@
               "target": "Package",
               "version": "[18.2.0.55, )"
             },
+            "Syncfusion.Xamarin.SfTabView": {
+              "target": "Package",
+              "version": "[18.2.0.55, )"
+            },
             "Xam.Plugin.Media": {
               "target": "Package",
               "version": "[5.0.1, )"
+            },
+            "Xam.Plugin.Media": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.5.3.2, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
@@ -110,11 +174,27 @@
               "target": "Package",
               "version": "[71.1740.4, )"
             },
+            "Xamarin.Firebase.Messaging": {
+              "target": "Package",
+              "version": "[71.1740.4, )"
+            },
+            "Xamarin.Forms": {
+              "target": "Package",
+              "version": "[4.8.0.1451, )"
+            },
             "Xamarin.Forms": {
               "target": "Package",
               "version": "[4.8.0.1451, )"
             },
             "ZXing.Net.Mobile": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "ZXing.Net.Mobile": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "ZXing.Net.Mobile.Forms": {
               "target": "Package",
               "version": "[2.4.1, )"
             },
