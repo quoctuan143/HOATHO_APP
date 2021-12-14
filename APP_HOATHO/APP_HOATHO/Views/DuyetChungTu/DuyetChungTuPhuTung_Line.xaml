@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
+             x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetChungTuPhuTung_Line"
+             Title="{Binding Title}"            
+             >
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"                                           
+                                            ItemsSource="{Binding ListItem, Mode=TwoWay}"                         
+                                            AutoGenerateColumns="False"        
+                                            Style="{StaticResource styleDataGrid}"
+                                            SelectionMode="None"
+                                           >
+                <sfDataGrid:SfDataGrid.Columns>
+
+                    <sfDataGrid:GridTemplateColumn MappingName="No_" HeaderText="Mã" HeaderFontAttribute="Bold" Width="90" HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding No_}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+
+                    <sfDataGrid:GridTextColumn  MappingName="Name" HeaderText="Tên" Width="180" Padding="5,0,5,0" HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                        <!--<sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Name}" TextColor="Black"  WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>-->
+                    </sfDataGrid:GridTextColumn>
+                   
+                    <sfDataGrid:GridTemplateColumn  MappingName="UnitOfMeasure" HeaderText="ĐVT" Width="60"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding UnitOfMeasure}" TextColor="Black" Padding="5,0,0,0"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  MappingName="Quantity" HeaderText="Số Lượng" Width="80"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Quantity, StringFormat='{0:#,##0.####}'}" TextColor="Black" Padding="0,0,5,0"   XAlign="End" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                </sfDataGrid:SfDataGrid.Columns>
+
+
+
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng SL : {TotalQuantity} "
+                                Position="Bottom"
+                                ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                      Format="{}{Sum}"
+                                      MappingName="Quantity"
+                                      SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+            <Button Text="Duyệt" 
+                    Command="{Binding DeleteCommand}"
+                    Style="{StaticResource styleButton}">
+                
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

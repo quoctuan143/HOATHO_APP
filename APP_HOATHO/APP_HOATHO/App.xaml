@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:sfcombox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:sfButton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
+             xmlns:syncTheme="clr-namespace:Syncfusion.XForms.Themes;assembly=Syncfusion.Core.XForms"
+              xmlns:sfDatagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+               xmlns:local1="clr-namespace:APP_HOATHO.Style" 
+             mc:Ignorable="d"
+             x:Class="APP_HOATHO.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <local1:GridStyle x:Key="dark" />
+            <syncTheme:SyncfusionThemeDictionary x:Key="styleHint">
+
+                <syncTheme:SyncfusionThemeDictionary.MergedDictionaries>
+
+                    <ResourceDictionary>
+
+                        <x:String x:Key="SfTextInputLayoutTheme">CustomTheme</x:String>
+
+                        <Color x:Key="SyncPrimaryLightColor">Green</Color>
+
+                        <Color x:Key="SyncPrimaryColor">Red</Color>
+
+                        <Color x:Key="SfTextInputLayoutHintColor">Blue</Color>
+
+                        <Color x:Key="SfTextInputLayoutLineColor">Aqua</Color>
+
+                    </ResourceDictionary>
+
+                </syncTheme:SyncfusionThemeDictionary.MergedDictionaries>
+
+            </syncTheme:SyncfusionThemeDictionary>
+            <Color x:Key="Primary">#06264c</Color>
+            <Style TargetType="sfcombox:SfComboBox" x:Key="styleCombobox">
+                <Setter Property="TextColor" Value="#06264c"></Setter>
+                <Setter Property="ShowClearButton" Value="True"></Setter>
+                <Setter Property="BorderColor" Value="#1976d2"></Setter>
+                <!--<Setter Property="BorderColor" Value="White"></Setter>-->
+                <Setter Property="TextSize" Value="16"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="SuggestionMode" Value="Contains"></Setter>
+                <Setter Property="MultiSelectMode" Value="None"></Setter>
+                <Setter Property="NoResultsFoundTextColor" Value="Red"></Setter>
+                <Setter Property="HighlightedTextColor" Value="Red"></Setter>
+                <Setter Property="IsEditableMode" Value="True"></Setter>
+                <Setter Property="AllowFiltering" Value="True"></Setter>
+                <Setter Property="ClearButtonColor" Value="Red"></Setter>
+                <Setter Property="WatermarkColor" Value="#06264c"></Setter>
+            </Style>
+            <Style TargetType="SearchBar" x:Key="styleSearch">
+                <Setter Property="TextColor" Value="#06264c"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            </Style>
+            <Style TargetType="sfinputText:SfTextInputLayout" x:Key="styleInputText">
+                <Setter Property="ContainerType" Value="Outlined"></Setter>               
+            </Style>            
+            <Style TargetType="Entry" x:Key="styleEntry">
+                <Setter Property="TextColor" Value="#06264c"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="PlaceholderColor" Value="#06264c"></Setter>
+            </Style>
+
+            <Style TargetType="Page" x:Key="ParentBackgroup">
+                <Setter Property="BackgroundImageSource" Value="hinhnen.jpg"></Setter>
+                <Setter Property="Opacity" Value="2" ></Setter>
+            </Style>
+            <Style TargetType="Button" x:Key="styleButton">
+                <Setter Property="BackgroundColor" Value="#06264c"></Setter>
+                <Setter Property="TextColor" Value="White" ></Setter>
+                <Setter Property="FontSize" Value="16" ></Setter>
+                <Setter Property="FontAttributes" Value="Bold" ></Setter>
+            </Style>
+            <Style TargetType="sfButton:SfButton" x:Key="sfbuttonCancel">
+                <Setter Property="BackgroundColor" Value="Red"></Setter>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            <Style TargetType="sfButton:SfButton" x:Key="stylesfButton">
+                <Setter Property="BackgroundColor" Value="#06264c"></Setter>
+                <Setter Property="TextColor" Value="White" ></Setter>
+                <Setter Property="FontSize" Value="16" ></Setter>
+                <Setter Property="FontAttributes" Value="Bold" ></Setter>   
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            <Style TargetType="Label" x:Key="styleLableBold">
+                <Setter Property="TextColor" Value="#06264c"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="styleLablewhite">
+                <Setter Property="TextColor" Value="#06264c"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="styleLablenotwhite">
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            </Style>
+            <Style TargetType="sfDatagrid:SfDataGrid" x:Key="styleDataGrid">
+                <Setter Property="CanUseViewFilter" Value="True"></Setter>
+                <Setter Property="AllowSorting" Value="True"></Setter>
+                <Setter Property="AllowDraggingRow" Value="True"></Setter>
+                <Setter Property="AllowDraggingColumn" Value="True"></Setter>
+                <Setter Property="SelectionMode" Value="Single"></Setter>
+                <Setter Property="AutoExpandGroups" Value="True"></Setter>
+                <Setter Property="AllowTriStateSorting" Value="True"></Setter>
+                <Setter Property="AllowDiagonalScrolling" Value="True"></Setter>
+                <Setter Property="VerticalOverScrollMode" Value="None"></Setter>
+                <Setter Property="AllowGroupExpandCollapse" Value="True"></Setter>
+                <Setter Property="GridStyle" Value="{StaticResource dark}"/>
+            </Style>
+            <Style TargetType="ListView" x:Key="styleListView">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

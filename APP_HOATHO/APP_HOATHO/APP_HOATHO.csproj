@@ -1,0 +1,145 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <ApplicationIcon></ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Helpers\materialdesignicons-webfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Helpers\materialdesignicons-webfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.4" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.3.10" />
+    <PackageReference Include="Plugin.LocalNotification" Version="9.0.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.5" />
+    <PackageReference Include="Syncfusion.Licensing" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.2.0.55" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Xam.Plugin.PushNotification" Version="1.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />  
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />  
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />  
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Dialog\ShowImage.xaml.cs">
+      <DependentUpon>ShowImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DuyetChungTu\MoLaiChungTuDatMua_Line.xaml.cs">
+      <DependentUpon>MoLaiChungTuDatMua_Line.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DuyetChungTu\MoLaiChungTu_DatMua_Header.xaml.cs">
+      <DependentUpon>MoLaiChungTu_DatMua_Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DuyetChungTu\DuyetChungTuPhuTung_Line.xaml.cs">
+      <DependentUpon>DuyetChungTuPhuTung_Line.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DuyetChungTu\DuyetChungTuPhuTung_Header.xaml.cs">
+      <DependentUpon>DuyetChungTuPhuTung_Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DuyetChungTu\DuyetChungTuDatMua_Header.xaml.cs">
+      <DependentUpon>DuyetChungTuDatMua_Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TaoLichSuBaoTri.xaml.cs">
+      <DependentUpon>TaoLichSuBaoTri.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Dialog\ShowImage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialog\MessageBox.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dialog\MessageYesNo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Danh_Muc_Thiet_Bi.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DuyetChungTu\DuyetChungTu_Header.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DuyetChungTu\DuyetChungTu_Line.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DuyetChungTu\DuyetDeNghiThanhToan_Header_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DuyetChungTu\DuyetDeNghiThanhToan_Line_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HeaderTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KeHoachBaoTri.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LichSuBaoTri.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Lich_Su_Bao_Tri_Chi_Tiet.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MoLaiChungTu\MoLaiChungTu_Header.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MoLaiChungTu\MoLaiChungTu_Line.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MoLaiChungTu\MoLaiDeNghiThanhToan_Header_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MoLaiChungTu\MoLaiDeNghiThanhToan_Line_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tabpage\DuyetDeNghiThanhToanTabpage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tabpage\DuyetDonDatMua.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tabpage\DuyetLCP_FOB.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tabpage\DuyetLCP_GIACONG.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ThongTinThietBi.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ThongTinThietBi_Edit.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

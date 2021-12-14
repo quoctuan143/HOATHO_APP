@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"   
+             mc:Ignorable="d"
+             Style="{StaticResource ParentBackgroup}"
+             x:Class="APP_HOATHO.Views.Login">
+    <ContentPage.Resources>
+        <Style TargetType="Entry" Class="entryClass">
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+            <Setter Property="TextColor" Value="Blue"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="BackgroundColor" Value="White"></Setter>
+        </Style>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Margin="20,40,20,0" RowSpacing="10"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Image Source="logo.png" Grid.Row="0"></Image>
+
+
+            <StackLayout Orientation="Vertical" Padding="10,5,10,0" Grid.Row="1">
+                <sfinputText:SfTextInputLayout Hint="Tên đăng nhập"      
+                                               ContainerType="Outlined" 
+                                               LeadingViewPosition="Inside">
+                    <Entry x:Name="btnusername" StyleClass="entryClass"  ClearButtonVisibility="WhileEditing"></Entry>
+                    <sfinputText:SfTextInputLayout.LeadingView>
+                        <Image Source="user.png"/>
+                    </sfinputText:SfTextInputLayout.LeadingView>
+                    <sfinputText:SfTextInputLayout.HintLabelStyle>
+                        <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                    </sfinputText:SfTextInputLayout.HintLabelStyle>
+                </sfinputText:SfTextInputLayout>
+
+
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Padding="10,5,10,0" Grid.Row="2">
+                <sfinputText:SfTextInputLayout Hint="Nhập mật khẩu" 
+                                               ContainerType="Outlined"
+                                               LeadingViewPosition="Inside"
+                                               EnablePasswordVisibilityToggle="True"                                               
+                                               >
+                    <Entry x:Name="btnpassword" StyleClass="entryClass" ClearButtonVisibility="WhileEditing" IsPassword="True"></Entry>
+                    <sfinputText:SfTextInputLayout.LeadingView>
+                        <Image Source="password.png"/>
+                    </sfinputText:SfTextInputLayout.LeadingView>
+                    <sfinputText:SfTextInputLayout.HintLabelStyle>
+                        <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold">
+                        </sfinputText:LabelStyle>
+                    </sfinputText:SfTextInputLayout.HintLabelStyle>
+                </sfinputText:SfTextInputLayout>
+
+
+            </StackLayout>
+            <StackLayout Grid.Row="3"   Padding="10,5,10,5" >                
+                <sfbutton:SfCheckBox IsChecked="True" Text="Ghi nhớ" x:Name="swRememer" CheckedColor="Blue" FontSize="16"></sfbutton:SfCheckBox>
+
+            </StackLayout>
+            <StackLayout Grid.Row="6" VerticalOptions="Fill" Padding="10,5,10,5">
+                <sfbutton:SfButton Text="Đăng Nhập" Clicked="SfButton_Clicked" Style="{StaticResource stylesfButton}" CornerRadius="60" HeightRequest="50" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="8" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Label Text="Hoa Tho Smart Apps" HorizontalTextAlignment="Center" FontAttributes="Italic,Bold" />
+                <Label Text="@2020 HOA THO CORP" HorizontalTextAlignment="Center"/>
+
+            </StackLayout>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

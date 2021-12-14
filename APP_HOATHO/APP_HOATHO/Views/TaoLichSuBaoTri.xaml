@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfCheckbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:sfcombox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             mc:Ignorable="d"
+             x:Class="APP_HOATHO.Views.TaoLichSuBaoTri"
+             xmlns:local="clr-namespace:APP_HOATHO.Views" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+                xmlns:local1="clr-namespace:APP_HOATHO.Style"
+             InputTransparent="False"
+             Title="Cập nhật bảo trì">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local1:GridStyle x:Key="dark" />
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <ScrollView Orientation="Vertical">
+                <StackLayout Spacing="0">
+                    <sfDataGrid:SfDataGrid x:Name="listquytrinh"  
+                                          ItemsSource="{Binding QUY_TRINH_BAO_TRIs, Mode=TwoWay}"   
+                                            AutoGenerateColumns="False" 
+                                            GridStyle="{StaticResource dark}"                                            
+                                            Style="{StaticResource styleDataGrid}"
+                                            ColumnSizer="LastColumnFill"
+                                              >
+                        <sfDataGrid:SfDataGrid.Columns>
+                            <sfDataGrid:GridSwitchColumn MappingName="IsCheck" HeaderText="">
+
+                            </sfDataGrid:GridSwitchColumn>
+                            <sfDataGrid:GridTemplateColumn  MappingName="NOI_DUNG" HeaderText="Nội dung bảo trì"   HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                                <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Text="{Binding Description}" TextColor="Black" Padding="5,0,0,0" HorizontalOptions="StartAndExpand"   XAlign="Start" YAlign="Center" />
+                                    </DataTemplate>
+                                </sfDataGrid:GridTemplateColumn.CellTemplate>
+                            </sfDataGrid:GridTemplateColumn>
+                        </sfDataGrid:SfDataGrid.Columns>
+                    </sfDataGrid:SfDataGrid>
+
+                    <sfinputText:SfTextInputLayout Hint="Phụ tùng thay thế"      
+                                               ContainerType="Outlined"              
+                                              >
+                        <Entry x:Name="entryPhuTung" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
+                        <sfinputText:SfTextInputLayout.HintLabelStyle>
+                            <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                        </sfinputText:SfTextInputLayout.HintLabelStyle>
+                    </sfinputText:SfTextInputLayout>
+                   
+
+                    <!--<sfcombox:SfComboBox  x:Name="cbNoiDung" Watermark="Chọn nội dung bảo trì" WatermarkColor="#06264c"                             
+                             Grid.Row="0"
+                             DataSource="{Binding QUY_TRINH_BAO_TRIs , Mode=TwoWay}"                            
+                             HorizontalOptions="FillAndExpand"                              
+                             NoResultsFoundText="Không tìm thấy kết quả" 
+                             DisplayMemberPath="Description" 
+                             MultiSelectMode="Token"
+                                              IsEditableMode="False"
+                                              EnableAutoSize="True"
+                                              TokensWrapMode="Wrap"                                             
+                             Style="{StaticResource styleCombobox}">
+                        <sfcombox:SfComboBox.TokenSettings>
+                            <sfcombox:TokenSettings FontSize="16" BackgroundColor="#06264c" 
+                                        TextColor="White" SelectedBackgroundColor="#ffffe0" 
+                                        DeleteButtonColor="White" IsCloseButtonVisible="true" 
+                                                        
+                                        CornerRadius="15" DeleteButtonPlacement="Right">
+                            </sfcombox:TokenSettings>
+                        </sfcombox:SfComboBox.TokenSettings>
+                    </sfcombox:SfComboBox>-->
+                    <sfinputText:SfTextInputLayout Hint="Nội dung khác"      
+                                               ContainerType="Outlined"   
+                                              >
+                        <Entry x:Name="entryNoiDungKhac" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
+                        <sfinputText:SfTextInputLayout.HintLabelStyle>
+                            <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                        </sfinputText:SfTextInputLayout.HintLabelStyle>
+                    </sfinputText:SfTextInputLayout>
+                    <sfCheckbox:SfCheckBox x:Name="chkBaoDuong" IsChecked="True"  Text="Bảo dưỡng định kỳ" FontSize="16" FontAttributes="Bold" TextColor="#06264c"></sfCheckbox:SfCheckBox>
+
+                    <sfinputText:SfTextInputLayout Hint="Tình trạng hiện tại"      
+                                               ContainerType="Outlined"                                                
+                                              >
+                        <Entry x:Name="entryTinhTrang" Style="{StaticResource styleEntry}"  ClearButtonVisibility="WhileEditing"></Entry>
+                        <sfinputText:SfTextInputLayout.HintLabelStyle>
+                            <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
+                        </sfinputText:SfTextInputLayout.HintLabelStyle>
+                    </sfinputText:SfTextInputLayout>
+                    <StackLayout Padding="10">
+                        <Frame CornerRadius="20" 
+                           Padding="0"
+                           IsClippedToBounds="True">
+                            <Image x:Name="imagePicture" Source="noimage.jpg" Aspect="AspectFit" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="Cập Nhật" Clicked="Save_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
+           
+        </StackLayout>
+      
+    </ContentPage.Content>
+    
+</ContentPage>

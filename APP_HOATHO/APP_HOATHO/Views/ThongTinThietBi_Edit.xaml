@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Cập nhật thông tin thiết bị"
+             x:Class="APP_HOATHO.Views.ThongTinThietBi_Edit">
+    <StackLayout>
+        <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto" Padding="10" RowSpacing="10">
+            <Label Text="Mã Thiết Bị" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
+            <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                <Label Text="{Binding Item.No_}" VerticalTextAlignment="Center" FontSize="16" TextColor="Black"></Label>
+                
+            </StackLayout>
+
+            <Label Text="Tên Thiết Bị" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
+            <Label Text="{Binding Item.NameVN}" Grid.Column="1" Grid.Row="1" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
+            <Label Text="Số Máy" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
+            <Entry Text="{Binding Item.No_3,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
+            <Label Text="Model" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
+            <Entry Text="{Binding Item.No_2,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
+            <Label Text="Xuất Xứ" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="4" FontSize="16" TextColor="Black"></Label>
+            <Entry Text="{Binding Item.CountryofOriginCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="4" FontSize="16" TextColor="Black"></Entry>
+            <Label Text="Hãng Sản Xuất" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
+            <Entry Text="{Binding Item.ManufacturerCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
+            <Label Text="Công Suất" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
+            <Entry Text="{Binding Item.QualityMeasureCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
+            <Label Text="Ngày Sử Dụng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
+            <DatePicker Date="{Binding Item.NgaySuDung ,Mode=TwoWay, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></DatePicker>
+
+
+
+        </Grid>
+        <Button Style="{StaticResource styleButton}" Text="Cập Nhật" Clicked="Button_Clicked"></Button>
+    </StackLayout>
+ 
+</ContentPage>
