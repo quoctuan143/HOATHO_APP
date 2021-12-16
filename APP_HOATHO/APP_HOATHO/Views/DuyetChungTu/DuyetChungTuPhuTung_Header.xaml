@@ -18,7 +18,7 @@
                 <sfDataGrid:SfDataGrid.Columns>
 
                     
-                    <sfDataGrid:GridTemplateColumn  HeaderText="ExternalDocNo"                                                
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Số chứng từ"                                                
                                                         Width="160"
                                                 MappingName="Số" 
                                                 HeaderFontAttribute="Bold" 
@@ -32,7 +32,7 @@
                     </sfDataGrid:GridTemplateColumn>
 
 
-                    <sfDataGrid:GridTemplateColumn  HeaderText="PostingDate"                                                
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Ngày lập"                                                
                                                         Width="100"
                                                 MappingName="Ngày" 
                                                 HeaderFontAttribute="Bold" 

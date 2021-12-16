@@ -6,13 +6,13 @@
             xmlns:local="clr-namespace:APP_HOATHO.Views.DuyetChungTu"
             xmlns:local1="clr-namespace:APP_HOATHO.Views.MoLaiChungTu"
             android:TabbedPage.ToolbarPlacement="Bottom"
-            android:TabbedPage.IsSwipePagingEnabled="False"           
+            android:TabbedPage.IsSwipePagingEnabled="False"             
             SelectedTabColor="Red"
             UnselectedTabColor="LightGray"            
-            BarTextColor="{StaticResource Primary}"  
+            BarTextColor="Red"  
             BarBackground="LightGray"            
             Title="Đề nghị thanh toán">
   <!--Pages can be added as references or inline-->
-    <local:DuyetDeNghiThanhToan_Header_Page IconImageSource="{OnPlatform iOS=duyet.svg, Android=online}" Title="Duyệt"/>
-    <local1:MoLaiDeNghiThanhToan_Header_Page IconImageSource="{OnPlatform iOS=duyet.svg, Android=molai}" Title="Mở Lại"/>
+    <local:DuyetDeNghiThanhToan_Header_Page IconImageSource="baseline_check_circle_black.png" Title="Duyệt"/>
+    <local1:MoLaiDeNghiThanhToan_Header_Page IconImageSource="baseline_open_in_browser_black.png" Title="Mở Lại"/>
 </TabbedPage>

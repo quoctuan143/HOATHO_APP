@@ -49,7 +49,7 @@
     <CodesignKey>Apple Development: NGUYEN T THAI NGOC (SQ944M7T32)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
@@ -337,9 +337,26 @@
     <BundleResource Include="Resources\denghitt.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\duyet.svg" />
+    <BundleResource Include="Resources\baseline_check_circle_black_1x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\molai.svg" />
+    <BundleResource Include="Resources\baseline_check_circle_black_2x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_check_circle_black_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_open_in_browser_black_1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_open_in_browser_black_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_open_in_browser_black_3x.png" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarAPP_HOATHOiOSHideInfoBar="True" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
