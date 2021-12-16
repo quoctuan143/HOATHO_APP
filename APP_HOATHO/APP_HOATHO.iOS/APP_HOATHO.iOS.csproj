@@ -337,22 +337,22 @@
     <BundleResource Include="Resources\denghitt.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_check_circle_black_1x.png" />
+    <BundleResource Include="Resources\baseline_check_circle_black.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_check_circle_black_2x.png" />
+    <BundleResource Include="Resources\baseline_check_circle_black%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_check_circle_black_3x.png" />
+    <BundleResource Include="Resources\baseline_check_circle_black%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_open_in_browser_black_1x.png" />
+    <BundleResource Include="Resources\baseline_open_in_browser_black.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_open_in_browser_black_2x.png" />
+    <BundleResource Include="Resources\baseline_open_in_browser_black%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_open_in_browser_black_3x.png" />
+    <BundleResource Include="Resources\baseline_open_in_browser_black%403x.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
