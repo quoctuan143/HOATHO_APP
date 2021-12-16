@@ -5,10 +5,10 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             android:TabbedPage.IsSwipePagingEnabled="False"
-            xmlns:page="clr-namespace:APP_HOATHO.Views.DuyetChungTu"
-            BackgroundColor="White"
+            xmlns:page="clr-namespace:APP_HOATHO.Views.DuyetChungTu"     
+             BarBackground="LightGray"      
             SelectedTabColor="Red"
-            BarBackgroundColor="LightGray"
+            UnselectedTabColor="LightGray"
             BarTextColor="{StaticResource Primary}"  
             Title="Lệnh cấp phát FOB"
             >

@@ -16,12 +16,27 @@ namespace APP_HOATHO.Views.Tabpage
         {
             InitializeComponent();
             ContentPage navigationPage = new DuyetChungTu.DuyetChungTuDatMua_Header(Global.DocumentType.DuyetMuaHang);
-            navigationPage.IconImageSource = "duyetdinhmuc.png";
+            if (Device.RuntimePlatform  ==   Device.iOS )
+            {
+                navigationPage.IconImageSource = "duyet.svg";
+            }   
+            else
+            {
+                navigationPage.IconImageSource = "online.png";
+            }    
+          
             navigationPage.Title = "Chờ Duyệt";
 
             ContentPage content = new DuyetChungTu.MoLaiChungTuDatMua_Header(Global.DocumentType.MoLaiDatMua);
             content.Title = "Mở Lại";
-            content.IconImageSource = "reopen.png";
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                content.IconImageSource = "molai.svg";
+            }
+            else
+            {
+                content.IconImageSource = "molai.png";
+            }
             Children.Add(navigationPage);
             Children.Add(content);
 

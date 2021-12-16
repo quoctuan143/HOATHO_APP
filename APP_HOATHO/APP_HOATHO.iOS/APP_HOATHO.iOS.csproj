@@ -336,4 +336,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\denghitt.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\duyet.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\molai.svg" />
+  </ItemGroup>
 </Project>

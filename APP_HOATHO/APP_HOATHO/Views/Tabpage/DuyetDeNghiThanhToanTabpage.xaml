@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="APP_HOATHO.Views.Tabpage.DuyetDeNghiThanhToanTabpage"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:local="clr-namespace:APP_HOATHO.Views.DuyetChungTu"
+            xmlns:local1="clr-namespace:APP_HOATHO.Views.MoLaiChungTu"
             android:TabbedPage.ToolbarPlacement="Bottom"
-            android:TabbedPage.IsSwipePagingEnabled="False"
-             BackgroundColor="White"
+            android:TabbedPage.IsSwipePagingEnabled="False"           
             SelectedTabColor="Red"
-            BarBackgroundColor="LightGray"
+            UnselectedTabColor="LightGray"            
             BarTextColor="{StaticResource Primary}"  
-          
+            BarBackground="LightGray"            
             Title="Đề nghị thanh toán">
   <!--Pages can be added as references or inline-->
- 
+    <local:DuyetDeNghiThanhToan_Header_Page IconImageSource="{OnPlatform iOS=duyet.svg, Android=online}" Title="Duyệt"/>
+    <local1:MoLaiDeNghiThanhToan_Header_Page IconImageSource="{OnPlatform iOS=duyet.svg, Android=molai}" Title="Mở Lại"/>
 </TabbedPage>

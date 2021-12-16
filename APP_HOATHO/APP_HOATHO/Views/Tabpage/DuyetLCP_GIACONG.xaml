@@ -5,8 +5,9 @@
             android:TabbedPage.ToolbarPlacement="Bottom"           
             android:TabbedPage.IsSwipePagingEnabled="False"
              x:Class="APP_HOATHO.Views.Tabpage.DuyetLCP_GIACONG"
-             SelectedTabColor="Red"
-            BarBackgroundColor="LightGray"
+            SelectedTabColor="Red"
+             BarBackground="LightGray"      
+            UnselectedTabColor="LightGray"            
             BarTextColor="{StaticResource Primary}"  
             Title="Lệnh cấp phát gia công">
   <!--Pages can be added as references or inline-->
