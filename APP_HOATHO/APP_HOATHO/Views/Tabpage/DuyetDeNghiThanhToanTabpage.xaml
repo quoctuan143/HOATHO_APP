@@ -9,9 +9,9 @@
             android:TabbedPage.IsSwipePagingEnabled="False"  
             Shell.TabBarIsVisible="False"
             SelectedTabColor="Red"
-            UnselectedTabColor="LightGray"            
-            BarTextColor="Red"  
-            BarBackground="LightGray"            
+            UnselectedTabColor="White"            
+            BarTextColor="White"  
+            BarBackgroundColor="{StaticResource Primary}"            
             Title="Đề nghị thanh toán">
   <!--Pages can be added as references or inline-->
     <local:DuyetDeNghiThanhToan_Header_Page IconImageSource="baseline_check_circle_black.png" Title="Duyệt"/>

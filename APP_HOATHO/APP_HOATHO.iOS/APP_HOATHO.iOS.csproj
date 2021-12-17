@@ -369,6 +369,12 @@
   <ItemGroup>
     <BundleResource Include="Resources\home%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APP_HOATHO\APP_HOATHO.csproj">
+      <Project>{ead161f8-ef9c-4b2a-bd0e-487beb8e3d5a}</Project>
+      <Name>APP_HOATHO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarAPP_HOATHOiOSHideInfoBar="True" />
