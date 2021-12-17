@@ -6,7 +6,8 @@
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              xmlns:local1="clr-namespace:APP_HOATHO.Style" xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
-             Title="Lịch Sử Bảo Trì"           
+             Title="Lịch Sử Bảo Trì"      
+             Shell.TabBarIsVisible="False"
              x:Class="APP_HOATHO.Views.LichSuBaoTri">
    
     <ContentPage.Resources>             

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.app_hoatho" android:installLocation="internalOnly">
 	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30" />
-	<application android:label="HOATHO" android:usesCleartextTraffic="true" android:icon="@mipmap/logo">
+	<application android:label="HÒA THỌ" android:usesCleartextTraffic="true" android:icon="@mipmap/logo">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.app_hoatho.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>

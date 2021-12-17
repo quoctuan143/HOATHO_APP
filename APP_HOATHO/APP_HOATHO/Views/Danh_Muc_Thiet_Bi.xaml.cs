@@ -71,27 +71,38 @@ namespace APP_HOATHO.Views
             try
             {
                 var scan = new ZXingScannerPage();
-                await Navigation.PushAsync(scan);
+                scan.Title = "Tìm kiếm thiết bị";
+                Shell.SetTabBarIsVisible(scan, false);
+                await Navigation.PushAsync(scan);                
                 scan.OnScanResult += (result) =>
                 {
                     Device.BeginInvokeOnMainThread(async () => {
                         await Navigation.PopAsync();
                         //show form lên 
-                        string ma = result.Text.Split('=')[1];
-                        var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getTimKiemThietBi?mathietbi=" + ma).Result;
-                        _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                        if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                        try
                         {
-                            Int32 from = _json.IndexOf("[");
-                            Int32 to = _json.IndexOf("]");
-                            string ok = _json.Substring(from, to - from + 1);
-                            ObservableCollection<DanhMuc_ThietBi> Item = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(ok);
-                            await Navigation.PushAsync(new ThongTinThietBi(Item[0]));
+                            string ma = result.Text.Split('=')[1];
+                            var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getTimKiemThietBi?mathietbi=" + ma).Result;
+                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                            if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                            {
+                                Int32 from = _json.IndexOf("[");
+                                Int32 to = _json.IndexOf("]");
+                                string ok = _json.Substring(from, to - from + 1);
+                                ObservableCollection<DanhMuc_ThietBi> Item = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(ok);
+                                await Navigation.PushAsync(new ThongTinThietBi(Item[0]));
+                            }
+                            else
+                            {
+                                await new MessageBox("Không tìm thấy kết quả").Show();
+                            }
                         }
-                        else
+                        catch 
                         {
+
                             await new MessageBox("Không tìm thấy kết quả").Show();
                         }
+                        
 
                     });
 

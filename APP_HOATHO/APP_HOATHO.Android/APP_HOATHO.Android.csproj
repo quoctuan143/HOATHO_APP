@@ -184,12 +184,6 @@
     <AndroidResource Include="Resources\drawable\tab_feed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\APP_HOATHO\APP_HOATHO.csproj">
-      <Project>{61D0C932-AEA0-4B71-88D4-C75DB39FE14F}</Project>
-      <Name>APP_HOATHO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\trangchu.jpg" />
   </ItemGroup>
   <ItemGroup>

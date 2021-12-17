@@ -12,6 +12,7 @@ using APP_HOATHO.Dialog;
 using APP_HOATHO.Interface;
 using ZXing.Net.Mobile.Forms;
 using System.Threading;
+using APP_HOATHO.Global;
 
 namespace APP_HOATHO.Views
 {
@@ -204,14 +205,25 @@ namespace APP_HOATHO.Views
             try
             {
                 var scan = new ZXingScannerPage();
+                scan.Title = "Tìm kiếm thiết bị";
+                Shell.SetTabBarIsVisible(scan, false);
                 await Navigation.PushAsync(scan);
                 scan.OnScanResult += (result) =>
                 {
                     Device.BeginInvokeOnMainThread(async () => {
                         await Navigation.PopAsync();
-                        //show form lên 
-                        string ma = result.Text.Split('=')[1];
-                        entryMaTB.Text = ma;
+                        //show form lên
+                        try
+                        {
+                            string ma = result.Text.Split('=')[1];
+                            entryMaTB.Text = ma;
+                        }
+                        catch
+                        {
+
+                            entryMaTB.Text = "";
+                        }
+                        
                         
                     });
 

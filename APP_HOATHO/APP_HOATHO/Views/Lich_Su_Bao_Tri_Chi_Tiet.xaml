@@ -4,6 +4,7 @@
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
               xmlns:local1="clr-namespace:APP_HOATHO.Style" 
              Title="Lịch sử bảo trì"
+             Shell.TabBarIsVisible="False"
              x:Class="APP_HOATHO.Views.Lich_Su_Bao_Tri_Chi_Tiet">
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -12,6 +12,7 @@
               xmlns:local="clr-namespace:APP_HOATHO.ViewModels"
              Title="Danh Mục Thiết Bị"            
              mc:Ignorable="d"
+            Shell.TabBarIsVisible="False"
              x:Class="APP_HOATHO.Views.Danh_Muc_Thiet_Bi">  
         <ContentPage.Resources>
             <ResourceDictionary>

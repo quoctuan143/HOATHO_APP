@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetChungTuDatMua_Header"
              Title="{Binding Title}"
+             Shell.TabBarIsVisible="False"
              >
     
     <ContentPage.Content>
@@ -18,7 +19,7 @@
                 <sfDataGrid:SfDataGrid.Columns>
 
                    
-                    <sfDataGrid:GridTemplateColumn MappingName="ExternalDocNo" 
+                    <sfDataGrid:GridTemplateColumn MappingName="Số chứng từ" 
                                                    Width="80"
                                                    HeaderText="Số" 
                                                    HeaderFontAttribute="Bold" 
@@ -31,7 +32,7 @@
                     </sfDataGrid:GridTemplateColumn>
 
 
-                    <sfDataGrid:GridTemplateColumn MappingName="PostingDate" 
+                    <sfDataGrid:GridTemplateColumn MappingName="Ngày CT" 
                                                    Width="100"
                                                    HeaderText="Ngày" 
                                                    HeaderFontAttribute="Bold" 

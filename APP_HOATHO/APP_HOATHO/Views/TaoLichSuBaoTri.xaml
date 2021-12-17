@@ -6,6 +6,7 @@
              xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:sfCheckbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:sfcombox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              mc:Ignorable="d"
+             Shell.TabBarIsVisible="False"
              x:Class="APP_HOATHO.Views.TaoLichSuBaoTri"
              xmlns:local="clr-namespace:APP_HOATHO.Views" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
                 xmlns:local1="clr-namespace:APP_HOATHO.Style"

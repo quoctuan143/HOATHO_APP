@@ -12,6 +12,7 @@
              xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms" 
              xmlns:textinput="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
              xmlns:sfCheck="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             Shell.TabBarIsVisible="False"
              x:Class="APP_HOATHO.Views.ThongTinThietBi">
     <ContentPage.Resources>
         <ResourceDictionary>

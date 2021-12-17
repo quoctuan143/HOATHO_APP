@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
-           
+             NavigationPage.HasNavigationBar="True" 
              Title="Duyệt đề nghị thanh toán"
              x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetDeNghiThanhToan_Header_Page">
    
@@ -19,7 +19,7 @@
                 <sfDataGrid:SfDataGrid.Columns>
 
                    
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Số"                                                
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Số chứng từ"                                                
                                                         Width="100"
                                                 MappingName="ExternalDocumentNo" 
                                                 HeaderFontAttribute="Bold" 
@@ -33,7 +33,7 @@
                     </sfDataGrid:GridTemplateColumn>
 
 
-                    <sfDataGrid:GridTemplateColumn  HeaderText="PostingDate"                                                
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Ngày CT"                                                
                                                         Width="100"
                                                 MappingName="Ngày" 
                                                 HeaderFontAttribute="Bold" 

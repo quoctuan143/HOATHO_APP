@@ -5,10 +5,9 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
        xmlns:local="clr-namespace:APP_HOATHO.Views"      
-       Title="APP_HOATHO"
+       Title="HÒA THỌ"
        BackgroundColor="#06264c"   
-       FlyoutBackgroundColor="LightSkyBlue"
-       FlyoutHeaderBehavior="CollapseOnScroll"
+       NavigationPage.HasNavigationBar="True"
        x:Class="APP_HOATHO.AppShell">
 
     <!-- 
@@ -33,11 +32,7 @@
         </ResourceDictionary>
     </Shell.Resources>   
     <!-- Your Pages -->
-    <TabBar FlyoutDisplayOptions="AsMultipleItems"
-                Shell.TabBarIsVisible="False"              
-                FlyoutIcon="ic_back.png"
-                
-                >
+    <TabBar>
         <Shell.FlyoutBackdrop>
             <LinearGradientBrush StartPoint="0,0"
                                EndPoint="1,1">
@@ -49,19 +44,11 @@
                             Offset="1.0" />
             </LinearGradientBrush>
         </Shell.FlyoutBackdrop>
-        <ShellContent Title="Trang Chủ"  IsTabStop="True" Icon="logo.png" ContentTemplate="{DataTemplate local:Main }">
-
+        <ShellContent Title="Trang Chủ"  IsTabStop="True" Icon="{OnPlatform iOS=home , Android=logo }" ContentTemplate="{DataTemplate local:Main }">
         </ShellContent>
-        <ShellContent Title="Danh Mục Thiết Bị"  IsTabStop="True" Icon="menu.png" ContentTemplate="{DataTemplate local:Danh_Muc_Thiet_Bi }">
-
+        <ShellContent Title="Cài đặt"  IsTabStop="True" Icon="{OnPlatform iOS=home , Android=logo }"  ContentTemplate="{DataTemplate local:AboutPage }">
         </ShellContent>
-        <ShellContent Title="Kế Hoạch Bảo Trì"  IsTabStop="True" Icon="list.png" ContentTemplate="{DataTemplate local:KeHoachBaoTri}">
 
-        </ShellContent>
-        <ShellContent Title="Lịch Sử Bảo Trì"  IsTabStop="True" Icon="history.png" ContentTemplate="{DataTemplate local:LichSuBaoTri}">
-
-        </ShellContent>
-        
     </TabBar>
     <MenuItem Text="Đăng Xuất" IconImageSource="offline.png" Clicked="MenuItem_Clicked">
 

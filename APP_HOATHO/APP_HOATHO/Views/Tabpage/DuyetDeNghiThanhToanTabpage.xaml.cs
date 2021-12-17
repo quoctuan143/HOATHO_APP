@@ -14,16 +14,7 @@ namespace APP_HOATHO.Views.Tabpage
     {
         public DuyetDeNghiThanhToanTabpage()
         {
-            InitializeComponent();
-            //ContentPage navigationPage = new DuyetChungTu.DuyetDeNghiThanhToan_Header_Page();
-            //navigationPage.IconImageSource = "duyet.svg";
-            //navigationPage.Title = "Chờ Duyệt";
-
-            //ContentPage content = new MoLaiChungTu.MoLaiDeNghiThanhToan_Header_Page();
-           // content.Title = "Mở Lại";
-           // content.IconImageSource = "reopen.png";
-           // Children.Add(navigationPage);
-           // Children.Add(content);
+            InitializeComponent();           
 
         }
 

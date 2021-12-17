@@ -5,6 +5,7 @@
             android:TabbedPage.ToolbarPlacement="Bottom"           
             android:TabbedPage.IsSwipePagingEnabled="False"
              x:Class="APP_HOATHO.Views.Tabpage.DuyetLCP_GIACONG"
+            Shell.TabBarIsVisible="False"
             SelectedTabColor="Red"
              BarBackground="LightGray"      
             UnselectedTabColor="LightGray"            
