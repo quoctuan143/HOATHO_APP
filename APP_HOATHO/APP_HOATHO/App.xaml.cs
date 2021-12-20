@@ -7,6 +7,7 @@ using APP_HOATHO.Global;
 using Plugin.FirebasePushNotification;
 using Plugin.LocalNotification;
 using APP_HOATHO.Dialog;
+using APP_HOATHO.Interface;
 
 namespace APP_HOATHO
 {
@@ -63,6 +64,8 @@ namespace APP_HOATHO
                 }
 
             };
+
+            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
         }
 
         protected override void OnStart()

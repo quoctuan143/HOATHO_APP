@@ -70,6 +70,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderer\MessageIOS.cs" />
     <Compile Include="Renderer\ProcessLoading.cs" />
+    <Compile Include="Renderer\StatusBarColorRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />

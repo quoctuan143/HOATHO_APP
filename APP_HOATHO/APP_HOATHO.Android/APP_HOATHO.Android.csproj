@@ -149,6 +149,7 @@
     <Compile Include="MainApplication.cs" />
     <Compile Include="Renderer\MessageAndroid.cs" />
     <Compile Include="Renderer\ProcessLoading.cs" />
+    <Compile Include="Renderer\StatusBarColorRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
