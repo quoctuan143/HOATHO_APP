@@ -232,9 +232,6 @@
     <BundleResource Include="Resources\trangchu.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\hinhnen.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +371,15 @@
       <Project>{ead161f8-ef9c-4b2a-bd0e-487beb8e3d5a}</Project>
       <Name>APP_HOATHO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hinhnen%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hinhnen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hinhnen%402x.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
