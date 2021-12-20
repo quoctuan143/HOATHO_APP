@@ -63,9 +63,7 @@ namespace APP_HOATHO
 
                 }
 
-            };
-
-            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
+            };         
         }
 
         protected override void OnStart()

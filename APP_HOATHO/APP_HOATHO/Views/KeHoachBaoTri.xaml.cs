@@ -26,7 +26,7 @@ namespace APP_HOATHO.Views
             listThietBi.ItemsSourceChanged += ListThietBi_ItemsSourceChanged; ;
                     entryNam.Text = DateTime.Now.Year.ToString();
             BindingContext = viewModel = new KeHoachBaoTriViewModel();
-            
+            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
         }
 
         private void ListThietBi_ItemsSourceChanged(object sender, Syncfusion.SfDataGrid.XForms.GridItemsSourceChangedEventArgs e)
