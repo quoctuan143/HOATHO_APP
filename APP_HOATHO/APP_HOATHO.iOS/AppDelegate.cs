@@ -11,6 +11,8 @@ using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 using UserNotifications;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 
 namespace APP_HOATHO.iOS
 {
@@ -57,9 +59,35 @@ namespace APP_HOATHO.iOS
             //                   new NotificationUserAction("Reject","Reject",NotificationActionType.Destructive)
             //               })  });
             //           FirebasePushNotificationManager.CurrentNotificationPresentationOption = UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
-
+            UIColor color = Color.FromHex("06264c").ToUIColor();
+            UINavigationBar.Appearance.BackgroundColor = color;
+            UINavigationBar.Appearance.BarTintColor = color;
+            UITabBar.Appearance.BackgroundColor  = color;
+            UITabBar.Appearance.BarTintColor = color;
+            SetColoredStatusBar("06264c");
             return base.FinishedLaunching(app, options);
            
+        }
+        public void SetColoredStatusBar(string hexColor)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
+                if (statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
+                {
+                    statusBar.BackgroundColor = Color.FromHex(hexColor).ToUIColor();
+                }
+                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
+                GetCurrentViewController().SetNeedsStatusBarAppearanceUpdate();
+            });
+        }
+        UIViewController GetCurrentViewController()
+        {
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var vc = window.RootViewController;
+            while (vc.PresentedViewController != null)
+                vc = vc.PresentedViewController;
+            return vc;
         }
         public override void WillEnterForeground(UIApplication uiApplication)
         {
