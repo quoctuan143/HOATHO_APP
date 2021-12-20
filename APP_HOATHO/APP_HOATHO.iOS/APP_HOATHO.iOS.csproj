@@ -64,7 +64,7 @@
     <CodesignKey>Apple Development: NGUYEN T THAI NGOC (SQ944M7T32)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchUseLlvm>false</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
