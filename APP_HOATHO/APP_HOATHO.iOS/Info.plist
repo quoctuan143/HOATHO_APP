@@ -62,9 +62,9 @@
 	<string>This app needs access to microphone.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
+  <key>UIStatusBarStyle</key>
+  <string>UIStatusBarStyleLightContent</string>
   <key>UIViewControllerBasedStatusBarAppearance</key>
   <false/>
-  <!--<key>UIStatusBarHidden</key>-->
-  <!--<true/>-->
 </dict>
 </plist>
