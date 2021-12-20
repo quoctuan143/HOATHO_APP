@@ -64,35 +64,31 @@ namespace APP_HOATHO.iOS
             UINavigationBar.Appearance.BarTintColor = color;
             UITabBar.Appearance.BackgroundColor  = color;
             UITabBar.Appearance.BarTintColor = color;
-            UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
-            if (statusBar != null && statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
-            {
-                statusBar.BackgroundColor = Color.FromHex("#06264c").ToUIColor(); // change to your desired color 
-            }
+            SetColoredStatusBar("#06264c");
             return base.FinishedLaunching(app, options);
            
         }
-        //public void SetColoredStatusBar(string hexColor)
-        //{
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
-        //        if (statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
-        //        {
-        //            statusBar.BackgroundColor = Color.FromHex(hexColor).ToUIColor();
-        //        }
-        //        UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
-        //        GetCurrentViewController().SetNeedsStatusBarAppearanceUpdate();
-        //    });
-        //}
-        //UIViewController GetCurrentViewController()
-        //{
-        //    var window = UIApplication.SharedApplication.KeyWindow;
-        //    var vc = window.RootViewController;
-        //    while (vc.PresentedViewController != null)
-        //        vc = vc.PresentedViewController;
-        //    return vc;
-        //}
+        public void SetColoredStatusBar(string hexColor)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
+                if (statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
+                {
+                    statusBar.BackgroundColor = Color.FromHex(hexColor).ToUIColor();
+                }
+                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
+                GetCurrentViewController().SetNeedsStatusBarAppearanceUpdate();
+            });
+        }
+        UIViewController GetCurrentViewController()
+        {
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var vc = window.RootViewController;
+            while (vc.PresentedViewController != null)
+                vc = vc.PresentedViewController;
+            return vc;
+        }
         public override void WillEnterForeground(UIApplication uiApplication)
         {
            
