@@ -7,7 +7,7 @@
              xmlns:lotti="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
              Title="HOA THO CORP"            
-             BackgroundImageSource="hinhnen.jpg"    
+             Style="{StaticResource ParentBackgroup}"   
              x:Class="APP_HOATHO.Views.Main">
     <Shell.TitleView >
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">

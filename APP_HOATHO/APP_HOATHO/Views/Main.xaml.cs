@@ -51,6 +51,7 @@ namespace APP_HOATHO.Views
         public Main()
         {
             InitializeComponent();
+            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
             FullName = Preferences.Get(Config.FullName, "");
             OnPropertyChanged(nameof(FullName));
 
