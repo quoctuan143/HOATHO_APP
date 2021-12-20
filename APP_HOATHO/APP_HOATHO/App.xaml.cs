@@ -31,10 +31,10 @@ namespace APP_HOATHO
             CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
             {               
                
-                if (IsInForeground == true )
-                {
-                    new MessageBox(p.Data["body"].ToString()).Show();
-                }    
+                //if (IsInForeground == true )
+                //{
+                //    new MessageBox(p.Data["body"].ToString()).Show();
+                //}    
               
               
 
