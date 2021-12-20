@@ -18,7 +18,7 @@ namespace APP_HOATHO
         {
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzA4MTIyQDMxMzgyZTMyMmUzME4rVWJvRGdVY0ZibWlYbUFBN1dyNVFjemJ5djZ5dWQzZzdMaDNEQ1hBN3M9");
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MockDataStore>();            
             new Config();
             Device.SetFlags(new string[] { "Brush_Experimental" });
             MainPage = new SplashPage();
