@@ -48,17 +48,17 @@ namespace APP_HOATHO.iOS
             LoadApplication(new App());
             Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
             Syncfusion.XForms.iOS.Buttons.SfButtonRenderer.Init();
-            //           FirebasePushNotificationManager.Initialize(options, true);
-            //           FirebasePushNotificationManager.Initialize(options, new NotificationUserCategory[]
-            //{
-            //               new NotificationUserCategory("message",new List<NotificationUserAction> {
-            //                   new NotificationUserAction("Reply","Reply",NotificationActionType.Foreground)
-            //               }),
-            //               new NotificationUserCategory("request",new List<NotificationUserAction> {
-            //                   new NotificationUserAction("Accept","Accept"),
-            //                   new NotificationUserAction("Reject","Reject",NotificationActionType.Destructive)
-            //               })  });
-            //           FirebasePushNotificationManager.CurrentNotificationPresentationOption = UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
+            FirebasePushNotificationManager.Initialize(options, true);
+            FirebasePushNotificationManager.Initialize(options, new NotificationUserCategory[]
+ {
+                           new NotificationUserCategory("message",new List<NotificationUserAction> {
+                               new NotificationUserAction("Reply","Reply",NotificationActionType.Foreground)
+                           }),
+                           new NotificationUserCategory("request",new List<NotificationUserAction> {
+                               new NotificationUserAction("Accept","Accept"),
+                               new NotificationUserAction("Reject","Reject",NotificationActionType.Destructive)
+                           })  });
+            FirebasePushNotificationManager.CurrentNotificationPresentationOption = UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
             UIColor color = Color.FromHex("06264c").ToUIColor();
             UINavigationBar.Appearance.BackgroundColor = color;
             UINavigationBar.Appearance.BarTintColor = color;
