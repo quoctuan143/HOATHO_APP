@@ -39,10 +39,10 @@ namespace APP_HOATHO.Views
         public int NofiLichXich { get; set; }
         public int NofiDanhMucThietBi { get; set; }
         public int NofiDeNghiTT { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChangedEvent;
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            var changed = PropertyChanged;
+            var changed = PropertyChangedEvent;
             if (changed == null)
                 return;
 

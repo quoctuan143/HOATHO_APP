@@ -50,6 +50,8 @@ namespace APP_HOATHO.Style
         {
             return Color.SkyBlue;
         }
+
+        [Obsolete]
         public override Color GetCaptionSummaryRowForeGroundColor()
         {
             return Color.White;
