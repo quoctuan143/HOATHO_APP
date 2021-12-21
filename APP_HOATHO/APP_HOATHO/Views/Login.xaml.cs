@@ -55,15 +55,15 @@ namespace APP_HOATHO.Views
                     Preferences.Set(Config.FullName, user[0].FullName);
                     Preferences.Set(Config.Email , user[0].Email);
                     //lưu lại token 
-                    if (Device.RuntimePlatform == Device.Android )
-                    {
+                   // if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                   // {
                         TokenFirebase firebase = new TokenFirebase();
                         firebase.Device = Device.RuntimePlatform;
                         firebase.Token = CrossFirebasePushNotification.Current.Token;
                         firebase.UserID = btnusername.Text;
                         firebase.Topic = user[0].Role.ToString();
                         var respon = Config.client.PostAsJsonAsync("api/DuyetChungTu/UpdateTokenFireBase", firebase).Result;
-                    }                        
+                   // }                        
                     App.Current.MainPage = new AppShell();
                 }
                 else
