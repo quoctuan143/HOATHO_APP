@@ -6,7 +6,8 @@
        mc:Ignorable="d"
        xmlns:local="clr-namespace:APP_HOATHO.Views"      
        Title="HÒA THỌ"
-       BackgroundColor="#06264c"   
+       xmlns:helper="clr-namespace:APP_HOATHO.Helpers"
+       BackgroundColor="White"   
        NavigationPage.HasNavigationBar="True"
        x:Class="APP_HOATHO.AppShell">
 
@@ -26,11 +27,11 @@
                 <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="Red"/>
-               
+
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
-    </Shell.Resources>   
+    </Shell.Resources>
     <!-- Your Pages -->
     <TabBar>
         <Shell.FlyoutBackdrop>
@@ -46,42 +47,14 @@
         </Shell.FlyoutBackdrop>
         <ShellContent Title="Trang Chủ"  IsTabStop="True" Icon="{OnPlatform iOS=home , Android=logo }" ContentTemplate="{DataTemplate local:Main }">
         </ShellContent>
-        <ShellContent Title="Cài đặt"  IsTabStop="True" Icon="{OnPlatform iOS=home , Android=logo }"  ContentTemplate="{DataTemplate local:AboutPage }">
+        <ShellContent Title="Cài đặt"  IsTabStop="True"  ContentTemplate="{DataTemplate local:AboutPage }">
+            <ShellContent.Icon >
+                <FontImageSource FontFamily="UserIcons" Glyph="{Binding Source={x:Static helper:FontIconClass.AccountSettings}}" Size="25"  />
+            </ShellContent.Icon>
         </ShellContent>
 
     </TabBar>
-    <MenuItem Text="Đăng Xuất" IconImageSource="offline.png" Clicked="MenuItem_Clicked">
 
-    </MenuItem>
 
-    <!-- Optional Templates 
-    // These may be provided inline as below or as separate classes.
-
-    // This header appears at the top of the Flyout.
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid>ContentHere</Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
-    // ItemTemplate is for ShellItems as displayed in a Flyout
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Text, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    -->
 
 </Shell>

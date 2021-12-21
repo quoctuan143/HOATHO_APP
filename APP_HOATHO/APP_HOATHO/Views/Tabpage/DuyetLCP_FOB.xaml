@@ -7,10 +7,10 @@
             android:TabbedPage.IsSwipePagingEnabled="False"
             xmlns:page="clr-namespace:APP_HOATHO.Views.DuyetChungTu"    
             Shell.TabBarIsVisible="False"
-             BarBackground="LightGray"      
             SelectedTabColor="Red"
-            UnselectedTabColor="LightGray"
-            BarTextColor="{StaticResource Primary}"  
+            UnselectedTabColor="White"            
+            BarTextColor="White"  
+            BarBackgroundColor="{StaticResource Primary}"   
             Title="Lệnh cấp phát FOB"
             >
   

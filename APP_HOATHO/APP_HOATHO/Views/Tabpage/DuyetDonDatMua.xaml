@@ -5,11 +5,11 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"            
             android:TabbedPage.ToolbarPlacement="Bottom"
             android:TabbedPage.IsSwipePagingEnabled="False"    
-            Shell.TabBarIsVisible="False"
-             SelectedTabColor="Red"
-             BarBackground="LightGray"      
-            UnselectedTabColor="LightGray"
-            BarTextColor="{StaticResource Primary}"  
+           Shell.TabBarIsVisible="False"
+            SelectedTabColor="Red"
+            UnselectedTabColor="White"            
+            BarTextColor="White"  
+            BarBackgroundColor="{StaticResource Primary}"  
             Title="Đặt mua nguyên phụ liệu">
   <!--Pages can be added as references or inline-->    
 </TabbedPage>
