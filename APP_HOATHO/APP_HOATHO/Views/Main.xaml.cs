@@ -39,10 +39,10 @@ namespace APP_HOATHO.Views
         public int NofiLichXich { get; set; }
         public int NofiDanhMucThietBi { get; set; }
         public int NofiDeNghiTT { get; set; }
-        public event PropertyChangedEventHandler PropertyChangedEvent;
+        public event PropertyChangedEventHandler PropertyChanged;
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            var changed = PropertyChangedEvent;
+            var changed = PropertyChanged;
             if (changed == null)
                 return;
 
@@ -51,7 +51,6 @@ namespace APP_HOATHO.Views
         public Main()
         {
             InitializeComponent();
-            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
             FullName = Preferences.Get(Config.FullName, "");
             OnPropertyChanged(nameof(FullName));
 

@@ -7,7 +7,8 @@
              xmlns:lotti="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
              Title="HOA THO CORP"            
-             Style="{StaticResource ParentBackgroup}"   
+             BackgroundImageSource="hinhnen.jpg"      
+            
              x:Class="APP_HOATHO.Views.Main">
     <Shell.TitleView >
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -20,13 +21,16 @@
                     HorizontalOptions="FillAndExpand">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="Xin chào, "  FontSize="16"  ></Span>
+                        <Span Text="Hi,  "  FontSize="16"  ></Span>
                         <Span Text="{Binding FullName}"  FontSize="20" FontAttributes="Bold"  ></Span>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
         </StackLayout>
-    </Shell.TitleView>   
+    </Shell.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="offline.png" Clicked="TapGestureRecognizer_Tapped_3"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid RowDefinitions="2.5*,7.5*" VerticalOptions="FillAndExpand" >
             <Image Source="trangchu.jpg" Grid.Row="0" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
@@ -118,7 +122,7 @@
                                IsVisible="{Binding IsMainDonHang}"
                         >
                         <StackLayout Padding="5">
-                            <Label Grid.Row="0" Text="Ký điện tử" TextDecorations="Underline" TextColor="White" FontSize="20" FontAttributes="Italic"></Label>
+                            <Label Grid.Row="0" Text="Duyệt chứng từ" TextDecorations="Underline" TextColor="White" FontSize="20" FontAttributes="Italic"></Label>
                             <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*" Margin="0,5,0,0"  RowSpacing="0" 
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <StackLayout  Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  IsVisible="{Binding isDuyetDonDatMua}">

@@ -7,7 +7,6 @@ using APP_HOATHO.Global;
 using Plugin.FirebasePushNotification;
 using Plugin.LocalNotification;
 using APP_HOATHO.Dialog;
-using APP_HOATHO.Interface;
 
 namespace APP_HOATHO
 {
@@ -18,7 +17,7 @@ namespace APP_HOATHO
         {
             InitializeComponent();
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzA4MTIyQDMxMzgyZTMyMmUzME4rVWJvRGdVY0ZibWlYbUFBN1dyNVFjemJ5djZ5dWQzZzdMaDNEQ1hBN3M9");
-            DependencyService.Register<MockDataStore>();            
+            DependencyService.Register<MockDataStore>();
             new Config();
             Device.SetFlags(new string[] { "Brush_Experimental" });
             MainPage = new SplashPage();
@@ -31,10 +30,10 @@ namespace APP_HOATHO
             CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
             {               
                
-                //if (IsInForeground == true )
-                //{
-                //    new MessageBox(p.Data["body"].ToString()).Show();
-                //}    
+                if (IsInForeground == true )
+                {
+                    new MessageBox(p.Data["body"].ToString()).Show();
+                }    
               
               
 
@@ -63,7 +62,7 @@ namespace APP_HOATHO
 
                 }
 
-            };         
+            };
         }
 
         protected override void OnStart()

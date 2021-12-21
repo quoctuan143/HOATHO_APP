@@ -7,9 +7,9 @@
              x:Class="APP_HOATHO.Views.Tabpage.DuyetLCP_GIACONG"
             Shell.TabBarIsVisible="False"
             SelectedTabColor="Red"
-            UnselectedTabColor="White"            
-            BarTextColor="White"  
-            BarBackgroundColor="{StaticResource Primary}"     
+             BarBackground="LightGray"      
+            UnselectedTabColor="LightGray"            
+            BarTextColor="{StaticResource Primary}"  
             Title="Lệnh cấp phát gia công">
   <!--Pages can be added as references or inline-->
   

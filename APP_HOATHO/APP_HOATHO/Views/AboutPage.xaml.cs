@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using APP_HOATHO.ViewModels;
+
 namespace APP_HOATHO.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
@@ -10,11 +10,9 @@ namespace APP_HOATHO.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
-        AboutViewModel viewModel;
         public AboutPage()
         {
             InitializeComponent();
-            BindingContext = new AboutViewModel();
         }
     }
 }
