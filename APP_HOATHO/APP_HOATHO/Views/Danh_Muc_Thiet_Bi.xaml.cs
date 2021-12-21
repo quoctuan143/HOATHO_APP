@@ -1,5 +1,6 @@
 ﻿using APP_HOATHO.Dialog;
 using APP_HOATHO.Global;
+using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
 using APP_HOATHO.ViewModels;
 using Newtonsoft.Json;
@@ -26,7 +27,8 @@ namespace APP_HOATHO.Views
         public Danh_Muc_Thiet_Bi()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ThietBiViewModel();         
+            BindingContext = viewModel = new ThietBiViewModel();
+            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
         }
        
         protected override void OnAppearing()

@@ -34,7 +34,7 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -46,12 +46,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: NGUYEN T THAI NGOC (SQ944M7T32)</CodesignKey>
+    <CodesignKey>Apple Development: Phan Nhut Long (S8639Q6Z9K)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>VS: com.hoatho.hoathocorp Development</CodesignProvision>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -64,13 +64,19 @@
     <CodesignKey>Apple Development: NGUYEN T THAI NGOC (SQ944M7T32)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <MtouchUseLlvm>false</MtouchUseLlvm>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderer\MessageIOS.cs" />
     <Compile Include="Renderer\ProcessLoading.cs" />
+    <Compile Include="Renderer\StatusBarColorRenderer.cs" />
     <None Include="Entitlements.plist" />
+    <BundleResource Include="GoogleService-Info.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\working.json" />
@@ -159,9 +165,6 @@
     <PackageReference Include="BTProgressHUD">
       <Version>1.3.2</Version>
     </PackageReference>
-    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
-      <Version>4.0.11</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client">
       <Version>5.2.7</Version>
     </PackageReference>
@@ -230,9 +233,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\trangchu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\hinhnen.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\user.png" />
@@ -368,6 +368,21 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\home%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\APP_HOATHO\APP_HOATHO.csproj">
+      <Project>{ead161f8-ef9c-4b2a-bd0e-487beb8e3d5a}</Project>
+      <Name>APP_HOATHO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hinhnen%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hinhnen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hinhnen%402x.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -55,7 +55,7 @@ namespace APP_HOATHO.Views
                     Preferences.Set(Config.FullName, user[0].FullName);
                     Preferences.Set(Config.Email , user[0].Email);
                     //lưu lại token 
-                    if (Device.RuntimePlatform == Device.Android )
+                    if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS )
                     {
                         TokenFirebase firebase = new TokenFirebase();
                         firebase.Device = Device.RuntimePlatform;
