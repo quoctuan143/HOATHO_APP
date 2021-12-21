@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APP_HOATHO.Interface;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +14,7 @@ namespace APP_HOATHO.Views
         public AboutPage()
         {
             InitializeComponent();
+            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
         }
     }
 }

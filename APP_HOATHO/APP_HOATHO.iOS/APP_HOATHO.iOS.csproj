@@ -80,9 +80,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\working.json" />
-    <BundleResource Include="Resources\checkingPeople.json" />
     <BundleResource Include="Resources\morning.json" />
-    <BundleResource Include="Resources\sunshine.json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

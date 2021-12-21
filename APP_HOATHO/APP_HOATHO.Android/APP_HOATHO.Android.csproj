@@ -151,10 +151,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\working.json" />
-    <AndroidAsset Include="Assets\checkingPeople.json" />
-    <AndroidAsset Include="Assets\morning.json" />
-    <AndroidAsset Include="Assets\sunshine.json" />
     <GoogleServicesJson Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
