@@ -10,6 +10,10 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using APP_HOATHO.Interface;
+using APP_HOATHO.Droid.Renderer;
+
+[assembly: Dependency(typeof(StatusBarColorRenderer))]
+
 namespace APP_HOATHO.Droid.Renderer
 {
     

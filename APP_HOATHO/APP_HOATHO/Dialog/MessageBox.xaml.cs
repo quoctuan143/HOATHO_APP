@@ -22,7 +22,7 @@ namespace APP_HOATHO.Dialog
         }
         private async void btnOK_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAllPopupAsync();
+            await Navigation.PopPopupAsync();
             _tsk.SetResult(DialogReturn.OK);
         }
         public async Task<DialogReturn> Show()

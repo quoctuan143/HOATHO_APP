@@ -27,13 +27,13 @@ namespace APP_HOATHO.Dialog
         private async void btnOK_Clicked(object sender, EventArgs e)
         {
 
-            await Navigation.PopAllPopupAsync(true);
+            await Navigation.PopPopupAsync(true);
             _tsk.SetResult(DialogReturn.OK);
         }
 
         private async void btnCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAllPopupAsync(true);
+            await Navigation.PopPopupAsync(true);
             _tsk.SetResult(DialogReturn.Cancel);
         }
         public async Task<DialogReturn> Show()
