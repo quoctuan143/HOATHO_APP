@@ -25,7 +25,7 @@ namespace APP_HOATHO.Droid
             base.OnCreate(savedInstanceState);
             NotificationCenter.CreateNotificationChannel();
             await CrossMedia.Current.Initialize();
-            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

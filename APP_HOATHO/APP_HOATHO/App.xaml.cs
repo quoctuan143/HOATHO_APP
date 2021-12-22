@@ -19,7 +19,7 @@ namespace APP_HOATHO
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzA4MTIyQDMxMzgyZTMyMmUzME4rVWJvRGdVY0ZibWlYbUFBN1dyNVFjemJ5djZ5dWQzZzdMaDNEQ1hBN3M9");
             DependencyService.Register<MockDataStore>();
             new Config();
-            Device.SetFlags(new string[] { "Brush_Experimental" });
+            Device.SetFlags(new string[] { "CollectionView_Experimental", "Brush_Experimental", "SwipeView_Experimental", "CarouseView_Experimental", "IndicatorView_Experimental" });
             MainPage = new SplashPage();
            
             CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>

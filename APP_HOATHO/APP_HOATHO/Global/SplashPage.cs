@@ -26,7 +26,7 @@ namespace APP_HOATHO.Global
                 var sub = new AbsoluteLayout();
                 image = new Image
                 {
-                    Source = "logo.jpg",
+                    Source = "logo.png",
                     WidthRequest = 150,
                     HeightRequest = 150
 
