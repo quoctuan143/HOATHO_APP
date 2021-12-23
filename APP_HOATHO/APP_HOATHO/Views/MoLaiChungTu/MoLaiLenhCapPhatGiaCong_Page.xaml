@@ -145,7 +145,7 @@
 
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="Tổng SL : {TotalQuantity} "
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
                                 Position="Bottom"
                                 ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>
