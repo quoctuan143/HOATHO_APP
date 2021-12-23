@@ -4,6 +4,7 @@
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              NavigationPage.HasNavigationBar="True" 
              Title="Duyệt đề nghị thanh toán"
+             Shell.TabBarIsVisible="False"
              x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetDeNghiThanhToan_Header_Page">
    
     <ContentPage.Content>
@@ -120,7 +121,7 @@
                   
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="Tổng SL : {TotalQuantity} "
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng Tiền : {TotalQuantity} "
                                 Position="Bottom"
                                 ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>

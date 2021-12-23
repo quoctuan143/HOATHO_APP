@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace APP_HOATHO.ViewModels.DuyetChungTu
 {
-    public class DuyetChungTu_Header_ViewModel : BaseViewModel 
+    public class DuyetChungTuDatMua_ViewModel : BaseViewModel 
     {
         #region "Field"
 
@@ -34,17 +34,10 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
         public INavigation navigation { get; set; }
         public ObservableCollection<DuyetChungTuModel> ListItem { get => _listItem; set { SetProperty(ref _listItem, value); } }
        
-        public DuyetChungTu_Header_ViewModel(DocumentType type)
+        public DuyetChungTuDatMua_ViewModel(DocumentType type) 
         {          
             this._documentType = type;
-            if (type == DocumentType.DuyetLCP)
-                Title = "DUYỆT LCP FOB";
-            else if (type == DocumentType.DuyetLCP_GC)
-                Title = "DUYỆT LCP GIA CÔNG";
-            else if (type == DocumentType.DuyetMuaHang)
-                Title = "DUYỆT ĐẶT MUA HÀNG";
-            else if (type == DocumentType.DuyetDatMuaPhuTung)
-                Title = "DUYỆT ĐẶT PHỤ TÙNG";           
+            Title = "DUYỆT ĐẶT MUA HÀNG";
             ListItem = new ObservableCollection<DuyetChungTuModel>();
             LoadCommand = new Command(OnLoadExcute);
             DateChangeCommand = new Command(OnLoadExcute);
@@ -63,63 +56,41 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                     }    
                 });
         }
-      
+
         #endregion
 
         #region "Method"
-
-
-        private async  void OnLoadExcute(object obj)
+        private async void OnLoadExcute(object obj)
         {
             try
             {
                 if (IsBusy == true) return;
-                IsBusy = true ;
+                IsBusy = true;
                 ShowLoading("Đang tải vui lòng đợi");
-                await  Task.Delay(1000);                
-                string url = "";
-                if (_documentType == DocumentType.DuyetLCP )                          
-                      url = $"api/DuyetChungTu/getLenhCapPhat?username={Preferences.Get(Config.User,"")}";
-                else if (_documentType == DocumentType.DuyetLCP_GC )
-                        url = $"api/DuyetChungTu/getLenhCapPhat_GC?username={Preferences.Get(Config.User, "")}";
-                    else if (_documentType == DocumentType.DuyetMuaHang )
-                        url = $"api/DuyetChungTu/getDonDatMua?username={Preferences.Get(Config.User, "")}";
-                else if (_documentType == DocumentType.DuyetDatMuaPhuTung)
-                    url = $"api/DuyetChungTu/getDatMuaPhuTung?username={Preferences.Get(Config.User, "")}";              
-
-                HttpResponseMessage respon = await Config.client.GetAsync(url);   
-                if (respon.StatusCode == System.Net.HttpStatusCode.OK )
+                await Task.Delay(1000);
+                ListItem.Clear();
+                var _json = Config.client.GetStringAsync(Config.URL + $"api/DuyetChungTu/getDonDatMua?username={Preferences.Get(Config.User, "")}").Result;
+                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {
-                    string _json = await respon.Content.ReadAsStringAsync();
-                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                    if ( _json.Contains("[]") == false)
-                    {
-                        Int32 from = _json.IndexOf("[");
-                        Int32 to = _json.IndexOf("]");
-                        string result = _json.Substring(from, to - from + 1);
-                        ListItem = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result);                       
-                    }  
-                    else
-                    {
-                        ListItem.Clear();
-                    }    
-                }                    
-               
+                    Int32 from = _json.IndexOf("[");
+                    Int32 to = _json.IndexOf("]");
+                    string result = _json.Substring(from, to - from + 1);
+                    ListItem = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result);
+                }
                 HideLoading();
             }
             catch (Exception ex)
             {
                 HideLoading();
-               await  new  MessageBox(ex.Message).Show();
+                await new MessageBox(ex.Message).Show();
             }
             finally
             {
                 IsBusy = false;
             }
         }
-
        
-
         #endregion
     }
 }

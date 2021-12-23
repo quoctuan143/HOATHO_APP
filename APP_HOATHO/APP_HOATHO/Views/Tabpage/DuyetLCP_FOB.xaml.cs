@@ -15,11 +15,11 @@ namespace APP_HOATHO.Views.Tabpage
         public DuyetLCP_FOB()
         {
             InitializeComponent();
-            ContentPage navigationPage = new DuyetChungTu.DuyetChungTu_Header(Global.DocumentType.DuyetLCP);
+            ContentPage navigationPage = new DuyetChungTu.DuyetLenhCapPhatFob_Page(Global.DocumentType.DuyetLCP);
             navigationPage.IconImageSource = "baseline_check_circle_black.png";           
             navigationPage.Title = "Chờ Duyệt";         
 
-            ContentPage  content = new MoLaiChungTu.MoLaiChungTu_Header(Global.DocumentType.MoLaiLCP_FOB);
+            ContentPage  content = new MoLaiChungTu.MoLaiLenhCapPhatFOB(Global.DocumentType.MoLaiLCP_FOB);
             content.Title = "Mở Lại";
             content.IconImageSource = "baseline_open_in_browser_black.png";
             Children.Add(navigationPage);
@@ -29,7 +29,7 @@ namespace APP_HOATHO.Views.Tabpage
        
         public async Task LoadData()
         {
-            DuyetChungTu.DuyetChungTu_Header list = Children[0] as DuyetChungTu.DuyetChungTu_Header;
+            DuyetChungTu.DuyetLenhCapPhatFob_Page list = Children[0] as DuyetChungTu.DuyetLenhCapPhatFob_Page;
             list.viewModel.IsBusy = false;
             list.viewModel.LoadCommand.Execute(null);
         }

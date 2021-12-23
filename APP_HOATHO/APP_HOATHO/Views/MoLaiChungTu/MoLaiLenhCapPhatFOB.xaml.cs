@@ -3,19 +3,24 @@ using APP_HOATHO.Global;
 using APP_HOATHO.Models.DuyetChungTu;
 using APP_HOATHO.ViewModels.DuyetChungTu;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace APP_HOATHO.Views.MoLaiChungTu
-{
+{   
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MoLaiChungTu_Header : ContentPage
+    public partial class MoLaiLenhCapPhatFOB : ContentPage
     {
-        MoLaiChungTuDaDuyet_Header_ViewModel viewModel;
-        public MoLaiChungTu_Header(DocumentType type)
+        MoLaiLenhCapPhatFOB_ViewModel  viewModel;
+        public MoLaiLenhCapPhatFOB(DocumentType type) 
         {
             InitializeComponent();
-            viewModel = new MoLaiChungTuDaDuyet_Header_ViewModel(type);
+            viewModel = new MoLaiLenhCapPhatFOB_ViewModel(type);
             viewModel.navigation = Navigation;
             BindingContext = viewModel;
         }
@@ -65,9 +70,9 @@ namespace APP_HOATHO.Views.MoLaiChungTu
             catch (Exception ex)
             {
                 new MessageBox(ex.Message).Show();
-               
+
             }
-           
+
         }
     }
 }

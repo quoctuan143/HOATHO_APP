@@ -47,11 +47,8 @@ namespace APP_HOATHO.Views.DuyetChungTu
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (viewModel.ListItem.Count == 0)
-            {
-                IsBusy = false;
-                viewModel.LoadCommand.Execute(null);
-            }
+            IsBusy = false;
+            viewModel.LoadCommand.Execute(null);
         }
     }
 }

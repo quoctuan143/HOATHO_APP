@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
              x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetChungTuPhuTung_Line"
-             Title="{Binding Title}"            
+             Title="{Binding Title}"     
+             Shell.TabBarIsVisible="False"
              >
     
     <ContentPage.Content>

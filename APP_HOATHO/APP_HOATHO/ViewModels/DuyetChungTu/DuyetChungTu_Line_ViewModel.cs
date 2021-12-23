@@ -60,8 +60,7 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
             if (isDelete == DialogReturn.OK )
             {
                 try
-                {
-                    DuyetChungTuModel.Email = Preferences.Get(Config.Email, "");
+                {                   
                     DuyetChungTuModel.UserName = Preferences.Get(Config.User, "");
                     DuyetChungTuModel.FullName = Preferences.Get(Config.FullName, "");                 
                     if (IsBusy == true) return;

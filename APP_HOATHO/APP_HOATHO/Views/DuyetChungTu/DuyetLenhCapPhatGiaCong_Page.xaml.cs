@@ -12,29 +12,27 @@ using APP_HOATHO.Models.DuyetChungTu;
 namespace APP_HOATHO.Views.DuyetChungTu
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DuyetChungTu_Header : ContentPage 
+    public partial class DuyetLenhCapPhatGiaCong_Page : ContentPage
     {
-     public    DuyetChungTu_Header_ViewModel viewModel;
-        public DuyetChungTu_Header(DocumentType type)
+        public DuyetLenhCapPhatGiaCong_ViewModel viewModel;
+        public DuyetLenhCapPhatGiaCong_Page(DocumentType type) 
         {
             InitializeComponent();
-            viewModel = new DuyetChungTu_Header_ViewModel(type);
+            viewModel = new DuyetLenhCapPhatGiaCong_ViewModel(type);
             viewModel.navigation = Navigation;
             BindingContext = viewModel;
-            
-        }       
-        
+
+        }
+
         private void listChiTiet_SelectionChanged(object sender, Syncfusion.SfDataGrid.XForms.GridSelectionChangedEventArgs e)
         {
-            DuyetChungTuModel _selectItem = listChiTiet.SelectedItem  as DuyetChungTuModel;
+            DuyetChungTuModel _selectItem = listChiTiet.SelectedItem as DuyetChungTuModel;
             if (_selectItem == null) return;
             if (viewModel._documentType == DocumentType.DuyetDatMuaPhuTung)
                 Navigation.PushAsync(new DuyetChungTuPhuTung_Line(_selectItem, viewModel._documentType));
             else
                 Navigation.PushAsync(new DuyetChungTu_Line(_selectItem, viewModel._documentType));
         }
-         
-    }
 
-    
+    }
 }

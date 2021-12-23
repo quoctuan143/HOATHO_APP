@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              Title="Chi tiết mở lại"
-             x:Class="APP_HOATHO.Views.MoLaiChungTu.MoLaiDeNghiThanhToan_Line_Page">
+             x:Class="APP_HOATHO.Views.MoLaiChungTu.MoLaiDeNghiThanhToan_Line_Page"
+             Shell.TabBarIsVisible="False">
     
     <ContentPage.Content>
         <StackLayout Spacing="0">

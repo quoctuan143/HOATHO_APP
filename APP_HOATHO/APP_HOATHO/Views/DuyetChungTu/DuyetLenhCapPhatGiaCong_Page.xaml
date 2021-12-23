@@ -1,55 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:helper="clr-namespace:APP_HOATHO.Helpers"             
-             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             x:Class="APP_HOATHO.Views.MoLaiChungTu.MoLaiChungTu_Header"
+             x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetLenhCapPhatGiaCong_Page"
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             Title="{Binding Title}"
              Shell.TabBarIsVisible="False"
-             Title="{Binding Title}">
-   
+             >
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" HeightRequest="50" Margin="5,5,5,10" >
-                <sfinputtext:SfTextInputLayout Hint="Từ ngày" 
-                                               IsHintAlwaysFloated="True"
-                                               LeadingViewPosition="Inside"  
-                                               ContainerType="Outlined"
-                                               Margin="0,0,10,0"
-                                               >
-                    <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:D/MM/yyyy}'}" 
-                               DateSelected="DatePicker_DateSelected"
-                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                               />
-                    <sfinputtext:SfTextInputLayout.LeadingView>
-                        <Image>
-                            <Image.Source>
-                                <FontImageSource FontFamily="UserIcons" Glyph="{Binding Source={x:Static helper:FontIconClass.Calendar}}" Color="{StaticResource Primary}"
-                                                 Size="25"/>
-                            </Image.Source>
-                        </Image>
-                    </sfinputtext:SfTextInputLayout.LeadingView>
-                </sfinputtext:SfTextInputLayout>
-                <sfinputtext:SfTextInputLayout Hint="Đến ngày" 
-                                               IsHintAlwaysFloated="True"
-                                               LeadingViewPosition="Inside"  
-                                               ContainerType="Outlined">
-                    <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:D/MM/yyyy}' }" 
-                            DateSelected="DatePicker_DateSelected"
-                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                                MaximumDate="{x:Static helper:FontIconClass.MaxDate }"
-                                />
-                    <sfinputtext:SfTextInputLayout.LeadingView>
-                        <Image>
-                            <Image.Source>
-                                <FontImageSource FontFamily="UserIcons" Glyph="{Binding Source={x:Static helper:FontIconClass.Calendar}}" Color="{StaticResource Primary}"
-                                                 Size="25"/>
-                            </Image.Source>
-                        </Image>
-                    </sfinputtext:SfTextInputLayout.LeadingView>
-                </sfinputtext:SfTextInputLayout>
-            </StackLayout>
-            <SearchBar HorizontalOptions="FillAndExpand" Placeholder="Số chứng từ cần mở lại"  
-                       PlaceholderColor="Gray" Style="{StaticResource styleSearch}" TextChanged="search_TextChanged"></SearchBar>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"                                           
                                             ItemsSource="{Binding ListItem, Mode=TwoWay}"  
                                            SelectionChanged="listChiTiet_SelectionChanged"

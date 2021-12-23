@@ -16,12 +16,15 @@ using System.Linq;
 
 namespace APP_HOATHO.ViewModels.DuyetChungTu
 {
-  
-    public class DuyetDeNghiThanhToan_ViewModel : BaseViewModel
+   
+    public class MoLaiLenhCapPhatGiaCong_ViewModel : BaseViewModel
     {
         #region "Field"
 
-        ObservableCollection<DeNghiThanhToanHeader_Model> _listItem;       
+        ObservableCollection<DuyetChungTuModel> _listItem;
+        public DocumentType _documentType { get; set; }
+        DateTime _fromDate;
+        DateTime _toDate;
         #endregion
 
         #region "Command"
@@ -32,29 +35,41 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
 
         #region "Constructor"
         public INavigation navigation { get; set; }
-        public ObservableCollection<DeNghiThanhToanHeader_Model> ListItem { get => _listItem; set { SetProperty(ref _listItem, value); } }
+        public ObservableCollection<DuyetChungTuModel> ListItem { get => _listItem; set { SetProperty(ref _listItem, value); } }
 
-        public DuyetDeNghiThanhToan_ViewModel()
+        public DateTime FromDate { get => _fromDate; set { SetProperty(ref _fromDate, value); } }
+        public DateTime ToDate
         {
-            Title = "Duyệt đề nghị thanh toán";
-            ListItem = new ObservableCollection<DeNghiThanhToanHeader_Model>();
+            get => _toDate;
+
+            set
+            {
+                SetProperty(ref _toDate, value);
+            }
+        }
+
+
+        public MoLaiLenhCapPhatGiaCong_ViewModel(DocumentType type) 
+        {
+            FromDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            ToDate = FromDate.AddMonths(1).AddDays(-1);
+            this._documentType = type;
+            Title = "MỞ LẠI LCP GIA CÔNG";
+            ListItem = new ObservableCollection<DuyetChungTuModel>();
             LoadCommand = new Command(OnLoadExcute);
             DateChangeCommand = new Command(OnLoadExcute);
-
             // form sẽ gửi về là form DuyetChungTu_Line , giá trị trả về là 1 docno khi duyệt 1 chứng từ thì xóa nó đi
-            MessagingCenter.Subscribe<DuyetDeNghiThanhToan_Line_ViewModel, string>(this, "DuyetDeNghiThanhToan", (sender, docno) =>
+            MessagingCenter.Subscribe<MoLaiChungTaDaDuyet_Line_ViewModel, string>(this, "MoChungTu", (sender, docno) =>
             {
                 var q = ListItem.Where(p => p.No_ == docno).FirstOrDefault();
                 if (q != null)
                 {
                     ListItem.Remove(q);
-                    //gửi về form main để trừ đi thông báo
-                    MessagingCenter.Send(this, "langngheduyet", DocumentType.DuyetThanhToan );
                     OnPropertyChanged(nameof(ListItem));//cập nhật lại thông tin lên view
-
                 }
             });
         }
+
 
         #endregion
 
@@ -69,28 +84,17 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                 IsBusy = true;
                 ShowLoading("Đang tải vui lòng đợi");
                 await Task.Delay(1000);
-                string url = "";                
-                url = $"api/DuyetChungTu/getDeNghiThanhToan?username={Preferences.Get(Config.User, "")}";
+                ListItem.Clear();
+                var _json = Config.client.GetStringAsync(Config.URL + $"api/DuyetChungTu/getMoLaiLCP_GC?username={Preferences.Get(Config.User, "")}&fromdate={string.Format("{0:yyyy-MM-dd}", FromDate)}&todate={string.Format("{0:yyyy-MM-dd}", ToDate)}").Result;
 
-                HttpResponseMessage respon = await Config.client.GetAsync(url);
-                if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {
-                    string _json = await respon.Content.ReadAsStringAsync();
-                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                    if (_json.Contains("[]") == false)
-                    {
-                        Int32 from = _json.IndexOf("[");
-                        Int32 to = _json.IndexOf("]");
-                        string result = _json.Substring(from, to - from + 1);
-                        ListItem.Clear();
-                        ListItem = JsonConvert.DeserializeObject<ObservableCollection<DeNghiThanhToanHeader_Model>>(result);
-                    }
-                    else
-                    {
-                        ListItem.Clear();
-                    }
+                    Int32 from = _json.IndexOf("[");
+                    Int32 to = _json.IndexOf("]");
+                    string result = _json.Substring(from, to - from + 1);
+                    ListItem = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result);
                 }
-
                 HideLoading();
             }
             catch (Exception ex)
@@ -103,7 +107,6 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                 IsBusy = false;
             }
         }
-
 
 
         #endregion

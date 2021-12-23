@@ -3,19 +3,21 @@ using APP_HOATHO.Global;
 using APP_HOATHO.Models.DuyetChungTu;
 using APP_HOATHO.ViewModels.DuyetChungTu;
 using System;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace APP_HOATHO.Views.MoLaiChungTu
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MoLaiChungTu_Header : ContentPage
+    
+    public partial class MoLaiLenhCapPhatGiaCong_Page : ContentPage
     {
-        MoLaiChungTuDaDuyet_Header_ViewModel viewModel;
-        public MoLaiChungTu_Header(DocumentType type)
+        MoLaiLenhCapPhatGiaCong_ViewModel viewModel;
+        public MoLaiLenhCapPhatGiaCong_Page(DocumentType type)
         {
             InitializeComponent();
-            viewModel = new MoLaiChungTuDaDuyet_Header_ViewModel(type);
+            viewModel = new MoLaiLenhCapPhatGiaCong_ViewModel(type);
             viewModel.navigation = Navigation;
             BindingContext = viewModel;
         }
@@ -65,9 +67,9 @@ namespace APP_HOATHO.Views.MoLaiChungTu
             catch (Exception ex)
             {
                 new MessageBox(ex.Message).Show();
-               
+
             }
-           
+
         }
     }
 }

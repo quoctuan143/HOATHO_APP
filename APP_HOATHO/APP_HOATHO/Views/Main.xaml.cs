@@ -91,33 +91,30 @@ namespace APP_HOATHO.Views
                 }
 
             //lắng nghe các trạng thái duyệt lcp fob, giacong dat mua
-            MessagingCenter.Subscribe<DuyetChungTu_Header_ViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
+            MessagingCenter.Subscribe<DuyetLenhCapPhatGiaCong_ViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
             {
-                if (item == DocumentType.DuyetLCP)
-                {
-                    NofiLCP_FOB--;
-                    OnPropertyChanged(nameof(NofiLCP_FOB));
-                }
-                if (item == DocumentType.DuyetLCP_GC)
-                {
-                    NofiLCP_GC--;
-                    OnPropertyChanged(nameof(NofiLCP_GC));
-                }
-                if (item == DocumentType.DuyetMuaHang)
-                {
-                    NofiDuyetDatMua--;
-                    OnPropertyChanged(nameof(NofiDuyetDatMua));
-                }
-                if (item == DocumentType.DuyetDatMuaPhuTung)
-                {
-                    NofiDuyetDatMuaPhuTung--;
-                    OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));
-                }
-                if (item == DocumentType.DuyetThanhToan)
-                {
-                    NofiDeNghiTT--;
-                    OnPropertyChanged(nameof(NofiDeNghiTT));
-                }
+                NofiLCP_GC--;
+                OnPropertyChanged(nameof(NofiLCP_GC));
+            });
+            MessagingCenter.Subscribe<DuyetLenhCapPhatFOBViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
+            {
+                NofiLCP_FOB--;
+                OnPropertyChanged(nameof(NofiLCP_FOB));
+            });
+            MessagingCenter.Subscribe<DuyetChungTuDatMua_ViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
+            {
+                NofiDuyetDatMua--;
+                OnPropertyChanged(nameof(NofiDuyetDatMua));
+            });
+            MessagingCenter.Subscribe<DuyetDeNghiThanhToan_ViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
+            {
+                NofiDeNghiTT--;
+                OnPropertyChanged(nameof(NofiDeNghiTT));
+            });
+            MessagingCenter.Subscribe<DuyetDatMuaPhuTung_ViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
+            {
+                NofiDuyetDatMuaPhuTung--;
+                OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));
             });
             //load dữ liệu lên
             System.Diagnostics.Debug.WriteLine("start load dữ liệu");
@@ -359,7 +356,7 @@ namespace APP_HOATHO.Views
 
             }).ConfigureAwait(false);
 
-          
+
 
         }
 

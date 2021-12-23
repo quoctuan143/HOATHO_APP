@@ -11,26 +11,18 @@ using APP_HOATHO.Models.DuyetChungTu;
 
 namespace APP_HOATHO.Views.DuyetChungTu
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DuyetChungTuDatMua_Header : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]    
+    public partial class DuyetLenhCapPhatFob_Page : ContentPage
     {
-     public DuyetChungTuDatMua_ViewModel viewModel;
-        public DuyetChungTuDatMua_Header(DocumentType type) 
+        public DuyetLenhCapPhatFOBViewModel viewModel;
+        public DuyetLenhCapPhatFob_Page(DocumentType type)
         {
             InitializeComponent();
-            viewModel = new DuyetChungTuDatMua_ViewModel(type);
+            viewModel = new DuyetLenhCapPhatFOBViewModel(type);
             viewModel.navigation = Navigation;
             BindingContext = viewModel;
         }
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    if (viewModel.ListItem.Count == 0)
-        //    {
-        //        IsBusy = false;
-        //        viewModel.LoadCommand.Execute(null);
-        //    }    
-        //}
+
         private void listChiTiet_SelectionChanged(object sender, Syncfusion.SfDataGrid.XForms.GridSelectionChangedEventArgs e)
         {
             DuyetChungTuModel _selectItem = listChiTiet.SelectedItem as DuyetChungTuModel;
@@ -40,5 +32,6 @@ namespace APP_HOATHO.Views.DuyetChungTu
             else
                 Navigation.PushAsync(new DuyetChungTu_Line(_selectItem, viewModel._documentType));
         }
+
     }
 }

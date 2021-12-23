@@ -4,7 +4,9 @@
              xmlns:helper="clr-namespace:APP_HOATHO.Helpers"
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
             xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             x:Class="APP_HOATHO.Views.MoLaiChungTu.MoLaiDeNghiThanhToan_Header_Page">
+             x:Class="APP_HOATHO.Views.MoLaiChungTu.MoLaiDeNghiThanhToan_Header_Page"
+             Shell.TabBarIsVisible="False"
+             >
    
     <ContentPage.Content>
         <StackLayout>

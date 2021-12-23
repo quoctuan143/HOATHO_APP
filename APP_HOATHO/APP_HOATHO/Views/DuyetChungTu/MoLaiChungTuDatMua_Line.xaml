@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"            
              x:Class="APP_HOATHO.Views.DuyetChungTu.MoLaiChungTuDatMua_Line"
+             Shell.TabBarIsVisible="False"
              Title="{Binding Title}"            
              >
     

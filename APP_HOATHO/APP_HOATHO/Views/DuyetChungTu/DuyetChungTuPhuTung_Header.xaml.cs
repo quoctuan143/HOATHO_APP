@@ -14,11 +14,11 @@ namespace APP_HOATHO.Views.DuyetChungTu
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DuyetChungTuPhuTung_Header : ContentPage
     { 
-      public   DuyetChungTu_Header_ViewModel viewModel;
+      public DuyetDatMuaPhuTung_ViewModel viewModel;
         public DuyetChungTuPhuTung_Header(DocumentType type)
         {
             InitializeComponent();
-            viewModel = new DuyetChungTu_Header_ViewModel(type);
+            viewModel = new DuyetDatMuaPhuTung_ViewModel(type);
             viewModel.navigation = Navigation;
             BindingContext = viewModel;
         }

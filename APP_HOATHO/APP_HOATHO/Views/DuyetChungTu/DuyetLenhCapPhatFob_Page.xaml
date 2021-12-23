@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
-             x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetChungTu_Header"
              Title="{Binding Title}"
              Shell.TabBarIsVisible="False"
-             >
-    
+             x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetLenhCapPhatFob_Page">
     <ContentPage.Content>
         <StackLayout>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"                                           
@@ -18,7 +16,7 @@
                                            >
                 <sfDataGrid:SfDataGrid.Columns>
 
-                    
+
                     <sfDataGrid:GridTemplateColumn  HeaderText="Số chứng từ"                                                
                                                         Width="160"
                                                 MappingName="Số" 
@@ -32,7 +30,7 @@
 
                     </sfDataGrid:GridTemplateColumn>
 
-                   
+
                     <sfDataGrid:GridTemplateColumn  HeaderText="Ngày CT"                                                
                                                         Width="100"
                                                 MappingName="Ngày" 
@@ -79,7 +77,7 @@
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
-                    
+
                     <sfDataGrid:GridTemplateColumn MappingName="WorkCenter" 
                                                    Width="100"
                                                    HeaderText="Nhà Máy" 
@@ -102,7 +100,7 @@
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
-                  
+
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
                     <sfDataGrid:GridTableSummaryRow Title="Tổng SL : {TotalQuantity} "
@@ -118,7 +116,7 @@
 
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
             </sfDataGrid:SfDataGrid>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

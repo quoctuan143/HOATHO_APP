@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetChungTuDatMua_Header"
              Title="{Binding Title}"
-             Shell.TabBarIsVisible="False"
+             Shell.TabBarIsVisible="False"           
              >
     
     <ContentPage.Content>
