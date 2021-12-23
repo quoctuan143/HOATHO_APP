@@ -52,15 +52,14 @@
                                            SwipeEnded="listThietBi_SwipeEnded"
                                            >
                     <sfDataGrid:SfDataGrid.Columns>
-
-                        <sfDataGrid:GridTextColumn MappingName="No_2" HeaderText="Model" HeaderFontAttribute="Bold" Width="120"   HeaderCellTextSize="16">
-                            <sfDataGrid:GridTextColumn.CellStyle>
-                                <Style TargetType="sfDataGrid:GridCell">
-                                    <Setter Property="Foreground" Value="Red" />
-                                </Style>
-                            </sfDataGrid:GridTextColumn.CellStyle>
-                        </sfDataGrid:GridTextColumn>
-
+                        
+                        <sfDataGrid:GridTemplateColumn  MappingName="No_2" HeaderText="Model" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding No_2}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
+                        </sfDataGrid:GridTemplateColumn>
 
                         <sfDataGrid:GridTemplateColumn  MappingName="No_3" HeaderText="Số Serial" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>

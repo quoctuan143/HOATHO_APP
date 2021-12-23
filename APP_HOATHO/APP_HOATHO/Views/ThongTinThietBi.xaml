@@ -37,20 +37,21 @@
                           >
                 <tabView:SfTabItem Title="Thông Tin" ImageSource="information.png" >
                     <tabView:SfTabItem.Content>
-                    <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,*,auto,auto" Padding="10" RowSpacing="10">
-                        <Label Text="Nhà máy" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
-                        <Label Text="{Binding Item.KhoNhaMay}" Grid.Column="1" Grid.Row="0" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
-                        <Label Text="Mã Thiết Bị" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
-                        <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                            <Label Text="{Binding Item.No_}" VerticalTextAlignment="Center" FontSize="16" TextColor="Black"></Label>
-                            <Image x:Name="Edit" Source="edit.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand"  >
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </StackLayout>
-                       
-                        <Label Text="Tên Thiết Bị" Grid.Column="0" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
+                    <ScrollView>
+                        <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,*,auto,auto" Padding="10" RowSpacing="10">
+                            <Label Text="Nhà máy" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
+                            <Label Text="{Binding Item.KhoNhaMay}" Grid.Column="1" Grid.Row="0" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
+                            <Label Text="Mã Thiết Bị" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
+                            <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                                <Label Text="{Binding Item.No_}" VerticalTextAlignment="Center" FontSize="16" TextColor="Black"></Label>
+                                <Image x:Name="Edit" Source="edit.png" Aspect="AspectFit" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand"  >
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                            <Label Text="Tên Thiết Bị" Grid.Column="0" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
                             <Label Text="{Binding Item.NameVN}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
                             <Label Text="Số Máy" Grid.Column="0" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
                             <Label Text="{Binding Item.No_3}" Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
@@ -62,12 +63,12 @@
                             <Label Text="{Binding Item.ManufacturerCode}" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
                             <Label Text="Công Suất" Grid.Column="0" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
                             <Label Text="{Binding Item.QualityMeasureCode}" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
-                        <Label Text="Ngày Sử Dụng" Grid.Column="0" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
-                        <Label Text="{Binding Item.NgaySuDung , StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
+                            <Label Text="Ngày Sử Dụng" Grid.Column="0" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
+                            <Label Text="{Binding Item.NgaySuDung , StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
 
 
-                        <Label Text="Đặc Tính KT" Grid.Column="0" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
-                            
+                            <Label Text="Đặc Tính KT" Grid.Column="0" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
+
                             <Label Text="{Binding Item.Description}" Grid.Column="1" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
                             <Label Grid.ColumnSpan="2" Grid.Row="10">
                                 <Label.FormattedText>
@@ -93,20 +94,22 @@
                                     </TapGestureRecognizer>
                                 </Image.GestureRecognizers>
                             </Image>
-                        <Label  Grid.ColumnSpan="2" Grid.Row="13">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Tài liệu kĩ thuật"
+                            <Label  Grid.ColumnSpan="2" Grid.Row="13">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Tài liệu kĩ thuật"
                                           TextColor="Blue"
                                           TextDecorations="Underline">
-                                        <Span.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="tlKiThuat" Tapped="tlKiThuat_Tapped"/>
-                                        </Span.GestureRecognizers>
-                                    </Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </Grid>
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer x:Name="tlKiThuat" Tapped="tlKiThuat_Tapped"/>
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                    </ScrollView>
+                    
 
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
