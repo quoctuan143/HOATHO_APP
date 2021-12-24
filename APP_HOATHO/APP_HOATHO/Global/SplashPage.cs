@@ -20,8 +20,8 @@ namespace APP_HOATHO.Global
         {
 
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
+           // if (Device.RuntimePlatform == Device.iOS)
+           // {
                 NavigationPage.SetHasNavigationBar(this, false);
                 var sub = new AbsoluteLayout();
                 image = new Image
@@ -36,7 +36,7 @@ namespace APP_HOATHO.Global
                 sub.Children.Add(image);
                 this.BackgroundColor = Color.White;
                 this.Content = sub;
-            }
+            //}
 
 
         }

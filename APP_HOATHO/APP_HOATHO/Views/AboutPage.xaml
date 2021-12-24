@@ -11,6 +11,15 @@
     <ContentPage.BindingContext>
         <vm:AboutViewModel/>
     </ContentPage.BindingContext>
+    <Shell.TitleView >
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">            
+            <Label  x:Name="txtName"  TextColor="White" FontSize="20" FontAttributes="Bold" 
+                    VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                    Text="Cài đặt ứng dụng"
+                    HorizontalOptions="FillAndExpand">                
+            </Label>
+        </StackLayout>
+    </Shell.TitleView>
     <Grid>
         <Grid RowDefinitions="auto,auto,*">
             <Image Source="trangchu.jpg" Grid.Row="0" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>

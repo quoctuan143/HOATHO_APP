@@ -29,6 +29,8 @@ namespace APP_HOATHO.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+        private bool IsNotification = false;
+        private object NotificationData;
         public override  bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.SetFlags(new string[] { "CollectionView_Experimental", "Brush_Experimental", "SwipeView_Experimental", "CarouseView_Experimental", "IndicatorView_Experimental" });
@@ -45,19 +47,25 @@ namespace APP_HOATHO.iOS
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.XForms.iOS.PopupLayout.SfPopupLayoutRenderer.Init();
             SfCheckBoxRenderer.Init();
-            LoadApplication(new App(false,null));
+            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine("NOTIFICATION RECEIVED", p.Data);
+                NotificationData = p.Data;
+                IsNotification = false;
+            };
+            LoadApplication(new App(IsNotification, NotificationData));
             Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
             Syncfusion.XForms.iOS.Buttons.SfButtonRenderer.Init();
             FirebasePushNotificationManager.Initialize(options, true);
- //           FirebasePushNotificationManager.Initialize(options, new NotificationUserCategory[]
- //{
- //                          new NotificationUserCategory("message",new List<NotificationUserAction> {
- //                              new NotificationUserAction("Reply","Reply",NotificationActionType.Foreground)
- //                          }),
- //                          new NotificationUserCategory("request",new List<NotificationUserAction> {
- //                              new NotificationUserAction("Accept","Accept"),
- //                              new NotificationUserAction("Reject","Reject",NotificationActionType.Destructive)
- //                          })  });
+            FirebasePushNotificationManager.Initialize(options, new NotificationUserCategory[]
+                        {
+                           new NotificationUserCategory("message",new List<NotificationUserAction> {
+                               new NotificationUserAction("Reply","Reply",NotificationActionType.Foreground)
+                           }),
+                           new NotificationUserCategory("request",new List<NotificationUserAction> {
+                               new NotificationUserAction("Accept","Accept"),
+                               new NotificationUserAction("Reject","Reject",NotificationActionType.Destructive)
+                           })  });
             FirebasePushNotificationManager.CurrentNotificationPresentationOption = UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
             UIColor color = Color.FromHex("06264c").ToUIColor();
             UINavigationBar.Appearance.BackgroundColor = color;
