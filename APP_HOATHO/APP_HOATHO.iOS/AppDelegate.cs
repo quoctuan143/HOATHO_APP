@@ -45,7 +45,7 @@ namespace APP_HOATHO.iOS
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.XForms.iOS.PopupLayout.SfPopupLayoutRenderer.Init();
             SfCheckBoxRenderer.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(false,null));
             Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
             Syncfusion.XForms.iOS.Buttons.SfButtonRenderer.Init();
             FirebasePushNotificationManager.Initialize(options, true);
