@@ -51,7 +51,7 @@
                                             <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start"></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
+                                            <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
                                                                FontSize="15" FontAttributes="Bold" />
 
                                         </badge:SfBadgeView.BadgeSettings>
@@ -67,10 +67,10 @@
 
                                     <badge:SfBadgeView  BadgeText="{Binding NofiLCP_FOB}" HorizontalOptions="Center" VerticalOptions="Start">
                                         <badge:SfBadgeView.Content>
-                                            <Image Source="duyetdinhmuc.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start"</Image>
+                                            <Image Source="duyetdinhmuc.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start" ></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
+                                            <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
                                                                FontSize="15" FontAttributes="Bold" />
                                         </badge:SfBadgeView.BadgeSettings>
                                     </badge:SfBadgeView>
@@ -88,7 +88,7 @@
                                             <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start"></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
+                                            <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
                                                                FontSize="15" FontAttributes="Bold" />
                                         </badge:SfBadgeView.BadgeSettings>
 
@@ -106,7 +106,7 @@
                                             <Image Source="denghitt.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start"></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
+                                            <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
                                                                FontSize="15" FontAttributes="Bold" />
                                         </badge:SfBadgeView.BadgeSettings>
 
