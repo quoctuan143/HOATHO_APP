@@ -58,7 +58,7 @@
                                         </badge:SfBadgeView.BadgeSettings>
 
                                     </badge:SfBadgeView>
-                                    <Label Text="Đơn đặt mua" FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    <Label Text="Đơn đặt mua&#10;" FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="duyetdonhang"  Tapped="duyetdonhang_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -80,7 +80,7 @@
                                     </badge:SfBadgeView>
 
 
-                                    <Label Text="LCPhát FOB" FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    <Label Text="LCP FOB&#10;" FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="duyetLCPFOB"  Tapped="duyetLCPFOB_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -101,7 +101,7 @@
                                         </badge:SfBadgeView.BadgeSettings>
 
                                     </badge:SfBadgeView>
-                                    <Label Text="LCP Gia Công"  FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    <Label Text="LCP Gia Công&#10;"  FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="duyetLCP_GC"  Tapped="duyetLCP_GC_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -121,7 +121,7 @@
                                         </badge:SfBadgeView.BadgeSettings>
 
                                     </badge:SfBadgeView>
-                                    <Label Text="Duyệt DNTT"  FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" ></Label>
+                                    <Label Text="DNTT &#10;"  FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" ></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="DuyetDeNghiThanhToan"  Tapped="DuyetDeNghiThanhToan_Tapped"/>
                                     </StackLayout.GestureRecognizers>

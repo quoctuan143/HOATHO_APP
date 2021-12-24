@@ -17,6 +17,8 @@ namespace APP_HOATHO.Droid
     [Activity(Label = "HOATHO", Icon = "@mipmap/logo", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        private bool IsNotification = false;
+        private object NotificationData;
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -30,7 +32,7 @@ namespace APP_HOATHO.Droid
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+            
             NotificationCenter.NotifyNotificationTapped(Intent );
             FirebasePushNotificationManager.ProcessIntent(this, Intent);   
          
@@ -63,6 +65,13 @@ namespace APP_HOATHO.Droid
                     })
                 }, false);
 #endif
+            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine("NOTIFICATION RECEIVED", p.Data);
+                NotificationData = p.Data;
+                IsNotification = false;                
+            };
+            LoadApplication(new App(IsNotification, NotificationData));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
