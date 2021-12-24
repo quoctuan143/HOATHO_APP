@@ -46,9 +46,9 @@
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <StackLayout  Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  IsVisible="{Binding isDuyetDonDatMua}">
 
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiDuyetDatMua}" HorizontalOptions="Center" VerticalOptions="Start">
+                                    <badge:SfBadgeView  BadgeText="{Binding NofiDuyetDatMua}" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
                                         <badge:SfBadgeView.Content>
-                                            <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start"></Image>
+                                            <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="StartAndExpand"></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
                                             <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
@@ -57,7 +57,7 @@
                                         </badge:SfBadgeView.BadgeSettings>
 
                                     </badge:SfBadgeView>
-                                    <Label Text="Đơn đặt mua&#10;" FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    <Label Text="Đơn đặt mua&#10;" FontSize="16" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="duyetdonhang"  Tapped="duyetdonhang_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -65,16 +65,16 @@
 
                                 <StackLayout  Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  IsVisible="{Binding IsDuyetLCPFOB}">
 
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiLCP_FOB}" HorizontalOptions="Center" VerticalOptions="Start">
+                                    <badge:SfBadgeView  BadgeText="{Binding NofiLCP_FOB}" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
                                         <badge:SfBadgeView.Content>
-                                            <Image Source="duyetdinhmuc.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start" ></Image>
+                                            <Image Source="duyetdinhmuc.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="StartAndExpand" ></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
                                             <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
                                                                FontSize="15" FontAttributes="Bold" />
                                         </badge:SfBadgeView.BadgeSettings>
                                     </badge:SfBadgeView>
-                                    <Label Text="LCP FOB&#10;" FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    <Label Text="LCP FOB&#10;" FontSize="16" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="duyetLCPFOB"  Tapped="duyetLCPFOB_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -83,9 +83,9 @@
 
                                 <StackLayout Grid.Column="2"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDuyetLCPGC}">
 
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiLCP_GC}" HorizontalOptions="Center" VerticalOptions="Start">
+                                    <badge:SfBadgeView  BadgeText="{Binding NofiLCP_GC}" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
                                         <badge:SfBadgeView.Content>
-                                            <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start"></Image>
+                                            <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="StartAndExpand"></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
                                             <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
@@ -93,7 +93,7 @@
                                         </badge:SfBadgeView.BadgeSettings>
 
                                     </badge:SfBadgeView>
-                                    <Label Text="LCP Gia Công&#10;"  FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    <Label Text="LCP Gia Công&#10;"  FontSize="16" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="duyetLCP_GC"  Tapped="duyetLCP_GC_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -101,9 +101,9 @@
 
                                 <StackLayout Grid.Column="3"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDuyetLCPGC}">
 
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiDeNghiTT}" HorizontalOptions="Center" VerticalOptions="Start">
+                                    <badge:SfBadgeView  BadgeText="{Binding NofiDeNghiTT}" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
                                         <badge:SfBadgeView.Content>
-                                            <Image Source="denghitt.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Start"></Image>
+                                            <Image Source="denghitt.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="StartAndExpand"></Image>
                                         </badge:SfBadgeView.Content>
                                         <badge:SfBadgeView.BadgeSettings>
                                             <badge:BadgeSetting BadgeType="Error" Offset="-15,10" BadgeAnimation="Scale" BadgePosition="TopRight"                                                                
@@ -111,7 +111,7 @@
                                         </badge:SfBadgeView.BadgeSettings>
 
                                     </badge:SfBadgeView>
-                                    <Label Text="DNTT &#10;"  FontSize="16" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" ></Label>
+                                    <Label Text="DNTT &#10;"  FontSize="16" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" ></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="DuyetDeNghiThanhToan"  Tapped="DuyetDeNghiThanhToan_Tapped"/>
                                     </StackLayout.GestureRecognizers>
