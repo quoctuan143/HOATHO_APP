@@ -111,18 +111,33 @@ namespace APP_HOATHO
 
 
             };
-            CrossFirebasePushNotification.Current.OnNotificationAction += (s, p) =>
+            CrossFirebasePushNotification.Current.OnNotificationAction += async (s, p) =>
             {
-                System.Diagnostics.Debug.WriteLine("Action");
-
-                if (!string.IsNullOrEmpty(p.Identifier))
+                DocumentType loaiphieu = DocumentType.DuyetDatMuaPhuTung;
+                if (p.Data["sochungtu"].ToString() != "")
                 {
-                    System.Diagnostics.Debug.WriteLine($"ActionId: {p.Identifier}");
-                    foreach (var data in p.Data)
+                    DuyetChungTuModel item = new DuyetChungTuModel { No_ = p.Data["sochungtu"].ToString() };
+                    if (p.Data["loaiphieu"].ToString() == "lcpfob")
                     {
-                        System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+                        loaiphieu = DocumentType.DuyetLCP;
                     }
-
+                    if (p.Data["loaiphieu"].ToString() == "lcpgc")
+                    {
+                        loaiphieu = DocumentType.DuyetLCP_GC;
+                    }
+                    if (p.Data["loaiphieu"].ToString() == "duyetdatphutung")
+                    {
+                        loaiphieu = DocumentType.DuyetDatMuaPhuTung;
+                    }
+                    if (p.Data["loaiphieu"].ToString() == "dondatmua")
+                    {
+                        loaiphieu = DocumentType.DuyetMuaHang;
+                    }
+                    if (p.Data["loaiphieu"].ToString() == "denghithanhtoan")
+                    {
+                        loaiphieu = DocumentType.DuyetThanhToan;
+                    }
+                    await new MessageOpenDocument(p.Data["body"].ToString(), item.No_, loaiphieu).Show();
                 }
 
             };
