@@ -47,7 +47,7 @@
 
                                 <badge:SfBadgeView  Grid.Column="0" Grid.Row="0" BadgeText="{Binding NofiDuyetDatMua}">
                                     <badge:SfBadgeView.Content>
-                                        <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                                        <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer x:Name="duyetdonhang"  Tapped="duyetdonhang_Tapped"/>
                                             </Image.GestureRecognizers>
@@ -62,7 +62,7 @@
 
                                 <badge:SfBadgeView  Grid.Column="1" Grid.Row="0" BadgeText="{Binding NofiLCP_FOB}" >
                                     <badge:SfBadgeView.Content>
-                                        <Image Source="duyetdinhmuc.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                                        <Image Source="duyetdinhmuc.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer x:Name="duyetLCPFOB"  Tapped="duyetLCPFOB_Tapped"/>
                                             </Image.GestureRecognizers>
@@ -77,7 +77,7 @@
 
                                 <badge:SfBadgeView Grid.Column="2" Grid.Row="0" BadgeText="{Binding NofiLCP_GC}">
                                     <badge:SfBadgeView.Content>
-                                        <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                                        <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer x:Name="duyetLCP_GC"  Tapped="duyetLCP_GC_Tapped"/>
                                             </Image.GestureRecognizers>
@@ -91,7 +91,7 @@
                                 <Label Text="LCP Gia Công" Grid.Row="1" Grid.Column="2"  FontSize="16" VerticalOptions="Start" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}" FontAttributes="Italic"  LineBreakMode="WordWrap"></Label>
                                 <badge:SfBadgeView Grid.Column="3" Grid.Row="0" BadgeText="{Binding NofiDeNghiTT}">
                                     <badge:SfBadgeView.Content>
-                                        <Image Source="denghitt.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                                        <Image Source="denghitt.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"  VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer x:Name="DuyetDeNghiThanhToan"  Tapped="DuyetDeNghiThanhToan_Tapped"/>
                                             </Image.GestureRecognizers>

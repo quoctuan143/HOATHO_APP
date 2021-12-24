@@ -48,15 +48,10 @@ namespace APP_HOATHO.Global
                 await ShowMessage("Thông Báo", "Vui Lòng kiểm tra lại kết nối mạng", "OK", () =>
                 { App.Current.MainPage = new Login(); });
             }
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-
-
-                await image.ScaleTo(1, 5000);//thời gian khởi tạo
-                await image.ScaleTo(0.9, 1500, Easing.Linear);
-                await image.ScaleTo(150, 500, Easing.Linear);
-
-            }
+                await image.ScaleTo(1, 3000);//thời gian khởi tạo
+                //await image.ScaleTo(0.9, 1500, Easing.Linear);
+               // await image.ScaleTo(150, 500, Easing.Linear);
+           
             //kiêm tra xem user có thay đổi k
             try
             {
