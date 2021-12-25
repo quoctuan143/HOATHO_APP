@@ -17,6 +17,8 @@ using APP_HOATHO.Dialog;
 using APP_HOATHO.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Plugin.FirebasePushNotification;
+using APP_HOATHO.Views.DuyetChungTu;
 
 namespace APP_HOATHO.Views
 {
@@ -51,8 +53,8 @@ namespace APP_HOATHO.Views
         public Main()
         {
             InitializeComponent();
-            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
-            FullName = Preferences.Get(Config.FullName, "");
+            DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");            
+           FullName = Preferences.Get(Config.FullName, "");
             OnPropertyChanged(nameof(FullName));
 
             if (Preferences.Get(Config.Role, "") == "0")
@@ -78,7 +80,7 @@ namespace APP_HOATHO.Views
                 IsMainDonHang = true;
             }
             if (Preferences.Get(Config.Role, "") == "2")
-                if (Preferences.Get(Config.Role, "") == "3")
+            if (Preferences.Get(Config.Role, "") == "3")
                 {
                     IsDanhMucThietBi = true;
                     IsLichXichBaoTri = true;
@@ -122,6 +124,95 @@ namespace APP_HOATHO.Views
             Task.Factory.StartNew(() => Load().Wait());
             BindingContext = this;
             System.Diagnostics.Debug.WriteLine("finish load dữ liệu");
+            CrossFirebasePushNotification.Current.OnNotificationReceived += Current_OnNotificationReceived;
+            CrossFirebasePushNotification.Current.OnNotificationOpened += Current_OnNotificationOpened;
+        }
+
+        private async void Current_OnNotificationOpened(object source, FirebasePushNotificationResponseEventArgs p)
+        {
+            await Device.InvokeOnMainThreadAsync(async () =>
+            {
+                DocumentType loaiphieu = DocumentType.DuyetDatMuaPhuTung;
+                try
+                {
+                    if (p.Data["sochungtu"].ToString() != "")
+                    {
+                        DuyetChungTuModel item = new DuyetChungTuModel { No_ = p.Data["sochungtu"].ToString() };
+                        if (p.Data["loaiphieu"].ToString() == "lcpfob")
+                        {
+                            loaiphieu = DocumentType.DuyetLCP;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "lcpgc")
+                        {
+                            loaiphieu = DocumentType.DuyetLCP_GC;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "duyetdatphutung")
+                        {
+                            loaiphieu = DocumentType.DuyetDatMuaPhuTung;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "dondatmua")
+                        {
+                            loaiphieu = DocumentType.DuyetMuaHang;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "denghithanhtoan")
+                        {
+                            loaiphieu = DocumentType.DuyetThanhToan;
+                        }
+                        if (loaiphieu == DocumentType.DuyetDatMuaPhuTung)
+                            await Navigation.PushAsync(new DuyetChungTuPhuTung_Line(item, loaiphieu));
+                        else
+                            await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
+                    }
+
+                }
+                catch
+                {
+                }
+            });
+        }
+
+        private async void Current_OnNotificationReceived(object source, FirebasePushNotificationDataEventArgs p)
+        {
+            await Device.InvokeOnMainThreadAsync(async () =>
+            {
+                DocumentType loaiphieu = DocumentType.DuyetDatMuaPhuTung;
+                try
+                {
+                    if (p.Data["sochungtu"].ToString() != "")
+                    {
+                        DuyetChungTuModel item = new DuyetChungTuModel { No_ = p.Data["sochungtu"].ToString() };
+                        if (p.Data["loaiphieu"].ToString() == "lcpfob")
+                        {
+                            loaiphieu = DocumentType.DuyetLCP;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "lcpgc")
+                        {
+                            loaiphieu = DocumentType.DuyetLCP_GC;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "duyetdatphutung")
+                        {
+                            loaiphieu = DocumentType.DuyetDatMuaPhuTung;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "dondatmua")
+                        {
+                            loaiphieu = DocumentType.DuyetMuaHang;
+                        }
+                        if (p.Data["loaiphieu"].ToString() == "denghithanhtoan")
+                        {
+                            loaiphieu = DocumentType.DuyetThanhToan;
+                        }
+                        if (loaiphieu == DocumentType.DuyetDatMuaPhuTung)
+                            await Navigation.PushAsync(new DuyetChungTuPhuTung_Line(item, loaiphieu));
+                        else
+                            await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
+                    }
+
+                }
+                catch
+                {
+                }
+            });
+              
         }
 
         async Task Load()
@@ -360,6 +451,7 @@ namespace APP_HOATHO.Views
 
         }
 
+        #region "Button click"
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Danh_Muc_Thiet_Bi());
@@ -429,5 +521,6 @@ namespace APP_HOATHO.Views
             await DuyetDeNghiThanhToanTabpage.LoadData();
             await Navigation.PushAsync(DuyetDeNghiThanhToanTabpage);
         }
+        #endregion
     }
 }

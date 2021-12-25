@@ -33,7 +33,7 @@
                            VisibleHeaderCount="4"
                            EnableSwiping="False"
                            TabHeaderPosition="Bottom"
-                           TabItemTapped="SfTabView_TabItemTapped"
+                           TabItemTapped="SfTabView_TabItemTapped"                           
                           >
                 <tabView:SfTabItem Title="Thông Tin" ImageSource="information.png" >
                     <tabView:SfTabItem.Content>
@@ -86,7 +86,7 @@
                             <Image Source="{Binding Item.Picture}" Aspect="AspectFill" 
                                x:Name="imagePicture"                               
                                Grid.Row="11" Grid.ColumnSpan="2"></Image>
-                            <Image Source="camera.pgn" HeightRequest="40" WidthRequest="40" VerticalOptions="End" 
+                            <Image Source="camera.png" HeightRequest="40" WidthRequest="40" VerticalOptions="End" 
                                HorizontalOptions="End" Margin="0,0,10,10"                                
                                Grid.Row="12" Grid.Column="1">
                                 <Image.GestureRecognizers>
@@ -113,7 +113,7 @@
 
                     </tabView:SfTabItem.Content>
                 </tabView:SfTabItem>
-                <tabView:SfTabItem Title="Lịch Sử" ImageSource="history.png" x:Name="History">
+                <tabView:SfTabItem Title="Lịch Sử" ImageSource="history.png" x:Name="History" >
                     <tabView:SfTabItem.Content>
                         <Grid x:Name="mGridLayout" AbsoluteLayout.LayoutFlags="All"
                                AbsoluteLayout.LayoutBounds="1,1,1,1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
