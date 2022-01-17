@@ -38,6 +38,7 @@
                         CornerRadius="10"    
                         BackgroundColor="Transparent"                        
                         HeightRequest="180"
+                              HasShadow="False"
                                IsVisible="{Binding IsMainDonHang}"
                         >
                         <StackLayout Padding="5">
@@ -113,7 +114,8 @@
                         CornerRadius="10"    
                         BackgroundColor="Transparent"                        
                         HeightRequest="180"
-                               IsVisible="{Binding IsMainDonHang}"
+                              HasShadow="False"
+                               IsVisible="{Binding IsMainThietBi}"
                         >
                         <StackLayout Padding="5">
                             <Label Text="Thiết bị công nghệ" TextDecorations="Underline" TextColor="White" FontSize="20" FontAttributes="Italic"></Label>

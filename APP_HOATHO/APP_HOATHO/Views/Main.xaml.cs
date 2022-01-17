@@ -80,6 +80,16 @@ namespace APP_HOATHO.Views
                 IsMainDonHang = true;
             }
             if (Preferences.Get(Config.Role, "") == "2")
+            {
+                IsDanhMucThietBi = true;
+                IsLichXichBaoTri = true;
+                IsDuyetDatPhuTung = true;
+                isDuyetDonDatMua = false;
+                IsDuyetLCPFOB = false;
+                IsDuyetLCPGC = false;
+                IsMainThietBi = true;
+                IsMainDonHang = false;
+            }    
             if (Preferences.Get(Config.Role, "") == "3")
                 {
                     IsDanhMucThietBi = true;
@@ -520,6 +530,20 @@ namespace APP_HOATHO.Views
             }
             await DuyetDeNghiThanhToanTabpage.LoadData();
             await Navigation.PushAsync(DuyetDeNghiThanhToanTabpage);
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            base.OnBackButtonPressed();
+            BackButtonPressed();
+            return true;
+        }
+        public async Task BackButtonPressed()
+        {
+            var ok = await DisplayAlert("Thông báo", "Bạn có muốn thoát chương trình không?", "ok", "cancle");
+            if (ok)
+            {
+                System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+            }
         }
         #endregion
     }
