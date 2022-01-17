@@ -72,7 +72,7 @@
 		<false/>
 	</dict>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.2</string>
+	<string>1.0.3</string>
 	<key>MinimumOSVersion</key>
 	<string>10.3</string>
 </dict>

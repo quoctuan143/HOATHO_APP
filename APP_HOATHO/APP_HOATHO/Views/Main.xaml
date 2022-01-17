@@ -5,9 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              mc:Ignorable="d"            
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
-             Title="HOA THO CORP"            
-             BackgroundImageSource="hinhnen.png"      
-            
+             Title="HOA THO CORP"             
              x:Class="APP_HOATHO.Views.Main">
     <Shell.TitleView >
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -42,7 +40,7 @@
                                IsVisible="{Binding IsMainDonHang}"
                         >
                         <StackLayout Padding="5">
-                            <Label Grid.Row="0" Text="Ký điện tử" TextDecorations="Underline" TextColor="White" FontSize="20" FontAttributes="Italic"></Label>
+                            <Label Grid.Row="0" Text="Ký điện tử" TextDecorations="Underline" TextColor="{StaticResource Primary}" FontSize="20" FontAttributes="Italic"></Label>
                             <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*" RowDefinitions="*,*" Margin="0,5,0,0"  RowSpacing="10" ColumnSpacing="0"
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -118,7 +116,7 @@
                                IsVisible="{Binding IsMainThietBi}"
                         >
                         <StackLayout Padding="5">
-                            <Label Text="Thiết bị công nghệ" TextDecorations="Underline" TextColor="White" FontSize="20" FontAttributes="Italic"></Label>
+                            <Label Text="Thiết bị công nghệ" TextDecorations="Underline" TextColor="{StaticResource Primary }" FontSize="20" FontAttributes="Italic"></Label>
                             <Grid ColumnDefinitions="3.3*,3.3*,3.4*" Margin="0,5,0,0"  RowSpacing="0" 
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <StackLayout  Grid.Column="0" HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDanhMucThietBi}">

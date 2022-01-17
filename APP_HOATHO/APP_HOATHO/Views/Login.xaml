@@ -5,14 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"   
-             mc:Ignorable="d"
-             Style="{StaticResource ParentBackgroup}"
+             mc:Ignorable="d"   
+             BackgroundColor="White"
              x:Class="APP_HOATHO.Views.Login">
     <ContentPage.Resources>
         <Style TargetType="Entry" Class="entryClass">
             <Setter Property="FontAttributes" Value="Bold"></Setter>
-            <Setter Property="TextColor" Value="Blue"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
             <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="PlaceholderColor" Value="{StaticResource Primary}"></Setter>
             <Setter Property="BackgroundColor" Value="White"></Setter>
         </Style>
 
@@ -32,7 +33,7 @@
 
 
             <StackLayout Orientation="Vertical" Padding="10,5,10,0" Grid.Row="1">
-                <sfinputText:SfTextInputLayout Hint="Tên đăng nhập"      
+                <sfinputText:SfTextInputLayout Hint="Tên đăng nhập"                                                     
                                                ContainerType="Outlined" 
                                                LeadingViewPosition="Inside">
                     <Entry x:Name="btnusername" StyleClass="entryClass"  ClearButtonVisibility="WhileEditing"></Entry>
@@ -51,7 +52,7 @@
                 <sfinputText:SfTextInputLayout Hint="Nhập mật khẩu" 
                                                ContainerType="Outlined"
                                                LeadingViewPosition="Inside"
-                                               EnablePasswordVisibilityToggle="True"                                               
+                                               EnablePasswordVisibilityToggle="True"                                                  
                                                >
                     <Entry x:Name="btnpassword" StyleClass="entryClass" ClearButtonVisibility="WhileEditing" IsPassword="True"></Entry>
                     <sfinputText:SfTextInputLayout.LeadingView>
@@ -66,7 +67,7 @@
 
             </StackLayout>
             <StackLayout Grid.Row="3"   Padding="10,5,10,5" >                
-                <sfbutton:SfCheckBox IsChecked="True" Text="Ghi nhớ" x:Name="swRememer" CheckedColor="Blue" FontSize="16"></sfbutton:SfCheckBox>
+                <sfbutton:SfCheckBox IsChecked="True" Text="Ghi nhớ" x:Name="swRememer" CheckedColor="Green" FontSize="16"></sfbutton:SfCheckBox>
 
             </StackLayout>
             <StackLayout Grid.Row="6" VerticalOptions="Fill" Padding="10,5,10,5">
@@ -75,8 +76,8 @@
             </StackLayout>
 
             <StackLayout Grid.Row="8" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-                <Label Text="Hoa Tho Smart Apps" HorizontalTextAlignment="Center" FontAttributes="Italic,Bold" />
-                <Label Text="@2020 HOA THO CORP" HorizontalTextAlignment="Center"/>
+                <Label Text="Hoa Tho Smart Apps" HorizontalTextAlignment="Center" FontAttributes="Italic,Bold" TextColor="{StaticResource Primary}"/>
+                <Label Text="@2020 HOA THO CORP" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}"/>
 
             </StackLayout>
 
