@@ -23,6 +23,11 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+            <Image Source="refresh.png" Aspect="AspectFit" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="btnRefresh" Tapped="btnRefresh_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
         </StackLayout>
     </Shell.TitleView>    
     <ContentPage.Content>

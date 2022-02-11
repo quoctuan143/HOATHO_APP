@@ -137,7 +137,7 @@ namespace APP_HOATHO.Views
             CrossFirebasePushNotification.Current.OnNotificationReceived += Current_OnNotificationReceived;
             CrossFirebasePushNotification.Current.OnNotificationOpened += Current_OnNotificationOpened;
         }
-
+        
         private async void Current_OnNotificationOpened(object source, FirebasePushNotificationResponseEventArgs p)
         {
             await Device.InvokeOnMainThreadAsync(async () =>
@@ -228,234 +228,242 @@ namespace APP_HOATHO.Views
         async Task Load()
         {
             //load danh sách duyêt đặt mua 
-
-            await Device.InvokeOnMainThreadAsync(async () =>
+            try
             {
-                try
+                await Device.InvokeOnMainThreadAsync(async () =>
                 {
-
-                    await DependencyService.Get<IProcessLoader>().Show("Đang tải vui lòng đợi");
-                    await Task.Delay(1000);
-
-                    //Action LoadDuyeDonHang = async() =>
-                    // {
-                    System.Diagnostics.Debug.WriteLine("đang chay task LoadDuyeDonHang");
-                    string url = $"api/DuyetChungTu/getDonDatMua?username={Preferences.Get(Config.User, "")}";
-                    using (HttpClient client = new HttpClient())
+                    try
                     {
-                        client.BaseAddress = new Uri(Config.URL);
-                        HttpResponseMessage respon = await client.GetAsync(url);
-                        if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+
+                        //await DependencyService.Get<IProcessLoader>().Show("Đang tải vui lòng đợi");
+                        // await Task.Delay(1000);
+
+                        //Action LoadDuyeDonHang = async() =>
+                        // {
+                        System.Diagnostics.Debug.WriteLine("đang chay task LoadDuyeDonHang");
+                        string url = $"api/DuyetChungTu/getDonDatMua?username={Preferences.Get(Config.User, "")}";
+                        using (HttpClient client = new HttpClient())
                         {
-                            string _json = await respon.Content.ReadAsStringAsync();
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("[]") == false)
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
                             {
-                                Int32 from = _json.IndexOf("[");
-                                Int32 to = _json.IndexOf("]");
-                                string result = _json.Substring(from, to - from + 1);
-                                NofiDuyetDatMua = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
-                                Device.BeginInvokeOnMainThread(() =>
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
                                 {
-                                    OnPropertyChanged(nameof(NofiDuyetDatMua));
-                                });
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiDuyetDatMua = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiDuyetDatMua));
+                                    });
+                                }
                             }
                         }
-                    }
-                    // };
-                    //Task task1 = new Task(LoadDuyeDonHang);
-                    //task1.Start();
+                        // };
+                        //Task task1 = new Task(LoadDuyeDonHang);
+                        //task1.Start();
 
-                    //duyệt LCP FOB
-                    //Action LoadLCP_FOB = async () =>
-                    //{
-                    System.Diagnostics.Debug.WriteLine("đang chay task LoadLCP_FOB");
-                    url = $"api/DuyetChungTu/getLenhCapPhat?username={Preferences.Get(Config.User, "")}";
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri(Config.URL);
-                        HttpResponseMessage respon = await client.GetAsync(url);
-                        if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                        //duyệt LCP FOB
+                        //Action LoadLCP_FOB = async () =>
+                        //{
+                        System.Diagnostics.Debug.WriteLine("đang chay task LoadLCP_FOB");
+                        url = $"api/DuyetChungTu/getLenhCapPhat?username={Preferences.Get(Config.User, "")}";
+                        using (HttpClient client = new HttpClient())
                         {
-                            string _json = await respon.Content.ReadAsStringAsync();
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("[]") == false)
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
                             {
-                                Int32 from = _json.IndexOf("[");
-                                Int32 to = _json.IndexOf("]");
-                                string result = _json.Substring(from, to - from + 1);
-                                NofiLCP_FOB = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
-
-                                Device.BeginInvokeOnMainThread(() =>
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
                                 {
-                                    OnPropertyChanged(nameof(NofiLCP_FOB));
-                                });
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiLCP_FOB = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiLCP_FOB));
+                                    });
+                                }
                             }
                         }
-                    }
-                    //};
-                    //Task task2 = new Task(LoadLCP_FOB);
-                    //task2.Start();               
-                    //duyệt LCP GC
-                    //Action LoadLCP_GC = async () =>
-                    //{
-                    System.Diagnostics.Debug.WriteLine("đang chay task LoadLCP_GC");
-                    url = $"api/DuyetChungTu/getLenhCapPhat_GC?username={Preferences.Get(Config.User, "")}";
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri(Config.URL);
-                        HttpResponseMessage respon = await client.GetAsync(url);
-                        if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                        //};
+                        //Task task2 = new Task(LoadLCP_FOB);
+                        //task2.Start();               
+                        //duyệt LCP GC
+                        //Action LoadLCP_GC = async () =>
+                        //{
+                        System.Diagnostics.Debug.WriteLine("đang chay task LoadLCP_GC");
+                        url = $"api/DuyetChungTu/getLenhCapPhat_GC?username={Preferences.Get(Config.User, "")}";
+                        using (HttpClient client = new HttpClient())
                         {
-                            string _json = await respon.Content.ReadAsStringAsync();
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("[]") == false)
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
                             {
-                                Int32 from = _json.IndexOf("[");
-                                Int32 to = _json.IndexOf("]");
-                                string result = _json.Substring(from, to - from + 1);
-                                NofiLCP_GC = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
-
-                                Device.BeginInvokeOnMainThread(() =>
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
                                 {
-                                    OnPropertyChanged(nameof(NofiLCP_GC));
-                                });
-                            }
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiLCP_GC = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
 
-                        }
-                    }
-                    //};
-                    //Task task3 = new Task(LoadLCP_GC);
-                    //task3.Start();              
-                    //duyệt đặt mua phu tùng
-                    //Action LoadDatMuaPhuTung = async () =>
-                    //{
-                    System.Diagnostics.Debug.WriteLine("đang chay task đặt mua phụ tùng");
-                    url = $"api/DuyetChungTu/getDatMuaPhuTung?username={Preferences.Get(Config.User, "")}";
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri(Config.URL);
-                        HttpResponseMessage respon = await client.GetAsync(url);
-                        if (respon.StatusCode == System.Net.HttpStatusCode.OK)
-                        {
-                            string _json = await respon.Content.ReadAsStringAsync();
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("[]") == false)
-                            {
-                                Int32 from = _json.IndexOf("[");
-                                Int32 to = _json.IndexOf("]");
-                                string result = _json.Substring(from, to - from + 1);
-                                NofiDuyetDatMuaPhuTung = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiLCP_GC));
+                                    });
+                                }
 
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));
-                                });
                             }
                         }
-                    }
-
-                    System.Diagnostics.Debug.WriteLine("đang chay task đề nghi thanh toán");
-                    url = $"api/DuyetChungTu/getDeNghiThanhToan?username={Preferences.Get(Config.User, "")}";
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri(Config.URL);
-                        HttpResponseMessage respon = await client.GetAsync(url);
-                        if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                        //};
+                        //Task task3 = new Task(LoadLCP_GC);
+                        //task3.Start();              
+                        //duyệt đặt mua phu tùng
+                        //Action LoadDatMuaPhuTung = async () =>
+                        //{
+                        System.Diagnostics.Debug.WriteLine("đang chay task đặt mua phụ tùng");
+                        url = $"api/DuyetChungTu/getDatMuaPhuTung?username={Preferences.Get(Config.User, "")}";
+                        using (HttpClient client = new HttpClient())
                         {
-                            string _json = await respon.Content.ReadAsStringAsync();
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("[]") == false)
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
                             {
-                                Int32 from = _json.IndexOf("[");
-                                Int32 to = _json.IndexOf("]");
-                                string result = _json.Substring(from, to - from + 1);
-                                NofiDeNghiTT = JsonConvert.DeserializeObject<ObservableCollection<DeNghiThanhToanHeader_Model>>(result).Count;
-
-                                Device.BeginInvokeOnMainThread(() =>
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
                                 {
-                                    OnPropertyChanged(nameof(NofiDeNghiTT));
-                                });
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiDuyetDatMuaPhuTung = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));
+                                    });
+                                }
                             }
                         }
-                    }
-                    //};
-                    //Task task4 = new Task(LoadDatMuaPhuTung);
-                    //task4.Start();                
-                    // load danh sách bao trì trong tháng hiện tại
-                    //Action LoadKeHoachBaoTri = async() =>
-                    //{
-                    System.Diagnostics.Debug.WriteLine("đang chay task  lấy lịch xich bao trì");
 
-                    url = "api/qltb/getKeHoachBaoTri?manhamay=" + Preferences.Get(Config.NhaMay, "") + "&nam=" + DateTime.Now.Year.ToString();
-
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri(Config.URL);
-                        HttpResponseMessage respon = await client.GetAsync(url);
-                        if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                        System.Diagnostics.Debug.WriteLine("đang chay task đề nghi thanh toán");
+                        url = $"api/DuyetChungTu/getDeNghiThanhToan?username={Preferences.Get(Config.User, "")}";
+                        using (HttpClient client = new HttpClient())
                         {
-                            string _json = await respon.Content.ReadAsStringAsync();
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("[]") == false)
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
                             {
-                                Int32 from = _json.IndexOf("[");
-                                Int32 to = _json.IndexOf("]");
-                                string result = _json.Substring(from, to - from + 1);
-                                NofiLichXich = JsonConvert.DeserializeObject<ObservableCollection<Models.KeHoachBaoTri>>(result).Where(p => p.Thang == DateTime.Now.Month && p.Da_Bao_Tri == false).ToList().Count;
-
-                                Device.BeginInvokeOnMainThread(() =>
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
                                 {
-                                    OnPropertyChanged(nameof(NofiLichXich));
-                                });
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiDeNghiTT = JsonConvert.DeserializeObject<ObservableCollection<DeNghiThanhToanHeader_Model>>(result).Count;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiDeNghiTT));
+                                    });
+                                }
                             }
                         }
-                    }
+                        //};
+                        //Task task4 = new Task(LoadDatMuaPhuTung);
+                        //task4.Start();                
+                        // load danh sách bao trì trong tháng hiện tại
+                        //Action LoadKeHoachBaoTri = async() =>
+                        //{
+                        System.Diagnostics.Debug.WriteLine("đang chay task  lấy lịch xich bao trì");
 
-                    //};
-                    //Task task5 = new Task(LoadKeHoachBaoTri);
-                    //task5.Start();
+                        url = "api/qltb/getKeHoachBaoTri?manhamay=" + Preferences.Get(Config.NhaMay, "") + "&nam=" + DateTime.Now.Year.ToString();
 
-                    // load danh sách bao trì trong tháng hiện tại
-                    //Action LoadDanhsachthietbi =async () =>
-                    //{
-                    System.Diagnostics.Debug.WriteLine("đang chay task đặt lấy danh  mục thiết bi");
-                    url = "api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay, "");
-
-                    using (HttpClient client = new HttpClient())
-                    {
-                        client.BaseAddress = new Uri(Config.URL);
-                        HttpResponseMessage respon = await client.GetAsync(url);
-                        if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                        using (HttpClient client = new HttpClient())
                         {
-                            string _json = await respon.Content.ReadAsStringAsync();
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("[]") == false)
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
                             {
-                                Int32 from = _json.IndexOf("[");
-                                Int32 to = _json.IndexOf("]");
-                                string result = _json.Substring(from, to - from + 1);
-                                NofiDanhMucThietBi = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(result).Count;
-
-                                Device.BeginInvokeOnMainThread(() =>
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
                                 {
-                                    OnPropertyChanged(nameof(NofiDanhMucThietBi));
-                                });
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiLichXich = JsonConvert.DeserializeObject<ObservableCollection<Models.KeHoachBaoTri>>(result).Where(p => p.Thang == DateTime.Now.Month && p.Da_Bao_Tri == false).ToList().Count;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiLichXich));
+                                    });
+                                }
                             }
                         }
+
+                        //};
+                        //Task task5 = new Task(LoadKeHoachBaoTri);
+                        //task5.Start();
+
+                        // load danh sách bao trì trong tháng hiện tại
+                        //Action LoadDanhsachthietbi =async () =>
+                        //{
+                        System.Diagnostics.Debug.WriteLine("đang chay task đặt lấy danh  mục thiết bi");
+                        url = "api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay, "");
+
+                        using (HttpClient client = new HttpClient())
+                        {
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                            {
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
+                                {
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiDanhMucThietBi = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(result).Count;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiDanhMucThietBi));
+                                    });
+                                }
+                            }
+                        }
+
+                        //await DependencyService.Get<IProcessLoader>().Hide();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //await DependencyService.Get<IProcessLoader>().Hide();
+                        // await new MessageBox(ex.Message).Show();
                     }
 
-                    await DependencyService.Get<IProcessLoader>().Hide();
+                }).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
 
-
-                }
-                catch (Exception ex)
-                {
-                    await DependencyService.Get<IProcessLoader>().Hide();
-                    await new MessageBox(ex.Message).Show();
-                }
-
-            }).ConfigureAwait(false);
+                
+            }
+            
 
 
 
@@ -546,5 +554,10 @@ namespace APP_HOATHO.Views
             }
         }
         #endregion
+
+        private void btnRefresh_Tapped(object sender, EventArgs e)
+        {
+            Task.Factory.StartNew(() => Load().Wait());
+        }
     }
 }

@@ -35,6 +35,8 @@ namespace APP_HOATHO.ViewModels
         #region "Method"
         private void OnLogoutClicked(object obj)
         {
+            Preferences.Set(Config.User, "1111");
+            Preferences.Set(Config.Password, "1111");
             App.Current.MainPage = new Login();
         }
         private async void OnChangePassClicked(object obj)
