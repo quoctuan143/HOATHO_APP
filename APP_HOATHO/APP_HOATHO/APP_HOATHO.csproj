@@ -30,6 +30,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="18.2.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.2.0.55" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugin.LatestVersion" Version="2.1.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xam.Plugin.PushNotification" Version="1.2.4">
       <PrivateAssets>all</PrivateAssets>
@@ -46,6 +47,9 @@
   <ItemGroup>
     <Compile Update="Dialog\ShowImage.xaml.cs">
       <DependentUpon>ShowImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\KiDienTu\DuyetKiDienTuPhuTungLine.xaml.cs">
+      <DependentUpon>DuyetKiDienTuPhuTungLine.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\DuyetChungTu\MoLaiChungTuDatMua_Line.xaml.cs">
       <DependentUpon>MoLaiChungTuDatMua_Line.xaml</DependentUpon>
@@ -99,6 +103,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\KeHoachBaoTri.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\KiDienTu\DuyetKiDienTuPhuTung_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LichSuBaoTri.xaml">

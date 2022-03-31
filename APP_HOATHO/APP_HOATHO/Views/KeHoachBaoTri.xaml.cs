@@ -24,7 +24,7 @@ namespace APP_HOATHO.Views
         {
             InitializeComponent();
             listThietBi.ItemsSourceChanged += ListThietBi_ItemsSourceChanged; ;
-                    entryNam.Text = DateTime.Now.Year.ToString();
+            entryNam.Text = DateTime.Now.Year.ToString();
             BindingContext = viewModel = new KeHoachBaoTriViewModel();
             
         }

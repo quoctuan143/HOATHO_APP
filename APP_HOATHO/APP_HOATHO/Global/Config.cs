@@ -51,6 +51,7 @@ namespace APP_HOATHO.Global
         DuyetDatMuaPhuTung = 4,
         MoLaiDatMua =5,
         MoLaiLCP_FOB =6,
-        MoLaiLCP_GC = 7        
+        MoLaiLCP_GC = 7    ,
+        KiDienTuPhuTung = 8
     }
 }

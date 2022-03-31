@@ -22,15 +22,7 @@ namespace APP_HOATHO.Views.DuyetChungTu
             viewModel.navigation = Navigation;
             BindingContext = viewModel;
         }
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    if (viewModel.ListItem.Count == 0)
-        //    {
-        //        IsBusy = false;
-        //        viewModel.LoadCommand.Execute(null);
-        //    }    
-        //}
+        
         private void listChiTiet_SelectionChanged(object sender, Syncfusion.SfDataGrid.XForms.GridSelectionChangedEventArgs e)
         {
             DuyetChungTuModel _selectItem = listChiTiet.SelectedItem as DuyetChungTuModel;

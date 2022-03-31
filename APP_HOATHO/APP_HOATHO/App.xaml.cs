@@ -9,6 +9,8 @@ using Plugin.LocalNotification;
 using APP_HOATHO.Dialog;
 using APP_HOATHO.Views.DuyetChungTu;
 using APP_HOATHO.Models.DuyetChungTu;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace APP_HOATHO
 {
@@ -30,7 +32,7 @@ namespace APP_HOATHO
                 System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
             };
         }
-
+       
         protected override void OnStart()
         {
             IsInForeground = true;

@@ -1,8 +1,11 @@
 ﻿using APP_HOATHO.Models;
 using APP_HOATHO.Views;
+using Newtonsoft.Json;
 using Plugin.Connectivity;
+using Plugin.LatestVersion;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,50 +48,69 @@ namespace APP_HOATHO.Global
             base.OnAppearing();           
             if (!CrossConnectivity.Current.IsConnected)
             {
-                await ShowMessage("Thông Báo", "Vui Lòng kiểm tra lại kết nối mạng", "OK", () =>
+                await ShowMessage("Thông Báo", "Vui Lòng kiểm tra lại kết nối mạng", "OK", "Cancel", () =>
                 { App.Current.MainPage = new Login(); });
             }
                 await image.ScaleTo(1, 3000);//thời gian khởi tạo
-                //await image.ScaleTo(0.9, 1500, Easing.Linear);
-               // await image.ScaleTo(150, 500, Easing.Linear);
-           
+                                             //await image.ScaleTo(0.9, 1500, Easing.Linear);
+                                             // await image.ScaleTo(150, 500, Easing.Linear);
+
             //kiêm tra xem user có thay đổi k
             try
             {
+                var isLatest = await CrossLatestVersion.Current.IsUsingLatestVersion();
 
-
-                var _json = Config.client.GetStringAsync(Config.URL  + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
-                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                if (!isLatest)
                 {
-                    App.Current.MainPage = new AppShell();
+                    var update = await DisplayAlert("New Version", "Có phiên bản mới trên app store. Bạn có muốn cập nhật không", "Yes", "No");
+
+                    if (update)
+                    {
+                        await CrossLatestVersion.Current.OpenAppInStore();
+                    }
+                    else
+                    {
+                        var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
+                        _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                        if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                        {
+                            App.Current.MainPage = new AppShell();
+                        }
+                        else
+                        {
+                            App.Current.MainPage = new Login();
+                        }
+                    }
                 }
                 else
                 {
-                    App.Current.MainPage = new Login();
-                }
-               
-                   
-
+                    var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
+                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                    if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                    {
+                        App.Current.MainPage = new AppShell();
+                    }
+                    else
+                    {
+                        App.Current.MainPage = new Login();
+                    }
+                }    
             }
             catch (Exception ex)
             {
 
-                await ShowMessage("Thông Báo", ex.Message, "OK", () =>
-                { App.Current.MainPage = new Login(); });
+                await ShowMessage("Thông Báo", ex.Message, "OK", "Cancel", () =>
+                 { App.Current.MainPage = new Login(); });
             }
+          
+        }        
 
-
-        }
-
-        
-
-        public async Task ShowMessage(string title, string message, string buttonText, Action afterHideCallback)
+        public async Task ShowMessage(string title, string message, string buttonText,string cancel, Action afterHideCallback)
         {
             await DisplayAlert(
                 title,
                 message,
-                buttonText);
+                buttonText,cancel );
 
             afterHideCallback?.Invoke();
         }

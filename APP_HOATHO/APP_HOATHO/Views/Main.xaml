@@ -122,7 +122,7 @@
                         >
                         <StackLayout Padding="5">
                             <Label Text="Thiết bị công nghệ" TextDecorations="Underline" TextColor="{StaticResource Primary }" FontSize="20" FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*" Margin="0,5,0,0"  RowSpacing="0" 
+                            <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*" Margin="0,5,0,0"  RowSpacing="0" 
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <StackLayout  Grid.Column="0" HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDanhMucThietBi}">
 
@@ -164,8 +164,7 @@
                                         <TapGestureRecognizer x:Name="btnLichXich" Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-
-                               
+                              
                                 <StackLayout Grid.Column="2"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDuyetDatPhuTung}">
 
                                     <badge:SfBadgeView  BadgeText="{Binding NofiDuyetDatMuaPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
@@ -183,6 +182,25 @@
                                     <Label Text="Duyệt phụ tùng"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="btnLichSuThietBi" Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <StackLayout Grid.Column="3"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuPhuTung}">
+
+                                    <badge:SfBadgeView  BadgeText="{Binding NofiKidienTuPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <badge:SfBadgeView.Content>
+                                            <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"></Image>
+                                        </badge:SfBadgeView.Content>
+                                        <badge:SfBadgeView.BadgeSettings>
+                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
+                                                                
+                                                               FontSize="15" FontAttributes="Bold" />
+
+                                        </badge:SfBadgeView.BadgeSettings>
+
+                                    </badge:SfBadgeView>
+                                    <Label Text="Kí điện tử PT"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="btnKiDienTuXuatPT" Tapped="btnKiDienTuXuatPT_Tapped"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Grid>
