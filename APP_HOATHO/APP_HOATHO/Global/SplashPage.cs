@@ -58,15 +58,30 @@ namespace APP_HOATHO.Global
             //kiêm tra xem user có thay đổi k
             try
             {
-                var isLatest = await CrossLatestVersion.Current.IsUsingLatestVersion();
-
-                if (!isLatest)
+                if (Device.RuntimePlatform == Device.Android )
                 {
-                    var update = await DisplayAlert("New Version", "Có phiên bản mới trên app store. Bạn có muốn cập nhật không", "Yes", "No");
-
-                    if (update)
+                    var isLatest = await CrossLatestVersion.Current.IsUsingLatestVersion();
+                    if (!isLatest)
                     {
-                        await CrossLatestVersion.Current.OpenAppInStore();
+                        var update = await DisplayAlert("New Version", "Có phiên bản mới trên app store. Bạn có muốn cập nhật không", "Yes", "No");
+
+                        if (update)
+                        {
+                            await CrossLatestVersion.Current.OpenAppInStore();
+                        }
+                        else
+                        {
+                            var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
+                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                            if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                            {
+                                App.Current.MainPage = new AppShell();
+                            }
+                            else
+                            {
+                                App.Current.MainPage = new Login();
+                            }
+                        }
                     }
                     else
                     {
@@ -81,7 +96,7 @@ namespace APP_HOATHO.Global
                             App.Current.MainPage = new Login();
                         }
                     }
-                }
+                } 
                 else
                 {
                     var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
@@ -95,6 +110,7 @@ namespace APP_HOATHO.Global
                         App.Current.MainPage = new Login();
                     }
                 }    
+                
             }
             catch (Exception ex)
             {
@@ -103,8 +119,8 @@ namespace APP_HOATHO.Global
                  { App.Current.MainPage = new Login(); });
             }
           
-        }        
-
+        }
+        
         public async Task ShowMessage(string title, string message, string buttonText,string cancel, Action afterHideCallback)
         {
             await DisplayAlert(

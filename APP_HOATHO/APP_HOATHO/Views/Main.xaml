@@ -125,83 +125,95 @@
                             <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*" Margin="0,5,0,0"  RowSpacing="0" 
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <StackLayout  Grid.Column="0" HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDanhMucThietBi}">
-
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiDanhMucThietBi}" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <badge:SfBadgeView.Content>
-                                            <Image Source="machine.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"></Image>
-                                        </badge:SfBadgeView.Content>
-                                        <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
+                                    <Grid RowDefinitions="*,*">
+                                        <badge:SfBadgeView Grid.Row="0"  BadgeText="{Binding NofiDanhMucThietBi}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <badge:SfBadgeView.Content>
+                                                <Image Source="machine.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="btndanhsachthietbi" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </badge:SfBadgeView.Content>
+                                            <badge:SfBadgeView.BadgeSettings>
+                                                <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
                                                                 
                                                                FontSize="15" FontAttributes="Bold" />
 
-                                        </badge:SfBadgeView.BadgeSettings>
+                                            </badge:SfBadgeView.BadgeSettings>
 
-                                    </badge:SfBadgeView>
-                                    <Label Text="Danh mục thiết bị" FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="btndanhsachthietbi" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
+                                        </badge:SfBadgeView>
+                                        <Label Text="Danh mục thiết bị" Grid.Row="1" FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    </Grid>                                  
+                                   
                                 </StackLayout>
                                 <StackLayout  Grid.Column="1" HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsLichXichBaoTri}">
-
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiLichXich}" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <badge:SfBadgeView.Content>
-                                            <Image Source="lichxich.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"></Image>
-                                        </badge:SfBadgeView.Content>
-                                        <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
+                                    <Grid RowDefinitions="*,*">
+                                        <badge:SfBadgeView Grid.Row="0" BadgeText="{Binding NofiLichXich}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <badge:SfBadgeView.Content>
+                                                <Image Source="lichxich.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="btnLichXich" Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </badge:SfBadgeView.Content>
+                                            <badge:SfBadgeView.BadgeSettings>
+                                                <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
                                                                 
                                                                FontSize="15" FontAttributes="Bold" />
 
-                                        </badge:SfBadgeView.BadgeSettings>
+                                            </badge:SfBadgeView.BadgeSettings>
 
-                                    </badge:SfBadgeView>
+                                        </badge:SfBadgeView>
+                                        <Label Grid.Row="1" Text="Lịch xích bảo trì" FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
 
-
-                                    <Label Text="Lịch xích bảo trì" FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="btnLichXich" Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
+                                    </Grid>                                       
                                 </StackLayout>
                               
                                 <StackLayout Grid.Column="2"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDuyetDatPhuTung}">
-
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiDuyetDatMuaPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <badge:SfBadgeView.Content>
-                                            <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"></Image>
-                                        </badge:SfBadgeView.Content>
-                                        <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
+                                    <Grid RowDefinitions="*,*">
+                                        <badge:SfBadgeView Grid.Row="0" BadgeText="{Binding NofiDuyetDatMuaPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <badge:SfBadgeView.Content>
+                                                <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="btnLichSuThietBi" Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </badge:SfBadgeView.Content>
+                                            <badge:SfBadgeView.BadgeSettings>
+                                                <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
                                                                 
                                                                FontSize="15" FontAttributes="Bold" />
 
-                                        </badge:SfBadgeView.BadgeSettings>
+                                            </badge:SfBadgeView.BadgeSettings>
 
-                                    </badge:SfBadgeView>
-                                    <Label Text="Duyệt phụ tùng"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="btnLichSuThietBi" Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
+                                        </badge:SfBadgeView>
+                                        <Label Grid.Row="1" Text="Duyệt phụ tùng"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+
+                                    </Grid>
+                                        
                                 </StackLayout>
                                 <StackLayout Grid.Column="3"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuPhuTung}">
-
-                                    <badge:SfBadgeView  BadgeText="{Binding NofiKidienTuPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <badge:SfBadgeView.Content>
-                                            <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60"></Image>
-                                        </badge:SfBadgeView.Content>
-                                        <badge:SfBadgeView.BadgeSettings>
-                                            <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
+                                    <Grid RowDefinitions="*,*">
+                                        <badge:SfBadgeView  Grid.Row="0" BadgeText="{Binding NofiKidienTuPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <badge:SfBadgeView.Content>
+                                                <Image Source="duyetdonhang.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="btnKiDienTuXuatPT" Tapped="btnKiDienTuXuatPT_Tapped"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </badge:SfBadgeView.Content>
+                                            <badge:SfBadgeView.BadgeSettings>
+                                                <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
                                                                 
                                                                FontSize="15" FontAttributes="Bold" />
 
-                                        </badge:SfBadgeView.BadgeSettings>
+                                            </badge:SfBadgeView.BadgeSettings>
 
-                                    </badge:SfBadgeView>
-                                    <Label Text="Kí điện tử PT"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="btnKiDienTuXuatPT" Tapped="btnKiDienTuXuatPT_Tapped"></TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
+                                        </badge:SfBadgeView>
+                                        <Label Text="Kí điện&#10;tử PT" Grid.Row="1"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    </Grid>
+                                        
+                                   
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
