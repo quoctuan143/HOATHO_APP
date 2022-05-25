@@ -388,6 +388,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\refresh.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\duyethietbi.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarAPP_HOATHOiOSHideInfoBar="True" />

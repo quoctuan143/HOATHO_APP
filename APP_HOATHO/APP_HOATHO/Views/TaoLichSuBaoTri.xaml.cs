@@ -64,14 +64,7 @@ namespace APP_HOATHO.Views
         {
             try
             {
-                //List<int> obj = cbNoiDung.SelectedIndices as List<int>; ;
-
-               
-                //if (obj == null && entryNoiDungKhac.Text == null)
-                //{
-                //    await new MessageBox("Thông báo", "Bạn nhập nội dung sửa chữa").Show();
-                //    return;
-                //}
+                
                 if (string.IsNullOrEmpty(entryTinhTrang.Text))
                    
                 {
@@ -196,7 +189,7 @@ namespace APP_HOATHO.Views
 
         async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
 
         private async  void TapGestureRecognizer_Tapped(object sender, EventArgs e)

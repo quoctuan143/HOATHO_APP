@@ -115,14 +115,14 @@
                     <Frame    Padding="2"  
                         BorderColor="#06264c"
                         CornerRadius="10"    
-                        BackgroundColor="Transparent"                        
-                        HeightRequest="180"
+                        BackgroundColor="Transparent"
+                        VerticalOptions="FillAndExpand"  
                               HasShadow="False"
                                IsVisible="{Binding IsMainThietBi}"
                         >
                         <StackLayout Padding="5">
                             <Label Text="Thiết bị công nghệ" TextDecorations="Underline" TextColor="{StaticResource Primary }" FontSize="20" FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*" Margin="0,5,0,0"  RowSpacing="0" 
+                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*" RowDefinitions="auto,auto"   RowSpacing="0" 
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <StackLayout  Grid.Column="0" HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDanhMucThietBi}">
                                     <Grid RowDefinitions="*,*">
@@ -192,7 +192,7 @@
                                     </Grid>
                                         
                                 </StackLayout>
-                                <StackLayout Grid.Column="3"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuPhuTung}">
+                                <StackLayout Grid.Column="0" Grid.Row="1"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuPhuTung}">
                                     <Grid RowDefinitions="*,*">
                                         <badge:SfBadgeView  Grid.Row="0" BadgeText="{Binding NofiKidienTuPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
                                             <badge:SfBadgeView.Content>
@@ -211,9 +211,28 @@
 
                                         </badge:SfBadgeView>
                                         <Label Text="Kí điện&#10;tử PT" Grid.Row="1"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                    </Grid>  
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Grid.Row="1"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuThietBi}">
+                                    <Grid RowDefinitions="*,*">
+                                        <badge:SfBadgeView  Grid.Row="0" BadgeText="{Binding NofiKidienTuThietBi}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <badge:SfBadgeView.Content>
+                                                <Image Source="duyethietbi.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="btnKiDienTuXuatThietBi" Tapped="btnKiDienTuXuatThietBi_Tapped"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </badge:SfBadgeView.Content>
+                                            <badge:SfBadgeView.BadgeSettings>
+                                                <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
+                                                                
+                                                               FontSize="15" FontAttributes="Bold" />
+
+                                            </badge:SfBadgeView.BadgeSettings>
+
+                                        </badge:SfBadgeView>
+                                        <Label Text="Kí điện&#10;tử Thiết Bị" Grid.Row="1"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     </Grid>
-                                        
-                                   
                                 </StackLayout>
                             </Grid>
                         </StackLayout>

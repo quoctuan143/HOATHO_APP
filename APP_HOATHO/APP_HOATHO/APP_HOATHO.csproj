@@ -48,6 +48,9 @@
     <Compile Update="Dialog\ShowImage.xaml.cs">
       <DependentUpon>ShowImage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\KiDienTu\DuyetKiDienTuThietBiLine.xaml.cs">
+      <DependentUpon>DuyetKiDienTuThietBiLine.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\KiDienTu\DuyetKiDienTuPhuTungLine.xaml.cs">
       <DependentUpon>DuyetKiDienTuPhuTungLine.xaml</DependentUpon>
     </Compile>
@@ -65,6 +68,9 @@
     </Compile>
     <Compile Update="Views\DuyetChungTu\DuyetChungTuDatMua_Header.xaml.cs">
       <DependentUpon>DuyetChungTuDatMua_Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\KiDienTu\DuyetKiDienTuThietBi_Page.xaml.cs">
+      <DependentUpon>DuyetKiDienTuThietBi_Page.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\TaoLichSuBaoTri.xaml.cs">
       <DependentUpon>TaoLichSuBaoTri.xaml</DependentUpon>

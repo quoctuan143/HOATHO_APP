@@ -58,8 +58,6 @@ namespace APP_HOATHO.Global
             //kiêm tra xem user có thay đổi k
             try
             {
-                if (Device.RuntimePlatform == Device.Android )
-                {
                     var isLatest = await CrossLatestVersion.Current.IsUsingLatestVersion();
                     if (!isLatest)
                     {
@@ -68,7 +66,9 @@ namespace APP_HOATHO.Global
                         if (update)
                         {
                             await CrossLatestVersion.Current.OpenAppInStore();
-                        }
+                           System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+
+                    }
                         else
                         {
                             var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
@@ -95,21 +95,7 @@ namespace APP_HOATHO.Global
                         {
                             App.Current.MainPage = new Login();
                         }
-                    }
-                } 
-                else
-                {
-                    var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
-                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                    if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
-                    {
-                        App.Current.MainPage = new AppShell();
-                    }
-                    else
-                    {
-                        App.Current.MainPage = new Login();
-                    }
-                }    
+                    }                  
                 
             }
             catch (Exception ex)

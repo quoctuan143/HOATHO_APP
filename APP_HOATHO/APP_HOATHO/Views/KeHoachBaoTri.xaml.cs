@@ -222,9 +222,7 @@ namespace APP_HOATHO.Views
                         {
 
                             entryMaTB.Text = "";
-                        }
-                        
-                        
+                        }        
                     });
 
                 };

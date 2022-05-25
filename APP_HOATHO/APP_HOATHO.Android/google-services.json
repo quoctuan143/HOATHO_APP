@@ -30,6 +30,51 @@
             {
               "client_id": "208691724931-oagg9ptgmomeeogma81ek0rj45cn7o2o.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "208691724931-5l13ort0u0bg22peoaa9jhpvg66u9jdn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hoatho.hoathocorp",
+                "app_store_id": "1601152381"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208691724931:android:f76a45fe3c9a4fa5c011b6",
+        "android_client_info": {
+          "package_name": "com.companyname.app_hoathocorp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208691724931-oagg9ptgmomeeogma81ek0rj45cn7o2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkvXKUT4kRGd0aV4VqRDzyIKO8SmqGvU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208691724931-oagg9ptgmomeeogma81ek0rj45cn7o2o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "208691724931-5l13ort0u0bg22peoaa9jhpvg66u9jdn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hoatho.hoathocorp",
+                "app_store_id": "1601152381"
+              }
             }
           ]
         }

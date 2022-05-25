@@ -37,11 +37,13 @@ namespace APP_HOATHO.Views
         public bool IsMainThietBi { get; set; }
         public bool IsMainDonHang { get; set; }
         public bool IsKiDienTuPhuTung { get; set; }
+        public bool IsKiDienTuThietBi { get; set; }
         public int NofiLCP_FOB { get; set; }
         public int NofiLCP_GC { get; set; }
         public int NofiDuyetDatMua { get; set; }
         public int NofiDuyetDatMuaPhuTung { get; set; }
-        public int NofiKidienTuPhuTung { get; set; } 
+        public int NofiKidienTuPhuTung { get; set; }
+        public int NofiKidienTuThietBi { get; set; }
         public int NofiLichXich { get; set; }
         public int NofiDanhMucThietBi { get; set; }
         public int NofiDeNghiTT { get; set; }
@@ -72,6 +74,7 @@ namespace APP_HOATHO.Views
                 IsMainThietBi = true;
                 IsMainDonHang = true;
                 IsKiDienTuPhuTung = true;
+                IsKiDienTuThietBi = true;
             }
             if (Preferences.Get(Config.Role, "") == "1")
             {
@@ -84,6 +87,7 @@ namespace APP_HOATHO.Views
                 IsMainThietBi = false;
                 IsMainDonHang = true;
                 IsKiDienTuPhuTung = false;
+                IsKiDienTuThietBi = false ;
             }
             if (Preferences.Get(Config.Role, "") == "2")
             {
@@ -96,6 +100,7 @@ namespace APP_HOATHO.Views
                 IsMainThietBi = true;
                 IsMainDonHang = false;
                 IsKiDienTuPhuTung = false;
+                IsKiDienTuThietBi = false  ;
             }    
             if (Preferences.Get(Config.Role, "") == "3")
                 {
@@ -108,18 +113,20 @@ namespace APP_HOATHO.Views
                     IsMainThietBi = true;
                     IsMainDonHang = false;
                     IsKiDienTuPhuTung = false;
+                    IsKiDienTuThietBi = false ;
             }
             if (Preferences.Get(Config.Role, "") == "4")
             {
                 IsDanhMucThietBi = false;
                 IsLichXichBaoTri = false;
-                IsDuyetDatPhuTung = false;
+                IsDuyetDatPhuTung = true;
                 isDuyetDonDatMua = false;
                 IsDuyetLCPFOB = false;
                 IsDuyetLCPGC = false;
                 IsMainThietBi = true;
                 IsMainDonHang = false;
                 IsKiDienTuPhuTung = true ;
+                IsKiDienTuThietBi = true;
             }
 
             //lắng nghe các trạng thái duyệt lcp fob, giacong dat mua
@@ -152,6 +159,11 @@ namespace APP_HOATHO.Views
             {
                 NofiKidienTuPhuTung --;
                 OnPropertyChanged(nameof(NofiKidienTuPhuTung));
+            });
+            MessagingCenter.Subscribe<DuyetKiDienTuThietBi_ViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
+            {
+                NofiKidienTuThietBi--;
+                OnPropertyChanged(nameof(NofiKidienTuThietBi));
             });
             //load dữ liệu lên
             System.Diagnostics.Debug.WriteLine("start load dữ liệu");
@@ -197,10 +209,16 @@ namespace APP_HOATHO.Views
                         {
                             loaiphieu = DocumentType.KiDienTuPhuTung;
                         }
+                        if (p.Data["loaiphieu"].ToString() == "kidientuthietbi")
+                        {
+                            loaiphieu = DocumentType.KiDienTuThietBi;
+                        }
                         if (loaiphieu == DocumentType.DuyetDatMuaPhuTung)
                             await Navigation.PushAsync(new DuyetChungTuPhuTung_Line(item, loaiphieu));
                         else if (loaiphieu == DocumentType.KiDienTuPhuTung)
                             await Navigation.PushAsync(new DuyetKiDienTuPhuTungLine(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
+                        else if (loaiphieu == DocumentType.KiDienTuThietBi)
+                            await Navigation.PushAsync(new DuyetKiDienTuThietBiLine(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
                         else
                             await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
                     }
@@ -246,10 +264,16 @@ namespace APP_HOATHO.Views
                         {
                             loaiphieu = DocumentType.KiDienTuPhuTung ;
                         }
+                        if (p.Data["loaiphieu"].ToString() == "kidientuthietbi")
+                        {
+                            loaiphieu = DocumentType.KiDienTuThietBi;
+                        }
                         if (loaiphieu == DocumentType.DuyetDatMuaPhuTung)
                             await Navigation.PushAsync(new DuyetChungTuPhuTung_Line(item, loaiphieu));
                         else if (loaiphieu == DocumentType.KiDienTuPhuTung)
                             await Navigation.PushAsync(new DuyetKiDienTuPhuTungLine(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel {  No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
+                        else if (loaiphieu == DocumentType.KiDienTuThietBi)
+                            await Navigation.PushAsync(new DuyetKiDienTuThietBiLine(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
                         else
                             await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
                     }
@@ -510,6 +534,33 @@ namespace APP_HOATHO.Views
                             }
                         }
 
+                        //await DependencyService.Get<IProcessLoader>().Hide();
+                        System.Diagnostics.Debug.WriteLine("đang chay task đặt lấy danh sách kí điện tử  thietbi");
+                        url = $"api/DuyetChungTu/getKiDienTuThietBi?nhamay={Preferences.Get(Config.NhaMay, "")}";
+
+                        using (HttpClient client = new HttpClient())
+                        {
+                            client.BaseAddress = new Uri(Config.URL);
+                            HttpResponseMessage respon = await client.GetAsync(url);
+                            if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                            {
+                                string _json = await respon.Content.ReadAsStringAsync();
+                                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                                if (_json.Contains("[]") == false)
+                                {
+                                    Int32 from = _json.IndexOf("[");
+                                    Int32 to = _json.IndexOf("]");
+                                    string result = _json.Substring(from, to - from + 1);
+                                    NofiKidienTuThietBi = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result).Count;
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        OnPropertyChanged(nameof(NofiKidienTuThietBi));
+                                    });
+                                }
+                            }
+                        }
+
                     }
                     catch (Exception ex)
                     {
@@ -624,6 +675,11 @@ namespace APP_HOATHO.Views
         private async void btnKiDienTuXuatPT_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DuyetKiDienTuPhuTung_Page(DocumentType.KiDienTuPhuTung));
+        }
+
+        private async void btnKiDienTuXuatThietBi_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DuyetKiDienTuThietBi_Page(DocumentType.KiDienTuThietBi));
         }
     }
 }
