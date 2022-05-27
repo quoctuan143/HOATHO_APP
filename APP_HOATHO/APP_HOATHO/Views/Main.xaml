@@ -167,31 +167,8 @@
                                         <Label Grid.Row="1" Text="Lịch xích bảo trì" FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
 
                                     </Grid>                                       
-                                </StackLayout>
-                              
-                                <StackLayout Grid.Column="2"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDuyetDatPhuTung}">
-                                    <Grid RowDefinitions="*,*">
-                                        <badge:SfBadgeView Grid.Row="0" BadgeText="{Binding NofiDuyetDatMuaPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
-                                            <badge:SfBadgeView.Content>
-                                                <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer x:Name="btnLichSuThietBi" Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                            </badge:SfBadgeView.Content>
-                                            <badge:SfBadgeView.BadgeSettings>
-                                                <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
-                                                                
-                                                               FontSize="15" FontAttributes="Bold" />
-
-                                            </badge:SfBadgeView.BadgeSettings>
-
-                                        </badge:SfBadgeView>
-                                        <Label Grid.Row="1" Text="Duyệt phụ tùng"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
-
-                                    </Grid>
-                                        
-                                </StackLayout>
+                                </StackLayout>                              
+                                
                                 <StackLayout Grid.Column="0" Grid.Row="1"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuPhuTung}">
                                     <Grid RowDefinitions="*,*">
                                         <badge:SfBadgeView  Grid.Row="0" BadgeText="{Binding NofiKidienTuPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
@@ -210,7 +187,7 @@
                                             </badge:SfBadgeView.BadgeSettings>
 
                                         </badge:SfBadgeView>
-                                        <Label Text="Kí điện&#10;tử PT" Grid.Row="1"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                        <Label Text="Kí điện tử &#10;Xuất PT" Grid.Row="1"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     </Grid>  
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Grid.Row="1"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuThietBi}">
@@ -231,8 +208,31 @@
                                             </badge:SfBadgeView.BadgeSettings>
 
                                         </badge:SfBadgeView>
-                                        <Label Text="Kí điện&#10;tử Thiết Bị" Grid.Row="1"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+                                        <Label Text="Kí điện tử&#10;Xuất TB" Grid.Row="1"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
                                     </Grid>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2" Grid.Row="1"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDuyetDatPhuTung}">
+                                    <Grid RowDefinitions="*,*">
+                                        <badge:SfBadgeView Grid.Row="0" BadgeText="{Binding NofiDuyetDatMuaPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <badge:SfBadgeView.Content>
+                                                <Image Source="duyetgiacong.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="btnLichSuThietBi" Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </badge:SfBadgeView.Content>
+                                            <badge:SfBadgeView.BadgeSettings>
+                                                <badge:BadgeSetting BadgeType="Error" Offset="-5,10" BadgeAnimation="Scale" BadgePosition="TopRight"
+                                                                
+                                                               FontSize="15" FontAttributes="Bold" />
+
+                                            </badge:SfBadgeView.BadgeSettings>
+
+                                        </badge:SfBadgeView>
+                                        <Label Grid.Row="1" Text="Duyệt Đặt &#10;Hàng PT"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+
+                                    </Grid>
+
                                 </StackLayout>
                             </Grid>
                         </StackLayout>
