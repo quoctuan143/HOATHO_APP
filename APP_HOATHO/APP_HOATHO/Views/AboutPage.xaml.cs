@@ -1,4 +1,6 @@
-﻿using APP_HOATHO.Interface;
+﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Global;
+using APP_HOATHO.Interface;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -25,11 +27,9 @@ namespace APP_HOATHO.Views
         }
         public async Task BackButtonPressed()
         {
-            var ok = await DisplayAlert("Thông báo", "Bạn có muốn thoát chương trình không?", "ok", "cancle");
-            if (ok)
-            {
+            var ok = await new MessageYesNo("Bạn có muốn thoát chương trình không?").Show();
+            if (ok == DialogReturn.OK)
                 System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
-            }
         }
     }
 }

@@ -75,6 +75,18 @@
     <Compile Update="Views\TaoLichSuBaoTri.xaml.cs">
       <DependentUpon>TaoLichSuBaoTri.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ThietBi\DuyetTraThietBiLine_Page.xaml.cs">
+      <DependentUpon>DuyetTraThietBiLine_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ThietBi\DuyetTraThietBi_Page.xaml.cs">
+      <DependentUpon>DuyetTraThietBi_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ThietBi\DuyetYeuCauThueThietBiPage_Line.xaml.cs">
+      <DependentUpon>DuyetYeuCauThueThietBiPage_Line.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ThietBi\DuyetYeuCauThueThietBiPage_Header.xaml.cs">
+      <DependentUpon>DuyetYeuCauThueThietBiPage_Header.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

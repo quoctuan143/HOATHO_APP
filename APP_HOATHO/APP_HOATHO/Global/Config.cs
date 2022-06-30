@@ -53,6 +53,8 @@ namespace APP_HOATHO.Global
         MoLaiLCP_FOB =6,
         MoLaiLCP_GC = 7    ,
         KiDienTuPhuTung = 8,
-        KiDienTuThietBi = 9
+        KiDienTuThietBi = 9,
+        DuyetYeuCauThueThietBi = 10,
+        DuyetTraThietBi = 11
     }
 }

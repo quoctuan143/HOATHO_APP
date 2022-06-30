@@ -58,45 +58,18 @@ namespace APP_HOATHO.Global
             //kiêm tra xem user có thay đổi k
             try
             {
-                    var isLatest = await CrossLatestVersion.Current.IsUsingLatestVersion();
-                    if (!isLatest)
-                    {
-                        var update = await DisplayAlert("New Version", "Có phiên bản mới trên app store. Bạn có muốn cập nhật không", "Yes", "No");
+                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
+                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                {
+                    App.Current.MainPage = new AppShell();
 
-                        if (update)
-                        {
-                            await CrossLatestVersion.Current.OpenAppInStore();
-                           System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+                }
+                else
+                {
+                    App.Current.MainPage = new Login();
+                }
 
-                    }
-                        else
-                        {
-                            var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
-                            _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                            if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
-                            {
-                                App.Current.MainPage = new AppShell();
-                            }
-                            else
-                            {
-                                App.Current.MainPage = new Login();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
-                        _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                        if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
-                        {
-                            App.Current.MainPage = new AppShell();
-                        }
-                        else
-                        {
-                            App.Current.MainPage = new Login();
-                        }
-                    }                  
-                
             }
             catch (Exception ex)
             {
