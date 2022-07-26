@@ -353,7 +353,7 @@ namespace APP_HOATHO.Views
                         //Action LoadLCP_FOB = async () =>
                         //{
                         System.Diagnostics.Debug.WriteLine("đang chay task LoadLCP_FOB");
-                        url = $"api/DuyetChungTu/getLenhCapPhat?username={Preferences.Get(Config.User, "")}";
+                         url = $"api/DuyetChungTu/getLenhCapPhat?username={Preferences.Get(Config.User, "")}";
                         using (HttpClient client = new HttpClient())
                         {
                             client.BaseAddress = new Uri(Config.URL);
@@ -363,25 +363,19 @@ namespace APP_HOATHO.Views
                                 string _json = await respon.Content.ReadAsStringAsync();
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
-                                {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiLCP_FOB = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
-
+                                {     
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiLCP_FOB = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
                                         OnPropertyChanged(nameof(NofiLCP_FOB));
                                     });
                                 }
                             }
                         }
-                        //};
-                        //Task task2 = new Task(LoadLCP_FOB);
-                        //task2.Start();               
-                        //duyệt LCP GC
-                        //Action LoadLCP_GC = async () =>
-                        //{
+                       
                         System.Diagnostics.Debug.WriteLine("đang chay task LoadLCP_GC");
                         url = $"api/DuyetChungTu/getLenhCapPhat_GC?username={Preferences.Get(Config.User, "")}";
                         using (HttpClient client = new HttpClient())
@@ -394,25 +388,19 @@ namespace APP_HOATHO.Views
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
                                 {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiLCP_GC = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
-
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiLCP_GC = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
                                         OnPropertyChanged(nameof(NofiLCP_GC));
                                     });
                                 }
 
                             }
                         }
-                        //};
-                        //Task task3 = new Task(LoadLCP_GC);
-                        //task3.Start();              
-                        //duyệt đặt mua phu tùng
-                        //Action LoadDatMuaPhuTung = async () =>
-                        //{
+                        
                         System.Diagnostics.Debug.WriteLine("đang chay task đặt mua phụ tùng");
                         url = $"api/DuyetChungTu/getDatMuaPhuTung?username={Preferences.Get(Config.User, "")}";
                         using (HttpClient client = new HttpClient())
@@ -425,13 +413,12 @@ namespace APP_HOATHO.Views
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
                                 {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiDuyetDatMuaPhuTung = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
-
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiDuyetDatMuaPhuTung = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
                                         OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));
                                     });
                                 }
@@ -450,27 +437,21 @@ namespace APP_HOATHO.Views
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
                                 {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiDeNghiTT = JsonConvert.DeserializeObject<ObservableCollection<DeNghiThanhToanHeader_Model>>(result).Count;
-
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiDeNghiTT = JsonConvert.DeserializeObject<ObservableCollection<DeNghiThanhToanHeader_Model>>(result).Count;
                                         OnPropertyChanged(nameof(NofiDeNghiTT));
                                     });
                                 }
                             }
                         }
-                        //};
-                        //Task task4 = new Task(LoadDatMuaPhuTung);
-                        //task4.Start();                
-                        // load danh sách bao trì trong tháng hiện tại
-                        //Action LoadKeHoachBaoTri = async() =>
-                        //{
+                       
                         System.Diagnostics.Debug.WriteLine("đang chay task  lấy lịch xich bao trì");
 
-                        url = "api/qltb/getKeHoachBaoTri?manhamay=" + Preferences.Get(Config.NhaMay, "") + "&nam=" + DateTime.Now.Year.ToString();
+                        url = "api/qltb/getKeHoachBaoTri?user=" + Preferences.Get(Config.User, "") + "&nam=" + DateTime.Now.Year.ToString();
 
                         using (HttpClient client = new HttpClient())
                         {
@@ -481,27 +462,20 @@ namespace APP_HOATHO.Views
                                 string _json = await respon.Content.ReadAsStringAsync();
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
-                                {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiLichXich = JsonConvert.DeserializeObject<ObservableCollection<Models.KeHoachBaoTri>>(result).Where(p => p.Thang == DateTime.Now.Month && p.Da_Bao_Tri == false).ToList().Count;
-
+                                {     
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiLichXich = JsonConvert.DeserializeObject<ObservableCollection<Models.KeHoachBaoTri>>(result).Where(p => p.Thang == DateTime.Now.Month && p.Da_Bao_Tri == false).ToList().Count;
                                         OnPropertyChanged(nameof(NofiLichXich));
                                     });
                                 }
                             }
                         }
 
-                        //};
-                        //Task task5 = new Task(LoadKeHoachBaoTri);
-                        //task5.Start();
-
-                        // load danh sách bao trì trong tháng hiện tại
-                        //Action LoadDanhsachthietbi =async () =>
-                        //{
+                        
                         System.Diagnostics.Debug.WriteLine("đang chay task đặt lấy danh  mục thiết bi");
                         url = "api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay, "");
 
@@ -515,13 +489,12 @@ namespace APP_HOATHO.Views
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
                                 {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiDanhMucThietBi = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(result).Count;
-
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiDanhMucThietBi = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(result).Count;
                                         OnPropertyChanged(nameof(NofiDanhMucThietBi));
                                     });
                                 }
@@ -542,13 +515,12 @@ namespace APP_HOATHO.Views
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
                                 {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiKidienTuPhuTung = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result).Count;
-
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiKidienTuPhuTung = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result).Count;
                                         OnPropertyChanged(nameof(NofiKidienTuPhuTung));
                                     });
                                 }
@@ -568,14 +540,13 @@ namespace APP_HOATHO.Views
                                 string _json = await respon.Content.ReadAsStringAsync();
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
-                                {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiKidienTuThietBi = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result).Count;
-
+                                {    
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiKidienTuThietBi = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result).Count;
                                         OnPropertyChanged(nameof(NofiKidienTuThietBi));
                                     });
                                 }
@@ -594,14 +565,14 @@ namespace APP_HOATHO.Views
                                 string _json = await respon.Content.ReadAsStringAsync();
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
-                                {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiYeuCauThueThietBi = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
-
+                                {                                    
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiYeuCauThueThietBi = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result).Count;
+
                                         OnPropertyChanged(nameof(NofiYeuCauThueThietBi ));
                                     });
                                 }
@@ -620,14 +591,13 @@ namespace APP_HOATHO.Views
                                 string _json = await respon.Content.ReadAsStringAsync();
                                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                                 if (_json.Contains("[]") == false)
-                                {
-                                    Int32 from = _json.IndexOf("[");
-                                    Int32 to = _json.IndexOf("]");
-                                    string result = _json.Substring(from, to - from + 1);
-                                    NofiTraThietBi = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result).Count;
-
+                                {        
                                     Device.BeginInvokeOnMainThread(() =>
                                     {
+                                        Int32 from = _json.IndexOf("[");
+                                        Int32 to = _json.IndexOf("]");
+                                        string result = _json.Substring(from, to - from + 1);
+                                        NofiTraThietBi = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result).Count;
                                         OnPropertyChanged(nameof(NofiTraThietBi));
                                     });
                                 }
@@ -785,7 +755,7 @@ namespace APP_HOATHO.Views
 
         private async void btnDuyetPhieuTraThietBi_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DuyetTraThietBi_Page(DocumentType.DuyetYeuCauThueThietBi ));
+            await Navigation.PushAsync(new DuyetTraThietBi_Page(DocumentType.DuyetTraThietBi ));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
 
         #region "Command"
         public Command LoadCommand { get; set; }
-        public Command DateChangeCommand { get; set; }
+       
 
         #endregion
 
@@ -36,8 +36,7 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
             this._documentType = type;
             Title = "KÍ ĐIỆN TỬ PHỤ TÙNG";
             ListItem = new ObservableCollection<DuyetKiDienTuPhuTungModel>();
-            LoadCommand = new Command(OnLoadExcute);
-            DateChangeCommand = new Command(OnLoadExcute);           
+            LoadCommand = new Command(OnLoadExcute);                      
             // form sẽ gửi về là form DuyetChungTu_Line , giá trị trả về là 1 docno khi duyệt 1 chứng từ thì xóa nó đi
             MessagingCenter.Subscribe<DuyetKiDienTuPhuTung_Line_ViewModel, string>(this, "DuyetChungTu", (sender, docno) =>
             {
