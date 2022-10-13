@@ -85,16 +85,8 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                 ShowLoading("Đang tải vui lòng đợi");
                 await Task.Delay(1000);
                 ListItem.Clear();
-                var _json = Config.client.GetStringAsync(Config.URL + $"api/DuyetChungTu/getMoLaiLCP_GC?username={Preferences.Get(Config.User, "")}&fromdate={string.Format("{0:yyyy-MM-dd}", FromDate)}&todate={string.Format("{0:yyyy-MM-dd}", ToDate)}").Result;
-
-                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
-                {
-                    Int32 from = _json.IndexOf("[");
-                    Int32 to = _json.IndexOf("]");
-                    string result = _json.Substring(from, to - from + 1);
-                    ListItem = JsonConvert.DeserializeObject<ObservableCollection<DuyetChungTuModel>>(result);
-                }
+                var a = await RunHttpClientGet<DuyetChungTuModel>($"api/DuyetChungTu/getMoLaiLCP_GC?username={Preferences.Get(Config.User, "")}&fromdate={string.Format("{0:yyyy-MM-dd}", FromDate)}&todate={string.Format("{0:yyyy-MM-dd}", ToDate)}");
+                ListItem = a.Lists;                
                 HideLoading();
             }
             catch (Exception ex)

@@ -64,20 +64,8 @@ namespace APP_HOATHO.ViewModels
                 Items.Clear();
                 var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay ,"")).Result;
                 await Task.Delay(3000);
-                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
-                {                   
-                    Int32 from = _json.IndexOf("[");
-                    Int32 to = _json.IndexOf("]");
-                    string result = _json.Substring(from, to - from + 1);
-                    Items = JsonConvert.DeserializeObject<ObservableCollection<DanhMuc_ThietBi>>(result);
-                                                
-                }
-                else
-                {
-                    await new MessageBox( "Không tìm thấy thiệt bị nào cả").Show();                  
-                  
-                }
+                var a = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay, ""));
+                Items = a.Lists;                
             }
             catch (Exception ex)
             {

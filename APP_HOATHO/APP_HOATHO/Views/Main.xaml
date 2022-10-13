@@ -168,6 +168,22 @@
 
                                     </Grid>                                       
                                 </StackLayout>
+                                <StackLayout Grid.Column="2"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiemKeThietBi}">
+                                    <Grid RowDefinitions="auto,auto">
+                                        <badge:SfBadgeView Grid.Row="0" Margin="0,10,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <badge:SfBadgeView.Content>
+                                                <Image Source="kiemke.png" Aspect="AspectFit" HeightRequest="55" WidthRequest="55">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="btnKiemKeThietBi" Tapped="btnKiemKeThietBi_Tapped"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </badge:SfBadgeView.Content>
+                                        </badge:SfBadgeView>
+                                        <Label Grid.Row="1" Text="Kiểm Kê &#10;Thiết Bị"  FontSize="16" Padding="5,0,5,0" TextColor="{StaticResource Primary}" FontAttributes="Italic" HorizontalTextAlignment="Center" LineBreakMode="WordWrap"></Label>
+
+                                    </Grid>
+
+                                </StackLayout>
 
                                 <StackLayout Grid.Column="0" Grid.Row="1"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsDuyetYeuCauThueThietBi}">
                                     <Grid RowDefinitions="auto,auto">
@@ -235,7 +251,7 @@
 
                                 </StackLayout>
                                 
-                            <StackLayout Grid.Column="0" Grid.Row="2"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuPhuTung}">
+                                <StackLayout Grid.Column="0" Grid.Row="2"  HorizontalOptions="CenterAndExpand"  IsVisible="{Binding IsKiDienTuPhuTung}">
                                     <Grid RowDefinitions="auto,auto">
                                         <badge:SfBadgeView  Grid.Row="0" BadgeText="{Binding NofiKidienTuPhuTung}" HorizontalOptions="Center" VerticalOptions="Center">
                                             <badge:SfBadgeView.Content>

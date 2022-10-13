@@ -126,6 +126,12 @@
     <EmbeddedResource Update="Views\KiDienTu\DuyetKiDienTuPhuTung_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Kiem_Ke_Thiet_Bi\Kiem_Ke_Thiet_Bi_Header_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Kiem_Ke_Thiet_Bi\Kiem_Ke_Thiet_Bi_Line_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LichSuBaoTri.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

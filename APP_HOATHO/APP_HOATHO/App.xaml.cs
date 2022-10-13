@@ -25,12 +25,7 @@ namespace APP_HOATHO
             new Config();
             Device.SetFlags(new string[] { "CollectionView_Experimental", "Brush_Experimental", "SwipeView_Experimental", "CarouseView_Experimental", "IndicatorView_Experimental" });
             if (isNotification == false  )
-            MainPage = new SplashPage();
-            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
-            {
-                string token = CrossFirebasePushNotification.Current.Token;
-                System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
-            };
+            MainPage = new SplashPage();            
         }
        
         protected override void OnStart()

@@ -71,25 +71,9 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                 await Task.Delay(1000);
                 string url = "";
                 url = $"api/DuyetChungTu/getMolaiDeNghiThanhToan?username={Preferences.Get(Config.User, "")}&fromdate={string.Format("{0:yyyy-MM-dd}", FromDate)}&todate={string.Format("{0:yyyy-MM-dd}", ToDate)}";
-
-                HttpResponseMessage respon = await Config.client.GetAsync(url);
-                if (respon.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    string _json = await respon.Content.ReadAsStringAsync();
-                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                    if (_json.Contains("[]") == false)
-                    {
-                        Int32 from = _json.IndexOf("[");
-                        Int32 to = _json.IndexOf("]");
-                        string result = _json.Substring(from, to - from + 1);
-                        ListItem = JsonConvert.DeserializeObject<ObservableCollection<DeNghiThanhToanHeader_Model>>(result);
-                    }
-                    else
-                    {
-                        ListItem.Clear();
-                    }
-                }
-
+                ListItem.Clear();
+                var a = await RunHttpClientGet<DeNghiThanhToanHeader_Model>(url);
+                ListItem = a.Lists;                
                 HideLoading();
             }
             catch (Exception ex)

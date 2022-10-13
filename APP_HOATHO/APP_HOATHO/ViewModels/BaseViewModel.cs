@@ -9,12 +9,16 @@ using APP_HOATHO.Models;
 using APP_HOATHO.Services;
 using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace APP_HOATHO.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged 
+    public class BaseViewModel : INotifyPropertyChanged
     {
-        
+
 
         bool isBusy = false;
         public bool IsBusy
@@ -28,7 +32,11 @@ namespace APP_HOATHO.ViewModels
             get { return isRunning; }
             set { SetProperty(ref isRunning, value); }
         }
-        
+        public object  ISDBNULL (object inp , object output)
+        {
+            if (inp == null) return  output;
+            return inp;
+        }
         public void ShowLoading(string title)
         {
             DependencyService.Get<IProcessLoader>().Show(title);
@@ -45,7 +53,49 @@ namespace APP_HOATHO.ViewModels
         {
             // No default implementation. 
         }
+        public async Task<HttpClientResponseModel<T>> RunHttpClientGet <T>(string apiUrl ) where T : class 
+        {
+            try
+            {
+                var respon = await Config.client.GetAsync(apiUrl);
+                HttpClientResponseModel<T> values = new HttpClientResponseModel<T>();
+                values.Status = respon;
+                values.Lists = new ObservableCollection<T>();
+                if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    string _json = await respon.Content.ReadAsStringAsync();
+                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                    if (_json.Contains("[]") == false)
+                    {
+                        Int32 from = _json.IndexOf("[");
+                        Int32 to = _json.IndexOf("]");
+                        string result = _json.Substring(from, to - from + 1);
+                        values.Lists = JsonConvert.DeserializeObject<ObservableCollection<T>>(result);
+                    }                    
+                }                
+                return values;
 
+            }
+            catch (Exception ex)
+            {
+                return new HttpClientResponseModel<T> { Status = new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.BadRequest } };
+            }
+
+        }  
+
+        public async Task<HttpResponseMessage > RunHttpClientPost(string apiUrl , object  Value) 
+        {
+            try
+            {                
+                HttpResponseMessage Status = await Config.client.PostAsJsonAsync(apiUrl, Value); 
+                return Status;
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage  { StatusCode = System.Net.HttpStatusCode.BadRequest };
+            }
+
+        }
         /// <summary>
         /// Called when the view model is disappearing. View Model clean-up should be performed here.
         /// </summary>
@@ -88,7 +138,7 @@ namespace APP_HOATHO.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        
+
         #endregion
 
     }

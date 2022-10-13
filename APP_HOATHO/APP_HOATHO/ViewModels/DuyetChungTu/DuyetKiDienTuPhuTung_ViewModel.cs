@@ -63,18 +63,9 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                 IsBusy = true;
                 ShowLoading("Đang tải vui lòng đợi");
                 await Task.Delay(1000);
-                ListItem.Clear();
-                var _json = Config.client.GetStringAsync(Config.URL + $"api/DuyetChungTu/getKiDienTuPhuTung?nhamay={Preferences.Get(Config.NhaMay, "")}").Result;
-
-                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
-                {
-                    Int32 from = _json.IndexOf("[");
-                    Int32 to = _json.IndexOf("]");
-                    string result = _json.Substring(from, to - from + 1);                  
-                  ListItem = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel>>(result);
-                   
-                }
+                ListItem.Clear();                
+                var a = await RunHttpClientGet<DuyetKiDienTuPhuTungModel>($"api/DuyetChungTu/getKiDienTuPhuTung?nhamay={Preferences.Get(Config.NhaMay, "")}");
+                ListItem = a.Lists;                
                 HideLoading();
             }
             catch (Exception ex)

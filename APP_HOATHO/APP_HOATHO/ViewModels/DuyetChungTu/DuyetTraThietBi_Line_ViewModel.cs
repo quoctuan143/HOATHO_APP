@@ -104,21 +104,9 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                 ShowLoading("Đang tải vui lòng đợi");
                 await Task.Delay(1000);
                 string url = $"api/DuyetChungTu/geDuyetTraThietBi_ChiTiet?documentno={DuyetChungTuModel.No_}";
-
-                HttpResponseMessage respon = await Config.client.GetAsync(url);
-                if (respon.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    string _json = await respon.Content.ReadAsStringAsync();
-                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                    if (_json.Contains("[]") == false)
-                    {
-                        Int32 from = _json.IndexOf("[");
-                        Int32 to = _json.IndexOf("]");
-                        string result = _json.Substring(from, to - from + 1);
-                        ListItem = JsonConvert.DeserializeObject<ObservableCollection<DuyetKiDienTuPhuTungModel_Line>>(result);
-                    }
-                }
-               
+                ListItem.Clear();
+                var a = await RunHttpClientGet<DuyetKiDienTuPhuTungModel_Line>(url);
+                ListItem = a.Lists;    
                 HideLoading();
             }
             catch (Exception ex)

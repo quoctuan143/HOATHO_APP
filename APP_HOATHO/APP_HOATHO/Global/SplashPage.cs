@@ -21,11 +21,11 @@ namespace APP_HOATHO.Global
         Image image;
         public SplashPage()
         {
-
+            
 
            // if (Device.RuntimePlatform == Device.iOS)
            // {
-                NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasNavigationBar(this, false);
                 var sub = new AbsoluteLayout();
                 image = new Image
                 {
@@ -43,6 +43,9 @@ namespace APP_HOATHO.Global
 
 
         }
+
+        
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();           

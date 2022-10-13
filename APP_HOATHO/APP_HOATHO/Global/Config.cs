@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,10 @@ namespace APP_HOATHO.Global
         public static System.Net.Http.HttpClient client;       
         public Config()
         {
+            ServicePointManager.SecurityProtocol |= (SecurityProtocolType.Ssl3 |
+              SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 |
+                                            SecurityProtocolType.Tls);
+            ServicePointManager.DefaultConnectionLimit = 10;
             if (client == null)
             {
                 client = new System.Net.Http.HttpClient();
