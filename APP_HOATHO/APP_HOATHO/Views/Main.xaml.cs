@@ -128,9 +128,7 @@ namespace APP_HOATHO.Views
             BindingContext = this;
             System.Diagnostics.Debug.WriteLine("finish load dữ liệu");
             CrossFirebasePushNotification.Current.OnNotificationReceived += Current_OnNotificationReceived;
-            CrossFirebasePushNotification.Current.OnNotificationOpened += Current_OnNotificationOpened;
-            Task.Run(() => NewVersion()) ;
-           
+            CrossFirebasePushNotification.Current.OnNotificationOpened += Current_OnNotificationOpened;                       
         }
         
         private async void Current_OnNotificationOpened(object source, FirebasePushNotificationResponseEventArgs p)
@@ -276,35 +274,44 @@ namespace APP_HOATHO.Views
                 await Device.InvokeOnMainThreadAsync(async () =>
                 {
                     try
-                    {                        
+                    {
                         var res = await BaseViewModel.RunHttpClientGet<object>("api/qltb/getUser?username=" + Preferences.Get(Config.User, "") + "&password=" + Preferences.Get(Config.Password, ""));
-                        dynamic body = res.Lists;
-                        isDuyetDonDatMua = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DON_DAT_MUA.Value, false));
-                        OnPropertyChanged(nameof(isDuyetDonDatMua));
-                        IsDanhMucThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DANH_MUC_THIET_BI.Value, false));
-                        OnPropertyChanged(nameof(IsDanhMucThietBi));
-                        IsLichXichBaoTri = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].LICH_XICH_BAO_TRI.Value, false));
-                        OnPropertyChanged(nameof(IsLichXichBaoTri));
-                        IsDuyetDatPhuTung = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DUYET_DAT_HANG_PHU_TUNG.Value, false));
-                        OnPropertyChanged(nameof(IsDuyetDatPhuTung));
-                        IsDuyetLCPFOB = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].LCP_FOB.Value, false));
-                        OnPropertyChanged(nameof(IsDuyetLCPFOB));
-                        IsDuyetLCPGC = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].LCP_GIA_CONG.Value, false));
-                        OnPropertyChanged(nameof(IsDuyetLCPGC));
-                        IsMainThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].THIET_BI_CONG_NGHE.Value, false));
-                        OnPropertyChanged(nameof(IsMainThietBi));
-                        IsMainDonHang = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KY_DIEN_TU.Value, false));
-                        OnPropertyChanged(nameof(IsMainDonHang));
-                        IsKiDienTuPhuTung = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KY_DIEN_TU_XUAT_PHU_TUNG.Value, false));
-                        OnPropertyChanged(nameof(IsKiDienTuPhuTung));
-                        IsKiDienTuThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KY_DIEN_TU_XUAT_THIET_BI.Value, false));
-                        OnPropertyChanged(nameof(IsKiDienTuThietBi));
-                        IsDuyetYeuCauThueThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DUYET_YEU_CAU_THUE_THIET_BI.Value, false));
-                        OnPropertyChanged(nameof(IsDuyetYeuCauThueThietBi));
-                        IsDuyetPhieuTraThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DUYET_PHIEU_TRA_THIET_BI.Value, false));
-                        OnPropertyChanged(nameof(IsDuyetPhieuTraThietBi));
-                        IsKiemKeThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KIEM_KE_THIET_BI.Value, false));
-                        OnPropertyChanged(nameof(IsKiemKeThietBi));
+                        var _json = res.Status.Content.ReadAsStringAsync().Result;
+                        _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                        if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
+                        {
+                            Int32 from = _json.IndexOf("[");
+                            Int32 to = _json.IndexOf("]");
+                            _json = _json.Substring(from, to - from + 1);
+                            dynamic body = JsonConvert.DeserializeObject(_json);
+                            isDuyetDonDatMua = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DON_DAT_MUA.Value, false));
+                            OnPropertyChanged(nameof(isDuyetDonDatMua));
+                            IsDanhMucThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DANH_MUC_THIET_BI.Value, false));
+                            OnPropertyChanged(nameof(IsDanhMucThietBi));
+                            IsLichXichBaoTri = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].LICH_XICH_BAO_TRI.Value, false));
+                            OnPropertyChanged(nameof(IsLichXichBaoTri));
+                            IsDuyetDatPhuTung = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DUYET_DAT_HANG_PHU_TUNG.Value, false));
+                            OnPropertyChanged(nameof(IsDuyetDatPhuTung));
+                            IsDuyetLCPFOB = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].LCP_FOB.Value, false));
+                            OnPropertyChanged(nameof(IsDuyetLCPFOB));
+                            IsDuyetLCPGC = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].LCP_GIA_CONG.Value, false));
+                            OnPropertyChanged(nameof(IsDuyetLCPGC));
+                            IsMainThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].THIET_BI_CONG_NGHE.Value, false));
+                            OnPropertyChanged(nameof(IsMainThietBi));
+                            IsMainDonHang = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KY_DIEN_TU.Value, false));
+                            OnPropertyChanged(nameof(IsMainDonHang));
+                            IsKiDienTuPhuTung = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KY_DIEN_TU_XUAT_PHU_TUNG.Value, false));
+                            OnPropertyChanged(nameof(IsKiDienTuPhuTung));
+                            IsKiDienTuThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KY_DIEN_TU_XUAT_THIET_BI.Value, false));
+                            OnPropertyChanged(nameof(IsKiDienTuThietBi));
+                            IsDuyetYeuCauThueThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DUYET_YEU_CAU_THUE_THIET_BI.Value, false));
+                            OnPropertyChanged(nameof(IsDuyetYeuCauThueThietBi));
+                            IsDuyetPhieuTraThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].DUYET_PHIEU_TRA_THIET_BI.Value, false));
+                            OnPropertyChanged(nameof(IsDuyetPhieuTraThietBi));
+                            IsKiemKeThietBi = Convert.ToBoolean(BaseViewModel.ISDBNULL(body[0].KIEM_KE_THIET_BI.Value, false));
+                            OnPropertyChanged(nameof(IsKiemKeThietBi));
+                        }
+                        
                         System.Diagnostics.Debug.WriteLine("đang chay task LoadDuyeDonHang");
                         string url = $"api/DuyetChungTu/getDonDatMua?username={Preferences.Get(Config.User, "")}";
                         var a = await BaseViewModel.RunHttpClientGet<object>(url);
@@ -371,6 +378,7 @@ namespace APP_HOATHO.Views
                         NofiTraThietBi = h.Lists.Count();
                         OnPropertyChanged(nameof(NofiTraThietBi));
                         BaseViewModel.HideLoading();
+                        await NewVersion();
                     }
                     catch (Exception ex)
                     {
@@ -467,7 +475,7 @@ namespace APP_HOATHO.Views
                 System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
         }
         #endregion
-        async void NewVersion()
+        async Task NewVersion()
         {
             if (Device.RuntimePlatform == Device.Android)
             {
