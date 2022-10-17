@@ -74,7 +74,6 @@ namespace APP_HOATHO.ViewModels
                     }                    
                 }                
                 return values;
-
             }
             catch (Exception ex)
             {
