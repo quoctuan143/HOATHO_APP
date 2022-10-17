@@ -33,7 +33,7 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
         public DuyetKiDienTuThietBi_ViewModel(DocumentType type)
         {
             this._documentType = type;
-            Title = "KÍ ĐIỆN CHO THUÊ THIẾT BỊ";
+            Title = "KÍ ĐIỆN TỬ CHO THUÊ THIẾT BỊ";
             ListItem = new ObservableCollection<DuyetKiDienTuPhuTungModel>();
             LoadCommand = new Command(OnLoadExcute);                
             // form sẽ gửi về là form DuyetChungTu_Line , giá trị trả về là 1 docno khi duyệt 1 chứng từ thì xóa nó đi

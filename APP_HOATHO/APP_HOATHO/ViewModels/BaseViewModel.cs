@@ -16,7 +16,7 @@ using System.Collections.ObjectModel;
 
 namespace APP_HOATHO.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel :  INotifyPropertyChanged
     {
 
 
