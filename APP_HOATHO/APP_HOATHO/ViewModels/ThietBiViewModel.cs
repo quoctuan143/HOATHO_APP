@@ -61,10 +61,9 @@ namespace APP_HOATHO.ViewModels
             IsRunning = true;
             try
             {
-                Items.Clear();
-                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay ,"")).Result;
-                await Task.Delay(3000);
-                var a = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getThietBi?nhamay=" + Preferences.Get(Config.NhaMay, ""));
+                await Task.Delay(1000);
+                Items.Clear();              
+                var a = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getThietBi?username=" + Preferences.Get(Config.User, ""));
                 Items = a.Lists;                
             }
             catch (Exception ex)

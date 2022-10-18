@@ -62,7 +62,7 @@
                                                        IconImageSource="duyetdonhang.png" 
                                                        BadgeText="{Binding NofiDuyetDatMua}"
                                                        ActionCommand="{Binding DuyetDonDatMuaCommand}"                                                          
-                                                       Disable="{Binding isDuyetDonDatMua, Mode=TwoWay}" >
+                                                       Disable="{Binding IsDuyetDonDatMua, Mode=TwoWay}" >
                                 </control:IconMainView>
 
                                 <control:IconMainView  Title="LCP FOB" 
