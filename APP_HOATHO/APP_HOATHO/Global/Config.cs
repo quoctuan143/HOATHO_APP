@@ -11,7 +11,8 @@ namespace APP_HOATHO.Global
 {
     public class Config
     {
-        public static string URL = "https://htapis.hoatho.com.vn:59443/";
+        //public static string URL = "https://testapi.hoatho.com.vn:59443/";
+        public static string URL =  "https://htapis.hoatho.com.vn:59443/";
         public static string User = "User";
         public static string Password = "Password";
         public static string Role = "Role";
@@ -24,10 +25,10 @@ namespace APP_HOATHO.Global
         public static System.Net.Http.HttpClient client;       
         public Config()
         {
-            ServicePointManager.SecurityProtocol |= (SecurityProtocolType.Ssl3 |
-              SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 |
-                                            SecurityProtocolType.Tls);
-            ServicePointManager.DefaultConnectionLimit = 10;
+            //ServicePointManager.SecurityProtocol |= (SecurityProtocolType.Ssl3 |
+            //  SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 |
+            //                                SecurityProtocolType.Tls);
+            //ServicePointManager.DefaultConnectionLimit = 20;
             if (client == null)
             {
                 client = new System.Net.Http.HttpClient();
@@ -60,6 +61,7 @@ namespace APP_HOATHO.Global
         KiDienTuPhuTung = 8,
         KiDienTuThietBi = 9,
         DuyetYeuCauThueThietBi = 10,
-        DuyetTraThietBi = 11
+        DuyetTraThietBi = 11,
+        KyDienTuTongHopThietBiNhaMay =12
     }
 }

@@ -104,7 +104,7 @@
                         >
                         <StackLayout Padding="5">
                             <Label Text="Thiết bị công nghệ" TextDecorations="Underline" TextColor="{StaticResource Primary }" FontSize="20" FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*" RowDefinitions="auto,auto,auto"   RowSpacing="3" 
+                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*" RowDefinitions="auto,auto,auto"   RowSpacing="10" 
                                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <control:IconMainView Title="Danh mục thiết bị" Grid.Column="0"
                                                        IconImageSource="machine.png" 
@@ -121,7 +121,7 @@
                                                       Disable="{Binding IsLichXichBaoTri, Mode=TwoWay}" >                                    
                                 </control:IconMainView>
 
-                                <control:IconMainView Title="Kiểm Kê &#10;Thiết Bị" 
+                                <control:IconMainView Title="Kiểm Kê Thiết Bị" 
                                                       Grid.Column="2"
                                                       IconImageSource="kiemke.png" 
                                                       BadgeText="0"
@@ -172,7 +172,16 @@
                                                       BadgeText="{Binding NofiKidienTuThietBi}"
                                                       ActionCommand="{Binding DuyetKyDienTuXuatThietBi}"                                                          
                                                       Disable="{Binding IsKiDienTuThietBi, Mode=TwoWay}" >
-                                </control:IconMainView>  
+                                </control:IconMainView>
+
+                                <control:IconMainView Title="Kí tổng hợp Thiết Bị"
+                                                      Grid.Column="2"
+                                                      Grid.Row="2"
+                                                      IconImageSource="duyethietbi.png"
+                                                      BadgeText="{Binding NofiDuyetTongHopThietBiNhaMay}"
+                                                      ActionCommand="{Binding DuyetTongHopThietBiThueNhaMayCommand}"
+                                                      Disable="{Binding IsDuyetTongHopThietBiNhaMay, Mode=TwoWay}">
+                                </control:IconMainView>
                             </Grid>
                         </StackLayout>
                     </Frame>                    
