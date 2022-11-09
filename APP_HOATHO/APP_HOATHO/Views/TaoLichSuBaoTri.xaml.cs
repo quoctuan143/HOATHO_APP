@@ -140,10 +140,9 @@ namespace APP_HOATHO.Views
                             var ok = client.PostAsJsonAsync("api/qltb/postLichSuBaoTri", lsu);
                             if (ok.Result.Content.ReadAsStringAsync().Result.ToLower().Contains("cập nhật thành công"))
                             {
-
-                                DependencyService.Get<IMessage>().ShortAlert("Cập nhật thành công");
-                                MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);
                                 await Navigation.PopAsync();
+                                DependencyService.Get<IMessage>().LongAlert("Cập nhật thành công");
+                                MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);                                
                             }
                             else
                             {
