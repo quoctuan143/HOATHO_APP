@@ -174,7 +174,7 @@
                                                       Disable="{Binding IsKiDienTuThietBi, Mode=TwoWay}" >
                                 </control:IconMainView>
 
-                                <control:IconMainView Title="Kí tổng hợp Thiết Bị"
+                                <control:IconMainView Title="Kí điện tử&#10;T.Hợp TB/PT"
                                                       Grid.Column="2"
                                                       Grid.Row="2"
                                                       IconImageSource="duyethietbi.png"
