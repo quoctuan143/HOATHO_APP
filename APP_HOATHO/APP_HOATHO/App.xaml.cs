@@ -11,6 +11,8 @@ using APP_HOATHO.Views.DuyetChungTu;
 using APP_HOATHO.Models.DuyetChungTu;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Plugin.Connectivity;
+using System.Threading.Tasks;
 
 namespace APP_HOATHO
 {

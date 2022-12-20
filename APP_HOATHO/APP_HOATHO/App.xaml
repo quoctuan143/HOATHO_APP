@@ -121,6 +121,11 @@
                 <Setter Property="VerticalOverScrollMode" Value="None"></Setter>
                 <Setter Property="AllowGroupExpandCollapse" Value="True"></Setter>
                 <Setter Property="GridStyle" Value="{StaticResource dark}"/>
+                <Setter Property="ColumnSizer" Value="LastColumnFill" />
+                <Setter Property="LiveDataUpdateMode"
+                        Value="AllowDataShaping"></Setter>
+                <Setter Property="AutoGenerateColumns"
+                        Value="False"></Setter>
             </Style>
             <Style TargetType="ListView" x:Key="styleListView">
                 <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>

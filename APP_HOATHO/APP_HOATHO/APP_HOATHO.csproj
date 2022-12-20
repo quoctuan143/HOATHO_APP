@@ -72,6 +72,20 @@
     <Compile Update="Views\KiDienTu\DuyetKiDienTuThietBi_Page.xaml.cs">
       <DependentUpon>DuyetKiDienTuThietBi_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Nha_May_Soi\ThongTinKien\Thong_Tin_Kien_Page.xaml.cs">
+      <DependentUpon>Thong_Tin_Kien_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Nha_May_Soi\Xuat_Kien_NVL\Xuat_Kien_Header_Page.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Xuat_Kien_Header_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Nha_May_Soi\Xuat_Kien_NVL\Xuat_Kien_Line_Detail_Page.xaml.cs">
+      <DependentUpon>Xuat_Kien_Line_Detail_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Nha_May_Soi\Xuat_Kien_NVL\Xuat_Kien_Line_Page.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Xuat_Kien_Line_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TaoLichSuBaoTri.xaml.cs">
       <DependentUpon>TaoLichSuBaoTri.xaml</DependentUpon>
     </Compile>
@@ -133,6 +147,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\KiDienTu\DuyetKiDienTuPhuTung_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Nha_May_Soi\Xuat_Kien_NVL\Xuat_Kien_Header_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Nha_May_Soi\Xuat_Kien_NVL\Xuat_Kien_Line_Page.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Kiem_Ke_Thiet_Bi\Kiem_Ke_Thiet_Bi_Header_Page.xaml">

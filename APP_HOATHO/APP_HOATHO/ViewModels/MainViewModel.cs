@@ -1,11 +1,15 @@
 ﻿using APP_HOATHO.Dialog;
 using APP_HOATHO.Global;
+using APP_HOATHO.Interface;
+using APP_HOATHO.Models.Nha_May_Soi;
 using APP_HOATHO.ViewModels.DuyetChungTu;
 using APP_HOATHO.ViewModels.Ki_Dien_Tu_Thiet_Bi;
 using APP_HOATHO.Views;
 using APP_HOATHO.Views.DuyetChungTu;
 using APP_HOATHO.Views.KiDienTu;
 using APP_HOATHO.Views.Kiem_Ke_Thiet_Bi;
+using APP_HOATHO.Views.Nha_May_Soi;
+using APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL;
 using APP_HOATHO.Views.Tabpage;
 using APP_HOATHO.Views.ThietBi;
 using Newtonsoft.Json;
@@ -18,6 +22,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace APP_HOATHO.ViewModels
 {
@@ -35,11 +40,14 @@ namespace APP_HOATHO.ViewModels
         public bool IsDNTT { get; set; }
         public bool IsMainThietBi { get; set; }
         public bool IsMainDonHang { get; set; }
+        public bool IsMainSoi { get; set; } 
         public bool IsKiDienTuPhuTung { get; set; }
         public bool IsKiDienTuThietBi { get; set; }
         public bool IsDuyetYeuCauThueThietBi { get; set; }
         public bool IsDuyetPhieuTraThietBi { get; set; }
         public bool IsKiemKeThietBi { get; set; }
+        public bool IsXuatKienNVL   { get; set; }
+        public bool IsThongTinKien{ get; set; } 
         public bool IsDuyetTongHopThietBiNhaMay { get; set; } 
         public int NofiLCP_FOB { get; set; }
         public int NofiLCP_GC { get; set; }
@@ -73,7 +81,9 @@ namespace APP_HOATHO.ViewModels
         public ICommand DuyetLenhCapPhatGiaCongCommand { get; set; }
         public ICommand DuyetDeNghiThanhToanCommand { get; set; }
         public ICommand LoadDataCommand  { get; set; }
-        public ICommand DuyetTongHopThietBiThueNhaMayCommand { get; set; } 
+        public ICommand DuyetTongHopThietBiThueNhaMayCommand { get; set; }
+        public ICommand XuatKienNVLCommand { get; set; }
+        public ICommand ThongTinKienCommand { get; set; }
         #endregion
         public MainViewModel()
         {
@@ -127,6 +137,50 @@ namespace APP_HOATHO.ViewModels
             });
             DuyetKyDienTuXuatPhuTung = new Command(async () => await Navigation.PushAsync(new DuyetKiDienTuPhuTung_Page(DocumentType.KiDienTuPhuTung)));
             DuyetKyDienTuXuatThietBi = new Command(async () => await Navigation.PushAsync(new DuyetKiDienTuThietBi_Page(DocumentType.KiDienTuThietBi)));
+            XuatKienNVLCommand = new Command(async () => await Navigation.PushAsync(new Xuat_Kien_Header_Page()));
+            ThongTinKienCommand = new Command(async () =>
+            {
+                try
+                {
+                    var scan = new ZXingScannerPage();
+                    scan.Title = "Tìm kiếm kiện";
+                    Shell.SetTabBarIsVisible(scan, false);
+                    await Navigation.PushAsync(scan);
+                    scan.OnScanResult += (result) =>
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //show form lên
+                            try
+                            {
+                                if (IsBusy) return;
+
+                                IsBusy = true;
+
+                                string ma = result.Text.Split('_')[0];
+                                var Item  = await RunHttpClientGet <UploadImageKien>("api/soi/SearchPackingID?packingId=" + ma);
+                                if (Item.Lists.Count > 0)
+                                {
+                                    await Navigation.PopAsync();
+                                    await Navigation.PushAsync(new Thong_Tin_Kien_Page(Item.Lists[0]));
+                                }    
+                                   
+                                else
+                                    DependencyService.Get<IMessage>().LongAlert("Không tìm thấy kiện này trong hệ thống");
+                            }       
+                            catch { }
+                            finally { IsBusy = false; } 
+                                
+                        });
+
+                    };
+                }
+                catch (Exception ex)
+                {
+
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
             Task.Factory.StartNew(() => Load().Wait());
             
             FullName = Preferences.Get(Config.FullName, "");
@@ -206,6 +260,8 @@ namespace APP_HOATHO.ViewModels
                             OnPropertyChanged(nameof(IsMainThietBi));
                             IsMainDonHang = Convert.ToBoolean(ISDBNULL(body[0].KY_DIEN_TU.Value, false));
                             OnPropertyChanged(nameof(IsMainDonHang));
+                            IsMainSoi = Convert.ToBoolean(ISDBNULL(body[0].NHA_MAY_SOI.Value, false));
+                            OnPropertyChanged (nameof(IsMainSoi));
                             IsDuyetDonDatMua = Convert.ToBoolean(ISDBNULL(body[0].DON_DAT_MUA.Value, false));
                             OnPropertyChanged(nameof(IsDuyetDonDatMua));
                             if (IsDuyetDonDatMua)
@@ -351,7 +407,12 @@ namespace APP_HOATHO.ViewModels
 
                             IsKiemKeThietBi = Convert.ToBoolean(ISDBNULL(body[0].KIEM_KE_THIET_BI.Value, false));
                             OnPropertyChanged(nameof(IsKiemKeThietBi));
-                            
+                                                        
+                            IsXuatKienNVL = Convert.ToBoolean(ISDBNULL(body[0].XUAT_KIEN_NVL.Value, false));
+                            OnPropertyChanged(nameof(IsXuatKienNVL));
+                            IsThongTinKien = Convert.ToBoolean(ISDBNULL(body[0].THONG_TIN_KIEN.Value, false));
+                            OnPropertyChanged(nameof(IsThongTinKien));
+
                         }                        
                         
                         HideLoading();

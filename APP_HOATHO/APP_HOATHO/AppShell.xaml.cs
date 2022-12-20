@@ -1,4 +1,5 @@
-﻿using APP_HOATHO.Views;
+﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Views;
 using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace APP_HOATHO
         {
             if (!CrossConnectivity.Current.IsConnected)
             {
-                await DisplayAlert("Thông Báo", "Bạn đã mất kết nối internet. vui lòng kiểm tra lại", "OK");
+                await new MessageBox("Bạn đã mất kết nối internet. vui lòng kiểm tra lại").Show();                
             }
         }
         private void MenuItem_Clicked(object sender, EventArgs e)

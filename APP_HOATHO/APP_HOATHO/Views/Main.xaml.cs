@@ -196,7 +196,7 @@ namespace APP_HOATHO.Views
             BackButtonPressed();
             return true;
         }
-        public async Task BackButtonPressed()
+        public async void BackButtonPressed()
         {
             var ok = await new MessageYesNo("Bạn có muốn thoát chương trình không?").Show();
             if (ok == DialogReturn.OK)
@@ -208,15 +208,5 @@ namespace APP_HOATHO.Views
         {
             viewModel.LoadDataCommand.Execute(null);
         }
-
-       
-
-        
-
-        
-
-        
-
-        
     }
 }

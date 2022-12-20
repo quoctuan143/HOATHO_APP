@@ -1,4 +1,5 @@
-﻿using APP_HOATHO.Models;
+﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Models;
 using APP_HOATHO.Views;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
@@ -51,8 +52,8 @@ namespace APP_HOATHO.Global
             base.OnAppearing();           
             if (!CrossConnectivity.Current.IsConnected)
             {
-                await ShowMessage("Thông Báo", "Vui Lòng kiểm tra lại kết nối mạng", "OK", "Cancel", () =>
-                { App.Current.MainPage = new Login(); });
+                await new MessageBox("Bạn đã mất kết nối internet. vui lòng kiểm tra lại").Show();
+                System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
             }
                 await image.ScaleTo(1, 3000);//thời gian khởi tạo
                                              //await image.ScaleTo(0.9, 1500, Easing.Linear);

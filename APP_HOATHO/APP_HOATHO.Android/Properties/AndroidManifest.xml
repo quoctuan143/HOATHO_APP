@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="12" android:versionName="1.7.6" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
-	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="16" android:versionName="1.7.10" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="31" />
 	<application android:label="Hoatho Smart App" android:usesCleartextTraffic="true" android:icon="@mipmap/logo">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.app_hoathocorp.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
@@ -13,6 +13,11 @@
 				<category android:name="${applicationId}" />
 			</intent-filter>
 		</receiver>
+		<service android:name="crc6494e14b9856016c30.PNFirebaseMessagingService" android:exported="false">
+			<intent-filter>
+				<action android:name="com.google.firebase.MESSAGING_EVENT" />
+			</intent-filter>
+		</service>
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />

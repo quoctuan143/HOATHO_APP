@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL.Xuat_Kien_Line_Page"
+             Title="{Binding Title}"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
+                                   Style="{StaticResource styleDataGrid}"
+                                   SelectionMode="Single"
+                                   SelectionChanged="listChiTiet_SelectionChanged">
+                <sfDataGrid:SfDataGrid.Columns>
+                    <sfDataGrid:GridTemplateColumn  MappingName="Ten_NVL"
+                                                    HeaderText="Tên"
+                                                    Width="180"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Ten_NVL}"
+                                       TextColor="Black"
+                                       Padding="5,2,5,2"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="ĐVT"
+                                                    Width="60"
+                                                    MappingName="Unit_of_Measure"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Unit_of_Measure}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  MappingName="Quantity"
+                                                    HeaderText="Số lượng"
+                                                    Width="80"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Quantity, StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="0,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  MappingName="Done_Quantity"
+                                                    HeaderText="SL hoàn thành"
+                                                    Width="80"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Done_Quantity, StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="0,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                </sfDataGrid:SfDataGrid.Columns>
+
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng SL : {TotalQuantity} "
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                          Format="{}{Sum:n2}"
+                                                          MappingName="Quantity"
+                                                          SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+            <Button Text="Xác nhận"
+                    Command="{Binding ApproveCommand}"
+                    Style="{StaticResource styleButton}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

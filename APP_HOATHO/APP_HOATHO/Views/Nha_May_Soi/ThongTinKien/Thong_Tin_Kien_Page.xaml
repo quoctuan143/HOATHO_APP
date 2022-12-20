@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             Title="Cập nhật thông tin kiện"
+             Shell.TabBarIsVisible="False"
+             x:Class="APP_HOATHO.Views.Nha_May_Soi.Thong_Tin_Kien_Page">
+    <StackLayout>
+        <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,auto" Padding="10" RowSpacing="10">
+            <Label Text="Mã Kiện" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" Style="{StaticResource styleLablenotwhite}"></Label>
+            <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                <Label Text="{Binding Item.PackageID}"
+                       VerticalTextAlignment="Center"
+                       Style="{StaticResource styleLablenotwhite}"></Label>                
+            </StackLayout>
+
+            <Label Text="Vị Trí"
+                   Grid.Column="0"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="1"
+                   Style="{StaticResource styleLablenotwhite}"></Label>
+            <sfcombobox:SfComboBox x:Name="cbViTriLuu"                                    
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   SelectedValue="{Binding Item.PositionCode , Mode=TwoWay}"                                      
+                                   DisplayMemberPath="Name"
+                                   SelectedValuePath="Code"
+                                   Style="{StaticResource styleCombobox}"
+                                   Watermark="Chọn vị trí lưu"
+                                   IsEditableMode="True"                                        
+                                   HeightRequest="50"
+                                   ShowClearButton="True">
+
+            </sfcombobox:SfComboBox>
+            <Label Text="Loại Kiện"
+                   Grid.Column="0"
+                   VerticalTextAlignment="Center"
+                   Grid.Row="2"
+                   Style="{StaticResource styleLablenotwhite}"></Label>
+            <Picker x:Name="LoaiKien"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    SelectedItem="{Binding Item.PackingDesc, Mode=TwoWay}"
+                    Title="Chọn loại kiện"
+                    TitleColor="Red">
+                <Picker.Items>
+                    <x:String>DAI</x:String>
+                    <x:String>NGAN</x:String>                     
+                </Picker.Items>
+            </Picker>
+            <Label Text="Hình ảnh nhãn nhà cung cấp"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="3" 
+                   Style="{StaticResource styleLablenotwhite}"/>
+            <Image Source="{Binding Item.ImageNCC}"
+                   x:Name="imagePicture"
+                   HeightRequest="400"
+                   WidthRequest="400"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,0,10,10"
+                   Grid.Row="4"
+                   Grid.ColumnSpan="2">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                    </TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+        <Button Style="{StaticResource styleButton}" Text="Cập Nhật" 
+                VerticalOptions="EndAndExpand"
+                Clicked="Button_Clicked"></Button>
+    </StackLayout>
+ 
+</ContentPage>
