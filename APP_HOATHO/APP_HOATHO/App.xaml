@@ -131,6 +131,8 @@
                 <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HasUnevenRows"
+                        Value="True" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

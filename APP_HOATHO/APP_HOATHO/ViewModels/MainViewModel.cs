@@ -1,7 +1,9 @@
 ﻿using APP_HOATHO.Dialog;
 using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
+using APP_HOATHO.Models;
 using APP_HOATHO.Models.Nha_May_Soi;
+using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
 using APP_HOATHO.ViewModels.DuyetChungTu;
 using APP_HOATHO.ViewModels.Ki_Dien_Tu_Thiet_Bi;
 using APP_HOATHO.Views;
@@ -11,11 +13,13 @@ using APP_HOATHO.Views.Kiem_Ke_Thiet_Bi;
 using APP_HOATHO.Views.Nha_May_Soi;
 using APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL;
 using APP_HOATHO.Views.Tabpage;
+using APP_HOATHO.Views.Thiet_Bi_Van_Phong;
 using APP_HOATHO.Views.ThietBi;
 using Newtonsoft.Json;
 using Plugin.LatestVersion;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +27,7 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
+using KeHoachBaoTri = APP_HOATHO.Views.KeHoachBaoTri;
 
 namespace APP_HOATHO.ViewModels
 {
@@ -48,7 +53,10 @@ namespace APP_HOATHO.ViewModels
         public bool IsKiemKeThietBi { get; set; }
         public bool IsXuatKienNVL   { get; set; }
         public bool IsThongTinKien{ get; set; } 
-        public bool IsDuyetTongHopThietBiNhaMay { get; set; } 
+        public bool IsDuyetTongHopThietBiNhaMay { get; set; }
+        public bool IsYeuCauXuLyLoi { get => true; set => value = true; }
+        public bool IsCapNhatThongTinLoi { get ; set ; }
+        public bool IsDanhSachChoXuLy { get ; set ; }
         public int NofiLCP_FOB { get; set; }
         public int NofiLCP_GC { get; set; }
         public int NofiDuyetDatMua { get; set; }
@@ -61,6 +69,7 @@ namespace APP_HOATHO.ViewModels
         public int NofiYeuCauThueThietBi { get; set; }
         public int NofiTraThietBi { get; set;}
         public int NofiDuyetTongHopThietBiNhaMay { get; set; }
+        public int NofiDanhSachChoITXuLy { get; set; }
         DuyetChungTuPhuTung_Header duyetChungTuPhuTung_Header;
         DuyetDonDatMua DuyetDonDatMua;
         DuyetLCP_FOB duyetLCP_FOB;
@@ -84,6 +93,9 @@ namespace APP_HOATHO.ViewModels
         public ICommand DuyetTongHopThietBiThueNhaMayCommand { get; set; }
         public ICommand XuatKienNVLCommand { get; set; }
         public ICommand ThongTinKienCommand { get; set; }
+        public ICommand YeuCauXuLyLoiCommand { get; set; }
+        public ICommand CapNhatThongTinLoiCommand { get; set; }
+        public ICommand DanhSachChoXuLyCommand { get; set; }
         #endregion
         public MainViewModel()
         {
@@ -181,6 +193,105 @@ namespace APP_HOATHO.ViewModels
                     await new MessageBox(ex.Message).Show();
                 }
             });
+            YeuCauXuLyLoiCommand = new Command(async () =>
+            {
+                try
+                {
+                    var scan = new ZXingScannerPage();
+                    scan.Title = "Tìm kiếm thiết bị";
+                    Shell.SetTabBarIsVisible(scan, false);
+                    await Navigation.PushAsync(scan);
+                    scan.OnScanResult += (result) =>
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //show form lên
+                            try
+                            {
+                                if (IsBusy) return;
+
+                                IsBusy = true;
+                                string ma = result.Text.Split('=')[1];                                
+                                var Item = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getTimKiemThietBi?mathietbi=" + ma);
+                                if (Item.Lists.Count > 0)
+                                {
+                                    await Navigation.PopAsync();
+                                    DevicesMaintenanceHistory yeucau = new DevicesMaintenanceHistory
+                                    {
+                                        DocumentNo_ = ma,
+                                        NoiDungLoi = "",
+                                        NguoiGuiYeuCau = Preferences.Get(Config.FullName, ""),
+                                        TenThietBi = Item.Lists[0].Description2 
+                                    };
+                                    await Navigation.PushAsync(new Yeu_Cau_Xu_Ly_Loi_Page(yeucau));
+                                }
+
+                                else
+                                    DependencyService.Get<IMessage>().LongAlert("Không tìm thấy thiết bị này trong hệ thống");
+                            }
+                            catch { }
+                            finally { IsBusy = false; }
+
+                        });
+
+                    };
+                }
+                catch (Exception ex)
+                {
+
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            CapNhatThongTinLoiCommand = new Command(async () =>
+            {
+                try
+                {
+                    var scan = new ZXingScannerPage();
+                    scan.Title = "Tìm kiếm thiết bị";
+                    Shell.SetTabBarIsVisible(scan, false);
+                    await Navigation.PushAsync(scan);
+                    scan.OnScanResult += (result) =>
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //show form lên
+                            try
+                            {
+                                if (IsBusy) return;
+
+                                IsBusy = true;
+                                string ma = result.Text.Split('=')[1];
+                                var Item = await RunHttpClientGet<DevicesMaintenanceHistory>("api/qltb/TimKiemYeuCauXuLy?maThietBi=" + ma);
+                                if (Item.Lists.Count > 0)
+                                {
+                                    await Navigation.PopAsync();
+                                    DevicesMaintenanceHistory yeucau = new DevicesMaintenanceHistory
+                                    {
+                                        DocumentNo_ = ma,                                       
+                                        ITXuLy = Preferences.Get(Config.FullName, ""),
+                                        TenThietBi = Item.Lists[0].Description2,
+                                        NguoiGuiYeuCau = Item.Lists[0].NguoiGuiYeuCau  
+                                    };
+                                    await Navigation.PushAsync(new Cap_Nhat_Thong_Tin_Loi_Page(yeucau));
+                                }
+
+                                else
+                                    DependencyService.Get<IMessage>().LongAlert("Không tìm thấy thiết bị này trong hệ thống");
+                            }
+                            catch (Exception ex) {  }
+                            finally { IsBusy = false; }
+
+                        });
+
+                    };
+                }
+                catch (Exception ex)
+                {
+
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            DanhSachChoXuLyCommand = new  Command ( async() => await Navigation.PushAsync(new Danh_Sach_Cho_Xu_Ly_Page()));
             Task.Factory.StartNew(() => Load().Wait());
             
             FullName = Preferences.Get(Config.FullName, "");
@@ -235,6 +346,14 @@ namespace APP_HOATHO.ViewModels
             {
                 NofiDuyetTongHopThietBiNhaMay--;
                 OnPropertyChanged(nameof(NofiDuyetTongHopThietBiNhaMay));
+            });
+            MessagingCenter.Subscribe<Cap_Nhat_Thong_Tin_Loi_Page, DocumentType>(this, "langngheduyet", (obj, item) =>
+            {
+                if (NofiDanhSachChoITXuLy > 0)
+                {
+                    NofiDanhSachChoITXuLy--;
+                    OnPropertyChanged(nameof(NofiDanhSachChoITXuLy));
+                }                    
             });
         }
         
@@ -412,6 +531,18 @@ namespace APP_HOATHO.ViewModels
                             OnPropertyChanged(nameof(IsXuatKienNVL));
                             IsThongTinKien = Convert.ToBoolean(ISDBNULL(body[0].THONG_TIN_KIEN.Value, false));
                             OnPropertyChanged(nameof(IsThongTinKien));
+
+                            IsCapNhatThongTinLoi = Convert.ToBoolean(ISDBNULL(body[0].IT_CAP_NHAT_HELPDESK.Value, false));
+                            OnPropertyChanged(nameof(IsCapNhatThongTinLoi));
+
+                            IsDanhSachChoXuLy = Convert.ToBoolean(ISDBNULL(body[0].DANH_SACH_HELPDESK.Value, false));
+                            OnPropertyChanged(nameof(IsDanhSachChoXuLy));
+                            if (IsDanhSachChoXuLy)
+                            {
+                                var h = await RunHttpClientGet<object>($"api/qltb/DanhSachThietBiChoXuLy");
+                                NofiDanhSachChoITXuLy = h.Lists.Count();
+                                OnPropertyChanged(nameof(NofiDanhSachChoITXuLy));
+                            }    
 
                         }                        
                         

@@ -26,6 +26,7 @@ using APP_HOATHO.Views.ThietBi;
 using APP_HOATHO.Views.Kiem_Ke_Thiet_Bi;
 using System.IO;
 using APP_HOATHO.ViewModels;
+using APP_HOATHO.Views.Thiet_Bi_Van_Phong;
 
 namespace APP_HOATHO.Views
 {
@@ -92,16 +93,22 @@ namespace APP_HOATHO.Views
                         {
                             loaiphieu = DocumentType.DuyetYeuCauThueThietBi ;
                         }
+                        if (p.Data["loaiphieu"].ToString() == "danhsachchoit")
+                        {
+                            loaiphieu = DocumentType.DanhSachChoITXuLy;
+                        }
                         if (loaiphieu == DocumentType.DuyetDatMuaPhuTung)
                             await Navigation.PushAsync(new DuyetChungTuPhuTung_Line(item, loaiphieu));
                         else if (loaiphieu == DocumentType.KiDienTuPhuTung)
                             await Navigation.PushAsync(new DuyetKiDienTuPhuTungLine(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
                         else if (loaiphieu == DocumentType.DuyetYeuCauThueThietBi)
-                            await Navigation.PushAsync(new DuyetYeuCauThueThietBiPage_Line(new  DuyetChungTuModel  { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
+                            await Navigation.PushAsync(new DuyetYeuCauThueThietBiPage_Line(new DuyetChungTuModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
                         else if (loaiphieu == DocumentType.KiDienTuThietBi)
                             await Navigation.PushAsync(new DuyetKiDienTuThietBiLine(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
                         else if (loaiphieu == DocumentType.DuyetTraThietBi)
                             await Navigation.PushAsync(new DuyetTraThietBiLine_Page(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
+                        else if (loaiphieu == DocumentType.DanhSachChoITXuLy)
+                            await Navigation.PushAsync(new Danh_Sach_Cho_Xu_Ly_Page());
                         else
                             await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
                     }
@@ -117,7 +124,7 @@ namespace APP_HOATHO.Views
         {
             await Device.InvokeOnMainThreadAsync(async () =>
             {
-                DocumentType loaiphieu = DocumentType.DuyetDatMuaPhuTung;
+                var loaiphieu = DocumentType.DuyetDatMuaPhuTung;
                 try
                 {
                     if (p.Data["sochungtu"].ToString() != "")
@@ -159,6 +166,10 @@ namespace APP_HOATHO.Views
                         {
                             loaiphieu = DocumentType.DuyetYeuCauThueThietBi;
                         }
+                        if (p.Data["loaiphieu"].ToString() == "danhsachchoit")
+                        {
+                            loaiphieu = DocumentType.DanhSachChoITXuLy;
+                        }
                         if (loaiphieu == DocumentType.DuyetDatMuaPhuTung)
                             await Navigation.PushAsync(new DuyetChungTuPhuTung_Line(item, loaiphieu));
                         else if (loaiphieu == DocumentType.KiDienTuPhuTung)
@@ -169,6 +180,8 @@ namespace APP_HOATHO.Views
                             await Navigation.PushAsync(new DuyetKiDienTuThietBiLine(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
                         else if (loaiphieu == DocumentType.DuyetTraThietBi)
                             await Navigation.PushAsync(new DuyetTraThietBiLine_Page(new Models.KiDienTuPhuTung.DuyetKiDienTuPhuTungModel { No_ = p.Data["sochungtu"].ToString() }, loaiphieu));
+                        else if (loaiphieu == DocumentType.DanhSachChoITXuLy)
+                            await Navigation.PushAsync(new Danh_Sach_Cho_Xu_Ly_Page());
                         else
                             await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
                     }

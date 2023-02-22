@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Cap_Nhat_Thong_Tin_Loi_Page"
+             Title="Xử lý yêu cầu của User"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>             
+            <Label Style="{StaticResource styleLableBold}"
+                   Text="Tên thiết bị" />
+            <Label Style="{StaticResource styleLableBold}"
+                   Text="{Binding Item.TenThietBi}"
+                   LineBreakMode="WordWrap" />
+            <Label Style="{StaticResource styleLableBold}"
+                   Text="Nguyên nhân gây lỗi:" />
+            <Editor Text="{Binding Item.NguyenNhan}"
+                   HeightRequest="80"
+                    Placeholder="Vui lòng nhập nguyên nhân gây lỗi tại đây"
+                   HorizontalOptions="FillAndExpand" />
+            <Label Style="{StaticResource styleLableBold}"
+                   Text="Cách khắc phục:" />
+            <Editor Text="{Binding Item.CachXuLy}"
+                   HeightRequest="80"
+                    Placeholder="Vui lòng nhập cách xử lý tại đây"
+                   HorizontalOptions="FillAndExpand" />
+            <Label Style="{StaticResource styleLableBold}"
+                   Text="Nhóm lỗi:" />
+            <sfcombobox:SfComboBox x:Name="cbLoaiLoi"                                    
+                                   SelectedValue="{Binding Item.PhanLoaiLoi , Mode=TwoWay}"
+                                   DisplayMemberPath="TenLoi"
+                                   SelectedValuePath="Loi"
+                                   Style="{StaticResource styleCombobox}"
+                                   Watermark="Chọn nhóm lỗi"
+                                   IsEditableMode="True"
+                                   HeightRequest="50"
+                                   ShowClearButton="True">
+
+            </sfcombobox:SfComboBox>
+            <Button Style="{StaticResource styleButton}"
+                    Text="Cập Nhật"
+                    x:Name="GuiYeuCau"
+                    Clicked="GuiYeuCau_Clicked"
+                    VerticalOptions="EndAndExpand"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

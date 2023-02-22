@@ -11,7 +11,8 @@ namespace APP_HOATHO.Models
         public string No_3 { get; set; }
         public string NameVN { get; set; }
         public string ItemCategory { get; set; }
-        public string Description { get; set; }        
+        public string Description { get; set; }
+        public string Description2 { get; set; }
         public string LinkVideo { get; set; }
         public string TaiLieuKiThuat { get; set; }
         public string Picture { get; set; } // link ảnh

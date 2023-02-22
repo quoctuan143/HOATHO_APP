@@ -10,7 +10,7 @@ namespace APP_HOATHO.Models.DuyetChungTu
         public string No_ { get => no_; set { no_ = value; no_ = no_.Replace("|", @"\"); }
         }
         public string ExternalDocNo { get; set; }
-        public DateTime PostingDate { get; set; }
+        public DateTime? PostingDate { get; set; }
         public string WorkCenter { get; set; }
         public string CustomerName { get; set; }
         public string VendorName { get; set; } 

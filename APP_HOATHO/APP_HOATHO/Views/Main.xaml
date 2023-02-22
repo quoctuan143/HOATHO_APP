@@ -235,6 +235,52 @@
                               Opacity="{Binding IsMainDonHang, Converter={StaticResource OpacityDisable}}">
                         <StackLayout Padding="5">
                             <Label Grid.Row="0"
+                                   Text="Quản lý thiết bị văn phòng"
+                                   TextDecorations="Underline"
+                                   TextColor="{StaticResource Primary}"
+                                   FontSize="20"
+                                   FontAttributes="Italic"></Label>
+                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                  Margin="0,5,0,0"
+                                  ColumnSpacing="0"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand">
+
+                                <control:IconMainView  Title="Yêu cầu hỗ trợ CNTT"
+                                                       Grid.Column="0"
+                                                       IconImageSource="duyetdonhang.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding YeuCauXuLyLoiCommand}"
+                                                       Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
+                                </control:IconMainView>
+                                <control:IconMainView  Title="Cập nhật xử lý yêu cầu"
+                                                       Grid.Column="1"
+                                                       IconImageSource="duyethietbi.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding CapNhatThongTinLoiCommand}"
+                                                       Disable="{Binding IsCapNhatThongTinLoi}">
+                                </control:IconMainView>
+                                <control:IconMainView  Title="DS yêu cầu chờ xử lý"
+                                                       Grid.Column="2"
+                                                       IconImageSource="duyetdinhmuc.png"
+                                                       BadgeText="{Binding NofiDanhSachChoITXuLy}"
+                                                       ActionCommand="{Binding DanhSachChoXuLyCommand}"
+                                                       Disable="{Binding IsDanhSachChoXuLy}">
+                                </control:IconMainView>
+                            </Grid>
+                        </StackLayout>
+
+                    </Frame>
+                    <Frame    Padding="2"
+                              BorderColor="#06264c"
+                              CornerRadius="10"
+                              BackgroundColor="Transparent"
+                              HeightRequest="180"
+                              HasShadow="False"
+                              IsVisible="{Binding IsMainSoi}"
+                              Opacity="{Binding IsMainDonHang, Converter={StaticResource OpacityDisable}}">
+                        <StackLayout Padding="5">
+                            <Label Grid.Row="0"
                                    Text="Ngành Sợi"
                                    TextDecorations="Underline"
                                    TextColor="{StaticResource Primary}"

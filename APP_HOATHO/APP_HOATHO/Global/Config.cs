@@ -62,6 +62,7 @@ namespace APP_HOATHO.Global
         KiDienTuThietBi = 9,
         DuyetYeuCauThueThietBi = 10,
         DuyetTraThietBi = 11,
-        KyDienTuTongHopThietBiNhaMay =12
+        KyDienTuTongHopThietBiNhaMay =12,
+        DanhSachChoITXuLy = 13
     }
 }

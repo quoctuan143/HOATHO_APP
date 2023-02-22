@@ -205,11 +205,24 @@
     <EmbeddedResource Update="Views\Tabpage\DuyetLCP_GIACONG.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Thiet_Bi_Van_Phong\Cap_Nhat_Thong_Tin_Loi_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Thiet_Bi_Van_Phong\Danh_Sach_Cho_Xu_Ly_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Thiet_Bi_Van_Phong\Yeu_Cau_Xu_Ly_Loi_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ThongTinThietBi.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ThongTinThietBi_Edit.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Thiet_Bi_Van_Phong\" />
   </ItemGroup>
 </Project>
