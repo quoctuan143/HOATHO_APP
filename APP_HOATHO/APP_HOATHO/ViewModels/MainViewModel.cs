@@ -292,7 +292,7 @@ namespace APP_HOATHO.ViewModels
                 }
             });
             DanhSachChoXuLyCommand = new  Command ( async() => await Navigation.PushAsync(new Danh_Sach_Cho_Xu_Ly_Page()));
-            Task.Factory.StartNew(() => Load().Wait());
+            Task.Factory.StartNew(async() => await Load());
             
             FullName = Preferences.Get(Config.FullName, "");
             OnPropertyChanged(nameof(FullName));

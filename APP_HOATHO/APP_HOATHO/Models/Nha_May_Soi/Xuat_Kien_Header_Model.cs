@@ -38,7 +38,7 @@ namespace APP_HOATHO.Models.Nha_May_Soi
         double _quantity;
         public double Quantity
         {
-            get => _quantity ;
+            get => _quantity;
             set
             {
                 _quantity = value;
@@ -48,13 +48,22 @@ namespace APP_HOATHO.Models.Nha_May_Soi
                 }
                 else if (_quantity != Old_Quantity && RowID == 0)
                     StatusUpdate = Models.StatusUpdate.Status.Add;
-                else if (_quantity == Old_Quantity && StatusUpdate  == Models.StatusUpdate.Status.Modified)
+                else if (_quantity == Old_Quantity && StatusUpdate == Models.StatusUpdate.Status.Modified)
                     StatusUpdate = Models.StatusUpdate.Status.None;
 
-                SetProperty (ref _quantity, value);
+                SetProperty(ref _quantity, value);
             }
         }
-        
+        public string FormatNumberQuantity { get => string.Format("{0:#,##0.##}", Quantity); 
+        set  {
+                if (!CheckThapPhan(value))
+                {
+                    FormatNumberString(ref _quantity, value);
+                    OnPropertyChanged("FormatNumberQuantity");
+                    Quantity = _quantity;
+                }   
+            }
+        }  
         public string Package_ID { get; set; }
         public StatusUpdate.Status StatusUpdate { get; set; }
     }
@@ -94,6 +103,24 @@ namespace APP_HOATHO.Models.Nha_May_Soi
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+                
+        public bool CheckThapPhan(string value)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                char lastChar = value[value.Length - 1];
+                if (lastChar == ',')
+                {
+                    return true;
+                }                
+            }
+            return false;
+        }
+        public void FormatNumberString(ref double number, string value)  
+        {
+            double.TryParse(!string.IsNullOrEmpty(value) ? value : "0", out double quantity);
+            number = quantity;
+        }
     }
 
     public class UploadImageKien

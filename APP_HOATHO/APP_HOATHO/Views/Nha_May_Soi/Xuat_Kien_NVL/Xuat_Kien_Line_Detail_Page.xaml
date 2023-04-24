@@ -76,8 +76,9 @@
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Entry Text="{Binding Quantity, StringFormat='{0:#,##0.##}'}"
+                                <Entry Text="{Binding FormatNumberQuantity}"
                                        TextColor="Black"
+                                       Keyboard="Numeric"
                                         />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>

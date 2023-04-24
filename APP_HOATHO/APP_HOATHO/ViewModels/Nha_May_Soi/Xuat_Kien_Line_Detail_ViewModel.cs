@@ -165,7 +165,7 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
                             var a = await RunHttpClientGet<Package_Model>("api/Soi/getPackageId?packageid=" + ma + "&item=" + kiemchungtu.Item_No_);
                             if (a.Lists.Count == 0)
                             {
-                                DependencyService.Get<IMessage>().ShortAlert("Không tìm thấy kiện này trong hệ thống");
+                                DependencyService.Get<IMessage>().ShortAlert("Không tìm thấy kiện này trong hệ thống hoặc không còn tồn trong kho");
                                 return;
                             }
                             //lưu xuống database
