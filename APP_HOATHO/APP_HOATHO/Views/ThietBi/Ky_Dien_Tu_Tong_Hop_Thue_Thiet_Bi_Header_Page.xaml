@@ -13,7 +13,8 @@
                                    AutoGenerateColumns="False"
                                    Style="{StaticResource styleDataGrid}"
                                    SelectionMode="Single"
-                                   LiveDataUpdateMode="AllowSummaryUpdate">
+                                   LiveDataUpdateMode="AllowSummaryUpdate"
+                                   FrozenColumnsCount="1">
                 <sfDataGrid:SfDataGrid.Columns>
 
 

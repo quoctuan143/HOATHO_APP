@@ -1,5 +1,6 @@
 ﻿using APP_HOATHO.Dialog;
 using APP_HOATHO.Global;
+using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
 using APP_HOATHO.ViewModels;
 using Newtonsoft.Json;
@@ -77,6 +78,7 @@ namespace APP_HOATHO.Views
                 scan.OnScanResult += (result) =>
                 {
                     Device.BeginInvokeOnMainThread(async () => {
+                        DependencyService.Get<IBeepService>().Beep();
                         await Navigation.PopAsync();
                         //show form lên 
                         try

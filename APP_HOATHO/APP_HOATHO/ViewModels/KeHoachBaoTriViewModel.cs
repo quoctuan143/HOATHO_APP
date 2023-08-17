@@ -82,7 +82,7 @@ namespace APP_HOATHO.ViewModels
             try
             {
                 KE_HOACH_BAO_TRI.Clear();
-                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getKeHoachBaoTri?user=" + Preferences.Get(Config.User ,"") + "&nam=" + year ).Result;
+                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getKeHoachBaoTri?user=" + Preferences.Get(Config.User ,"") + "&nam=" + year + "&thang=-1").Result;
                 await Task.Delay(3000);
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)

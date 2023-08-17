@@ -28,6 +28,7 @@
                                             GridStyle="{StaticResource dark}"                                            
                                             Style="{StaticResource styleDataGrid}"
                                             ColumnSizer="LastColumnFill"
+                                           FrozenColumnsCount="1"
                                               >
                         <sfDataGrid:SfDataGrid.Columns>
                             <sfDataGrid:GridSwitchColumn MappingName="IsCheck" HeaderText="">

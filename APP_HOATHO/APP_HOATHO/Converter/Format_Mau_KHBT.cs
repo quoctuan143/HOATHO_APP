@@ -25,6 +25,26 @@ namespace APP_HOATHO.Converter
         }
     }
 
+    public class Format_Mau_XuatKhoCayVai : IValueConverter 
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            StatusFormatColor  _value = (StatusFormatColor)value;
+            if (_value == StatusFormatColor.ChuaHoanThanh)
+                return Color.Black;
+            else if (_value ==  StatusFormatColor.DoDang)
+                return Color.Red;
+            else if (_value == StatusFormatColor.HoanThanh)
+                return Color.Green;
+            return Color.White;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class OpacityDisable : IValueConverter 
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -40,5 +60,13 @@ namespace APP_HOATHO.Converter
         {
             throw new NotImplementedException();
         }
+    }
+
+    public enum StatusFormatColor
+    {
+        TatCa =-1,
+        ChuaHoanThanh = 0,
+        DoDang =1,
+        HoanThanh=2
     }
 }

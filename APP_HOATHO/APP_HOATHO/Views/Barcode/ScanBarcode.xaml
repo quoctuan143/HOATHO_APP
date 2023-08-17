@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="APP_HOATHO.Views.Barcode.ScanBarcode"
+             Shell.TabBarIsVisible="False"
+             x:Name="barcode">
+    <ContentPage.Content>
+        <StackLayout>
+            <zxing:ZXingScannerView x:Name="scannerView" WidthRequest="200" HeightRequest="200" 
+                                    IsAnalyzing="True" IsScanning="True"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    OnScanResult="scannerView_OnScanResult"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                        >
+                <Entry Placeholder="Nhập barcode mà không quét được"
+                       PlaceholderColor="Red"
+                       x:Name="txtBarcode"
+                       ClearButtonVisibility="WhileEditing"
+                         />
+                <sfbutton:SfButton Text="Chọn" x:Name="btnChon"  Clicked="btnChon_Clicked" FontSize="16"
+                                  
+                        CornerRadius="10" HorizontalOptions="FillAndExpand"
+                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderer\BeepService.cs" />
     <Compile Include="Renderer\MessageIOS.cs" />
     <Compile Include="Renderer\ProcessLoading.cs" />
     <Compile Include="Renderer\StatusBarColorRenderer.cs" />
@@ -393,6 +394,15 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\kiemke.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phieuxuatkho.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vitrikho.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phieunhapkho.png" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -211,6 +211,7 @@ namespace APP_HOATHO.Views
                 scan.OnScanResult += (result) =>
                 {
                     Device.BeginInvokeOnMainThread(async () => {
+                        DependencyService.Get<IBeepService>().Beep();
                         await Navigation.PopAsync();
                         //show form lên
                         try

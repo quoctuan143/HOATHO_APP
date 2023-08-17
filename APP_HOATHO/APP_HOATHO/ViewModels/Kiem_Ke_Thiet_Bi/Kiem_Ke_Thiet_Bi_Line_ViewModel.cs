@@ -58,6 +58,7 @@ namespace APP_HOATHO.ViewModels.Kiem_Ke_Thiet_Bi
                         //show form lên
                         try
                         {
+                            DependencyService.Get<IBeepService>().Beep();
                             string ma = result.Text.Split('=')[1];
                             var a = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getTimKiemThietBi?mathietbi=" + ma);
                             if (a.Lists.Count == 0)
@@ -87,11 +88,15 @@ namespace APP_HOATHO.ViewModels.Kiem_Ke_Thiet_Bi
                                     ListItem.Add(item);
                                     OnPropertyChanged(nameof(ListItem));
                                 }   
+                                else
+                                {
+                                    await new MessageBox("Mã này đã được quét và cập nhật rồi.").Show(); ;
+                                }    
                             }
                             else
                                 await new MessageBox(res.Content.ReadAsStringAsync().Result).Show();
 
-                            await navigation.PopAsync();
+                            //await navigation.PopAsync();
                         }
                         catch
                         {

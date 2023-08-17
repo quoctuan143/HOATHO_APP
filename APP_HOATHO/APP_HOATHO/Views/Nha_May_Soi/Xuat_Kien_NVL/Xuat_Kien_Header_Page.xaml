@@ -11,7 +11,8 @@
                                    ItemsSource="{Binding ListItem, Mode=TwoWay}"
                                    SelectionChanged="listChiTiet_SelectionChanged"
                                    Style="{StaticResource styleDataGrid}"
-                                   SelectionMode="Single">
+                                   SelectionMode="Single"
+                                   FrozenColumnsCount="1">
                 <sfDataGrid:SfDataGrid.Columns>
 
 
@@ -98,9 +99,23 @@
 
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
             </sfDataGrid:SfDataGrid>
-            <Button Text="Quét QR TRÊN PHIẾU"
-                    Command="{Binding QuetQRComamand}"
-                    />
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="End">
+                <Button Text="Quét QR TRÊN PHIẾU"
+                        Command="{Binding QuetQRComamand}"
+                        Style="{StaticResource styleButton}"
+                        HorizontalOptions="FillAndExpand">
+
+                </Button>
+
+                <Button Text="K.Tra Chất lượng"
+                        Clicked="Button_Clicked"
+                        Style="{StaticResource styleButton}"
+                        HorizontalOptions="FillAndExpand">
+                </Button>
+            </StackLayout>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

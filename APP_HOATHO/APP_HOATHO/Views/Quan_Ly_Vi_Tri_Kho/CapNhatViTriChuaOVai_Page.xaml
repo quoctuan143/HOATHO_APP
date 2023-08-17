@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:control="clr-namespace:APP_HOATHO.Template"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.CapNhatViTriChuaOVai_Page"
+             Title="Thay đổi vị trí kiện vải"
+             Shell.TabBarIsVisible="False"
+             x:Name="ThayDoiViTriKien">
+    <ContentPage.Content>
+        <StackLayout>
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"                                     
+                                   Style="{StaticResource styleDataGrid}"      
+                                   AutoGenerateColumns="False"
+                                   AllowEditing="True"
+                                       NavigationMode="Cell"
+					                    EditTapAction="OnTap"
+					                    SelectionMode="SingleDeselect"
+                                   ColumnSizer="LastColumnFill">
+                <sfDataGrid:SfDataGrid.Columns>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="BarcodeId"                                                      
+                                                    MappingName="Code"         
+                                                    Width="120"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Code}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Vị trí lưu"                                                      
+                                                    MappingName="PositionId"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding PositionId}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                                    <Image Source="vitrikho.png"
+                                       WidthRequest="25"
+                                       HeightRequest="25"
+                                       Aspect="AspectFit"
+                                       >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SearchCommand, Source={x:Reference Name=ThayDoiViTriKien}}"
+                                                              CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+                   
+
+                </sfDataGrid:SfDataGrid.Columns>
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                          Format="{}{Count}"
+                                                          MappingName="Quantity"
+                                                          SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <sfbutton:SfButton Text="Quét QR"  Command="{Binding QuetQR}" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                         Style="{StaticResource sfbuttonCancel }"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="Cập nhật"  Command="{Binding CapNhatCommand}" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

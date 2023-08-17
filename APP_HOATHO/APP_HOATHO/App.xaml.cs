@@ -1,4 +1,5 @@
 ﻿using APP_HOATHO.Global;
+using APP_HOATHO.Interface;
 using APP_HOATHO.Services;
 using Xamarin.Forms;
 
@@ -14,6 +15,7 @@ namespace APP_HOATHO
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzA4MTIyQDMxMzgyZTMyMmUzME4rVWJvRGdVY0ZibWlYbUFBN1dyNVFjemJ5djZ5dWQzZzdMaDNEQ1hBN3M9");
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTE4NTQ2NUAzMjMwMmUzNDJlMzBhaEV4Y3J2TTZyZ2FRdTBkZ1k4VUtPVzUwbHp1Y0pUeWJ0cW56cFJpM1JFPQ==");
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<IBeepService>();
             new Config();
             Device.SetFlags(new string[] { "CollectionView_Experimental", "Brush_Experimental", "SwipeView_Experimental", "CarouseView_Experimental", "IndicatorView_Experimental" });
             if (isNotification == false)

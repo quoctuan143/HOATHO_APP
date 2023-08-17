@@ -36,5 +36,12 @@ namespace APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL
             if (_selectItem == null) return;
             Navigation.PushAsync(new Xuat_Kien_Line_Page(_selectItem));
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Xuat_Kien_Header_Model _selectItem = listChiTiet.SelectedItem as Xuat_Kien_Header_Model;
+            if (_selectItem == null) return;
+            viewModel.KiemTraChatLuongCommand.Execute(_selectItem.No_);
+        }
     }
 }

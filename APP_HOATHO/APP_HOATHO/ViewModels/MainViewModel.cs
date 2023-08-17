@@ -3,25 +3,25 @@ using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
 using APP_HOATHO.Models.Nha_May_Soi;
+using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
 using APP_HOATHO.ViewModels.DuyetChungTu;
 using APP_HOATHO.ViewModels.Ki_Dien_Tu_Thiet_Bi;
 using APP_HOATHO.Views;
+using APP_HOATHO.Views.Barcode;
 using APP_HOATHO.Views.DuyetChungTu;
 using APP_HOATHO.Views.KiDienTu;
 using APP_HOATHO.Views.Kiem_Ke_Thiet_Bi;
 using APP_HOATHO.Views.Nha_May_Soi;
 using APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL;
+using APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Tabpage;
 using APP_HOATHO.Views.Thiet_Bi_Van_Phong;
 using APP_HOATHO.Views.ThietBi;
 using Newtonsoft.Json;
 using Plugin.LatestVersion;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -34,6 +34,7 @@ namespace APP_HOATHO.ViewModels
     public class MainViewModel : BaseViewModel
     {
         #region "Field"
+
         public INavigation Navigation { get; set; }
         public string FullName { get; set; }
         public bool IsDanhMucThietBi { get; set; }
@@ -45,18 +46,25 @@ namespace APP_HOATHO.ViewModels
         public bool IsDNTT { get; set; }
         public bool IsMainThietBi { get; set; }
         public bool IsMainDonHang { get; set; }
-        public bool IsMainSoi { get; set; } 
+        public bool IsMainSoi { get; set; }
         public bool IsKiDienTuPhuTung { get; set; }
         public bool IsKiDienTuThietBi { get; set; }
         public bool IsDuyetYeuCauThueThietBi { get; set; }
         public bool IsDuyetPhieuTraThietBi { get; set; }
         public bool IsKiemKeThietBi { get; set; }
-        public bool IsXuatKienNVL   { get; set; }
-        public bool IsThongTinKien{ get; set; } 
+        public bool IsXuatKienNVL { get; set; }
+        public bool IsThongTinKien { get; set; }
         public bool IsDuyetTongHopThietBiNhaMay { get; set; }
         public bool IsYeuCauXuLyLoi { get => true; set => value = true; }
-        public bool IsCapNhatThongTinLoi { get ; set ; }
-        public bool IsDanhSachChoXuLy { get ; set ; }
+        public bool IsCapNhatThongTinLoi { get; set; }
+        public bool IsDanhSachChoXuLy { get; set; }
+        public bool IsPhieuNhapKho { get; set; }
+        public bool IsPhieuXuatKho { get; set; }
+        public bool IsCapNhatViTriKho { get; set; }
+        public bool IsQuanLyViTriKho { get; set; }
+        public bool IsCapNhatOChuaVai { get; set; }
+        public bool IsTaoPhieuXuatKhoGomVai { get; set; }
+        public bool IsNhanHelpDesk { get; set; }
         public int NofiLCP_FOB { get; set; }
         public int NofiLCP_GC { get; set; }
         public int NofiDuyetDatMua { get; set; }
@@ -67,16 +75,19 @@ namespace APP_HOATHO.ViewModels
         public int NofiDanhMucThietBi { get; set; }
         public int NofiDeNghiTT { get; set; }
         public int NofiYeuCauThueThietBi { get; set; }
-        public int NofiTraThietBi { get; set;}
+        public int NofiTraThietBi { get; set; }
         public int NofiDuyetTongHopThietBiNhaMay { get; set; }
         public int NofiDanhSachChoITXuLy { get; set; }
-        DuyetChungTuPhuTung_Header duyetChungTuPhuTung_Header;
-        DuyetDonDatMua DuyetDonDatMua;
-        DuyetLCP_FOB duyetLCP_FOB;
-        DuyetLCP_GIACONG DuyetLCP_GIACONG;
-        DuyetDeNghiThanhToanTabpage DuyetDeNghiThanhToanTabpage;
-        #endregion
+        private DuyetChungTuPhuTung_Header duyetChungTuPhuTung_Header;
+        private DuyetDonDatMua DuyetDonDatMua;
+        private DuyetLCP_FOB duyetLCP_FOB;
+        private DuyetLCP_GIACONG DuyetLCP_GIACONG;
+        private DuyetDeNghiThanhToanTabpage DuyetDeNghiThanhToanTabpage;
+
+        #endregion "Field"
+
         #region "Command"
+
         public ICommand DanhMucThietBiCommand { get; set; }
         public ICommand LichXichBaoTriCommand { get; set; }
         public ICommand KiemKeThietBiCommand { get; set; }
@@ -84,24 +95,33 @@ namespace APP_HOATHO.ViewModels
         public ICommand DuyetYeuCauTraThietBiCommand { get; set; }
         public ICommand DuyetDatPhuTungCommand { get; set; }
         public ICommand DuyetKyDienTuXuatPhuTung { get; set; }
-        public ICommand DuyetKyDienTuXuatThietBi  { get; set; }
+        public ICommand DuyetKyDienTuXuatThietBi { get; set; }
         public ICommand DuyetDonDatMuaCommand { get; set; }
         public ICommand DuyetLenhCapPhatFOBCommand { get; set; }
         public ICommand DuyetLenhCapPhatGiaCongCommand { get; set; }
         public ICommand DuyetDeNghiThanhToanCommand { get; set; }
-        public ICommand LoadDataCommand  { get; set; }
+        public ICommand LoadDataCommand { get; set; }
         public ICommand DuyetTongHopThietBiThueNhaMayCommand { get; set; }
         public ICommand XuatKienNVLCommand { get; set; }
         public ICommand ThongTinKienCommand { get; set; }
         public ICommand YeuCauXuLyLoiCommand { get; set; }
         public ICommand CapNhatThongTinLoiCommand { get; set; }
         public ICommand DanhSachChoXuLyCommand { get; set; }
-        #endregion
+        public ICommand PhieuNhapKhoCommand { get; set; }
+        public ICommand PhieuXuatKhoCommand { get; set; }
+        public ICommand CapNhatViTriKhoCommand { get; set; }
+        public ICommand CapNhatViTriChuaOVaiCommand { get; set; }
+        public ICommand PhieuXuatKhoGomVaiCommand { get; set; }
+        public ICommand TaoPhieuXuatKhoGomVaiCommand { get; set; }
+
+        #endregion "Command"
+
         public MainViewModel()
         {
             ShowLoading("Đang tải dữ liệu");
-            LoadDataCommand = new Command( async() => await Load());
-            DuyetDeNghiThanhToanCommand = new Command(async () => {
+            LoadDataCommand = new Command(async () => await Load());
+            DuyetDeNghiThanhToanCommand = new Command(async () =>
+            {
                 if (DuyetDeNghiThanhToanTabpage == null)
                 {
                     DuyetDeNghiThanhToanTabpage = new DuyetDeNghiThanhToanTabpage();
@@ -109,7 +129,8 @@ namespace APP_HOATHO.ViewModels
                 await DuyetDeNghiThanhToanTabpage.LoadData();
                 await Navigation.PushAsync(DuyetDeNghiThanhToanTabpage);
             });
-            DuyetLenhCapPhatGiaCongCommand = new Command(async () => {
+            DuyetLenhCapPhatGiaCongCommand = new Command(async () =>
+            {
                 if (DuyetLCP_GIACONG == null)
                 {
                     DuyetLCP_GIACONG = new DuyetLCP_GIACONG();
@@ -117,7 +138,8 @@ namespace APP_HOATHO.ViewModels
                 await DuyetLCP_GIACONG.LoadData();
                 await Navigation.PushAsync(DuyetLCP_GIACONG);
             });
-            DuyetLenhCapPhatFOBCommand = new Command(async () => {
+            DuyetLenhCapPhatFOBCommand = new Command(async () =>
+            {
                 if (duyetLCP_FOB == null)
                 {
                     duyetLCP_FOB = new DuyetLCP_FOB();
@@ -125,7 +147,8 @@ namespace APP_HOATHO.ViewModels
                 await duyetLCP_FOB.LoadData();
                 await Navigation.PushAsync(duyetLCP_FOB);
             });
-            DuyetDonDatMuaCommand = new Command(async () => {
+            DuyetDonDatMuaCommand = new Command(async () =>
+            {
                 if (DuyetDonDatMua == null)
                 {
                     DuyetDonDatMua = new DuyetDonDatMua();
@@ -134,12 +157,13 @@ namespace APP_HOATHO.ViewModels
                 await Navigation.PushAsync(DuyetDonDatMua);
             });
             DuyetTongHopThietBiThueNhaMayCommand = new Command(async () => await Navigation.PushAsync(new Ky_Dien_Tu_Tong_Hop_Thue_Thiet_Bi_Header_Page()));
-            DanhMucThietBiCommand = new Command( async() => await Navigation.PushAsync(new Danh_Muc_Thiet_Bi()));
+            DanhMucThietBiCommand = new Command(async () => await Navigation.PushAsync(new Danh_Muc_Thiet_Bi()));
             LichXichBaoTriCommand = new Command(async () => await Navigation.PushAsync(new KeHoachBaoTri()));
             KiemKeThietBiCommand = new Command(async () => await Navigation.PushAsync(new Kiem_Ke_Thiet_Bi_Header_Page()));
             DuyetYeuCauThueThietBiCommand = new Command(async () => await Navigation.PushAsync(new DuyetYeuCauThueThietBiPage_Header(DocumentType.DuyetYeuCauThueThietBi)));
             DuyetYeuCauTraThietBiCommand = new Command(async () => await Navigation.PushAsync(new DuyetTraThietBi_Page(DocumentType.DuyetTraThietBi)));
-            DuyetDatPhuTungCommand = new Command(async () => {
+            DuyetDatPhuTungCommand = new Command(async () =>
+            {
                 if (duyetChungTuPhuTung_Header == null)
                 {
                     duyetChungTuPhuTung_Header = new DuyetChungTuPhuTung_Header(DocumentType.DuyetDatMuaPhuTung);
@@ -165,31 +189,40 @@ namespace APP_HOATHO.ViewModels
                             //show form lên
                             try
                             {
+                                DependencyService.Get<IBeepService>().Beep();
                                 if (IsBusy) return;
 
                                 IsBusy = true;
+                                string[] arr = result.Text.Split('_');
+                                string ma;
+                                string item;
+                                if (arr.Length == 2)
+                                {
+                                    ma = result.Text.Split('_')[0];
+                                    item = result.Text.Split('_')[1];
+                                }
+                                else
+                                {
+                                    ma = result.Text.Split('_')[0];
+                                    item = "";
+                                }
 
-                                string ma = result.Text.Split('_')[0];
-                                var Item  = await RunHttpClientGet <UploadImageKien>("api/soi/SearchPackingID?packingId=" + ma);
+                                var Item = await RunHttpClientGet<UploadImageKien>($"api/soi/SearchPackingID?packingId={ma}&item={item}");
                                 if (Item.Lists.Count > 0)
                                 {
                                     await Navigation.PopAsync();
                                     await Navigation.PushAsync(new Thong_Tin_Kien_Page(Item.Lists[0]));
-                                }    
-                                   
+                                }
                                 else
                                     DependencyService.Get<IMessage>().LongAlert("Không tìm thấy kiện này trong hệ thống");
-                            }       
+                            }
                             catch { }
-                            finally { IsBusy = false; } 
-                                
+                            finally { IsBusy = false; }
                         });
-
                     };
                 }
                 catch (Exception ex)
                 {
-
                     await new MessageBox(ex.Message).Show();
                 }
             });
@@ -208,10 +241,11 @@ namespace APP_HOATHO.ViewModels
                             //show form lên
                             try
                             {
+                                DependencyService.Get<IBeepService>().Beep();
                                 if (IsBusy) return;
 
                                 IsBusy = true;
-                                string ma = result.Text.Split('=')[1];                                
+                                string ma = result.Text.Split('=')[1];
                                 var Item = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getTimKiemThietBi?mathietbi=" + ma);
                                 if (Item.Lists.Count > 0)
                                 {
@@ -221,24 +255,20 @@ namespace APP_HOATHO.ViewModels
                                         DocumentNo_ = ma,
                                         NoiDungLoi = "",
                                         NguoiGuiYeuCau = Preferences.Get(Config.FullName, ""),
-                                        TenThietBi = Item.Lists[0].Description2 
+                                        TenThietBi = Item.Lists[0].Description2
                                     };
                                     await Navigation.PushAsync(new Yeu_Cau_Xu_Ly_Loi_Page(yeucau));
                                 }
-
                                 else
                                     DependencyService.Get<IMessage>().LongAlert("Không tìm thấy thiết bị này trong hệ thống");
                             }
                             catch { }
                             finally { IsBusy = false; }
-
                         });
-
                     };
                 }
                 catch (Exception ex)
                 {
-
                     await new MessageBox(ex.Message).Show();
                 }
             });
@@ -257,6 +287,7 @@ namespace APP_HOATHO.ViewModels
                             //show form lên
                             try
                             {
+                                DependencyService.Get<IBeepService>().Beep();
                                 if (IsBusy) return;
 
                                 IsBusy = true;
@@ -267,33 +298,88 @@ namespace APP_HOATHO.ViewModels
                                     await Navigation.PopAsync();
                                     DevicesMaintenanceHistory yeucau = new DevicesMaintenanceHistory
                                     {
-                                        DocumentNo_ = ma,                                       
+                                        DocumentNo_ = ma,
                                         ITXuLy = Preferences.Get(Config.FullName, ""),
                                         TenThietBi = Item.Lists[0].Description2,
-                                        NguoiGuiYeuCau = Item.Lists[0].NguoiGuiYeuCau  
+                                        NguoiGuiYeuCau = Item.Lists[0].NguoiGuiYeuCau
                                     };
                                     await Navigation.PushAsync(new Cap_Nhat_Thong_Tin_Loi_Page(yeucau));
                                 }
-
                                 else
                                     DependencyService.Get<IMessage>().LongAlert("Không tìm thấy thiết bị này trong hệ thống");
                             }
-                            catch (Exception ex) {  }
+                            catch (Exception ex) { }
                             finally { IsBusy = false; }
-
                         });
-
                     };
                 }
                 catch (Exception ex)
                 {
-
                     await new MessageBox(ex.Message).Show();
                 }
             });
-            DanhSachChoXuLyCommand = new  Command ( async() => await Navigation.PushAsync(new Danh_Sach_Cho_Xu_Ly_Page()));
-            Task.Factory.StartNew(async() => await Load());
-            
+            DanhSachChoXuLyCommand = new Command(async () => await Navigation.PushAsync(new Danh_Sach_Cho_Xu_Ly_Page()));
+            PhieuNhapKhoCommand = new Command(async () => await Navigation.PushAsync(new DanhSachPhieuNhapMua()));
+            PhieuXuatKhoCommand = new Command(async () => await Navigation.PushAsync(new DanhSachPhieuXuatKho_Page()));
+            PhieuXuatKhoGomVaiCommand = new Command(async () => await Navigation.PushAsync(new DanhSachPhieuXuatKhoGomVai_Page()));
+            CapNhatViTriKhoCommand = new Command(async () =>
+            {
+                try
+                {
+                    ScanBarcode scan = new ScanBarcode(false, "Quét kiện chứa cây vải");
+                    scan.ScanBarcodeResult += (s, result) =>
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            CellPositionModel item = new CellPositionModel { Code = result, PositionId = "" };
+                            var ok1 = await RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
+                            if (!ok1.IsSuccessStatusCode)
+                            {
+                                await new MessageBox("Barcode này không tồn tại trong hệ thống").Show();
+                                return;
+                            }
+                            //show form lên
+                            try
+                            {
+                                await Navigation.PushAsync(new CapNhatViTriLuuKho_Page(result));
+                            }
+                            catch
+                            {
+                                await new MessageBox("Barcode không tồn tại trong hệ thống").Show();
+                            }
+                        });
+                    };
+                    await Navigation.PushAsync(scan);
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            CapNhatViTriChuaOVaiCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new CapNhatViTriChuaOVai_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            TaoPhieuXuatKhoGomVaiCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new TaoPhieuXuatKhoGomVai_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            Task.Factory.StartNew(async () => await Load());
+
             FullName = Preferences.Get(Config.FullName, "");
             OnPropertyChanged(nameof(FullName));
             //lắng nghe các trạng thái duyệt lcp fob, giacong dat mua
@@ -323,7 +409,7 @@ namespace APP_HOATHO.ViewModels
                 OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));
             });
             MessagingCenter.Subscribe<DuyetKiDienTuPhuTung_ViewModel, DocumentType>(this, "langngheduyet", (obj, item) =>
-            {                
+            {
                 NofiKidienTuPhuTung--;
                 OnPropertyChanged(nameof(NofiKidienTuPhuTung));
             });
@@ -353,13 +439,13 @@ namespace APP_HOATHO.ViewModels
                 {
                     NofiDanhSachChoITXuLy--;
                     OnPropertyChanged(nameof(NofiDanhSachChoITXuLy));
-                }                    
+                }
             });
         }
-        
-        async Task Load()
+
+        private async Task Load()
         {
-            //load danh sách duyêt đặt mua 
+            //load danh sách duyêt đặt mua
             try
             {
                 await Device.InvokeOnMainThreadAsync(async () =>
@@ -380,7 +466,12 @@ namespace APP_HOATHO.ViewModels
                             IsMainDonHang = Convert.ToBoolean(ISDBNULL(body[0].KY_DIEN_TU.Value, false));
                             OnPropertyChanged(nameof(IsMainDonHang));
                             IsMainSoi = Convert.ToBoolean(ISDBNULL(body[0].NHA_MAY_SOI.Value, false));
-                            OnPropertyChanged (nameof(IsMainSoi));
+                            OnPropertyChanged(nameof(IsMainSoi));
+                            IsQuanLyViTriKho = Convert.ToBoolean(ISDBNULL(body[0].QUAN_LY_VI_TRI_KHO.Value, false));
+                            OnPropertyChanged(nameof(IsQuanLyViTriKho));
+                            IsCapNhatOChuaVai = Convert.ToBoolean(ISDBNULL(body[0].QUAN_LY_VI_TRI_KHO.Value, false));
+                            OnPropertyChanged(nameof(IsCapNhatOChuaVai));
+
                             IsDuyetDonDatMua = Convert.ToBoolean(ISDBNULL(body[0].DON_DAT_MUA.Value, false));
                             OnPropertyChanged(nameof(IsDuyetDonDatMua));
                             if (IsDuyetDonDatMua)
@@ -391,8 +482,8 @@ namespace APP_HOATHO.ViewModels
                                 NofiDuyetDatMua = a.Lists.Count;
                                 OnPropertyChanged(nameof(NofiDuyetDatMua));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 1");
-                            } 
-                           
+                            }
+
                             IsDanhMucThietBi = Convert.ToBoolean(ISDBNULL(body[0].DANH_MUC_THIET_BI.Value, false));
                             OnPropertyChanged(nameof(IsDanhMucThietBi));
                             if (IsDanhMucThietBi)
@@ -403,53 +494,53 @@ namespace APP_HOATHO.ViewModels
                                 NofiDanhMucThietBi = g.Lists.Count();
                                 OnPropertyChanged(nameof(NofiDanhMucThietBi));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 2");
-                            } 
-                            
+                            }
+
                             IsLichXichBaoTri = Convert.ToBoolean(ISDBNULL(body[0].LICH_XICH_BAO_TRI.Value, false));
                             OnPropertyChanged(nameof(IsLichXichBaoTri));
                             if (IsLichXichBaoTri)
                             {
                                 System.Diagnostics.Debug.WriteLine(" đang chay task 3");
-                                string  url = "api/qltb/getKeHoachBaoTri?user=" + Preferences.Get(Config.User, "") + "&nam=" + DateTime.Now.Year.ToString();
+                                string url = "api/qltb/getKeHoachBaoTri?user=" + Preferences.Get(Config.User, "") + "&nam=" + DateTime.Now.Year.ToString() + "&thang=" + DateTime.Now.Month.ToString();
                                 var f = await RunHttpClientGet<Models.KeHoachBaoTri>(url);
-                                NofiLichXich = f.Lists.Where(x=> x.Da_Bao_Tri == false ).Count();
-                                OnPropertyChanged(nameof(NofiLichXich));                                
+                                NofiLichXich = f.Lists.Where(x => x.Da_Bao_Tri == false).Count();
+                                OnPropertyChanged(nameof(NofiLichXich));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 3");
                             }
-                            
+
                             IsDuyetDatPhuTung = Convert.ToBoolean(ISDBNULL(body[0].DUYET_DAT_HANG_PHU_TUNG.Value, false));
                             OnPropertyChanged(nameof(IsDuyetDatPhuTung));
                             if (IsDuyetDatPhuTung)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 4");                                
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 4");
                                 string url = $"api/DuyetChungTu/getDatMuaPhuTung?username={Preferences.Get(Config.User, "")}";
                                 var d = await RunHttpClientGet<object>(url);
                                 NofiDuyetDatMuaPhuTung = d.Lists.Count();
-                                OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));                               
+                                OnPropertyChanged(nameof(NofiDuyetDatMuaPhuTung));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 4");
-                            } 
-                            
+                            }
+
                             IsDuyetLCPFOB = Convert.ToBoolean(ISDBNULL(body[0].LCP_FOB.Value, false));
                             OnPropertyChanged(nameof(IsDuyetLCPFOB));
                             if (IsDuyetLCPFOB)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 5");                               
-                                string url  = $"api/DuyetChungTu/getLenhCapPhat?username={Preferences.Get(Config.User, "")}";
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 5");
+                                string url = $"api/DuyetChungTu/getLenhCapPhat?username={Preferences.Get(Config.User, "")}";
                                 var b = await RunHttpClientGet<object>(url);
                                 NofiLCP_FOB = b.Lists.Count();
-                                OnPropertyChanged(nameof(NofiLCP_FOB));                                
+                                OnPropertyChanged(nameof(NofiLCP_FOB));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 5");
-                            }    
-                            
+                            }
+
                             IsDuyetLCPGC = Convert.ToBoolean(ISDBNULL(body[0].LCP_GIA_CONG.Value, false));
                             OnPropertyChanged(nameof(IsDuyetLCPGC));
                             if (IsDuyetLCPGC)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 6");                                
-                                string url  = $"api/DuyetChungTu/getLenhCapPhat_GC?username={Preferences.Get(Config.User, "")}";
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 6");
+                                string url = $"api/DuyetChungTu/getLenhCapPhat_GC?username={Preferences.Get(Config.User, "")}";
                                 var c = await RunHttpClientGet<object>(url);
                                 NofiLCP_GC = c.Lists.Count();
-                                OnPropertyChanged(nameof(NofiLCP_GC));                                
+                                OnPropertyChanged(nameof(NofiLCP_GC));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 6");
                             }
 
@@ -457,59 +548,59 @@ namespace APP_HOATHO.ViewModels
                             OnPropertyChanged(nameof(IsDNTT));
                             if (IsDNTT)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 7");                                
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 7");
                                 string url = $"api/DuyetChungTu/getDeNghiThanhToan?username={Preferences.Get(Config.User, "")}";
                                 var e = await RunHttpClientGet<object>(url);
                                 NofiDeNghiTT = e.Lists.Count();
-                                OnPropertyChanged(nameof(NofiDeNghiTT));                                
+                                OnPropertyChanged(nameof(NofiDeNghiTT));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 7");
                             }
 
                             IsKiDienTuPhuTung = Convert.ToBoolean(ISDBNULL(body[0].KY_DIEN_TU_XUAT_PHU_TUNG.Value, false));
                             OnPropertyChanged(nameof(IsKiDienTuPhuTung));
-                            if (IsKiDienTuPhuTung )
+                            if (IsKiDienTuPhuTung)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 8");                                
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 8");
                                 string url = $"api/DuyetChungTu/getKiDienTuPhuTung?nhamay={Preferences.Get(Config.NhaMay, "")}";
                                 var h = await RunHttpClientGet<object>(url);
                                 NofiKidienTuPhuTung = h.Lists.Count();
-                                OnPropertyChanged(nameof(NofiKidienTuPhuTung));                               
+                                OnPropertyChanged(nameof(NofiKidienTuPhuTung));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 8");
-                            }    
+                            }
 
                             IsKiDienTuThietBi = Convert.ToBoolean(ISDBNULL(body[0].KY_DIEN_TU_XUAT_THIET_BI.Value, false));
                             OnPropertyChanged(nameof(IsKiDienTuThietBi));
-                            if (IsKiDienTuThietBi )
+                            if (IsKiDienTuThietBi)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 9");                                
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 9");
                                 string url = $"api/DuyetChungTu/getKiDienTuThietBi?nhamay={Preferences.Get(Config.NhaMay, "")}";
-                               var h = await RunHttpClientGet<object>(url);
+                                var h = await RunHttpClientGet<object>(url);
                                 NofiKidienTuThietBi = h.Lists.Count();
-                                OnPropertyChanged(nameof(NofiKidienTuThietBi));                                
+                                OnPropertyChanged(nameof(NofiKidienTuThietBi));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 9");
-                            }    
+                            }
 
                             IsDuyetYeuCauThueThietBi = Convert.ToBoolean(ISDBNULL(body[0].DUYET_YEU_CAU_THUE_THIET_BI.Value, false));
                             OnPropertyChanged(nameof(IsDuyetYeuCauThueThietBi));
                             if (IsDuyetYeuCauThueThietBi)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 10");                               
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 10");
                                 string url = $"api/DuyetChungTu/getYeuCauThueThietBi?username={Preferences.Get(Config.User, "")}";
                                 var h = await RunHttpClientGet<object>(url);
                                 NofiYeuCauThueThietBi = h.Lists.Count();
-                                OnPropertyChanged(nameof(NofiYeuCauThueThietBi));                                
+                                OnPropertyChanged(nameof(NofiYeuCauThueThietBi));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 10");
-                            }    
+                            }
 
                             IsDuyetPhieuTraThietBi = Convert.ToBoolean(ISDBNULL(body[0].DUYET_PHIEU_TRA_THIET_BI.Value, false));
                             OnPropertyChanged(nameof(IsDuyetPhieuTraThietBi));
-                            if(IsDuyetPhieuTraThietBi)
+                            if (IsDuyetPhieuTraThietBi)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 11");                                
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 11");
                                 string url = $"api/DuyetChungTu/geDuyetTraThietBi?username={Preferences.Get(Config.User, "")}";
-                               var h = await RunHttpClientGet<object>(url);
+                                var h = await RunHttpClientGet<object>(url);
                                 NofiTraThietBi = h.Lists.Count();
-                                OnPropertyChanged(nameof(NofiTraThietBi));                                
+                                OnPropertyChanged(nameof(NofiTraThietBi));
                                 System.Diagnostics.Debug.WriteLine("chay xong task 11");
                             }
 
@@ -517,7 +608,7 @@ namespace APP_HOATHO.ViewModels
                             OnPropertyChanged(nameof(IsDuyetTongHopThietBiNhaMay));
                             if (IsDuyetTongHopThietBiNhaMay)
                             {
-                                System.Diagnostics.Debug.WriteLine(" đang chay task 12");                                
+                                System.Diagnostics.Debug.WriteLine(" đang chay task 12");
                                 var h = await RunHttpClientGet<object>($"api/DuyetChungTu/getKiDienTuTongHop_NhaMay?username={Preferences.Get(Config.User, "")}");
                                 NofiDuyetTongHopThietBiNhaMay = h.Lists.Count();
                                 OnPropertyChanged(nameof(NofiDuyetTongHopThietBiNhaMay));
@@ -526,7 +617,7 @@ namespace APP_HOATHO.ViewModels
 
                             IsKiemKeThietBi = Convert.ToBoolean(ISDBNULL(body[0].KIEM_KE_THIET_BI.Value, false));
                             OnPropertyChanged(nameof(IsKiemKeThietBi));
-                                                        
+
                             IsXuatKienNVL = Convert.ToBoolean(ISDBNULL(body[0].XUAT_KIEN_NVL.Value, false));
                             OnPropertyChanged(nameof(IsXuatKienNVL));
                             IsThongTinKien = Convert.ToBoolean(ISDBNULL(body[0].THONG_TIN_KIEN.Value, false));
@@ -535,6 +626,9 @@ namespace APP_HOATHO.ViewModels
                             IsCapNhatThongTinLoi = Convert.ToBoolean(ISDBNULL(body[0].IT_CAP_NHAT_HELPDESK.Value, false));
                             OnPropertyChanged(nameof(IsCapNhatThongTinLoi));
 
+                            IsNhanHelpDesk = Convert.ToBoolean(ISDBNULL(body[0].NHAN_YC_HELPDESK.Value, false));
+                            OnPropertyChanged(nameof(IsNhanHelpDesk));
+
                             IsDanhSachChoXuLy = Convert.ToBoolean(ISDBNULL(body[0].DANH_SACH_HELPDESK.Value, false));
                             OnPropertyChanged(nameof(IsDanhSachChoXuLy));
                             if (IsDanhSachChoXuLy)
@@ -542,10 +636,17 @@ namespace APP_HOATHO.ViewModels
                                 var h = await RunHttpClientGet<object>($"api/qltb/DanhSachThietBiChoXuLy");
                                 NofiDanhSachChoITXuLy = h.Lists.Count();
                                 OnPropertyChanged(nameof(NofiDanhSachChoITXuLy));
-                            }    
+                            }
+                            IsPhieuNhapKho = Convert.ToBoolean(ISDBNULL(body[0].HOA_DON_NHAP_MUA.Value, false));
+                            OnPropertyChanged(nameof(IsPhieuNhapKho));
 
-                        }                        
-                        
+                            IsPhieuXuatKho = Convert.ToBoolean(ISDBNULL(body[0].PHIEU_XUAT_NPL.Value, false));
+                            OnPropertyChanged(nameof(IsPhieuXuatKho));
+
+                            IsCapNhatViTriKho = Convert.ToBoolean(ISDBNULL(body[0].CAP_NHAT_VI_TRI_KHO.Value, false));
+                            OnPropertyChanged(nameof(IsCapNhatViTriKho));
+                        }
+
                         HideLoading();
                         await NewVersion();
                     }
@@ -553,7 +654,6 @@ namespace APP_HOATHO.ViewModels
                     {
                         HideLoading();
                     }
-
                 }).ConfigureAwait(false);
             }
             catch (Exception)
@@ -561,7 +661,7 @@ namespace APP_HOATHO.ViewModels
             }
         }
 
-        async Task NewVersion()
+        private async Task NewVersion()
         {
             if (Device.RuntimePlatform == Device.Android)
             {

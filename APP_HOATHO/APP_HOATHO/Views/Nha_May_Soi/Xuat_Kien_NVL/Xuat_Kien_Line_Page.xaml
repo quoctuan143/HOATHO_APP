@@ -11,7 +11,8 @@
                                    ItemsSource="{Binding ListItem, Mode=TwoWay}"
                                    Style="{StaticResource styleDataGrid}"
                                    SelectionMode="Single"
-                                   SelectionChanged="listChiTiet_SelectionChanged">
+                                   SelectionChanged="listChiTiet_SelectionChanged"
+                                   FrozenColumnsCount="1">
                 <sfDataGrid:SfDataGrid.Columns>
                     <sfDataGrid:GridTemplateColumn  MappingName="Ten_NVL"
                                                     HeaderText="Tên"

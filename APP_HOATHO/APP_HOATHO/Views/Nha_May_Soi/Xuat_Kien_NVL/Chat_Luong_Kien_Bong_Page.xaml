@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local2="clr-namespace:APP_HOATHO.Converter"
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL.Chat_Luong_Kien_Bong_Page"
+             Title="{Binding Title}"
+             Shell.TabBarIsVisible="False"
+             x:Name="XuatKienChiTiet">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local2:Format_Mau_XuatKhoCayVai x:Key="Format_Mau_KHTB" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
+                                   Style="{StaticResource styleDataGrid}"
+                                   AllowEditing="True"
+                                   NavigationMode="Cell"
+                                   EditTapAction="OnTap"
+                                   SelectionMode="SingleDeselect"
+                                   FrozenColumnsCount="1">
+                <sfDataGrid:SfDataGrid.Columns>
+                    <sfDataGrid:GridTemplateColumn 
+                                                   HeaderText="Loại Bông"
+                                                   Width="140"
+                                                    MappingName="Name"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Name}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Package ID"
+                                                    Width="120"
+                                                    MappingName="PackageId"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PackageId}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="MIC"
+                                                    Width="60"
+                                                    MappingName="MIC"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding MIC , StringFormat='{0:#,##0.##}'}"
+                                       TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  MappingName="SF"
+                                                    HeaderText="SF"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding SF, StringFormat='{0:#,##0.##}'}"
+                                       TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }" 
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center"/>
+                                       
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  MappingName="UHML"
+                                                    HeaderText="UHML"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding UHML, StringFormat='{0:#,##0.##}'}"
+                                       TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }" 
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center"/>
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  MappingName="RD"
+                                                    HeaderText="RD"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding RD, StringFormat='{0:#,##0.##}'}"
+                                       TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center"/>
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  MappingName="B"
+                                                    HeaderText="B+"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding B, StringFormat='{0:#,##0.##}'}"
+                                       TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                </sfDataGrid:SfDataGrid.Columns>
+            </sfDataGrid:SfDataGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

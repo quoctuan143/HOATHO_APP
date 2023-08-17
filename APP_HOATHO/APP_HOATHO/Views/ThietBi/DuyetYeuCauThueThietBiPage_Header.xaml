@@ -15,6 +15,7 @@
                                             Style="{StaticResource styleDataGrid}"
                                             SelectionMode="Single"
                                             LiveDataUpdateMode="AllowSummaryUpdate"
+                                   FrozenColumnsCount="1"
                                            >
                 <sfDataGrid:SfDataGrid.Columns>
 

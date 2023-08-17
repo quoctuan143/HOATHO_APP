@@ -13,14 +13,14 @@
                    Text="{Binding TenThietBi}" 
                    LineBreakMode="WordWrap"/>
             <Label Style="{StaticResource styleLableBold}"
-                   Text="Ghi rõ nguyên nhân lỗi:" />
+                   Text="Mô tả rõ yêu cầu xử lý:" />
             <Editor Text="{Binding NoiDungLoi}"
                     Placeholder="Vui lòng nhập thông tin lỗi tại đây"
                    HeightRequest="200"
                    HorizontalOptions="FillAndExpand"
                    Keyboard="Text"/>
             <Button Style="{StaticResource styleButton}"
-                    Text="Cập Nhật"
+                    Text="Gửi yêu cầu"
                     x:Name="GuiYeuCau"
                     Clicked="GuiYeuCau_Clicked"
                     VerticalOptions="EndAndExpand"></Button>

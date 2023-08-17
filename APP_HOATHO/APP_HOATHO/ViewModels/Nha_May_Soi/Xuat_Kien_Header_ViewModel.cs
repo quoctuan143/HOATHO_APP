@@ -29,6 +29,8 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
         public Command LoadCommand { get; set; }
 
         public Command QuetQRComamand { get; set; } 
+
+        public Command KiemTraChatLuongCommand { get; set; }
         #endregion
 
         #region "Constructor"       
@@ -40,6 +42,18 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
             ListItem = new ObservableCollection<Xuat_Kien_Header_Model>();
             LoadCommand = new Command(OnLoadExcute);
             QuetQRComamand = new Command(OnQuetQrClick);
+            KiemTraChatLuongCommand = new Command<string>(async (sochungtu) =>
+            {
+                try
+                {
+                    await navigation.PushAsync(new Chat_Luong_Kien_Bong_Page(sochungtu));
+                }
+                catch (Exception ex)
+                {
+
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
         }
 
         private async void OnQuetQrClick(object obj)
@@ -56,7 +70,8 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
                     {
                         //show form lên
                         try
-                        {                          
+                        {
+                            DependencyService.Get<IBeepService>().Beep();
                             if (IsBusy) return;
 
                             IsBusy = true;

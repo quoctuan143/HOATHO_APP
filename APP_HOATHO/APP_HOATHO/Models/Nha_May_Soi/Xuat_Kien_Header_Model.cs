@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -109,10 +110,20 @@ namespace APP_HOATHO.Models.Nha_May_Soi
             if (!string.IsNullOrEmpty(value))
             {
                 char lastChar = value[value.Length - 1];
-                if (lastChar == ',')
+                if (CultureInfo.InstalledUICulture.Name == "en-US")
                 {
-                    return true;
-                }                
+                    if (lastChar == '.')
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (lastChar == ',')
+                    {
+                        return true;
+                    }
+                }
             }
             return false;
         }
@@ -154,5 +165,18 @@ namespace APP_HOATHO.Models.Nha_May_Soi
         public string PackingDesc { get; set; }
         public string ImageString { get; set; }
 
+    }
+
+    public class Chat_Luong_Kien_Bong_Model : Bindable
+    {
+        public string Name { get; set; }
+        public string PackageId { get; set; }
+        public double? MIC { get; set; }
+        public double? SF { get; set; }
+        public double? UHML { get; set; }
+        public double? RD { get; set; }
+        public double? B { get; set; } 
+        public int Status { get; set; }
+        
     }
 }

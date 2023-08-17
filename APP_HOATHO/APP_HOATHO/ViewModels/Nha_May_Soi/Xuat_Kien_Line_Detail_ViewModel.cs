@@ -4,6 +4,7 @@ using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
 using APP_HOATHO.Models.Kiem_Ke_Thiet_Bi;
 using APP_HOATHO.Models.Nha_May_Soi;
+using APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,7 +28,7 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
         public Command LoadCommand { get; set; }
         public Command QuetQRCodeCommand { get; set; }
         public Command DeleteCommand { get; set; }
-        public Command UpdateAllCommand { get; set; }
+        public Command UpdateAllCommand { get; set; }       
         #endregion
 
         #region "Constructor"
@@ -44,7 +45,7 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
             LoadCommand = new Command(OnLoadExcute);
             QuetQRCodeCommand = new Command(OnScanQrCodeClick);
             DeleteCommand = new Command(OnDeleteClick);
-            UpdateAllCommand = new Command(OnUpdateAllClick);
+            UpdateAllCommand = new Command(OnUpdateAllClick);            
         }
 
         private async void OnUpdateAllClick(object obj)
@@ -151,6 +152,7 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
                         //show form lên
                         try
                         {
+                            DependencyService.Get<IBeepService>().Beep();
                             var kiemchungtu = KiemChungTuModel;
                             if (IsBusy) return;
 

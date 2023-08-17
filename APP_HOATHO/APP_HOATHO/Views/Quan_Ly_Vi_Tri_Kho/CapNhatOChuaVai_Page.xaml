@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.CapNhatViTriLuuKho_Page"
+             Title="{Binding MaViTri}"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>            
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"                                     
+                                   Style="{StaticResource styleDataGrid}"
+                                   SelectionMode="Single">
+                <sfDataGrid:SfDataGrid.Columns>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="BarcodeId"                                                      
+                                                    MappingName="Name"                                                   
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding BarcodeId}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+                  
+                </sfDataGrid:SfDataGrid.Columns>
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                          Format="{}{Count}"
+                                                          MappingName="Quantity"
+                                                          SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <sfbutton:SfButton Text="Quét QR"  Command="{Binding QuetQR}" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+               
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

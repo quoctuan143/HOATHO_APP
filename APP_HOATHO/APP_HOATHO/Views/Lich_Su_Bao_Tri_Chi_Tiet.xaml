@@ -33,7 +33,8 @@
                                            SelectionChanged="listThietBi_SelectionChanged"
                                            AllowTriStateSorting="True"
                                            AllowDiagonalScrolling="True"
-                                           VerticalOverScrollMode="None">
+                                           VerticalOverScrollMode="None"
+                                       FrozenColumnsCount="1">
                     <sfDataGrid:SfDataGrid.Columns>
                         <sfDataGrid:GridTemplateColumn  MappingName="NGAY_GIO" HeaderText="Ngày Giờ" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>

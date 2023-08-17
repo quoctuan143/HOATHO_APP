@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.ViTriKhoTheoNPL_Page"
+             Title="Vị trí lưu kho"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>               
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"                                   
+                                   Style="{StaticResource styleDataGrid}"
+                                   SelectionMode="Single">
+                <sfDataGrid:SfDataGrid.Columns>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Vị trí Kho"                                                      
+                                                    MappingName="ViTriDay"
+                                                    Width="150"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ViTriDay}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Kiện chứa"                                                      
+                                                    MappingName="PositionId"
+                                                    Width="150"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PositionId}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+                    
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Tồn Kho"                                                    
+                                                    MappingName="TonKho"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding TonKho ,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       WidthRequest="100"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+                </sfDataGrid:SfDataGrid.Columns>
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                          Format="{}{Sum}"
+                                                          MappingName="TonKho"
+                                                          SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>                
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

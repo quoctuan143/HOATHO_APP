@@ -13,5 +13,6 @@ namespace APP_HOATHO.Models
     {
         public HttpResponseMessage Status { get; set; } 
         public ObservableCollection<T> Lists { get; set; }
+        public string ErrorString { get; set; } 
     }
 }

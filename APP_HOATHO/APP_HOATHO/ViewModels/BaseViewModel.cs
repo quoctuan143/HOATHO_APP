@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using APP_HOATHO.Dialog;
+using Plugin.Connectivity;
 
 namespace APP_HOATHO.ViewModels
 {
@@ -49,17 +51,18 @@ namespace APP_HOATHO.ViewModels
         {
             DependencyService.Get<IMessage>().ShortAlert(title);
         }
-        public virtual void OnAppearing()
+        protected virtual void OnAppearing()
         {
             // No default implementation. 
         }
         public async Task<HttpClientResponseModel<T>> RunHttpClientGet <T>(string apiUrl ) where T : class 
         {
             try
-            {
+            {                
                 var respon = await Config.client.GetAsync(apiUrl);
                 HttpClientResponseModel<T> values = new HttpClientResponseModel<T>();
                 values.Status = respon;
+                values.ErrorString = respon.Content.ToString();
                 values.Lists = new ObservableCollection<T>();
                 if (respon.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -77,7 +80,7 @@ namespace APP_HOATHO.ViewModels
             }
             catch (Exception ex)
             {
-                return new HttpClientResponseModel<T> { Status = new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.BadRequest } };
+                return new HttpClientResponseModel<T> { Status = new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.BadRequest }, ErrorString = ex.Message};
             }
 
         }  

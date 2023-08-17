@@ -1,52 +1,36 @@
-﻿using APP_HOATHO.Global;
+﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
+using APP_HOATHO.Models.DuyetChungTu;
+using APP_HOATHO.ViewModels;
+using APP_HOATHO.Views.DuyetChungTu;
+using APP_HOATHO.Views.KiDienTu;
+using APP_HOATHO.Views.Thiet_Bi_Van_Phong;
+using APP_HOATHO.Views.ThietBi;
+using Plugin.FirebasePushNotification;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using APP_HOATHO.ViewModels.DuyetChungTu;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Collections.ObjectModel;
-using APP_HOATHO.Models.DuyetChungTu;
-using APP_HOATHO.Dialog;
-using APP_HOATHO.Models;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Plugin.FirebasePushNotification;
-using APP_HOATHO.Views.DuyetChungTu;
-using APP_HOATHO.Models.KiDienTuPhuTung;
-using APP_HOATHO.Views.KiDienTu;
-using Plugin.LatestVersion;
-using APP_HOATHO.Views.ThietBi;
-using APP_HOATHO.Views.Kiem_Ke_Thiet_Bi;
-using System.IO;
-using APP_HOATHO.ViewModels;
-using APP_HOATHO.Views.Thiet_Bi_Van_Phong;
 
 namespace APP_HOATHO.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Main :  ContentPage, INotifyPropertyChanged 
+    public partial class Main : ContentPage, INotifyPropertyChanged
     {
-
-        MainViewModel viewModel;
+        private MainViewModel viewModel;
 
         public Main()
-        {            
+        {
             InitializeComponent();
             DependencyService.Get<ISetStatusBarColor>().SetColoredStatusBar("#06264c");
             viewModel = new MainViewModel();
             viewModel.Navigation = Navigation;
-            BindingContext = viewModel  ;                        
+            BindingContext = viewModel;
             CrossFirebasePushNotification.Current.OnNotificationReceived += Current_OnNotificationReceived;
-            CrossFirebasePushNotification.Current.OnNotificationOpened += Current_OnNotificationOpened;                       
-        }        
-        
+            CrossFirebasePushNotification.Current.OnNotificationOpened += Current_OnNotificationOpened;
+        }
+
         private async void Current_OnNotificationOpened(object source, FirebasePushNotificationResponseEventArgs p)
         {
             await Device.InvokeOnMainThreadAsync(async () =>
@@ -87,11 +71,11 @@ namespace APP_HOATHO.Views
                         }
                         if (p.Data["loaiphieu"].ToString() == "duyettrathietbi")
                         {
-                            loaiphieu = DocumentType.DuyetTraThietBi ;
+                            loaiphieu = DocumentType.DuyetTraThietBi;
                         }
                         if (p.Data["loaiphieu"].ToString() == "duyetyeucauthuethietbi")
                         {
-                            loaiphieu = DocumentType.DuyetYeuCauThueThietBi ;
+                            loaiphieu = DocumentType.DuyetYeuCauThueThietBi;
                         }
                         if (p.Data["loaiphieu"].ToString() == "danhsachchoit")
                         {
@@ -112,7 +96,6 @@ namespace APP_HOATHO.Views
                         else
                             await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
                     }
-
                 }
                 catch
                 {
@@ -152,7 +135,7 @@ namespace APP_HOATHO.Views
                         }
                         if (p.Data["loaiphieu"].ToString() == "kidientuphutung")
                         {
-                            loaiphieu = DocumentType.KiDienTuPhuTung ;
+                            loaiphieu = DocumentType.KiDienTuPhuTung;
                         }
                         if (p.Data["loaiphieu"].ToString() == "kidientuthietbi")
                         {
@@ -185,38 +168,36 @@ namespace APP_HOATHO.Views
                         else
                             await Navigation.PushAsync(new DuyetChungTu_Line(item, loaiphieu));
                     }
-
                 }
                 catch
                 {
                 }
             });
-              
         }
 
-        
-
-        #region "Button click"        
+        #region "Button click"
 
         private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
             Application.Current.MainPage = new Login();
         }
-        
+
         protected override bool OnBackButtonPressed()
         {
             base.OnBackButtonPressed();
             BackButtonPressed();
             return true;
         }
+
         public async void BackButtonPressed()
         {
             var ok = await new MessageYesNo("Bạn có muốn thoát chương trình không?").Show();
             if (ok == DialogReturn.OK)
                 System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
         }
-        #endregion
-       
+
+        #endregion "Button click"
+
         private void btnRefresh_Tapped(object sender, EventArgs e)
         {
             viewModel.LoadDataCommand.Execute(null);

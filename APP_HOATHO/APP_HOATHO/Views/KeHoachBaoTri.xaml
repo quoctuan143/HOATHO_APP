@@ -74,6 +74,7 @@
                                            AllowSwiping="True"               
                                            SwipeEnded="listThietBi_SwipeEnded"    
                                            MaxSwipeOffset="200"
+                                       FrozenColumnsCount="1"
                                        >
                     <sfDataGrid:SfDataGrid.Columns>
 

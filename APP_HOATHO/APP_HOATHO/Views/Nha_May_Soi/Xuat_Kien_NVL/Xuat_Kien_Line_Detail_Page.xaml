@@ -16,6 +16,7 @@
                                    EditTapAction="OnTap"
                                    SelectionMode="SingleDeselect"
                                    SelectionChanged="listChiTiet_SelectionChanged"
+                                   FrozenColumnsCount="1"
                                    >
                 <sfDataGrid:SfDataGrid.Columns>
                     <sfDataGrid:GridTemplateColumn MappingName="Ten_NVL"
@@ -109,6 +110,7 @@
                         HorizontalOptions="FillAndExpand">
 
                 </Button>
+                
                 <Button Text="Cập nhật"
                         Command="{Binding UpdateAllCommand}"
                         Style="{StaticResource styleButton}"
