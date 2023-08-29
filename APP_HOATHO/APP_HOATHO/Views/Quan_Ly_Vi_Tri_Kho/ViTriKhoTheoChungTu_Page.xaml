@@ -60,7 +60,7 @@
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="kiện chứa vải"                                                      
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Kệ chứa vải"                                                      
                                                     MappingName="PositionId"
                                                     Width="120"
                                                     HeaderFontAttribute="Bold"

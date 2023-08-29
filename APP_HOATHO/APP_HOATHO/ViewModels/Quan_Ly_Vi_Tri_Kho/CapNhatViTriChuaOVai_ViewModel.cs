@@ -54,7 +54,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
             {
                 try
                 {
-                    ScanBarcode scan = new ScanBarcode(false, "Quét kiện chứa vải");
+                    ScanBarcode scan = new ScanBarcode(false, "Quét kệ chứa vải");
                     scan.ScanBarcodeResult += (s, result) =>
                     {
                         Device.BeginInvokeOnMainThread(async () =>
@@ -72,7 +72,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                 var ok1 = await RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
                                 if (!ok1.IsSuccessStatusCode)
                                 {
-                                    await new MessageBox("Barcode này không tồn tại trong hệ thống").Show();
+                                    await new MessageBox($"Kệ: {result} này không tồn tại trong hệ thống").Show();
                                     return;
                                 }
 

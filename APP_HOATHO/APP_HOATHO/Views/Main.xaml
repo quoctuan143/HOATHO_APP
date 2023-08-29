@@ -326,7 +326,7 @@
                                                        Disable="{Binding IsCapNhatViTriKho}">
                                 </control:IconMainView>
 
-                                <control:IconMainView  Title="Đổi vị trí kiện Vải"
+                                <control:IconMainView  Title="Đổi vị trí kệ Vải"
                                                        Grid.Column="2"
                                                        Grid.Row="1"
                                                        IconImageSource="kiemke.png"

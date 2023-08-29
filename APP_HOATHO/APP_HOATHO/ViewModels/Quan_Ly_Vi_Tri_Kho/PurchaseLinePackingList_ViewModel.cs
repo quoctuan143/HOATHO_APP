@@ -33,7 +33,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
         public ICommand QuetOChuaCayVaiCommand { get; set; } 
         public PurchaseLinePackingList_ViewModel(string soChungTu)
         {
-            TitleButton = "Quét kiện chứa cây vải";
+            TitleButton = "Quét kệ chứa cây vải";
             SoChungTu = soChungTu;
             ListItem = new ObservableCollection<PurchaseLinePackingList_Model>();
             LoadDataCommand = new Command(async () =>
@@ -56,7 +56,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
             {
                 try
                 {
-                    ScanBarcode scan = new ScanBarcode(false, "Quét kiện chứa cây vải");
+                    ScanBarcode scan = new ScanBarcode(false, "Quét kệ chứa cây vải");
                     scan.ScanBarcodeResult +=  (s, result) => 
                     {
                         Device.BeginInvokeOnMainThread(async () =>

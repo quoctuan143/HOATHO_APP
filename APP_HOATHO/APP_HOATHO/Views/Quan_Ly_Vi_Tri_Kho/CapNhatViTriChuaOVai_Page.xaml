@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:control="clr-namespace:APP_HOATHO.Template"
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.CapNhatViTriChuaOVai_Page"
-             Title="Thay đổi vị trí kiện vải"
+             Title="Thay đổi vị trí kệ vải"
              Shell.TabBarIsVisible="False"
              x:Name="ThayDoiViTriKien">
     <ContentPage.Content>

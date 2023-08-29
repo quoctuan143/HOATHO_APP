@@ -128,7 +128,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
         {
             try
             {
-                ScanBarcode scan = new ScanBarcode(false, "Quét kiện chứa cây vải");
+                ScanBarcode scan = new ScanBarcode(false, "Quét kệ chứa cây vải");
                 scan.ScanBarcodeResult += (s, result) =>
                 {
                     Device.BeginInvokeOnMainThread(async () =>
@@ -140,7 +140,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                             if (ok.IsSuccessStatusCode)
                             {
                                 Item.PositionId = result;
-                                btnGanOVai.Text = $"Kiện : {result}";
+                                btnGanOVai.Text = $"Kệ : {result}";
                                 OnPropertyChanged("Item");
                             }
                             else

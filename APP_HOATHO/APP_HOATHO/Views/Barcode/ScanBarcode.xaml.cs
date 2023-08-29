@@ -50,16 +50,19 @@ namespace APP_HOATHO.Views.Barcode
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                DependencyService.Get<IBeepService>().Beep();
-                if (Loop)
+                if (result.Text != "")
                 {
-                    ScanBarcodeResult?.Invoke(this, result.Text.ToUpper());
-                }
+                    DependencyService.Get<IBeepService>().Beep();
+                    if (Loop)
+                    {
+                        ScanBarcodeResult?.Invoke(this, result.Text.ToUpper());
+                    }
 
-                else
-                {
-                    ScanBarcodeResult?.Invoke(this, result.Text.ToUpper());
-                    await Navigation.PopAsync();
+                    else
+                    {
+                        ScanBarcodeResult?.Invoke(this, result.Text.ToUpper());
+                        await Navigation.PopAsync();
+                    }
                 }
             });              
             

@@ -137,6 +137,21 @@
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Kệ vải"
+                                                    MappingName="PositionId"
+                                                    Width="80"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PositionId, Mode=TwoWay}"
+                                       TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="BarcodeId"
                                                     MappingName="BarcodeId"
                                                     Width="100"

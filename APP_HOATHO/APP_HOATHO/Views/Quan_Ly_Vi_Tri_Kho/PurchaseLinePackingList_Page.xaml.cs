@@ -5,6 +5,7 @@ using APP_HOATHO.Interface;
 using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Barcode;
+using Syncfusion.Data;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -48,17 +49,18 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
 
         public bool FilterRecords(object o)
         {
+            filterText = filterText.ToLower();
             var item = o as PurchaseLinePackingList_Model;
             if (item != null)
             {
                 if (ChonNhom1 == StatusFormatColor.TatCa )
                 {
-                    if (item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.ParcelNo.ToLower().Contains(filterText))
+                    if (item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText))
                         return true;
                 }    
                 else
                 {
-                    if ((item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.ParcelNo.ToLower().Contains(filterText)) && item.DaGanNhan == ChonNhom1)
+                    if ((item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText)) && item.DaGanNhan == ChonNhom1)
                         return true;
                 }    
                
@@ -70,7 +72,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
         {
             if (string.IsNullOrEmpty(viewModel.ViTriOVai))
             {
-                await new MessageBox("Vui lòng quét kiện chứa cây vải trước khi gán nhãn barcode").Show();
+                await new MessageBox("Vui lòng quét kệ chứa cây vải trước khi gán nhãn barcode").Show();
                 return;
             }
             PurchaseLinePackingList_Model item = listChiTiet.SelectedItem as PurchaseLinePackingList_Model;
@@ -79,6 +81,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 try
                 {
                     ScanBarcode scan = new ScanBarcode(false, "Cài đặt BarcodeId cây vải");
+                    await Navigation.PushAsync(scan);
                     scan.ScanBarcodeResult += (s, result) =>
                     {
                         Device.BeginInvokeOnMainThread(async () =>
@@ -88,7 +91,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                                 //kiểm tra xem barcode có trong danh sách không?
                                 if (viewModel.ListItem.FirstOrDefault(x => x.BarcodeId == result.ToUpper()) != null)
                                 {
-                                    await new MessageBox("Barcode này đã gán cho cây vải khác nên không thể cập nhật cho cây vải này được").Show();
+                                    await new MessageBox("Barcode này đã gán cho cây vải khác nên không thể cập nhật cho cây vải này được").Show();                                     
                                     return;
                                 }
 
@@ -100,8 +103,8 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
 
                                     var ok = await Config.client.PostAsJsonAsync("api/qltb/PostKiemTraBarcodeIdCayVai", find);
                                     if (ok.StatusCode == System.Net.HttpStatusCode.OK)
-                                    {
-                                        listChiTiet.Refresh();
+                                    {                                       
+                                        listChiTiet.Refresh();                                        
                                     }
                                     else
                                     {
@@ -116,8 +119,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                             }
                         });
 
-                    };
-                    await Navigation.PushAsync(scan);
+                    };                   
                 }
                 catch (Exception ex)
                 {
