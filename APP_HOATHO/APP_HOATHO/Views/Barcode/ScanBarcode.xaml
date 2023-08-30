@@ -6,10 +6,10 @@
              x:Name="barcode">
     <ContentPage.Content>
         <StackLayout>
-            <zxing:ZXingScannerView x:Name="scannerView" WidthRequest="200" HeightRequest="200" 
+            <zxing:ZXingScannerView x:Name="scannerView" 
                                     IsAnalyzing="True" IsScanning="True"
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
                                     OnScanResult="scannerView_OnScanResult"/>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="FillAndExpand"
