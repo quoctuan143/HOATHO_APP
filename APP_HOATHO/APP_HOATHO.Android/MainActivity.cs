@@ -11,6 +11,7 @@ using Plugin.FirebasePushNotification;
 using System.Collections.Generic;
 using Android.Content;
 using Plugin.LocalNotification;
+using FFImageLoading.Forms.Platform;
 
 namespace APP_HOATHO.Droid
 {
@@ -32,7 +33,7 @@ namespace APP_HOATHO.Droid
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            
+            CachedImageRenderer.Init(true);
             NotificationCenter.NotifyNotificationTapped(Intent );
             FirebasePushNotificationManager.ProcessIntent(this, Intent);   
          

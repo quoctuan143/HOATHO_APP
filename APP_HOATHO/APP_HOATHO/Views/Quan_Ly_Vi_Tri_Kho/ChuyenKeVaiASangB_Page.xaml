@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.ChuyenKeVaiASangB_Page"
+             Shell.TabBarIsVisible="False"
+             Title="Chuyển toàn bộ cây vải">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="Chọn kệ muốn chuyển:" 
+                   FontSize="20"
+                   TextColor="Black"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="txtKeA"
+                                       FontSize="20"
+                                       TextColor="{x:StaticResource Primary}"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                <Image Source="vitrikho.png"
+                                       WidthRequest="35"
+                                       HeightRequest="35"
+                                       Aspect="AspectFit"
+                                       >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="ChonKeA" Tapped="ChonKeA_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+
+            <Label Text="Chọn kệ chuyển đến:"
+                    FontSize="20"
+                   TextColor="Black"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="txtKeB"
+                       FontSize="20"
+                                       TextColor="{x:StaticResource Primary}"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                <Image Source="vitrikho.png"
+                                       WidthRequest="35"
+                                       HeightRequest="35"
+                                       Aspect="AspectFit"
+                                       >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="ChonKeB" Tapped="ChonKeB_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+
+            <sfbutton:SfButton Text="Cập nhật"  x:Name="btnUpdate" Clicked="btnUpdate_Clicked" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                               Margin="0, 40, 0, 0"
+                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,9 +1,12 @@
 ﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Global;
 using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho;
 using Syncfusion.Data.Extensions;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -20,6 +23,8 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
         public ICommand XemViTriKhoCommand { get; set; }
         public ICommand ViTriKhoTheoChungTuCommand { get; set; }
         public ICommand XuatKhoCommand { get; set; }
+
+        public ICommand UpdateSLKhauTruCommand { get; set; }
         private string SoChungTu;
 
         public DanhSachPhieuXuatKhoChiTiet_ViewModel(string sochungtu)
@@ -54,7 +59,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
             XuatKhoCommand = new Command(async () =>
             {
                 try
-                {
+                {                 
                     if (SelectItem != null)
                     {
                         var page = new XuatKhoTheoCayVai_Page(SelectItem);
@@ -97,6 +102,25 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 {
                     await new MessageBox(ex.Message).Show();
                 }
+            });
+            UpdateSLKhauTruCommand = new Command(async (obj) =>
+            {
+                DanhSachPhieuXuatKhoChiTiet_Model item = obj as DanhSachPhieuXuatKhoChiTiet_Model;
+                if (item != null)
+                {
+                    var ok = await Config.client.GetAsync($"api/qltb/CapNhatSoLuongKhauTru?rowid={item.RowID}&soluong={item.SoLuongKhauTru}");
+
+                    if (ok.IsSuccessStatusCode)
+                    {
+                        await new MessageBox("Cập nhật số lượng khấu trừ thành công").Show();
+                    }    
+                   else
+                    {
+                        await new MessageBox(ok.Content.ReadAsStringAsync().Result).Show();
+                    }    
+
+                }
+
             });
             OnAppearing();
         }

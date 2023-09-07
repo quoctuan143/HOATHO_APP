@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho.ThongTinChiTietCayVai_Page"
+             Shell.TabBarIsVisible="False"
+             Title="Thông tin cây vải">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,*,auto,auto" Padding="10" RowSpacing="10">
+                <Label Text="Roll No:" Grid.Column="0" Grid.Row="0" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="{Binding Item.RollNo}" Grid.Column="1" Grid.Row="0" FontSize="16" FontAttributes="Bold" TextColor="Red" LineBreakMode="WordWrap"></Label>
+                <Label Text="Parcel No:" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.ParcelNo}" Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" FontSize="16" TextColor="Black"></Label>
+                <Label Text="Gross Length" Grid.Column="0" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.GrossLength}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
+                <Label Text="Quantity" Grid.Column="0" Grid.Row="3" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="{Binding Item.Quantity}" Grid.Column="1" Grid.Row="3" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="Width" Grid.Column="0" Grid.Row="4" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.Width}" Grid.Column="1" Grid.Row="4" FontSize="16" TextColor="Black"></Label>
+                <Label Text="Mã NPL" Grid.Column="0" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.ItemNo}" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
+                <Label Text="Màu sắc" Grid.Column="0" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.Color}" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
+                <Label Text="Mã Barcode" Grid.Column="0" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.BarcodeId}" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
+                <Label Text="Kệ lưu" Grid.Column="0" Grid.Row="8" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="{Binding Item.PositionId}" Grid.Column="1" Grid.Row="8" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="Vị trí" Grid.Column="0" Grid.Row="9" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="{Binding Item.ViTri}" Grid.Column="1" Grid.Row="9" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="Tồn kho" Grid.Column="0" Grid.Row="10" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+                <Label Text="{Binding Item.TonKho}" Grid.Column="1" Grid.Row="10" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

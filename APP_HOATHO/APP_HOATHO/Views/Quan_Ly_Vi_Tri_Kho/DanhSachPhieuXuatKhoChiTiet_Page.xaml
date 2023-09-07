@@ -7,7 +7,8 @@
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.DanhSachPhieuXuatKhoChiTiet_Page"
               xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              Shell.TabBarIsVisible="False"
-             Title="Chi tiết xuất kho">
+             Title="Chi tiết xuất kho"
+             x:Name="XuatKhoChiTiet">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local2:Format_Mau_XuatKhoCayVai x:Key="Format_Mau_KHTB" />
@@ -37,8 +38,10 @@
               <sfDataGrid:SfDataGrid x:Name="listChiTiet"
                                    ItemsSource="{Binding ListItem, Mode=TwoWay}"
                                    SelectionChanged="listChiTiet_SelectionChanged"
-                                   Style="{StaticResource styleDataGrid}"
-                                   SelectionMode="Single"
+                                   Style="{StaticResource styleDataGrid}"                                       
+                                     NavigationMode="Cell"
+                                   EditTapAction="OnTap"
+                                   SelectionMode="SingleDeselect"
                                    AllowSwiping="True"
                                    SwipeEnded="listChiTiet_SwipeEnded"
                                    MaxSwipeOffset="200">
@@ -92,9 +95,53 @@
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="SL Phiếu"
+                                                    MappingName="SoLuongPhieu"
+                                                    Width="80"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding SoLuongPhieu ,StringFormat='{0:#,##0.##}'}"
+                                      TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="SL Khấu Trừ"
+                                                    MappingName="SoLuongKhauTru"
+                                                    Width="80"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" Spacing="2">
+                                    <Entry Text="{Binding FormatNumberSLKhauTru}"
+                                      TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
+                                        Keyboard="Numeric"
+                                           HorizontalOptions="FillAndExpand"
+                                       />
+                                    <Image Source="check.png"
+                                       WidthRequest="30"
+                                       HeightRequest="30"
+                                       Aspect="AspectFit"
+                                           Margin="0,0,2,0"
+                                       >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.UpdateSLKhauTruCommand, Source={x:Reference Name=XuatKhoChiTiet}}"
+                                                              CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng"
                                                     MappingName="Quantity"
-                                                    Width="100"
+                                                    Width="80"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>

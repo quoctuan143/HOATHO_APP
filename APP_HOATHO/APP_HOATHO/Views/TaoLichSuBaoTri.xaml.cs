@@ -141,7 +141,7 @@ namespace APP_HOATHO.Views
                             if (ok.Result.Content.ReadAsStringAsync().Result.ToLower().Contains("cập nhật thành công"))
                             {
                                 await Navigation.PopAsync();
-                                DependencyService.Get<IMessage>().LongAlert("Cập nhật thành công");
+                                await new MessageBox("Cập nhật thành công").Show();
                                 MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);                                
                             }
                             else
@@ -163,7 +163,7 @@ namespace APP_HOATHO.Views
                         if (ok.Result.Content.ReadAsStringAsync().Result.ToLower().Contains("cập nhật thành công"))
                         {
 
-                            DependencyService.Get<IMessage>().ShortAlert("Cập nhật thành công");
+                            await new MessageBox("Cập nhật thành công").Show();
                             MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);
                             await Navigation.PopAsync();
                         }

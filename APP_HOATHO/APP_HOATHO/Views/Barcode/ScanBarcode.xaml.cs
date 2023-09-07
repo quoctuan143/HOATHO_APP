@@ -18,30 +18,89 @@ namespace APP_HOATHO.Views.Barcode
     {
         public EventHandler <string> ScanBarcodeResult { get; set; }
         bool Loop; // cho phép lặp nhiều lần hoặc quét thành công thì close
-        public ScanBarcode(bool loop , string title)
+        bool IdVai;
+        public ScanBarcode(bool loop , string title, bool IdVai = false)
         {
             InitializeComponent();
             Loop = loop;
             this.Title = title;
+            this.IdVai = IdVai;
         }
 
         private async void btnChon_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtBarcode.Text))
+            try
             {
-                await new MessageBox("Vui lòng nhập mã barcode").Show();
-                return;
+                if (string.IsNullOrEmpty(txtBarcode.Text))
+                {
+                    await new MessageBox("Vui lòng nhập mã barcode").Show();
+                    return;
+                }
+                if (Loop)
+                {
+                    if (IdVai)
+                    {
+                        var result = txtBarcode.Text.ToUpper();
+                        if (result.Length != 9)
+                        {
+                            try
+                            {
+                                var number = Convert.ToDouble(result);
+                                result = number.ToString("000000000");
+                            }
+                            catch (Exception ex)
+                            {
+
+                                await new MessageBox("Mã barcode là kiểu number").Show();
+                                return;
+                            }
+                        }
+                        ScanBarcodeResult?.Invoke(this, result);
+                       
+                    }
+                    else
+                    {
+                        ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());                       
+                    }
+                    
+                }
+
+                else
+                {
+                    if (IdVai)
+                    {
+                        var result = txtBarcode.Text.ToUpper();
+                        if (result.Length != 9)
+                        {
+                            try
+                            {
+                                var number = Convert.ToDouble(result);
+                                result = number.ToString("000000000");
+                            }
+                            catch (Exception ex)
+                            {
+
+                                await new MessageBox("Mã barcode là kiểu number").Show();
+                                return;
+                            }
+                        }
+                        ScanBarcodeResult?.Invoke(this, result);
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());
+                        await Navigation.PopAsync();
+                    }
+
+                }
             }
-            if (Loop)
+            catch (Exception ex)
             {
-                ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());
-            }    
+                await new MessageBox(ex.Message).Show();
+
+            }
             
-            else
-            {
-                ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());
-                await Navigation.PopAsync();
-            }    
 
 
         }

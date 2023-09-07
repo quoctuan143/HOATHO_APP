@@ -20,11 +20,14 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
         private ObservableCollection<Chat_Luong_Kien_Bong_Model> _listItem;
         public INavigation navigation { get; set; }
 
+        public string SoChungTu { get; set; }
         #endregion "Field"
 
         #region "Command"
 
-        public Command<string> LoadCommand { get; set; }       
+        public Command<string> LoadCommand { get; set; }
+
+        public Command YeuCauDuyetCommand { get; set; }
 
         #endregion "Command"
 
@@ -35,9 +38,10 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
 
         public Chat_Luong_Kien_Bong_ViewModel(string sochungtu)
         {
+            SoChungTu = sochungtu;
             Title = "Chất lượng kiện bông";
             ListItem = new ObservableCollection<Chat_Luong_Kien_Bong_Model>();
-            LoadCommand = new Command<string>(OnLoadExcute);           
+            LoadCommand = new Command<string>(OnLoadExcute);            
         }      
 
         #endregion "Constructor"

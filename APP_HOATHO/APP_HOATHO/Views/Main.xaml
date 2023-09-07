@@ -271,7 +271,7 @@
                               BackgroundColor="Transparent"                              
                               HasShadow="False"
                               IsVisible="{Binding IsQuanLyViTriKho}"
-                              Opacity="{Binding IsMainDonHang, Converter={StaticResource OpacityDisable}}">
+                              Opacity="{Binding IsQuanLyViTriKho, Converter={StaticResource OpacityDisable}}">
                         <StackLayout Padding="5">
                             <Label Grid.Row="0"
                                    Text="Quản lý vị trí kho NPL"
@@ -280,7 +280,7 @@
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
                             <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
-                                  RowDefinitions="auto,auto"
+                                  RowDefinitions="auto,auto,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
@@ -326,12 +326,30 @@
                                                        Disable="{Binding IsCapNhatViTriKho}">
                                 </control:IconMainView>
 
-                                <control:IconMainView  Title="Đổi vị trí kệ Vải"
+                                <control:IconMainView  Title="Cập nhật vị trí"
                                                        Grid.Column="2"
                                                        Grid.Row="1"
                                                        IconImageSource="kiemke.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding CapNhatViTriChuaOVaiCommand}"
+                                                       Disable="{Binding IsCapNhatOChuaVai}">
+                                </control:IconMainView>
+
+                                <control:IconMainView  Title="Chuyển Vải Từ Kệ A Sang B"
+                                                       Grid.Column="0"
+                                                       Grid.Row="2"
+                                                       IconImageSource="vitrikho.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding ChuyenVaiTuKeASangBCommand}"
+                                                       Disable="{Binding IsCapNhatViTriKho}">
+                                </control:IconMainView>
+
+                                <control:IconMainView  Title="Thông Tin Một Cây Vải"
+                                                       Grid.Column="1"
+                                                       Grid.Row="2"
+                                                       IconImageSource="duyethietbi.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding ThongTinChiTietCayVaiCommand}"
                                                        Disable="{Binding IsCapNhatOChuaVai}">
                                 </control:IconMainView>
                             </Grid>

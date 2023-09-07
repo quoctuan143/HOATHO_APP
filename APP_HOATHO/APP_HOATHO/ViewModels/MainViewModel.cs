@@ -7,6 +7,7 @@ using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
 using APP_HOATHO.ViewModels.DuyetChungTu;
 using APP_HOATHO.ViewModels.Ki_Dien_Tu_Thiet_Bi;
+using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views;
 using APP_HOATHO.Views.Barcode;
 using APP_HOATHO.Views.DuyetChungTu;
@@ -113,6 +114,8 @@ namespace APP_HOATHO.ViewModels
         public ICommand CapNhatViTriChuaOVaiCommand { get; set; }
         public ICommand PhieuXuatKhoGomVaiCommand { get; set; }
         public ICommand TaoPhieuXuatKhoGomVaiCommand { get; set; }
+        public ICommand ChuyenVaiTuKeASangBCommand { get; set; }
+        public ICommand ThongTinChiTietCayVaiCommand { get; set; }
 
         #endregion "Command"
 
@@ -372,6 +375,54 @@ namespace APP_HOATHO.ViewModels
                 try
                 {
                     await Navigation.PushAsync(new TaoPhieuXuatKhoGomVai_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+
+            ChuyenVaiTuKeASangBCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new ChuyenKeVaiASangB_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+
+            ThongTinChiTietCayVaiCommand = new Command(async () =>
+            {
+                try
+                {
+                    ScanBarcode scan = new ScanBarcode(false,"Quét Id Cây Vải",true);
+                    scan.ScanBarcodeResult += (s, result) =>
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //show form lên
+                            try
+                            {                              
+                                if (IsBusy) return;
+
+                                IsBusy = true;                                
+
+                                var Item = await RunHttpClientGet<ThongTinChiTietCayVai_Model>($"api/qltb/XemThongTinChiTietCayVai?barcodeId={result}");
+                                if (Item.Lists.Count > 0)
+                                {                                   
+                                    await Navigation.PushAsync(new ThongTinChiTietCayVai_Page(Item.Lists[0]));
+                                }
+                                else
+                                   await new MessageBox($"Không tìm thấy cây vải có barcodeId {result} trong hệ thống").Show();
+                            }
+                            catch { }
+                            finally { IsBusy = false; }
+                        });
+                    };
+                    await Navigation.PushAsync(scan);
                 }
                 catch (Exception ex)
                 {

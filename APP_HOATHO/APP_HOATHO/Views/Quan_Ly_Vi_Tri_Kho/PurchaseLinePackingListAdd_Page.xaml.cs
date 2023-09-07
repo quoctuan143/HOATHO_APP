@@ -49,7 +49,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
         {
             try
             {
-                ScanBarcode scan = new ScanBarcode(false, "Cài đặt BarcodeId cây vải");
+                ScanBarcode scan = new ScanBarcode(false, "Cài đặt BarcodeId cây vải", true);
                 scan.ScanBarcodeResult += (s, result) =>
                 {
                     Device.BeginInvokeOnMainThread(async () =>

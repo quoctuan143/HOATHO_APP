@@ -17,7 +17,7 @@
                     <ViewCell>
                         <ViewCell.View>
                             <Grid ColumnDefinitions="4*,6*"
-                                  RowDefinitions="auto,auto,auto,auto,auto"
+                                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand"
                                   Margin="10">
@@ -66,6 +66,27 @@
                                        Style="{StaticResource styleLablenotwhite}"
                                        Grid.Column="1"
                                        Grid.Row="4" />
+                                <Label Text="Thông tin liên lạc:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="5" />
+                                <Label Text="{Binding ThongTinLienLac}"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="1"
+                                       Grid.Row="5" />
+                                <Frame CornerRadius="20" 
+                                       IsVisible="{Binding IsShowImage}"
+                                       Padding="0"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="6">
+                                    <StackLayout>                                                   
+                                        <Image x:Name="imagePicture" Aspect="AspectFill" 
+                                            HeightRequest="300"
+                                              Source="{Binding Picture}"
+                                       WidthRequest="200"></Image>
+                                    </StackLayout>
+                                    
+                                </Frame>
                             </Grid>
                         </ViewCell.View>
                     </ViewCell>

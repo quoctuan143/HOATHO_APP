@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using Plugin.FirebasePushNotification;
 using Plugin.Media;
@@ -56,6 +56,7 @@ namespace APP_HOATHO.iOS
             LoadApplication(new App(IsNotification, NotificationData));
             Syncfusion.XForms.iOS.Border.SfBorderRenderer.Init();
             Syncfusion.XForms.iOS.Buttons.SfButtonRenderer.Init();
+            CachedImageRenderer.Init();
             FirebasePushNotificationManager.Initialize(options, true);
             FirebasePushNotificationManager.Initialize(options, new NotificationUserCategory[]
                         {

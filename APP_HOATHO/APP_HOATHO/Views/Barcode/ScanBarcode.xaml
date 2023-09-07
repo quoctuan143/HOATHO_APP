@@ -6,13 +6,8 @@
              x:Name="barcode">
     <ContentPage.Content>
         <StackLayout>
-            <zxing:ZXingScannerView x:Name="scannerView" 
-                                    IsAnalyzing="True" IsScanning="True"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
-                                    OnScanResult="scannerView_OnScanResult"/>
             <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="FillAndExpand"
+                         HorizontalOptions="StartAndExpand"
                         >
                 <Entry Placeholder="Nhập barcode mà không quét được"
                        PlaceholderColor="Red"
@@ -24,6 +19,14 @@
                         CornerRadius="10" HorizontalOptions="FillAndExpand"
                          Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
             </StackLayout>
+            <zxing:ZXingScannerView x:Name="scannerView" 
+                                    IsAnalyzing="True" IsScanning="True"
+                                    HeightRequest="250"
+                                    WidthRequest="250"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    OnScanResult="scannerView_OnScanResult"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -47,7 +47,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                         await new MessageBox("Số lượng cây vải đã xuất đủ cho mã NPL này").Show();
                         return;
                     }
-                    ScanBarcode scan = new ScanBarcode(true, "Quét BarcodeId cây vải");
+                    ScanBarcode scan = new ScanBarcode(true, "Quét BarcodeId cây vải", true);
                     scan.ScanBarcodeResult += (s, result) =>
                     {
                         Device.BeginInvokeOnMainThread(async () =>
