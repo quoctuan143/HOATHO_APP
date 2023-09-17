@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="23" android:versionName="1.7.17" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
-	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="31" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="28" android:versionName="1.7.22" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="33" />
 	<application android:label="Hoatho Smart App" android:usesCleartextTraffic="true" android:icon="@mipmap/logo">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.app_hoathocorp.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
@@ -33,4 +33,5 @@
 	<uses-permission android:name="android.permission.READ_PROFILE" />
 	<uses-permission android:name="android.permission.WRITE_PROFILE" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
 </manifest>

@@ -5,44 +5,49 @@ using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Barcode;
 using Syncfusion.Data.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using ZXing.Net.Mobile.Forms;
+using static ZXing.QrCode.Internal.Mode;
 
 namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
 {
-    public class XuatKhoTheoCayVai_ViewModel : BaseViewModel    
+    public class XuatKhoTheoCayVai_ViewModel : BaseViewModel
     {
-        
+        private double _soLuongPhieuXuat;
+        public double SoLuongPhieuXuat { get => _soLuongPhieuXuat; set => SetProperty(ref _soLuongPhieuXuat, value); }
+        public string Summary { get; set; }
+        public double SoLuongDaQuet { get; set; }
+        public double SoCayVai { get; set; }
+        public double ConLai { get; set; }
         public INavigation Navigation { get; set; }
-        DanhSachPhieuXuatKhoChiTiet_Model XuatKho { get; set; }
-        public XuatKhoTheoCayVai_Model SelectItem { get; set; } 
+        public DanhSachPhieuXuatKhoChiTiet_Model XuatKho { get; set; }
+        public XuatKhoTheoCayVai_Model SelectItem { get; set; }
         private ObservableCollection<XuatKhoTheoCayVai_Model> _listItem;
         public ObservableCollection<XuatKhoTheoCayVai_Model> ListItem { get => _listItem; set => SetProperty(ref _listItem, value); }
 
         public ICommand QuetQrCommand { get; set; }
         public ICommand CapNhatCommand { get; set; }
-        public ICommand DeleteIdVaiCommand { get; set; } 
+        public ICommand DeleteIdVaiCommand { get; set; }
+
         public XuatKhoTheoCayVai_ViewModel(DanhSachPhieuXuatKhoChiTiet_Model xuatKho)
         {
             XuatKho = xuatKho;
-            Title = "Xuất kho " + string.Format("{0:#,##0.##}",xuatKho.Quantity);
+            SoLuongPhieuXuat = xuatKho.Quantity;
+            Title = "Xuất kho " + string.Format("{0:#,##0.##}", xuatKho.Quantity);
             ListItem = new ObservableCollection<XuatKhoTheoCayVai_Model>();
-            QuetQrCommand = new Command( async() =>
+            QuetQrCommand = new Command(async () =>
             {
                 try
                 {
                     //kiem tra nếu đủ tồn rồi thì k cần quét nữa
-                    double sum1 = 0;
-                    ListItem.ForEach(x =>
-                    {
-                        sum1 += x.CanXuat;
-                    });
-                    if (sum1 >= xuatKho.Quantity)
+                    double sum1 = ListItem.Sum(x => x.CanXuat);
+
+                    if (Convert.ToDecimal(sum1) >= Convert.ToDecimal(SoLuongPhieuXuat))
                     {
                         await new MessageBox("Số lượng cây vải đã xuất đủ cho mã NPL này").Show();
                         return;
@@ -55,7 +60,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                             try
                             {
                                 if (ListItem.Where(x => x.BarcodeId == result && x.RowID == "0").Any())
-                                {                                   
+                                {
                                     await new MessageBox("Mã này đã được quét rồi. không quét nữa").Show();
                                     return;
                                 }
@@ -65,7 +70,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                 {
                                     if (ok.Lists.Count > 0) // chỉ trả về 1 dòng thôi
                                     {
-                                        //kiểm tra xem mã NPL này có đúng với mã cần xuất không                                        
+                                        //kiểm tra xem mã NPL này có đúng với mã cần xuất không
 
                                         XuatKhoTheoCayVai_Model ketqua = ok.Lists[0];
                                         if (ketqua.ItemNo != xuatKho.ItemNo || ketqua.Color != xuatKho.Color)
@@ -93,7 +98,18 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                             {
                                                 ketqua.UserId = Preferences.Get(Config.User, "");
                                                 ketqua.DocumentNo = XuatKho.DocumentNo;
+                                                if (ListItem.Count == 0)
+                                                {
+                                                    ketqua.SoLuongPhieuXuat = SoLuongPhieuXuat;
+                                                }
+
                                                 ListItem.Add(ketqua);
+                                                SoCayVai = ListItem.Count;
+                                                SoLuongDaQuet = ListItem.Sum(x => x.CanXuat);
+                                                ConLai = SoLuongPhieuXuat - SoLuongDaQuet;
+                                                Summary = string.Format("YC : {0}; Đã quét: {1}; Số cây: {2}; Còn lại: {3}", string.Format("{0:#,##0.##}", SoLuongPhieuXuat), string.Format("{0:#,##0.##}", SoLuongDaQuet),
+                                                string.Format("{0:#,##0.##}", SoCayVai), string.Format("{0:#,##0.##}", ConLai));
+                                                OnPropertyChanged("Summary");
                                                 DependencyService.Get<IMessage>().LongAlert("Đã quét thành công");
                                             }
                                             if (sum + ketqua.CanXuat == xuatKho.Quantity)
@@ -116,41 +132,46 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                 {
                                     await new MessageBox(ok.ErrorString).Show();
                                 }
-
-
                             }
                             catch (Exception ex)
                             {
                                 await new MessageBox(ex.Message).Show();
                             }
                         });
-
                     };
                     await Navigation.PushAsync(scan);
                 }
                 catch (Exception ex)
                 {
                     await new MessageBox(ex.Message).Show();
-                }               
+                }
             });
             CapNhatCommand = new Command(async () =>
             {
                 try
-                {                  
-                   if (ListItem.Count==0)
+                {
+                    if (ListItem.Count == 0)
                     {
                         await new MessageBox("Chưa có danh sách xuất kho").Show();
                         return;
-                    }    
-                   if (await new MessageYesNo("Bạn có muốn xuất những cây vải này không?").Show() == DialogReturn.OK)
+                    }
+                    var message = "";
+                    var list = ListItem.Where(x => x.XuatLe == 1).ToList();
+                    if (list.Count > 0)
                     {
-                        var ok  = await RunHttpClientPost("api/qltb/XuatKhoTheoDanhSachIdCayVai",ListItem.Where(x=>x.RowID == "0").ToList());
+                        message = "Lô xuất có các Roll No sau đây là xuất lẻ :" +  String.Join(", ", list.Select(x => x.RollNo)) + "; Bạn có muốn xuất không?";
+                    }    
+                    
+                    
+                    if (await new MessageYesNo(message != "" ? message : "Bạn có muốn xuất những cây vải này không?").Show() == DialogReturn.OK)
+                    {
+                        var ok = await RunHttpClientPost("api/qltb/XuatKhoTheoDanhSachIdCayVai", ListItem.Where(x => x.RowID == "0").ToList());
                         if (ok.IsSuccessStatusCode)
                         {
                             await new MessageBox("Cập nhật thành công").Show();
                             await Navigation.PopAsync();
-                        }    
-                    }    
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -160,24 +181,24 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
             DeleteIdVaiCommand = new Command(async () =>
             {
                 try
-                {             
+                {
                     if (SelectItem == null)
                     {
                         await new MessageBox("Vui lòng chọn cây vải cần xóa").Show();
                         return;
-                    }    
+                    }
                     if (SelectItem.RowID != "0")
                     {
                         await new MessageBox("Cây vải này đã xuất kho rồi nên không xóa được").Show();
                         return;
-                    }    
+                    }
                     if (await new MessageYesNo("Bạn có muốn xóa cây vải này không?").Show() == DialogReturn.OK)
                     {
                         var ok = await RunHttpClientPost("api/qltb/XoaXuatKhoTheoIdCayVai", SelectItem);
                         if (ok.IsSuccessStatusCode)
                         {
                             DependencyService.Get<IMessage>().ShortAlert("Đã xóa thành công!");
-                            ListItem.Remove(SelectItem);                           
+                            ListItem.Remove(SelectItem);
                         }
                     }
                 }
@@ -201,6 +222,18 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 ListItem.Clear();
                 var a = await RunHttpClientGet<XuatKhoTheoCayVai_Model>(url);
                 ListItem = a.Lists;
+                if (ListItem.Count > 0)
+                {
+                    SoCayVai = ListItem.Count;
+                    SoLuongDaQuet = ListItem.Sum(x => x.CanXuat);
+                    ConLai = SoLuongPhieuXuat - SoLuongDaQuet;
+
+                    Summary = string.Format("YC : {0}; Đã quét: {1}; Số cây: {2}; Còn lại: {3}", string.Format("{0:#,##0.##}", SoLuongPhieuXuat), string.Format("{0:#,##0.##}", SoLuongDaQuet),
+                        string.Format("{0:#,##0.##}", SoCayVai), string.Format("{0:#,##0.##}", ConLai));
+                    OnPropertyChanged("Summary");
+                }
+
+                OnPropertyChanged("ListItem");
                 HideLoading();
             }
             catch (Exception ex)

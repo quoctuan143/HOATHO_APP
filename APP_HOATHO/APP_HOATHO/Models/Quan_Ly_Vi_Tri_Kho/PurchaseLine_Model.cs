@@ -7,6 +7,7 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string No_ { get; set; }
         public string Name { get; set; }
         public string Color { get; set; }
+        public string Art { get; set; }
         public double Quantity { get; set; } 
     }
 }

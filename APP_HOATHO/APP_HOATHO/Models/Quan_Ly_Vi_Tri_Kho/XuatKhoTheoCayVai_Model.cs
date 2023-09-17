@@ -13,19 +13,43 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string ItemNo { get; set; }
         public string Color { get; set; }
         public double TonKho { get; set; }
+        public bool DaXuatKho
+        {
+            get
+            {
+                if (RowID == "0")
+                    return false;
+                else
+                    return true;
 
+            }
+        }
+        public double SoLuongPackingList { get; set; }
+        public double SoLuongPhieuXuat { get; set; } = 0;
+        public string Art { get; set; }
+        public string RollNo { get; set; }  
         double _canxuat = 0;
         public double CanXuat { get => _canxuat; 
             set 
             { 
                 _canxuat = value;
                 if  (RowID == "0")
-                    {
+                {                    
                     if (_canxuat > TonKho)
-                    {
+                    {                           
                         new MessageBox("Số lượng xuất vượt quá tồn kho").Show();
                         CanXuat = 0;
                         return;
+                    }
+                    if (_canxuat > 0 && _canxuat < TonKho)
+                    {
+                        XuatLe = 1;
+                        OnPropertyChanged("XuatLe");
+                    }
+                    else
+                    {
+                        XuatLe = 2;
+                        OnPropertyChanged("XuatLe");
                     }
                 }  
             } 
@@ -56,17 +80,10 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
 
                 }
             }
-        }       
-        public bool DaXuatKho
-        {
-            get
-            {
-                if (RowID == "0")
-                    return false;
-                else
-                    return true;
-
-            }         
         }
+
+
+        public int XuatLe { get; set; } = 2;
+        
     }
 }

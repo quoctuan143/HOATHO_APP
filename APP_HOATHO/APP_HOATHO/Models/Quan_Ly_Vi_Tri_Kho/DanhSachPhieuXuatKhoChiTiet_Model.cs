@@ -16,11 +16,12 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string ItemName { get; set; }
         public string DocumentNo { get; set; }
         public string Description { get; set; }
-        public string Color { get; set; }
-        
+        public string Color { get; set; }        
+
         public double SoLuongPhieu { get; set; }
         public double Quantity { get; set; }
         public string TrimArt { get; set; }
+        public string Art { get; set; } 
         public string DVT { get; set; }
         double _xuatTheoIdVai;
         public double XuatTheoIdVai { get => _xuatTheoIdVai; set { 

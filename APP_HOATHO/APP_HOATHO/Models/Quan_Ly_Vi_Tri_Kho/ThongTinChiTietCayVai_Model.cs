@@ -16,5 +16,10 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string BarcodeId { get; set; }
         public string PositionId { get; set; }
         public double? TonKho { get; set; }
+        public string ViTri { get; set; }
+        public string Art { get; set; }
+        public string PhieuNhap { get; set; }
+        public string LoVai { get; set; }
+        public string DVT { get; set; }
     }
 }

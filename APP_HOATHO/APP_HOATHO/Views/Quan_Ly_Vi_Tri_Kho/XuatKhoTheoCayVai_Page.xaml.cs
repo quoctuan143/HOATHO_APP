@@ -1,6 +1,8 @@
 ﻿using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
+using Syncfusion.Data;
 using Syncfusion.Data.Extensions;
+using Syncfusion.SfDataGrid.XForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,11 +40,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
         private void btnCapNhat_Clicked(object sender, EventArgs e)
         {
             viewModel.CapNhatCommand.Execute(null);
-            double sum = 0;
-            viewModel.ListItem.ForEach(x =>
-            {
-                sum = sum + x.CanXuat;
-            });
+            double sum = viewModel.ListItem.Sum(x => x.CanXuat);            
             if (sum > 0)
             {
                 ClosePage?.Invoke(this, sum);

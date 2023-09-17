@@ -56,13 +56,14 @@ namespace APP_HOATHO.Views.Barcode
                             }
                         }
                         ScanBarcodeResult?.Invoke(this, result);
-                       
+                        txtBarcode.Text = "";
                     }
                     else
                     {
-                        ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());                       
+                        ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());
+                        txtBarcode.Text = "";
                     }
-                    
+
                 }
 
                 else
@@ -100,8 +101,6 @@ namespace APP_HOATHO.Views.Barcode
                 await new MessageBox(ex.Message).Show();
 
             }
-            
-
 
         }
 
