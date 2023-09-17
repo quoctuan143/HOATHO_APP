@@ -194,12 +194,14 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     }
                     if (await new MessageYesNo("Bạn có muốn xóa cây vải này không?").Show() == DialogReturn.OK)
                     {
-                        var ok = await RunHttpClientPost("api/qltb/XoaXuatKhoTheoIdCayVai", SelectItem);
-                        if (ok.IsSuccessStatusCode)
-                        {
-                            DependencyService.Get<IMessage>().ShortAlert("Đã xóa thành công!");
-                            ListItem.Remove(SelectItem);
-                        }
+                        DependencyService.Get<IMessage>().ShortAlert("Đã xóa thành công!");
+                        ListItem.Remove(SelectItem);
+                        SoCayVai = ListItem.Count;
+                        SoLuongDaQuet = ListItem.Sum(x => x.CanXuat);
+                        ConLai = SoLuongPhieuXuat - SoLuongDaQuet;
+                        Summary = string.Format("YC : {0}; Đã quét: {1}; Số cây: {2}; Còn lại: {3}", string.Format("{0:#,##0.##}", SoLuongPhieuXuat), string.Format("{0:#,##0.##}", SoLuongDaQuet),
+                        string.Format("{0:#,##0.##}", SoCayVai), string.Format("{0:#,##0.##}", ConLai));
+                        OnPropertyChanged("Summary");
                     }
                 }
                 catch (Exception ex)
