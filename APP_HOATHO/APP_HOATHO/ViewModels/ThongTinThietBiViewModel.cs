@@ -15,7 +15,8 @@ namespace APP_HOATHO.ViewModels
 {
  public   class ThongTinThietBiViewModel : BaseViewModel
     {
-        
+        string _imageLichSu;
+        public string ImageLichSu { get => _imageLichSu; set => SetProperty(ref _imageLichSu, value); } 
         public DanhMuc_ThietBi Item { get; set;  }
         ObservableCollection<LICH_SU_BAO_TRI> lichsubaotri;
         public ObservableCollection<LICH_SU_BAO_TRI> lICH_SU_BAO_TRIs { get => lichsubaotri; set { lichsubaotri = value; OnPropertyChanged("lICH_SU_BAO_TRIs"); } }

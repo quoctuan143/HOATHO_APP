@@ -23,7 +23,8 @@ namespace APP_HOATHO.Views
         public KeHoachBaoTri()
         {
             InitializeComponent();
-            listThietBi.ItemsSourceChanged += ListThietBi_ItemsSourceChanged; ;
+            listThietBi.ItemsSourceChanged += ListThietBi_ItemsSourceChanged;
+            entryThang.SelectedIndex = DateTime.Now.Month;
             entryNam.Text = DateTime.Now.Year.ToString();
             BindingContext = viewModel = new KeHoachBaoTriViewModel();
             
@@ -32,8 +33,7 @@ namespace APP_HOATHO.Views
         private void ListThietBi_ItemsSourceChanged(object sender, Syncfusion.SfDataGrid.XForms.GridItemsSourceChangedEventArgs e)
         {
             try
-            {
-                entryThang.SelectedIndex = DateTime.Now.Month;
+            {               
                 listThietBi.View.Filter = FilterRecords;
                 listThietBi.View.RefreshFilter();
             }
@@ -56,7 +56,7 @@ namespace APP_HOATHO.Views
                 base.OnAppearing();
                 if (IsBusy == true) return;
                 if (viewModel.KE_HOACH_BAO_TRI.Count == 0)
-                    viewModel.LoadKeHoachBaoTri.Execute(DateTime.Now.Year.ToString());
+                    viewModel.LoadKeHoachBaoTri.Execute(new Tuple<string,int>( DateTime.Now.Year.ToString(), DateTime.Now.Month ));
                
                 
             }
@@ -103,8 +103,7 @@ namespace APP_HOATHO.Views
         {
             try
             {
-                var item = o as APP_HOATHO.Models.KeHoachBaoTri;
-                thang = entryThang.SelectedIndex;
+                var item = o as APP_HOATHO.Models.KeHoachBaoTri;               
                 if (item != null)
                 {
 
@@ -120,20 +119,9 @@ namespace APP_HOATHO.Views
                         filter = true;
                     }
 
-                    if (thang == 0)
-                    {
-                        if (radTatCa.IsChecked == true)
-                            return true;
-                        else if (item.Da_Bao_Tri == filter) return true;
-                    }
-                    else if (radTatCa.IsChecked == true)
-                    {
-                        if (item.Thang == thang) return true;
-                    }
-                    else
-                    {
-                        if (item.Da_Bao_Tri == filter && item.Thang == thang) return true;
-                    }
+                    if (radTatCa.IsChecked == true)
+                          return true;
+                       else return (item.Da_Bao_Tri == filter);
 
                 }
                 return false;
@@ -149,11 +137,10 @@ namespace APP_HOATHO.Views
         public bool FilterRecords1(object o) 
         {
 
-            var item = o as APP_HOATHO.Models.KeHoachBaoTri;
-            thang = entryThang.SelectedIndex;
+            var item = o as APP_HOATHO.Models.KeHoachBaoTri;           
             if (item != null)
             {                
-                if ((item.No_2.ToLower().Contains(filtertext.ToLower()) || item.No_3.ToLower().Contains(filtertext.ToLower()) || item.No_.ToLower().Contains(filtertext.ToLower())) && item.Thang == thang )
+                if ((item.No_2.ToLower().Contains(filtertext.ToLower()) || item.No_3.ToLower().Contains(filtertext.ToLower()) || item.No_.ToLower().Contains(filtertext.ToLower())) )
                     return true;
             }
             return false;
@@ -175,21 +162,25 @@ namespace APP_HOATHO.Views
 
         private void entryNam_TextChanged(object sender, TextChangedEventArgs e)
         {
-             
-           
+            //thang = entryThang.SelectedIndex;
+            //viewModel.LoadKeHoachBaoTri.Execute(new Tuple<string, int>(entryNam.Text, thang == 0 ? -1 : thang));
+
         }
 
         private void entryThang_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
         {
-            listThietBi.View.Filter = FilterRecords;
-            listThietBi.View.RefreshFilter();
+            thang = entryThang.SelectedIndex;
+            viewModel.LoadKeHoachBaoTri.Execute(new Tuple<string, int>(entryNam.Text , thang == 0 ? -1 : thang));
+            //listThietBi.View.Filter = FilterRecords;
+            //listThietBi.View.RefreshFilter();
         }
 
         private void entryNam_Unfocused(object sender, FocusEventArgs e)
         {
             if (viewModel != null)
             {
-                viewModel.LoadKeHoachBaoTri.Execute(entryNam.Text );
+                thang = entryThang.SelectedIndex;
+                viewModel.LoadKeHoachBaoTri.Execute(new Tuple<string, int>(entryNam.Text, thang == 0 ? -1 : thang));
             }
         }
 

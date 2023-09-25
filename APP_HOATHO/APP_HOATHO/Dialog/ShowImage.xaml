@@ -14,8 +14,8 @@
             </animations:MoveAnimation>
         </page:PopupPage.Animation>
         <Frame CornerRadius="15"
-           OutlineColor="Black"
-          VerticalOptions="End"
+           OutlineColor="Black"          
+           VerticalOptions="End"
            HorizontalOptions="FillAndExpand"   >
         <Image Source="{Binding IMAGE_LINK}" Aspect="AspectFill"></Image>
 

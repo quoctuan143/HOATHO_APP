@@ -2,12 +2,14 @@
 using APP_HOATHO.Global;
 using APP_HOATHO.Models;
 using APP_HOATHO.Views;
+using FFImageLoading.Helpers.Exif;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -26,14 +28,14 @@ namespace APP_HOATHO.ViewModels
                 OnPropertyChanged(nameof(KE_HOACH_BAO_TRI));
             } 
         }
-        public Command<string> LoadKeHoachBaoTri { get; set; }  
+        public ICommand LoadKeHoachBaoTri { get; set; }  
         public KeHoachBaoTriViewModel() 
         {
            
            
             Title ="Kế hoạch bảo trì";
             KE_HOACH_BAO_TRI = new ObservableCollection<Models.KeHoachBaoTri>();           
-            LoadKeHoachBaoTri = new Command<string>(async  (p) => await  ExcuteKeHoachBaoTri(p));
+            LoadKeHoachBaoTri = new Command<Tuple< string,int>>(async (a) => await ExcuteKeHoachBaoTri(a));
             MessagingCenter.Subscribe<TaoLichSuBaoTri, LICH_SU_BAO_TRI>(this, "AddLichSuBaoTri", (ojb, lsu) => {
                 try
                 {
@@ -73,17 +75,17 @@ namespace APP_HOATHO.ViewModels
             });
         }
 
-        async Task ExcuteKeHoachBaoTri(string year  )
+        async Task ExcuteKeHoachBaoTri(Tuple<string, int> input)
         {
-            
-            if (year == null) year = DateTime.Now.Year.ToString();
+            var year = string.IsNullOrEmpty( input.Item1) ? DateTime.Now.Year.ToString() : input.Item1;
+            var thang = input.Item2;
             IsBusy = true;
             IsRunning = true;
             try
             {
                 KE_HOACH_BAO_TRI.Clear();
-                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getKeHoachBaoTri?user=" + Preferences.Get(Config.User ,"") + "&nam=" + year + "&thang=-1").Result;
-                await Task.Delay(3000);
+                var _json =await Config.client.GetStringAsync(Config.URL + $"api/qltb/getKeHoachBaoTri?user={Preferences.Get(Config.User ,"")}&nam={year}&thang={thang}");
+                await Task.Delay(500);
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {

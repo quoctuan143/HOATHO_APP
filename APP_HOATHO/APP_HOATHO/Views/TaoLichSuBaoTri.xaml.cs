@@ -107,7 +107,7 @@ namespace APP_HOATHO.Views
                     if (media != null )
                     {
                         var filename = media.Path.Split('\\').LastOrDefault().Split('/').LastOrDefault();
-                        lsu.IMAGE_LINK = "Upload/LICHSUBAOTRI/" + filename;
+                        lsu.IMAGE_LINK = filename;
                     }   
                     else
                     {
@@ -123,7 +123,7 @@ namespace APP_HOATHO.Views
                     lsu.STATUS = 1;
                     lsu.NGUOI_XAC_NHAN = Preferences.Get(Config.User, ""); ;
                     lsu.THANG = Item.Thang;
-
+                    lsu.NAM = Item.Nam;
                     
 
 
@@ -135,10 +135,10 @@ namespace APP_HOATHO.Views
                         HttpClient client = new HttpClient();
                         client.BaseAddress = new Uri(Config.URL);
                         var response = client.PostAsync("api/qltb/PostLichSuBaoTri_Picture", content).Result;
-                        if (response.Content.ReadAsStringAsync().Result.ToLower().Contains("upload thành công"))
+                        if (response.IsSuccessStatusCode)
                         {
-                            var ok = client.PostAsJsonAsync("api/qltb/postLichSuBaoTri", lsu);
-                            if (ok.Result.Content.ReadAsStringAsync().Result.ToLower().Contains("cập nhật thành công"))
+                            var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri", lsu);
+                            if (ok.IsSuccessStatusCode)
                             {
                                 await Navigation.PopAsync();
                                 await new MessageBox("Cập nhật thành công").Show();
@@ -146,7 +146,7 @@ namespace APP_HOATHO.Views
                             }
                             else
                             {
-                                await new MessageBox( ok.Result.Content.ReadAsStringAsync().Result.ToLower()).Show();
+                                await new MessageBox( ok.Content.ReadAsStringAsync().Result.ToLower()).Show();
                             }
                         }
                         else
@@ -159,8 +159,8 @@ namespace APP_HOATHO.Views
                     {
                         HttpClient client = new HttpClient();
                         client.BaseAddress = new Uri(Config.URL);
-                        var ok = client.PostAsJsonAsync("api/qltb/postLichSuBaoTri", lsu);
-                        if (ok.Result.Content.ReadAsStringAsync().Result.ToLower().Contains("cập nhật thành công"))
+                        var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri", lsu);
+                        if (ok.IsSuccessStatusCode)
                         {
 
                             await new MessageBox("Cập nhật thành công").Show();
@@ -169,7 +169,7 @@ namespace APP_HOATHO.Views
                         }
                         else
                         {
-                            await new MessageBox( ok.Result.Content.ReadAsStringAsync().Result.ToLower()).Show();
+                            await new MessageBox( ok.Content.ReadAsStringAsync().Result.ToLower()).Show();
                         }
                     }    
                     

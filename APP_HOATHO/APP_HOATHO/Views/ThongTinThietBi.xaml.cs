@@ -130,7 +130,7 @@ namespace APP_HOATHO.Views
                     content.Add(new StreamContent(media.GetStream()), "\"file\"", $"\"{media.Path}\"");
                     HttpClient client = new HttpClient();
                     client.BaseAddress = new Uri(Config.URL );
-                    var response = client.PostAsync("api/qltb/PostFileUpload?mathietbi=" + viewModel.Item.No_, content).Result;
+                    var response = await client.PostAsync("api/qltb/PostFileUpload?mathietbi=" + viewModel.Item.No_, content);
                     
                     await new MessageBox(response.Content.ReadAsStringAsync().Result).Show();
                 }    
@@ -193,6 +193,16 @@ namespace APP_HOATHO.Views
             }
 
             await Browser.OpenAsync(viewModel.Item.TaiLieuKiThuat );
+        }
+
+        private async void listThietBi_SelectionChanged(object sender, GridSelectionChangedEventArgs e)
+        {
+            LICH_SU_BAO_TRI item = listThietBi.SelectedItem as LICH_SU_BAO_TRI;
+            if (item != null)
+            {
+                if (!string.IsNullOrEmpty(item.IMAGE_LINK))
+                    await new ShowImage(item.IMAGE_LINK).Show();
+            }
         }
     }
 }

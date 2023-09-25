@@ -20,8 +20,8 @@ namespace APP_HOATHO.Views
     public partial class Lich_Su_Bao_Tri_Chi_Tiet : ContentPage, INotifyPropertyChanged
     {
         public string mathietbi;
-       
-         ObservableCollection<LICH_SU_BAO_TRI> _lichsu;
+
+        ObservableCollection<LICH_SU_BAO_TRI> _lichsu;
         public ObservableCollection<LICH_SU_BAO_TRI> LichSus { get => _lichsu; set { _lichsu = value; OnPropertyChanged("LichSus"); } }
         bool isRunning = false;
         public bool IsRunning
@@ -29,7 +29,8 @@ namespace APP_HOATHO.Views
             get { return isRunning; }
             set { isRunning = value; OnPropertyChanged("IsRunning"); }
         }
-
+        string _imageLink;
+        public string ImageLink { get => _imageLink; set { _imageLink = value; OnPropertyChanged("ImageLink"); } } 
         public Command LoadLichSuBaoTri { get; set; }
         public Lich_Su_Bao_Tri_Chi_Tiet(string _mathietbi)
         {
@@ -100,7 +101,7 @@ namespace APP_HOATHO.Views
             LICH_SU_BAO_TRI item = listThietBi.SelectedItem as LICH_SU_BAO_TRI;
             if (item != null)
             {
-                if (item.IMAGE_LINK != "http://erp.hoatho.com.vn/ObjectSpace/")
+                if (!string.IsNullOrEmpty( item.IMAGE_LINK))
                     await new ShowImage(item.IMAGE_LINK).Show();
             }
         }

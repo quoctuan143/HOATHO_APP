@@ -25,8 +25,15 @@ namespace APP_HOATHO.Dialog
             BindingContext = this;
         }
         public async Task Show()
-        {            
-            await Navigation.PushPopupAsync(this);         
+        {
+            try
+            {
+                await Navigation.PushPopupAsync(this);
+            }
+            catch 
+            {                
+            }
+                 
         }
     }
 }

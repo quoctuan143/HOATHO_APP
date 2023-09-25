@@ -127,7 +127,7 @@
                                            AllowDraggingColumn="True"                          
                                            SelectionMode="Single"                          
                                            ColumnSizer="Auto"              
-                                                                                 
+                                           SelectionChanged="listThietBi_SelectionChanged"                                      
                                            AllowPullToRefresh="True"
                                            PullToRefreshCommand="{Binding LoadLichSuBaoTri}"
                                            AllowTriStateSorting="True"

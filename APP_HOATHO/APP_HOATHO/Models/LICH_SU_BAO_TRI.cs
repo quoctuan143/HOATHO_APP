@@ -44,6 +44,7 @@ namespace APP_HOATHO.Models
         public string MA_NHA_MAY { get; set; }
         public string MA_XUONG { get; set; }
         public int THANG { get; set; }
+        public int NAM { get; set; }
         public string NHOM_BAO_TRI { get; set; }
     }
 }
