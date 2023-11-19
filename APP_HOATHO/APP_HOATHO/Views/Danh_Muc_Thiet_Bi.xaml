@@ -122,26 +122,7 @@
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                         </sfDataGrid:GridTemplateColumn>
                     </sfDataGrid:SfDataGrid.Columns>
-                    <!--<sfDataGrid:SfDataGrid.LeftSwipeTemplate>
-                        <DataTemplate>
-                            <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
-                                <ContentView Grid.Column="0">
-                                    <ContentView.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="btnViewLichSu" Tapped=""></TapGestureRecognizer>
-                                    </ContentView.GestureRecognizers>
-                                    <Grid  BackgroundColor="Green">
-                                        <Label
-                                       Text ="Xem Lịch Sử"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"
-                                       LineBreakMode ="NoWrap"
-                                       BackgroundColor="Transparent"
-                                       TextColor ="White" />
-                                    </Grid>
-                                </ContentView>
-                            </Grid>
-                        </DataTemplate>
-                    </sfDataGrid:SfDataGrid.LeftSwipeTemplate>-->
+                    
                     <sfDataGrid:SfDataGrid.GroupColumnDescriptions>
                         <sfDataGrid:GroupColumnDescription ColumnName="NameVN" />
                     </sfDataGrid:SfDataGrid.GroupColumnDescriptions>

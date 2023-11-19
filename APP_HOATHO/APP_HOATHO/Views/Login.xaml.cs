@@ -48,7 +48,7 @@ namespace APP_HOATHO.Views
                         Preferences.Set(Config.User, btnusername.Text);
                         Preferences.Set(Config.Password, btnpassword.Text);                       
                     }
-                    Preferences.Set(Config.Role, user[0].Role.ToString());
+                    Preferences.Set(Config.Role, user[0].Role ?? -1);
                     Preferences.Set(Config.PhoneNumber, user[0].PhoneNumber);
                     Preferences.Set(Config.NhaMay, user[0].SourceCode);
                     Preferences.Set(Config.MaXuong, user[0].MaXuong);

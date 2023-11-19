@@ -69,8 +69,8 @@
                     <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
-                              BackgroundColor="Transparent"
-                              HeightRequest="180"
+                              BackgroundColor="Transparent"  
+                              VerticalOptions="FillAndExpand"
                               HasShadow="False"
                               IsVisible="{Binding IsMainDonHang}"
                               Opacity="{Binding IsMainDonHang, Converter={StaticResource OpacityDisable}}">
@@ -82,6 +82,7 @@
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
                             <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*"
+                                  RowDefinitions="*,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
@@ -118,9 +119,27 @@
                                                        ActionCommand="{Binding DuyetDeNghiThanhToanCommand}"
                                                        Disable="{Binding IsDNTT, Mode=TwoWay}">
                                 </control:IconMainView>
+                                <control:IconMainView  Title="TBSX"
+                                                       Grid.Column="0"
+                                                       Grid.Row="1"
+                                                       IconImageSource="duyetdinhmuc.png"
+                                                       BadgeText="{Binding NofiTBSX}"
+                                                       ActionCommand="{Binding TBSXCommand}"
+                                                       Disable="{Binding IsTBSX, Mode=TwoWay}">
+                                </control:IconMainView>
+                                
+                                <control:IconMainView  Title="TBSX ĐC"
+                                                       Grid.Column="1"
+                                                       Grid.Row="1"
+                                                       IconImageSource="duyethietbi.png"
+                                                       BadgeText="{Binding NofiTBSXDC}"
+                                                       ActionCommand="{Binding TBSXDCCommand}"
+                                                       Disable="{Binding IsTBSX, Mode=TwoWay}">
+                                </control:IconMainView>
+                                
                             </Grid>
                         </StackLayout>
-                    </Frame>
+                    </Frame>                       
                     <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
@@ -349,9 +368,10 @@
                                                        Grid.Row="2"
                                                        IconImageSource="duyethietbi.png"
                                                        BadgeText=""
-                                                       ActionCommand="{Binding ThongTinChiTietCayVaiCommand}"
+                                                       ActionCommand="{Binding ThongTinChiTietKeVaiCommand}"
                                                        Disable="{Binding IsCapNhatOChuaVai}">
                                 </control:IconMainView>
+                                
                             </Grid>
                         </StackLayout>
                     </Frame>

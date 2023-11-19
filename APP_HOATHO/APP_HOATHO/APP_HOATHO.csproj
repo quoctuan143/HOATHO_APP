@@ -252,6 +252,9 @@
     <EmbeddedResource Update="Views\Quan_Ly_Vi_Tri_Kho\Purchase_Line_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Quan_Ly_Vi_Tri_Kho\Thong_Tin_Chi_Tiet_Ke_Vai_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Quan_Ly_Vi_Tri_Kho\ViTriKhoTheoChungTu_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -273,6 +276,18 @@
     <EmbeddedResource Update="Views\Tabpage\DuyetLCP_GIACONG.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\TBSX\TBSX_DC_Header_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TBSX\TBSX_DC_Line_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TBSX\TBSX_Header_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TBSX\TBSX_Line_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Thiet_Bi_Van_Phong\Cap_Nhat_Thong_Tin_Loi_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -291,6 +306,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewModels\Thong_Bao_San_Xuat\" />
     <Folder Include="ViewModels\Thiet_Bi_Van_Phong\" />
+    <Folder Include="Views\Thong_Bao_San_Xuat\" />
   </ItemGroup>
 </Project>

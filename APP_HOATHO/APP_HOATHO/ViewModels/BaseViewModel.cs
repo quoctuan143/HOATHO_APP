@@ -83,8 +83,36 @@ namespace APP_HOATHO.ViewModels
                 return new HttpClientResponseModel<T> { Status = new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.BadRequest }, ErrorString = ex.Message};
             }
 
-        }  
+        }
+        public async Task<HttpClientResponseModel<T>> RunHttpClientGet<T>(string apiUrl, object value) where T : class
+        {
+            try
+            {
+                var respon = await Config.client.PostAsJsonAsync(apiUrl,value);
+                HttpClientResponseModel<T> values = new HttpClientResponseModel<T>();
+                values.Status = respon;
+                values.ErrorString = respon.Content.ToString();
+                values.Lists = new ObservableCollection<T>();
+                if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    string _json = await respon.Content.ReadAsStringAsync();
+                    _json = _json.Replace("\\r\\n", "").Replace("\\", "");
+                    if (_json.Contains("[]") == false)
+                    {
+                        Int32 from = _json.IndexOf("[");
+                        Int32 to = _json.IndexOf("]");
+                        string result = _json.Substring(from, to - from + 1);
+                        values.Lists = JsonConvert.DeserializeObject<ObservableCollection<T>>(result);
+                    }
+                }
+                return values;
+            }
+            catch (Exception ex)
+            {
+                return new HttpClientResponseModel<T> { Status = new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.BadRequest }, ErrorString = ex.Message };
+            }
 
+        }
         public async Task<HttpResponseMessage > RunHttpClientPost(string apiUrl , object  Value) 
         {
             try

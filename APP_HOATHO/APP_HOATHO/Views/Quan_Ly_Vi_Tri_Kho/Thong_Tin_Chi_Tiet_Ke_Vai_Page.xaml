@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
+             xmlns:local1="clr-namespace:APP_HOATHO.Style" xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.Thong_Tin_Chi_Tiet_Ke_Vai_Page"
+             Title="Thông tin cây vải trên kệ vải"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local1:GridStyle x:Key="dark" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="5" 
+                HorizontalOptions="FillAndExpand" Style="{x:StaticResource styleGrid}"
+                  ColumnDefinitions="5*,5*"
+                  RowDefinitions="auto,auto">
+                <sfinputtext:SfTextInputLayout Hint="Kệ vải"
+                                               Grid.Column="0"
+                                               IsHintAlwaysFloated="True"
+                                               LeadingViewPosition="Inside"
+                                               ContainerType="Outlined">
+                    <Entry x:Name="txtKeVai" Placeholder="Chọn kệ vải"
+                               HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" />                          
+                </sfinputtext:SfTextInputLayout>
+                <sfinputtext:SfTextInputLayout Hint="Qr Code"
+                                               Grid.Column="1"
+                                               IsHintAlwaysFloated="True"
+                                               LeadingViewPosition="Inside"
+                                               ContainerType="Outlined">
+                    <Entry x:Name="txtBarcodeId" Placeholder="Chọn Id cây vải"
+                               HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" />
+                </sfinputtext:SfTextInputLayout>
+
+
+                <sfinputtext:SfTextInputLayout Hint="Roll No"
+                                               Grid.Column="0"
+                                               Grid.Row="1"
+                                               Margin="0,-20,0,0"
+                                               IsHintAlwaysFloated="True"
+                                               LeadingViewPosition="Inside"
+                                               ContainerType="Outlined">
+                    <Entry x:Name="txtRollNo" Placeholder="Chọn Roll No"
+                               HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing"  />
+                </sfinputtext:SfTextInputLayout>
+                <sfbutton:SfButton Text="Tìm kiếm" x:Name="btnScan" Clicked="btnScan_Clicked" FontSize="16" 
+                                   Grid.Column="1" Grid.Row="1"
+                                   Margin="0,-10,0,0"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"
+                        CornerRadius="5"
+                        Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+            </Grid>
+            <Entry x:Name="search" TextChanged="search_TextChanged" ClearButtonVisibility="WhileEditing"
+               HorizontalOptions="FillAndExpand" Placeholder="Tìm theo Roll No, màu, barcode"
+                   Margin="0,-20,0,0"></Entry>
+            <sfDataGrid:SfDataGrid  x:Name="listThietBi"
+                                ItemsSource="{Binding ListItem}"
+                                AutoGenerateColumns="False"
+                                GroupCaptionTextFormat="{}{}{Key} - {ItemsCount} mã"
+                                GridStyle="{StaticResource dark}"
+                                Style="{StaticResource styleDataGrid}"
+                                AutoExpandGroups="True"
+                                AllowSwiping="True"
+                                MaxSwipeOffset="200"
+                                SelectionMode="Single"
+                                SelectionChanged="listThietBi_SelectionChanged">
+                <sfDataGrid:SfDataGrid.Columns>
+
+                    <sfDataGrid:GridTemplateColumn  MappingName="Color" HeaderText="Màu" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Color}" TextColor="Black" Padding="5,0,0,0"  XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  MappingName="RollNo" HeaderText="Roll No" Width="80"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding RollNo}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="SL PackingList"
+                                                        Width="100"
+                                                MappingName="InvoicedMeter"
+                                                HeaderFontAttribute="Bold"
+                                                HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding InvoicedMeter , StringFormat='{0:#,##0.##}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="TonKho"
+                                                   Width="80"
+                                                   HeaderText="Tồn kho"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding TonKho , StringFormat='{0:#,##0.##}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="BarcodeId"
+                                                   Width="100"
+                                                   HeaderText="Mã barcode"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding BarcodeId}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="PositionId"
+                                                   Width="100"
+                                                   HeaderText="Kệ vải"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PositionId}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                </sfDataGrid:SfDataGrid.Columns>
+
+                <sfDataGrid:SfDataGrid.GroupColumnDescriptions>
+                    <sfDataGrid:GroupColumnDescription ColumnName="Art" />
+                </sfDataGrid:SfDataGrid.GroupColumnDescriptions>
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                          Format="{}{Count}"
+                                                          MappingName="Color"
+                                                          SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

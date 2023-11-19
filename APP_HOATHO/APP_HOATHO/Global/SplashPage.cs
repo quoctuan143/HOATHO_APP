@@ -66,8 +66,17 @@ namespace APP_HOATHO.Global
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {
+                    Int32 from = _json.IndexOf("[");
+                    Int32 to = _json.IndexOf("]");
+                    string result = _json.Substring(from, to - from + 1);
+                    List<User> user = JsonConvert.DeserializeObject<List<User>>(result);
+                   
+                    Preferences.Set(Config.Role, user[0].Role ?? -1);                    
+                    Preferences.Set(Config.NhaMay, user[0].SourceCode);
+                    Preferences.Set(Config.MaXuong, user[0].MaXuong);                   
+                    
                     App.Current.MainPage = new AppShell();
-
+                    
                 }
                 else
                 {

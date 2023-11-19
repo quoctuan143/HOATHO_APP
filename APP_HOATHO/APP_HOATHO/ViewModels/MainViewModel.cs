@@ -8,6 +8,7 @@ using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
 using APP_HOATHO.ViewModels.DuyetChungTu;
 using APP_HOATHO.ViewModels.Ki_Dien_Tu_Thiet_Bi;
 using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
+using APP_HOATHO.ViewModels.TBSX;
 using APP_HOATHO.Views;
 using APP_HOATHO.Views.Barcode;
 using APP_HOATHO.Views.DuyetChungTu;
@@ -17,6 +18,7 @@ using APP_HOATHO.Views.Nha_May_Soi;
 using APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL;
 using APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Tabpage;
+using APP_HOATHO.Views.TBSX;
 using APP_HOATHO.Views.Thiet_Bi_Van_Phong;
 using APP_HOATHO.Views.ThietBi;
 using Newtonsoft.Json;
@@ -66,6 +68,8 @@ namespace APP_HOATHO.ViewModels
         public bool IsCapNhatOChuaVai { get; set; }
         public bool IsTaoPhieuXuatKhoGomVai { get; set; }
         public bool IsNhanHelpDesk { get; set; }
+        public bool IsTBSX { get; set; }
+        public bool IsTBSXDC { get; set; }
         public int NofiLCP_FOB { get; set; }
         public int NofiLCP_GC { get; set; }
         public int NofiDuyetDatMua { get; set; }
@@ -79,6 +83,8 @@ namespace APP_HOATHO.ViewModels
         public int NofiTraThietBi { get; set; }
         public int NofiDuyetTongHopThietBiNhaMay { get; set; }
         public int NofiDanhSachChoITXuLy { get; set; }
+        public int NofiTBSX { get; set; }
+        public int NofiTBSXDC { get; set; }
         private DuyetChungTuPhuTung_Header duyetChungTuPhuTung_Header;
         private DuyetDonDatMua DuyetDonDatMua;
         private DuyetLCP_FOB duyetLCP_FOB;
@@ -116,6 +122,9 @@ namespace APP_HOATHO.ViewModels
         public ICommand TaoPhieuXuatKhoGomVaiCommand { get; set; }
         public ICommand ChuyenVaiTuKeASangBCommand { get; set; }
         public ICommand ThongTinChiTietCayVaiCommand { get; set; }
+        public ICommand ThongTinChiTietKeVaiCommand { get; set; }
+        public ICommand TBSXCommand { get; set; }
+        public ICommand TBSXDCCommand { get; set; }
 
         #endregion "Command"
 
@@ -429,6 +438,42 @@ namespace APP_HOATHO.ViewModels
                     await new MessageBox(ex.Message).Show();
                 }
             });
+
+            ThongTinChiTietKeVaiCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new Thong_Tin_Chi_Tiet_Ke_Vai_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+
+            TBSXCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new TBSX_Header_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            TBSXDCCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new TBSX_DC_Header_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+
             Task.Factory.StartNew(async () => await Load());
 
             FullName = Preferences.Get(Config.FullName, "");
@@ -490,6 +535,22 @@ namespace APP_HOATHO.ViewModels
                 {
                     NofiDanhSachChoITXuLy--;
                     OnPropertyChanged(nameof(NofiDanhSachChoITXuLy));
+                }
+            });
+            MessagingCenter.Subscribe<TBSX_DC_Header_ViewModel>(this, "langngheduyet", (obj) =>
+            {
+                if (NofiTBSXDC > 0)
+                {
+                    NofiTBSXDC--;
+                    OnPropertyChanged(nameof(NofiTBSXDC));
+                }
+            });
+            MessagingCenter.Subscribe<TBSX_Header_ViewModel>(this, "langngheduyet", (obj) =>
+            {
+                if (NofiTBSX > 0)
+                {
+                    NofiTBSX--;
+                    OnPropertyChanged(nameof(NofiTBSX));
                 }
             });
         }
@@ -696,6 +757,35 @@ namespace APP_HOATHO.ViewModels
 
                             IsCapNhatViTriKho = Convert.ToBoolean(ISDBNULL(body[0].CAP_NHAT_VI_TRI_KHO.Value, false));
                             OnPropertyChanged(nameof(IsCapNhatViTriKho));
+
+                            var tpkd_tbsx = Convert.ToBoolean(ISDBNULL(body[0].TPKD_DUYET_TBSX.Value, false));
+                            if (tpkd_tbsx)
+                            {
+                                IsTBSX = true;
+                                IsTBSXDC = true;
+                                OnPropertyChanged(nameof(IsTBSX));
+                                var h = await RunHttpClientGet<object>($"api/tbsx/getTBSX_Header?userid={Preferences.Get(Config.User, "")}&tongiamdoc={Preferences.Get(Config.Role,1)}");
+                                NofiTBSX = h.Lists.Count();
+                                OnPropertyChanged(nameof(NofiTBSX));
+                                
+                                var k = await RunHttpClientGet<object>($"api/tbsx/getPhuLucTBSX_Header?userid={Preferences.Get(Config.User, "")}&tongiamdoc={Preferences.Get(Config.Role, 1)}");
+                                NofiTBSXDC = k.Lists.Count();
+                                OnPropertyChanged(nameof(NofiTBSXDC));
+                            }
+
+                            var tgd_tbsx = Convert.ToBoolean(ISDBNULL(body[0].TGD_DUYET_TBSX.Value, false));
+                            if (tgd_tbsx)
+                            {
+                                IsTBSX = true;
+                                IsTBSXDC = true;
+                                OnPropertyChanged(nameof(IsTBSX));
+                                var h = await RunHttpClientGet<object>($"api/tbsx/getTBSX_Header?userid={Preferences.Get(Config.User, "")}&tongiamdoc={Preferences.Get(Config.Role, 1)}");
+                                NofiTBSX = h.Lists.Count();
+                                OnPropertyChanged(nameof(NofiTBSX));
+                                var k = await RunHttpClientGet<object>($"api/tbsx/getPhuLucTBSX_Header?userid={Preferences.Get(Config.User, "")}&tongiamdoc={Preferences.Get(Config.Role,1)}");
+                                NofiTBSXDC = k.Lists.Count();
+                                OnPropertyChanged(nameof(NofiTBSXDC));
+                            }
                         }
 
                         HideLoading();

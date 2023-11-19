@@ -11,8 +11,9 @@ namespace APP_HOATHO.Global
 {
     public class Config
     {
-        //public static string URL = "https://testapi.hoatho.com.vn:59443/";
-        public static string URL =  "https://htapis.hoatho.com.vn:59443/";
+        //public static string URL = "http://172.80.4.199:8889/";
+        public static string URL = "http://192.168.1.19:8889/";
+        //public static string URL =  "https://htapis.hoatho.com.vn:59443/";
         public static string User = "User";
         public static string Password = "Password";
         public static string Role = "Role";
@@ -64,5 +65,15 @@ namespace APP_HOATHO.Global
         DuyetTraThietBi = 11,
         KyDienTuTongHopThietBiNhaMay =12,
         DanhSachChoITXuLy = 13
+    }
+
+    public enum AppoveType
+    {
+        Admin = 0,
+        TruongPhongKinhDoanh = 1,
+        GiamDocNhaMay = 2,
+        CoDien = 3,
+        KiThuatDauTu = 4,
+        TongGiamDoc = 5
     }
 }

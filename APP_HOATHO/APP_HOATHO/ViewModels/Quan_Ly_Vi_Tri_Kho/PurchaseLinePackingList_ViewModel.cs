@@ -1,4 +1,5 @@
 ﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
 using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Barcode;
@@ -30,7 +31,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
 
         public ICommand DeleteBarcodeCommand { get; set; }
 
-        public ICommand QuetOChuaCayVaiCommand { get; set; } 
+        public ICommand QuetOChuaCayVaiCommand { get; set; }
+
+        public ICommand CapNhatSoLuongCayVai { get; set; }
         public PurchaseLinePackingList_ViewModel(string soChungTu)
         {
             TitleButton = "Quét kệ chứa cây vải";
@@ -81,6 +84,26 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 {
                     await new MessageBox(ex.Message).Show();
                 }
+            });
+
+            CapNhatSoLuongCayVai = new Command(async (obj) =>
+            {
+                PurchaseLinePackingList_Model item = obj as PurchaseLinePackingList_Model;
+                if (item != null)
+                {
+                    var ok = await Config.client.GetAsync($"api/qltb/CapNhatSoLuongPackingList?id={item.Id}&documentno={item.DocumentNo}&soluong={item.InvoicedMeter}");
+
+                    if (ok.IsSuccessStatusCode)
+                    {
+                        await new MessageBox("Cập nhật số lượng cây vải thành công").Show();
+                    }
+                    else
+                    {
+                        await new MessageBox(ok.Content.ReadAsStringAsync().Result).Show();
+                    }
+
+                }
+
             });
         }
     }
