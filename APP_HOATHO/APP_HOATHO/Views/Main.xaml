@@ -236,6 +236,14 @@
                                                       ActionCommand="{Binding DuyetTongHopThietBiThueNhaMayCommand}"
                                                       Disable="{Binding IsDuyetTongHopThietBiNhaMay, Mode=TwoWay}">
                                 </control:IconMainView>
+                                <control:IconMainView Title="Danh mục thiết bị rỗi"
+                                                      Grid.Column="0"
+                                                      Grid.Row="3"
+                                                      IconImageSource="machine.png"
+                                                      BadgeText="{Binding NofiDanhMucThietBiRoi}"
+                                                      ActionCommand="{Binding DanhMucThietBiRoiCommand}"
+                                                      Disable="{Binding IsDanhMucThietBi, Mode=TwoWay}">
+                                </control:IconMainView>
                             </Grid>
                         </StackLayout>
                     </Frame>
@@ -379,10 +387,10 @@
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"
-                              HeightRequest="180"
+                              HeightRequest="260"
                               HasShadow="False"
                               IsVisible="{Binding IsMainSoi}"
-                              Opacity="{Binding IsMainDonHang, Converter={StaticResource OpacityDisable}}">
+                              Opacity="{Binding IsMainSoi, Converter={StaticResource OpacityDisable}}">
                         <StackLayout Padding="5">
                             <Label Grid.Row="0"
                                    Text="Ngành Sợi"
@@ -391,6 +399,7 @@
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
                             <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                  RowDefinitions="auto,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
@@ -398,6 +407,7 @@
 
                                 <control:IconMainView  Title="Cập Nhật Mã Kiện"
                                                        Grid.Column="0"
+                                                       Grid.Row="0"
                                                        IconImageSource="duyetdonhang.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding XuatKienNVLCommand}"
@@ -405,10 +415,27 @@
                                 </control:IconMainView>
                                 <control:IconMainView  Title="Thông Tin Kiện"
                                                        Grid.Column="1"
+                                                       Grid.Row="0"
                                                        IconImageSource="kiemke.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding ThongTinKienCommand}"
                                                        Disable="{Binding IsThongTinKien}">
+                                </control:IconMainView>
+                                <control:IconMainView  Title="TP. Ký LXH"
+                                                       Grid.Column="2"
+                                                       Grid.Row="0"
+                                                       IconImageSource="kytruongphong.png"
+                                                       BadgeText="{Binding NofiTPKyLenhXuaHang}"
+                                                       ActionCommand="{Binding TP_KyLenhXuatHangSoiCommand}"
+                                                       Disable="{Binding IsTP_KyLenhXuatHangSoi}">
+                                </control:IconMainView>
+                                <control:IconMainView  Title="GĐ. Ký LXH"
+                                                       Grid.Column="0"
+                                                       Grid.Row="1"
+                                                       IconImageSource="kygiamdoc.png"
+                                                       BadgeText="{Binding NofiGDKyLenhXuaHang}"
+                                                       ActionCommand="{Binding GD_KyLenhXuatHangSoiCommand}"
+                                                       Disable="{Binding IsGD_KyLenhXuatHangSoi}">
                                 </control:IconMainView>
                             </Grid>
                         </StackLayout>

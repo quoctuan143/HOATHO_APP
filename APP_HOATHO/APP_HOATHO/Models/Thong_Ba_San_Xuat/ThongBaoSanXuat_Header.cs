@@ -1,4 +1,5 @@
-﻿using System;
+﻿using APP_HOATHO.Global;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -64,13 +65,5 @@ namespace APP_HOATHO.Models.Thong_Ba_San_Xuat
         public string UserApprove { get; set; }
         public AppoveType Permision { get; set; }
     }
-
-    public enum AppoveType
-    {
-        TruongPhongKinhDoanh = 0,
-        TongGiamDoc = 1,
-        KeToanTruong = 2,
-        GiamDocNhaMay = 3,
-
-    }
+    
 }

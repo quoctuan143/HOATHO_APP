@@ -1,8 +1,10 @@
 ﻿using APP_HOATHO.Converter;
 using APP_HOATHO.Dialog;
+using APP_HOATHO.Models;
 using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.ViewModels;
 using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
+using APP_HOATHO.Views.Barcode;
 using Syncfusion.Data;
 using System;
 using System.Collections.Generic;
@@ -83,8 +85,8 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 viewModel.ShowLoading("Đang tìm dữ liệu");
                 TraCuuCayVai request = new TraCuuCayVai
                 {
-                    BarcodeId = String.IsNullOrEmpty(txtBarcodeId.Text) ? "%" : $"%{txtBarcodeId.Text}%",
-                    KeVai = String.IsNullOrEmpty(txtKeVai.Text) ? "%" : $"%{txtKeVai.Text}%",
+                    BarcodeId = "%",
+                    KeVai = "%",
                     RollNo = String.IsNullOrEmpty(txtRollNo.Text) ? "%" : $"%{txtRollNo.Text}%"
                 };
 
@@ -100,6 +102,50 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 await new MessageBox(ex.Message).Show();
             }
             
+        }
+
+        private async void btnQuetQR_Clicked(object sender, EventArgs e)
+        {
+            ScanBarcode scan = new ScanBarcode(false, "Quét QR cây vải");
+            scan.ScanBarcodeResult += (s, result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var Item = await viewModel.RunHttpClientGet<ThongTinChiTietCayVai_Model>($"api/qltb/XemThongTinChiTietCayVai?barcodeId={result}");
+                    if (Item.Lists.Count > 0)
+                    {
+                        await Navigation.PushAsync(new ThongTinChiTietCayVai_Page(Item.Lists[0]));
+                    }
+                    else
+                        await new MessageBox($"Không tìm thấy cây vải có barcodeId {result} trong hệ thống").Show();
+                });
+            };
+            await Navigation.PushAsync(scan);
+        }
+
+        private async void btnQuetQRKeVai_Clicked(object sender, EventArgs e)
+        {
+            ScanBarcode scan = new ScanBarcode(false, "Quét QR kệ vải");
+            scan.ScanBarcodeResult += (s, result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.ShowLoading("Đang tìm dữ liệu");
+                    TraCuuCayVai request = new TraCuuCayVai
+                    {
+                        BarcodeId = "%",
+                        KeVai = result,
+                        RollNo = "%" 
+                    };
+
+                    var Item = await viewModel.RunHttpClientGet<ThongTinChiTietKeVai_Model>($"api/VaiLot/ThongTinKeVai", request);
+                    ListItem = Item.Lists;
+                    OnPropertyChanged("ListItem");
+
+                    viewModel.HideLoading();
+                });
+            };
+            await Navigation.PushAsync(scan);
         }
     }
 

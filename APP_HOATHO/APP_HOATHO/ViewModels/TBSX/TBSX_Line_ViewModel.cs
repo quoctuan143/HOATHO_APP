@@ -54,10 +54,9 @@ namespace APP_HOATHO.ViewModels.TBSX
                         var send = await RunHttpClientPost("api/tbsx/postThongBaoSanXuat_Header",request);
                         if (send.IsSuccessStatusCode)
                         {
+                            await NavigationPage.PopAsync();
                             LongAlert("Đã duyệt và send email đến các bộ phận liên quan!");
                             MessagingCenter.Send(this, "tbsx", documentno);
-                            await NavigationPage.PopAsync();
-                            
                         }
                         else
                         {

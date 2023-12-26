@@ -86,9 +86,9 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                     if (ok.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         HideLoading();
-                        DependencyService.Get<IMessage>().ShortAlert("Đã mở lại chứng từ thành công.");
-                        MessagingCenter.Send(this, "MoChungTu", DuyetChungTuModel.No_);
                         await navigation.PopAsync();
+                        DependencyService.Get<IMessage>().ShortAlert("Đã mở lại chứng từ thành công.");
+                        MessagingCenter.Send(this, "MoChungTu", DuyetChungTuModel.No_);                        
                     }
                     else if (ok.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {

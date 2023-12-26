@@ -5,14 +5,9 @@ using System.Text;
 
 namespace APP_HOATHO.Models.TBSX
 {
-    public class TBSX_Header_Model
+    public class TBSX_Header_Model : DocumentBase
     {
-        public DateTime PostingDate { get; set; }
-        public string ChungTuNgoai { get; set; }
-        public string No_ { get; set; }
-        public string Description { get; set; }
-        public string TenNhaMay { get; set; }
-        public string CustomerName { get; set; }
+        
     }
 
     public class TBSX_Line_Model
@@ -33,7 +28,7 @@ namespace APP_HOATHO.Models.TBSX
         public DateTime? NgayXuatHang { get; set; }
     }
 
-    public class TBSXDC_Header_Model : TBSX_Header_Model
+    public class TBSXDC_Header_Model : DocumentBase
     {        
     }
 

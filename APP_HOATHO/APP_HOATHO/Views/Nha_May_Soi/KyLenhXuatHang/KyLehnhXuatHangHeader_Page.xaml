@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="APP_HOATHO.Views.Nha_May_Soi.KyLenhXuatHang.KyLehnhXuatHangHeader_Page"
+             Title="{Binding Title}"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"                                           
+                                            ItemsSource="{Binding ListItem, Mode=TwoWay}"  
+                                            SelectedItem="{Binding SelectItem}"
+                                            AutoGenerateColumns="False"               
+                                            Style="{StaticResource styleDataGrid}"
+                                            SelectionMode="Single"
+                                            LiveDataUpdateMode="AllowSummaryUpdate"
+                                           >
+                <sfDataGrid:SfDataGrid.Columns>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Số chứng từ"                                                
+                                                        Width="120"           
+                                                    MappingName="ChungTuNgoai"
+                                                HeaderFontAttribute="Bold" 
+                                                HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ChungTuNgoai}" TextColor="Black" Padding="5,0,0,0"  XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Ngày lập"                                                
+                                                        Width="100"          
+                                                    MappingName="PostingDate"
+                                                HeaderFontAttribute="Bold" 
+                                                HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PostingDate,StringFormat= '{0:dd/MM/yyyy}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+                    
+                    <sfDataGrid:GridTemplateColumn MappingName="TenNhaMay" 
+                                                   Width="100"
+                                                   HeaderText="Tên nhà máy" 
+                                                   HeaderFontAttribute="Bold" 
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding TenNhaMay}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn MappingName="CustomerName" 
+                                                   Width="180"
+                                                   HeaderText="Tên khách hàng" 
+                                                   HeaderFontAttribute="Bold" 
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding CustomerName}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn MappingName="UserID" 
+                                                   Width="100"
+                                                   HeaderText="Người Y/C" 
+                                                   HeaderFontAttribute="Bold" 
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding UserID}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                </sfDataGrid:SfDataGrid.Columns>
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                Position="Bottom"
+                                ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                      Format="{}{Count}"
+                                      MappingName="ExternalDocumentNo"
+                                      SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

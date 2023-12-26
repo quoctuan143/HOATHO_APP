@@ -92,5 +92,58 @@ namespace APP_HOATHO.ViewModels
         }
     }
 
- 
+    public class ThietBiRoiViewModel : BaseViewModel
+    {
+        int size = 0;
+        ObservableCollection<DanhMuc_ThietBi> _items;
+        public ObservableCollection<DanhMuc_ThietBi> Items { get => _items; set { _items = value; OnPropertyChanged(nameof(Items)); } }
+
+        public ObservableCollection<DanhMuc_ThietBi> ketqua = new ObservableCollection<DanhMuc_ThietBi>();
+        public Command LoadItemsCommand { get; set; }
+        public Command LoadMoreCommand { get; set; }
+        public ThietBiRoiViewModel()
+        {
+            Title = "Browse";
+            Items = new ObservableCollection<DanhMuc_ThietBi>();
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());            
+        }
+
+       
+
+        async Task ExecuteLoadItemsCommand()
+        {
+            IsBusy = true;
+            IsRunning = true;
+            try
+            {
+                await Task.Delay(1000);
+                Items.Clear();
+                var a = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getThietBiRoi?username=" + Preferences.Get(Config.User, ""));
+                Items = a.Lists;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRunning = false;
+            }
+        }
+
+        public bool FilterRecords(object o)
+        {
+            string filterText = "Germany";
+            var item = o as DanhMuc_ThietBi;
+
+            if (item != null)
+            {
+
+                if (item.No_2.Equals(filterText))
+                    return true;
+            }
+            return false;
+        }
+    }
 }

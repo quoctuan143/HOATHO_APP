@@ -66,9 +66,9 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                     if (ok.StatusCode == System.Net.HttpStatusCode.OK )
                     {
                         HideLoading();
-                        DependencyService.Get<IMessage>().ShortAlert("Đã duyệt và gửi mail cho các bộ phận liên quan");
-                        MessagingCenter.Send(this, "DuyetChungTu", DuyetChungTuModel.No_ );
                         await navigation.PopAsync();
+                        DependencyService.Get<IMessage>().ShortAlert("Đã duyệt và gửi mail cho các bộ phận liên quan");
+                        MessagingCenter.Send(this, "DuyetChungTu", DuyetChungTuModel.No_ );                        
                     }   
                     else if (ok.StatusCode == System.Net.HttpStatusCode.NotFound )
                     {

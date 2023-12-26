@@ -419,6 +419,12 @@
   <ItemGroup>
     <BundleResource Include="Resources\phieunhapkho.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\kytruongphong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\kygiamdoc.png" />
+  </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties XamarinHotReloadWrongLinkerErrorInfoBarAPP_HOATHOiOSHideInfoBar="True" />
