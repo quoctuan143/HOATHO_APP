@@ -6,7 +6,7 @@
              Title="Thông tin cây vải">
     <ContentPage.Content>
         <ScrollView>
-            <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,auto,auto,auto,*,auto,auto" Padding="10" RowSpacing="10">
+            <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,auto,auto,auto,auto,*,auto,auto" Padding="10" RowSpacing="10">
                 <Label Text="Roll No:" Grid.Column="0" Grid.Row="0" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="{Binding Item.RollNo}" Grid.Column="1" Grid.Row="0" FontSize="16" FontAttributes="Bold" TextColor="Red" LineBreakMode="WordWrap"></Label>
                 <Label Text="Parcel No:" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
@@ -29,15 +29,16 @@
                 <Label Text="{Binding Item.PhieuNhap}" Grid.Column="1" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
                 <Label Text="Lô vải" Grid.Column="0" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
                 <Label Text="{Binding Item.LoVai}" Grid.Column="1" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
-                <Label Text="Mã QR" Grid.Column="0" Grid.Row="11" FontSize="16" TextColor="Black"></Label>
-                <Label Text="{Binding Item.BarcodeId}" Grid.Column="1" Grid.Row="11" FontSize="16" TextColor="Black"></Label>
+                <Label Text="Ngày nhập" Grid.Column="0" Grid.Row="11" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.NgayNhap, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="11" FontSize="16" TextColor="Black"></Label>                  
                 <Label Text="Kệ lưu" Grid.Column="0" Grid.Row="12" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="{Binding Item.PositionId}" Grid.Column="1" Grid.Row="12" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="Vị trí" Grid.Column="0" Grid.Row="13" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="{Binding Item.ViTri}" Grid.Column="1" Grid.Row="13" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="Tồn kho" Grid.Column="0" Grid.Row="14" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="{Binding Item.TonKho}" Grid.Column="1" Grid.Row="14" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
-                
+                <Label Text="Mã QR" Grid.Column="0" Grid.Row="15" FontSize="16" TextColor="Black"></Label>
+                <Label Text="{Binding Item.BarcodeId}" Grid.Column="1" Grid.Row="15" FontSize="16" TextColor="Black"></Label>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

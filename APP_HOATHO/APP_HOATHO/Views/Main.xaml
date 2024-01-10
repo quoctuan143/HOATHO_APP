@@ -56,17 +56,17 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid RowDefinitions="2.5*,7.5*"
+        <ScrollView>
+            <Grid RowDefinitions="auto,auto"
               VerticalOptions="FillAndExpand">
-            <Image Source="trangchu.jpg"
+                <Image Source="trangchu.jpg"
                    Grid.Row="0"
                    Aspect="AspectFill"
-                   HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand"></Image>
+                   HorizontalOptions="FillAndExpand"></Image>
 
-            <ScrollView Grid.Row="1">
-                <StackLayout Margin="0,0,0,0">
-                    <Frame    Padding="2"
+                <ScrollView Grid.Row="1">
+                    <StackLayout Margin="0,0,0,0">
+                        <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"  
@@ -74,73 +74,73 @@
                               HasShadow="False"
                               IsVisible="{Binding IsMainDonHang}"
                               Opacity="{Binding IsMainDonHang, Converter={StaticResource OpacityDisable}}">
-                        <StackLayout Padding="5">
-                            <Label Grid.Row="0"
+                            <StackLayout Padding="5">
+                                <Label Grid.Row="0"
                                    Text="Ký điện tử"
                                    TextDecorations="Underline"
                                    TextColor="{StaticResource Primary}"
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*"
+                                <Grid ColumnDefinitions="2.5*,2.5*,2.5*,2.5*"
                                   RowDefinitions="*,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand">
 
-                                <control:IconMainView  Title="Đơn đặt mua"
+                                    <control:IconMainView  Title="Đơn đặt mua"
                                                        Grid.Column="0"
                                                        IconImageSource="duyetdonhang.png"
                                                        BadgeText="{Binding NofiDuyetDatMua}"
                                                        ActionCommand="{Binding DuyetDonDatMuaCommand}"
                                                        Disable="{Binding IsDuyetDonDatMua, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="LCP FOB"
+                                    <control:IconMainView  Title="LCP FOB"
                                                        Grid.Column="1"
                                                        IconImageSource="duyetdinhmuc.png"
                                                        BadgeText="{Binding NofiLCP_FOB}"
                                                        ActionCommand="{Binding DuyetLenhCapPhatFOBCommand}"
                                                        Disable="{Binding IsDuyetLCPFOB, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="LCP Gia Công"
+                                    <control:IconMainView  Title="LCP Gia Công"
                                                        Grid.Column="2"
                                                        IconImageSource="duyetgiacong.png"
                                                        BadgeText="{Binding NofiLCP_GC}"
                                                        ActionCommand="{Binding DuyetLenhCapPhatGiaCongCommand}"
                                                        Disable="{Binding IsDuyetLCPGC, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="DNTT"
+                                    <control:IconMainView  Title="DNTT"
                                                        Grid.Column="3"
                                                        IconImageSource="denghitt.png"
                                                        BadgeText="{Binding NofiDeNghiTT}"
                                                        ActionCommand="{Binding DuyetDeNghiThanhToanCommand}"
                                                        Disable="{Binding IsDNTT, Mode=TwoWay}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="TBSX"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="TBSX"
                                                        Grid.Column="0"
                                                        Grid.Row="1"
                                                        IconImageSource="duyetdinhmuc.png"
                                                        BadgeText="{Binding NofiTBSX}"
                                                        ActionCommand="{Binding TBSXCommand}"
                                                        Disable="{Binding IsTBSX, Mode=TwoWay}">
-                                </control:IconMainView>
-                                
-                                <control:IconMainView  Title="TBSX ĐC"
+                                    </control:IconMainView>
+
+                                    <control:IconMainView  Title="TBSX ĐC"
                                                        Grid.Column="1"
                                                        Grid.Row="1"
                                                        IconImageSource="duyethietbi.png"
                                                        BadgeText="{Binding NofiTBSXDC}"
                                                        ActionCommand="{Binding TBSXDCCommand}"
                                                        Disable="{Binding IsTBSX, Mode=TwoWay}">
-                                </control:IconMainView>
-                                
-                            </Grid>
-                        </StackLayout>
-                    </Frame>                       
-                    <Frame    Padding="2"
+                                    </control:IconMainView>
+
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"
@@ -148,106 +148,106 @@
                               HasShadow="False"
                               IsVisible="{Binding IsMainThietBi, Mode=TwoWay}"
                               Opacity="{Binding IsMainThietBi, Converter={StaticResource OpacityDisable}}">
-                        <StackLayout Padding="5">
-                            <Label Text="Thiết bị công nghệ"
+                            <StackLayout Padding="5">
+                                <Label Text="Thiết bị công nghệ"
                                    TextDecorations="Underline"
                                    TextColor="{StaticResource Primary }"
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
                                   RowDefinitions="auto,auto,auto"
                                   RowSpacing="10"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand">
-                                <control:IconMainView Title="Danh mục thiết bị"
+                                    <control:IconMainView Title="Danh mục thiết bị"
                                                       Grid.Column="0"
                                                       IconImageSource="machine.png"
                                                       BadgeText="{Binding NofiDanhMucThietBi}"
                                                       ActionCommand="{Binding DanhMucThietBiCommand}"
                                                       Disable="{Binding IsDanhMucThietBi, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Lịch xích bảo trì"
+                                    <control:IconMainView Title="Lịch xích bảo trì"
                                                       Grid.Column="1"
                                                       IconImageSource="lichxich.png"
                                                       BadgeText="{Binding NofiLichXich}"
                                                       ActionCommand="{Binding LichXichBaoTriCommand}"
                                                       Disable="{Binding IsLichXichBaoTri, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Kiểm Kê Thiết Bị"
+                                    <control:IconMainView Title="Kiểm Kê Thiết Bị"
                                                       Grid.Column="2"
                                                       IconImageSource="kiemke.png"
                                                       BadgeText="0"
                                                       ActionCommand="{Binding KiemKeThietBiCommand}"
                                                       Disable="{Binding IsKiemKeThietBi, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Duyệt Yêu cầu &#10;thuê TB"
+                                    <control:IconMainView Title="Duyệt Yêu cầu &#10;thuê TB"
                                                       Grid.Column="0"
                                                       Grid.Row="1"
                                                       IconImageSource="duyetdonhang.png"
                                                       BadgeText="{Binding NofiYeuCauThueThietBi}"
                                                       ActionCommand="{Binding DuyetYeuCauThueThietBiCommand}"
                                                       Disable="{Binding IsDuyetYeuCauThueThietBi, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Duyệt phiếu&#10;Trả TB"
+                                    <control:IconMainView Title="Duyệt phiếu&#10;Trả TB"
                                                       Grid.Column="1"
                                                       Grid.Row="1"
                                                       IconImageSource="duyetdinhmuc.png"
                                                       BadgeText="{Binding NofiTraThietBi}"
                                                       ActionCommand="{Binding DuyetYeuCauTraThietBiCommand}"
                                                       Disable="{Binding IsDuyetPhieuTraThietBi, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Duyệt Đặt &#10;Hàng PT"
+                                    <control:IconMainView Title="Duyệt Đặt &#10;Hàng PT"
                                                       Grid.Column="2"
                                                       Grid.Row="1"
                                                       IconImageSource="duyetgiacong.png"
                                                       BadgeText="{Binding NofiDuyetDatMuaPhuTung}"
                                                       ActionCommand="{Binding DuyetDatPhuTungCommand}"
                                                       Disable="{Binding IsDuyetDatPhuTung, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Kí điện tử &#10;Xuất PT"
+                                    <control:IconMainView Title="Kí điện tử &#10;Xuất PT"
                                                       Grid.Column="0"
                                                       Grid.Row="2"
                                                       IconImageSource="duyetdonhang.png"
                                                       BadgeText="{Binding NofiKidienTuPhuTung}"
                                                       ActionCommand="{Binding DuyetKyDienTuXuatPhuTung}"
                                                       Disable="{Binding IsKiDienTuPhuTung, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Kí điện tử&#10;Xuất TB"
+                                    <control:IconMainView Title="Kí điện tử&#10;Xuất TB"
                                                       Grid.Column="1"
                                                       Grid.Row="2"
                                                       IconImageSource="duyethietbi.png"
                                                       BadgeText="{Binding NofiKidienTuThietBi}"
                                                       ActionCommand="{Binding DuyetKyDienTuXuatThietBi}"
                                                       Disable="{Binding IsKiDienTuThietBi, Mode=TwoWay}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView Title="Kí điện tử&#10;T.Hợp TB/PT"
+                                    <control:IconMainView Title="Kí điện tử&#10;T.Hợp TB/PT"
                                                       Grid.Column="2"
                                                       Grid.Row="2"
                                                       IconImageSource="duyethietbi.png"
                                                       BadgeText="{Binding NofiDuyetTongHopThietBiNhaMay}"
                                                       ActionCommand="{Binding DuyetTongHopThietBiThueNhaMayCommand}"
                                                       Disable="{Binding IsDuyetTongHopThietBiNhaMay, Mode=TwoWay}">
-                                </control:IconMainView>
-                                <control:IconMainView Title="Danh mục thiết bị rỗi"
+                                    </control:IconMainView>
+                                    <control:IconMainView Title="Danh mục thiết bị rỗi"
                                                       Grid.Column="0"
                                                       Grid.Row="3"
                                                       IconImageSource="machine.png"
                                                       BadgeText="{Binding NofiDanhMucThietBiRoi}"
                                                       ActionCommand="{Binding DanhMucThietBiRoiCommand}"
                                                       Disable="{Binding IsDanhMucThietBi, Mode=TwoWay}">
-                                </control:IconMainView>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
-                    <Frame    Padding="2"
+                                    </control:IconMainView>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"
@@ -255,135 +255,135 @@
                               HasShadow="False"
                               IsVisible="{Binding IsNhanHelpDesk}"
                               Opacity="{Binding IsNhanHelpDesk, Converter={StaticResource OpacityDisable}}">
-                        <StackLayout Padding="5">
-                            <Label Grid.Row="0"
+                            <StackLayout Padding="5">
+                                <Label Grid.Row="0"
                                    Text="Quản lý thiết bị văn phòng"
                                    TextDecorations="Underline"
                                    TextColor="{StaticResource Primary}"
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand">
 
-                                <control:IconMainView  Title="Yêu cầu hỗ trợ CNTT"
+                                    <control:IconMainView  Title="Yêu cầu hỗ trợ CNTT"
                                                        Grid.Column="0"
                                                        IconImageSource="duyetdonhang.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding YeuCauXuLyLoiCommand}"
                                                        Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="Cập nhật xử lý yêu cầu"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Cập nhật xử lý yêu cầu"
                                                        Grid.Column="1"
                                                        IconImageSource="duyethietbi.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding CapNhatThongTinLoiCommand}"
                                                        Disable="{Binding IsCapNhatThongTinLoi}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="DS yêu cầu chờ xử lý"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="DS yêu cầu chờ xử lý"
                                                        Grid.Column="2"
                                                        IconImageSource="duyetdinhmuc.png"
                                                        BadgeText="{Binding NofiDanhSachChoITXuLy}"
                                                        ActionCommand="{Binding DanhSachChoXuLyCommand}"
                                                        Disable="{Binding IsDanhSachChoXuLy}">
-                                </control:IconMainView>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
-                    <Frame    Padding="2"
+                                    </control:IconMainView>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"                              
                               HasShadow="False"
                               IsVisible="{Binding IsQuanLyViTriKho}"
                               Opacity="{Binding IsQuanLyViTriKho, Converter={StaticResource OpacityDisable}}">
-                        <StackLayout Padding="5">
-                            <Label Grid.Row="0"
+                            <StackLayout Padding="5">
+                                <Label Grid.Row="0"
                                    Text="Quản lý vị trí kho NPL"
                                    TextDecorations="Underline"
                                    TextColor="{StaticResource Primary}"
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
                                   RowDefinitions="auto,auto,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand">
 
-                                <control:IconMainView  Title="Phiếu nhập kho"
+                                    <control:IconMainView  Title="Phiếu nhập kho"
                                                        Grid.Column="0"
                                                        IconImageSource="phieunhapkho.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding PhieuNhapKhoCommand}"
                                                        Disable="{Binding IsPhieuNhapKho, Mode=TwoWay}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="Phiếu xuất kho"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Phiếu xuất kho"
                                                        Grid.Column="1"
                                                        IconImageSource="phieuxuatkho.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding PhieuXuatKhoCommand}"
                                                        Disable="{Binding IsPhieuXuatKho}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="Tạo Phiếu xuất kho tổng"
+                                    <control:IconMainView  Title="Tạo Phiếu xuất kho tổng"
                                                        Grid.Column="2"
                                                        IconImageSource="duyetgiacong.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding TaoPhieuXuatKhoGomVaiCommand}"
                                                        Disable="{Binding IsPhieuXuatKho}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="Phiếu xuất kho gom vải"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Phiếu xuất kho gom vải"
                                                        Grid.Column="0"
                                                        Grid.Row="1"
                                                        IconImageSource="duyetdinhmuc.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding PhieuXuatKhoGomVaiCommand}"
                                                        Disable="{Binding IsPhieuXuatKho}">
-                                </control:IconMainView>                                  
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="Đổi vị trí cây vải"
+                                    <control:IconMainView  Title="Đổi vị trí cây vải"
                                                        Grid.Column="1"
                                                        Grid.Row="1"
                                                        IconImageSource="vitrikho.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding CapNhatViTriKhoCommand}"
                                                        Disable="{Binding IsCapNhatViTriKho}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="Cập nhật vị trí"
+                                    <control:IconMainView  Title="Cập nhật vị trí"
                                                        Grid.Column="2"
                                                        Grid.Row="1"
                                                        IconImageSource="kiemke.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding CapNhatViTriChuaOVaiCommand}"
                                                        Disable="{Binding IsCapNhatOChuaVai}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="Chuyển Vải Từ Kệ A Sang B"
+                                    <control:IconMainView  Title="Chuyển Vải Từ Kệ A Sang B"
                                                        Grid.Column="0"
                                                        Grid.Row="2"
                                                        IconImageSource="vitrikho.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding ChuyenVaiTuKeASangBCommand}"
                                                        Disable="{Binding IsCapNhatViTriKho}">
-                                </control:IconMainView>
+                                    </control:IconMainView>
 
-                                <control:IconMainView  Title="Thông Tin Một Cây Vải"
+                                    <control:IconMainView  Title="Thông Tin Một Cây Vải"
                                                        Grid.Column="1"
                                                        Grid.Row="2"
                                                        IconImageSource="duyethietbi.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding ThongTinChiTietKeVaiCommand}"
                                                        Disable="{Binding IsCapNhatOChuaVai}">
-                                </control:IconMainView>
-                                
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
-                    <Frame    Padding="2"
+                                    </control:IconMainView>
+
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"
@@ -391,57 +391,59 @@
                               HasShadow="False"
                               IsVisible="{Binding IsMainSoi}"
                               Opacity="{Binding IsMainSoi, Converter={StaticResource OpacityDisable}}">
-                        <StackLayout Padding="5">
-                            <Label Grid.Row="0"
+                            <StackLayout Padding="5">
+                                <Label Grid.Row="0"
                                    Text="Ngành Sợi"
                                    TextDecorations="Underline"
                                    TextColor="{StaticResource Primary}"
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
-                            <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
                                   RowDefinitions="auto,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand">
 
-                                <control:IconMainView  Title="Cập Nhật Mã Kiện"
+                                    <control:IconMainView  Title="Cập Nhật Mã Kiện"
                                                        Grid.Column="0"
                                                        Grid.Row="0"
                                                        IconImageSource="duyetdonhang.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding XuatKienNVLCommand}"
                                                        Disable="{Binding IsXuatKienNVL, Mode=TwoWay}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="Thông Tin Kiện"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Thông Tin Kiện"
                                                        Grid.Column="1"
                                                        Grid.Row="0"
                                                        IconImageSource="kiemke.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding ThongTinKienCommand}"
                                                        Disable="{Binding IsThongTinKien}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="TP. Ký LXH"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="TP. Ký LXH"
                                                        Grid.Column="2"
                                                        Grid.Row="0"
                                                        IconImageSource="kytruongphong.png"
                                                        BadgeText="{Binding NofiTPKyLenhXuaHang}"
                                                        ActionCommand="{Binding TP_KyLenhXuatHangSoiCommand}"
                                                        Disable="{Binding IsTP_KyLenhXuatHangSoi}">
-                                </control:IconMainView>
-                                <control:IconMainView  Title="GĐ. Ký LXH"
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="GĐ. Ký LXH"
                                                        Grid.Column="0"
                                                        Grid.Row="1"
                                                        IconImageSource="kygiamdoc.png"
                                                        BadgeText="{Binding NofiGDKyLenhXuaHang}"
                                                        ActionCommand="{Binding GD_KyLenhXuatHangSoiCommand}"
                                                        Disable="{Binding IsGD_KyLenhXuatHangSoi}">
-                                </control:IconMainView>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-            </ScrollView>
-        </Grid>
+                                    </control:IconMainView>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

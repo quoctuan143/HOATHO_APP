@@ -78,7 +78,7 @@
                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
                 </Grid>
                 <Grid ColumnDefinitions="10*">
-                    <SearchBar Placeholder="Tìm số chứng từ chi tiết" CancelButtonColor="Red"
+                    <SearchBar Placeholder="Tìm số lô,số chứng từ" CancelButtonColor="Red"
                        HorizontalOptions="Start"             
                                x:Name="txtSearch"
                        TextChanged="SearchBar_TextChanged"

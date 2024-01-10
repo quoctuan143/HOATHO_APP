@@ -56,7 +56,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             if (item != null)
             {
 
-                if (item.ExternalDocumentNo.ToLower().Contains(filterText) || item.CustomerName.ToLower().Contains(filterText) || item.VendorName.ToLower().Contains(filterText))
+                if (item.ExternalDocumentNo.ToLower().Contains(filterText) || item.CustomerName.ToLower().Contains(filterText) || item.VendorName.ToLower().Contains(filterText) || item.SoKien.ToString().ToLower().Contains(filterText))
                     return true;
             }
             return false;

@@ -1,4 +1,6 @@
-﻿namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
+﻿using System;
+
+namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
 {
     public class ThongTinCayVaiBase
     {
@@ -22,6 +24,7 @@
         public string PhieuNhap { get; set; }
         public string LoVai { get; set; }
         public string DVT { get; set; }
+        public DateTime? NgayNhap { get; set; } 
     }
 
     public class ThongTinChiTietKeVai_Model : ThongTinCayVaiBase
