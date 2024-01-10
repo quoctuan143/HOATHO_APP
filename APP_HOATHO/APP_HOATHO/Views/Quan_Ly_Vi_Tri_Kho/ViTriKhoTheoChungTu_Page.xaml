@@ -46,7 +46,7 @@
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Vị trí Kho"                                                      
                                                     MappingName="ViTriDay"
-                                                    Width="150"
+                                                    Width="120"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
@@ -62,7 +62,7 @@
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Kệ chứa vải"                                                      
                                                     MappingName="PositionId"
-                                                    Width="120"
+                                                    Width="100"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
@@ -79,7 +79,7 @@
 
                     <sfDataGrid:GridTemplateColumn  HeaderText="Tồn Kho"                                                    
                                                     MappingName="TonKho"
-                                                    Width="100"
+                                                    Width="140"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
