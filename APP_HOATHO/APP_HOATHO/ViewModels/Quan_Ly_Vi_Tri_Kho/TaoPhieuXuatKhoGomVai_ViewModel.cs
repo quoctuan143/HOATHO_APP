@@ -17,8 +17,8 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
     public class TaoPhieuXuatKhoGomVai_ViewModel : BaseViewModel
     {
         public INavigation navigation { get; set; } 
-        ObservableCollection<LookupValue> danhSachMaNPL { get; set; }
-        ObservableCollection<LookupValue> danhSachMauNPL { get; set; }
+       public  ObservableCollection<LookupValue> danhSachMaNPL { get; set; }
+       public ObservableCollection<LookupValue> danhSachMauNPL { get; set; }
 
         string maNPL;
         public string MaNPL { get => maNPL; set => SetProperty(ref maNPL, value); }
@@ -107,6 +107,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                         danhSachMauNPL.Clear();
                         var b = await RunHttpClientGet<LookupValue>($"api/qltb/GetDanhSachMauNPLXuatKho?manpl={e.Code}");
                         danhSachMauNPL = b.Lists;
+                        OnPropertyChanged("danhSachMauNPL");
                     };
 
                     await navigation.PushModalAsync(lookup);
@@ -123,7 +124,8 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 try
                 {
                     var a = await RunHttpClientGet<LookupValue>("api/qltb/GetDanhSachNPLXuatKho");   
-                    danhSachMaNPL = a.Lists;                   
+                    danhSachMaNPL = a.Lists;
+                    OnPropertyChanged("danhSachMaNPL");
                 }
                 catch
                 {
