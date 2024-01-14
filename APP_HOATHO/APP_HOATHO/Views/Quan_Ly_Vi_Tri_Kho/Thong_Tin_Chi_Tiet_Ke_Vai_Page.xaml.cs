@@ -106,7 +106,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
 
         private async void btnQuetQR_Clicked(object sender, EventArgs e)
         {
-            ScanBarcode scan = new ScanBarcode(false, "Quét QR cây vải");
+            ScanBarcode scan = new ScanBarcode(false, "Quét QR cây vải",true);
             scan.ScanBarcodeResult += (s, result) =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
