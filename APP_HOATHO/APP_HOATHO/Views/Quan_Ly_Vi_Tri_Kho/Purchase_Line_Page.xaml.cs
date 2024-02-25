@@ -41,7 +41,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             var item = o as PurchaseLine_Model;
             if (item != null)
             {
-                if (item.Name.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText))
+                if (item.Name.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText))
                     return true;
             }
             return false;

@@ -379,7 +379,52 @@
                                                        ActionCommand="{Binding ThongTinChiTietKeVaiCommand}"
                                                        Disable="{Binding IsCapNhatOChuaVai}">
                                     </control:IconMainView>
+                                    <control:IconMainView  Title="Xuất kho theo kệ vải"
+                                                       Grid.Column="2"
+                                                       Grid.Row="2"
+                                                       IconImageSource="phieuxuatkho.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding XuatKhoTheoKeVaiCommand}"
+                                                       Disable="{Binding IsPhieuXuatKho}">
+                                    </control:IconMainView>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame    Padding="2"
+                              BorderColor="#06264c"
+                              CornerRadius="10"
+                              BackgroundColor="Transparent"
+                              HeightRequest="180"
+                              HasShadow="False"
+                              IsVisible="{Binding IsQuanLyViTriKho}"
+                              Opacity="{Binding IsQuanLyViTriKho, Converter={StaticResource OpacityDisable}}">
+                            <StackLayout Padding="5">
+                                <Label Grid.Row="0"
+                                   Text="Quản lý NPL không gán nhãn"
+                                   TextDecorations="Underline"
+                                   TextColor="{StaticResource Primary}"
+                                   FontSize="20"
+                                   FontAttributes="Italic"></Label>
+                                <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                  Margin="0,5,0,0"
+                                  ColumnSpacing="0"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand">
 
+                                    <control:IconMainView  Title="Định vị cây vải lên kệ"
+                                                       Grid.Column="0"
+                                                       IconImageSource="duyetdonhang.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding DinhViCayVaiKhongGanNhanLenKeCommand}"
+                                                       Disable="{Binding IsCapNhatViTriKho, Mode=TwoWay}">
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Xuất vải khỏi kệ"
+                                                       Grid.Column="1"
+                                                       IconImageSource="duyethietbi.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding XuatVaiKhongGanNhanKhoiKeCommand}"
+                                                       Disable="{Binding IsCapNhatViTriKho}">
+                                    </control:IconMainView>                                       
                                 </Grid>
                             </StackLayout>
                         </Frame>

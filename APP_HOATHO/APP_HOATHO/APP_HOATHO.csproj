@@ -109,6 +109,10 @@
     <Compile Update="Views\Quan_Ly_Vi_Tri_Kho\DanhSachPhieuXuatKhoGomVai_Page.xaml.cs">
       <DependentUpon>DanhSachPhieuXuatKhoGomVai_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Quan_Ly_Vi_Tri_Kho\Xuat_Kho_Theo_Ke_Vai_Page.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Xuat_Kho_Theo_Ke_Vai_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\TaoLichSuBaoTri.xaml.cs">
       <DependentUpon>TaoLichSuBaoTri.xaml</DependentUpon>
     </Compile>
@@ -179,6 +183,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DuyetChungTu\DuyetLenhCapPhatGiaCong_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HangKhongGanNhan\HangKhongGanNhan_Header_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HangKhongGanNhan\HangKhongGanNhan_Line_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HangKhongGanNhan\Xuat_Hang_Khong_Gan_Nhan_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\KeHoachBaoTri.xaml">
@@ -262,6 +275,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Quan_Ly_Vi_Tri_Kho\Purchase_Line_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Quan_Ly_Vi_Tri_Kho\Xuat_Kho_Theo_Ke_Vai_Page.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Quan_Ly_Vi_Tri_Kho\Thong_Tin_Chi_Tiet_Ke_Vai_Page.xaml">

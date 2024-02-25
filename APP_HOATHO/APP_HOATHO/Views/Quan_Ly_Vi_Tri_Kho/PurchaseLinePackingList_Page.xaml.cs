@@ -55,12 +55,12 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             {
                 if (ChonNhom1 == StatusFormatColor.TatCa )
                 {
-                    if (item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText))
+                    if (item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText))
                         return true;
                 }    
                 else
                 {
-                    if ((item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText)) && item.DaGanNhan == ChonNhom1)
+                    if ((item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText)) && item.DaGanNhan == ChonNhom1)
                         return true;
                 }    
                

@@ -147,12 +147,5 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             };
             await Navigation.PushAsync(scan);
         }
-    }
-
-    public class TraCuuCayVai
-    {
-        public string KeVai { get; set; }
-        public string RollNo { get; set; }
-        public string BarcodeId { get; set; }
-    }
+    }    
 }

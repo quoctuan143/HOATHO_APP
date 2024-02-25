@@ -84,6 +84,6 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
 
 
         public int XuatLe { get; set; } = 2;
-        
+        public DateTime? NgayXuat { get; set; }
     }
 }

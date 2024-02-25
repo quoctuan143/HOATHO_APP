@@ -108,7 +108,7 @@
                    
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
             </sfDataGrid:SfDataGrid>
-            <Button Text="Duyệt mở lại" 
+            <Button Text="Duyệt" 
                     Command="{Binding DeleteCommand}"
                     Style="{StaticResource styleButton}">
                 

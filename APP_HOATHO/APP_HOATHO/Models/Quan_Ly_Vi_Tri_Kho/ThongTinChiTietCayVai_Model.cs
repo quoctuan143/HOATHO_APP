@@ -30,6 +30,8 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
     public class ThongTinChiTietKeVai_Model : ThongTinCayVaiBase
     {
         public string Id { get; set; }
-        public double? InvoicedMeter { get; set; }        
+        public double? InvoicedMeter { get; set; }      
+        public bool Chon { get; set; }
+        public string UserId { get; set; }
     }
 }

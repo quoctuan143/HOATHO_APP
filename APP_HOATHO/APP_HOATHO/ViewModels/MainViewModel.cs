@@ -13,6 +13,7 @@ using APP_HOATHO.ViewModels.TBSX;
 using APP_HOATHO.Views;
 using APP_HOATHO.Views.Barcode;
 using APP_HOATHO.Views.DuyetChungTu;
+using APP_HOATHO.Views.HangKhongGanNhan;
 using APP_HOATHO.Views.KiDienTu;
 using APP_HOATHO.Views.Kiem_Ke_Thiet_Bi;
 using APP_HOATHO.Views.Nha_May_Soi;
@@ -135,7 +136,9 @@ namespace APP_HOATHO.ViewModels
         public ICommand TBSXDCCommand { get; set; }
         public ICommand TP_KyLenhXuatHangSoiCommand { get; set; }
         public ICommand GD_KyLenhXuatHangSoiCommand { get; set; }
-
+        public ICommand DinhViCayVaiKhongGanNhanLenKeCommand { get;set; }
+        public ICommand XuatVaiKhongGanNhanKhoiKeCommand { get; set; }
+        public ICommand XuatKhoTheoKeVaiCommand { get; set; }
         #endregion "Command"
 
         public MainViewModel()
@@ -500,6 +503,69 @@ namespace APP_HOATHO.ViewModels
                 try
                 {
                     await Navigation.PushAsync(new KyLehnhXuatHangHeader_Page(AppoveType.GiamDocNhaMay));
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            DinhViCayVaiKhongGanNhanLenKeCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new HangKhongGanNhan_Header_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+
+            XuatVaiKhongGanNhanKhoiKeCommand = new Command(async () =>
+            {
+                try
+                {
+                    ScanBarcode scan = new ScanBarcode(false, "Quét kệ chứa cây vải");
+                    scan.ScanBarcodeResult += (s, result) =>
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            try
+                            {
+                                ShowLoading("Đang đọc dữ liệu....");
+                                CellPositionModel item = new CellPositionModel { Code = result };
+                                var ok = await RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
+                                if (ok.IsSuccessStatusCode)
+                                {
+                                    HideLoading();
+                                    await Navigation.PushAsync(new Xuat_Hang_Khong_Gan_Nhan_Page(result));
+                                }
+                                else
+                                {
+                                    HideLoading();
+                                    await new MessageBox($"Barcode kệ vải {result} không tồn tại trong hệ thống").Show();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                HideLoading();
+                                await new MessageBox(ex.Message).Show();
+                            }
+                            
+                        });
+                    };
+                    await Navigation.PushAsync(scan);
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            XuatKhoTheoKeVaiCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new Xuat_Kho_Theo_Ke_Vai_Page());
                 }
                 catch (Exception ex)
                 {

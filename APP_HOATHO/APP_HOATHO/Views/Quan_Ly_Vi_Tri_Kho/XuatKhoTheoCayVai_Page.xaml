@@ -121,6 +121,23 @@
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Ngày Xuất"                                                      
+                                                    MappingName="NgayXuat"
+                                                    Width="100"
+                                                    IsHidden="True"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding NgayXuat,StringFormat='{0:dd/MM/yyyy}'}"
+                                       TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
+                                       Padding="5,0,0,0"                                          
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.LeftSwipeTemplate>
                     <DataTemplate>
