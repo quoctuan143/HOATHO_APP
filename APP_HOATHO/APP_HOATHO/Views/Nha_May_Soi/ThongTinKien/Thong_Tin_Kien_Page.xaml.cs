@@ -61,9 +61,9 @@ namespace APP_HOATHO.Views.Nha_May_Soi
                     client.BaseAddress = new Uri(Config.URL);
                     var ok = client.PostAsync($"api/soi/UploadImageKien?PositionCode={Item.PositionCode}&NguoiUploadAnh={Item.NguoiUploadAnh}&PackingDesc={Item.PackingDesc}&RowID={Item.RowID}", content).Result;
                     if (ok.IsSuccessStatusCode)
-                    {
-                        DependencyService.Get<IMessage>().ShortAlert("Cập nhật thành công");
+                    {                        
                         await Navigation.PopAsync();
+                        DependencyService.Get<IMessage>().ShortAlert("Cập nhật thành công");
                     }
                     else
                     {
