@@ -103,28 +103,10 @@
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
-                    </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="SL Phiếu Xuất"                                                      
-                                                    MappingName="SoLuongPhieuXuat"
-                                                    Width="100"
-                                                    IsHidden="True"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
-                        <sfDataGrid:GridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label Text="{Binding SoLuongPhieuXuat}"
-                                       TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
-                            </DataTemplate>
-                        </sfDataGrid:GridTemplateColumn.CellTemplate>
-
-                    </sfDataGrid:GridTemplateColumn>
+                    </sfDataGrid:GridTemplateColumn>                     
                     <sfDataGrid:GridTemplateColumn  HeaderText="Ngày Xuất"                                                      
                                                     MappingName="NgayXuat"
-                                                    Width="100"
-                                                    IsHidden="True"
+                                                    Width="100"                                                         
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
