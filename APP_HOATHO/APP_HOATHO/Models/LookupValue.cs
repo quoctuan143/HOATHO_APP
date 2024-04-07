@@ -10,4 +10,11 @@ namespace APP_HOATHO.Models
         public string Name { get; set; }
         public string Description { get; set; } 
     }
+
+    public class LookupValueInt
+    {
+        public int Code { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
 }

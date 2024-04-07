@@ -9,6 +9,7 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -16,12 +17,13 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
 using static Xamarin.Essentials.Permissions;
 
 namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Yeu_Cau_Xu_Ly_Loi_Page : ContentPage
+    public partial class Yeu_Cau_Xu_Ly_Loi_Page : ContentPage,INotifyPropertyChanged
     {
        public DevicesMaintenanceHistory Item { get; set; }
         BaseViewModel BaseView { get; set; }
@@ -41,8 +43,16 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 DependencyService.Get<IMessage>().LongAlert("Vui lòng nhập nội dung muốn gửi IT");
                 return;
             }
-           
-            
+            if (Item.YeuCauTheoThietBi == true && Item.DocumentNo_ == "")
+            {
+                DependencyService.Get<IMessage>().LongAlert("Vui lòng quét thiết bị để gửi yêu cầu. nếu bạn muốn nhập mã thì vui lòng bỏ chọn Yêu cầu theo thiết bị");
+                return;
+            }
+            if (Item.YeuCauTheoThietBi == false && Item.DocumentNo_ == "")
+            {
+                DependencyService.Get<IMessage>().LongAlert("Vui lòng nhập nhóm yêu cầu xử lý!");
+                return;
+            }
 
             //post ảnh trước 
             if (media != null)
@@ -90,6 +100,47 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             catch (Exception ex)
             {
 
+                await new MessageBox(ex.Message).Show();
+            }
+        }
+
+        private async void btnQuetQr_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var scan = new ZXingScannerPage();
+                scan.Title = "Tìm kiếm thiết bị";
+                Shell.SetTabBarIsVisible(scan, false);
+                await Navigation.PushAsync(scan);
+                scan.OnScanResult += (result) =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //show form lên
+                        try
+                        {
+                            DependencyService.Get<IBeepService>().Beep();
+                            if (IsBusy) return;
+
+                            IsBusy = true;
+                            string ma = result.Text.Split('=')[1];
+                            var Item = await BaseView.RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getTimKiemThietBi?mathietbi=" + ma);
+                            if (Item.Lists.Count > 0)
+                            {
+                                await Navigation.PopAsync();
+                                this.Item.DocumentNo_ = ma;
+                                this.Item.TenThietBi = Item.Lists[0].Description2;                              
+                            }
+                            else
+                                DependencyService.Get<IMessage>().LongAlert("Không tìm thấy thiết bị này trong hệ thống");
+                        }
+                        catch { }
+                        finally { IsBusy = false; }
+                    });
+                };
+            }
+            catch (Exception ex)
+            {
                 await new MessageBox(ex.Message).Show();
             }
         }

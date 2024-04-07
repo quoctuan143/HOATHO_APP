@@ -131,13 +131,17 @@
                     </sfDataGrid:GridTemplateColumn>                        
                 </sfDataGrid:SfDataGrid.Columns>                   
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity}, chiều dài: {SumQuantity}  "
                                                     Position="Bottom"
                                                     ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>
                             <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
                                                           Format="{}{Count}"
                                                           MappingName="Color"
+                                                          SummaryType="DoubleAggregate" />
+                            <sfDataGrid:GridSummaryColumn Name="SumQuantity"
+                                                          Format="{}{Sum}"
+                                                          MappingName="InvoicedMeter"
                                                           SummaryType="DoubleAggregate" />
                         </sfDataGrid:GridTableSummaryRow.SummaryColumns>
                     </sfDataGrid:GridTableSummaryRow>

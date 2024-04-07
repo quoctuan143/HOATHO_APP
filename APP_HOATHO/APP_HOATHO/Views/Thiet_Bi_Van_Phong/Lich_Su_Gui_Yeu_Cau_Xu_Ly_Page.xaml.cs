@@ -20,25 +20,18 @@ using ZXing;
 namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Danh_Sach_Cho_Xu_Ly_Page : ContentPage, INotifyPropertyChanged
+    public partial class Lich_Su_Gui_Yeu_Cau_Xu_Ly_Page : ContentPage, INotifyPropertyChanged
     {
         public ObservableCollection<DevicesMaintenanceHistory> ListItem { get; set; }
         BaseViewModel viewModel;
         
-        public Danh_Sach_Cho_Xu_Ly_Page()
+        public Lich_Su_Gui_Yeu_Cau_Xu_Ly_Page() 
         {
             InitializeComponent();            
             viewModel = new BaseViewModel();
             ListItem = new ObservableCollection<DevicesMaintenanceHistory>();
             Task.Run(async () => await ExcuteLoadLichSuBaoTri());
-            BindingContext = this;
-            MessagingCenter.Subscribe<Cap_Nhat_Thong_Tin_Loi_Page, string>(this, "capnhatxulyloi", (s, e) =>
-            {
-                Device.BeginInvokeOnMainThread(() => {
-                    ListItem.Remove(ListItem.FirstOrDefault(x => x.RowID == e));
-                    OnPropertyChanged (nameof(ListItem));                    
-                });
-            });
+            BindingContext = this;            
         }
         async Task ExcuteLoadLichSuBaoTri()
         {
@@ -46,7 +39,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             try
             {
                 ListItem.Clear();
-                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/DanhSachThietBiChoXuLy").Result;                
+                var _json = Config.client.GetStringAsync(Config.URL + $"api/qltb/LichSuGuiYeuCauCuaUser?username={Preferences.Get(Config.User,"")}").Result;                
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
                 {
@@ -66,30 +59,6 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 IsBusy = false;               
             }
         }
-
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            try
-            {                
-                var item = e.SelectedItem as DevicesMaintenanceHistory;
-                DevicesMaintenanceHistory yeucau = new DevicesMaintenanceHistory
-                {
-                    DocumentNo_ = item.DocumentNo_,
-                    ITXuLy = Preferences.Get(Config.FullName, ""),
-                    TenThietBi = item.Description2,
-                    NguoiGuiYeuCau = item.NguoiGuiYeuCau,
-                    RowID = item.RowID,
-                };
-                await Navigation.PushAsync (new Cap_Nhat_Thong_Tin_Loi_Page(yeucau));
-            }
-            catch (Exception ex)
-            {
-
-                await new MessageBox(ex.Message).Show();
-            }
-        }
-
-       
             
     }
 

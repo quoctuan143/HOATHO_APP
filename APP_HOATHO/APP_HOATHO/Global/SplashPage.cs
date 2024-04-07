@@ -73,8 +73,10 @@ namespace APP_HOATHO.Global
                    
                     Preferences.Set(Config.Role, user[0].Role ?? -1);                    
                     Preferences.Set(Config.NhaMay, user[0].SourceCode);
-                    Preferences.Set(Config.MaXuong, user[0].MaXuong);                   
-                    
+                    Preferences.Set(Config.MaXuong, user[0].MaXuong);                    
+                    Preferences.Set(Config.FullName, user[0].FullName);
+                    Preferences.Set(Config.Email, user[0].Email);
+                    Preferences.Set(Config.EmployeeNo, user[0].EmployeeNo);
                     App.Current.MainPage = new AppShell();
                     
                 }

@@ -32,6 +32,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing;
 using ZXing.Net.Mobile.Forms;
 using KeHoachBaoTri = APP_HOATHO.Views.KeHoachBaoTri;
 
@@ -139,6 +140,8 @@ namespace APP_HOATHO.ViewModels
         public ICommand DinhViCayVaiKhongGanNhanLenKeCommand { get;set; }
         public ICommand XuatVaiKhongGanNhanKhoiKeCommand { get; set; }
         public ICommand XuatKhoTheoKeVaiCommand { get; set; }
+        public ICommand LichSuYeuCauXuLyCommand { get; set; }
+        public ICommand DeNghiThanhToanChoNhanVienCommand { get; set; }
         #endregion "Command"
 
         public MainViewModel()
@@ -254,49 +257,15 @@ namespace APP_HOATHO.ViewModels
             });
             YeuCauXuLyLoiCommand = new Command(async () =>
             {
-                try
+                DevicesMaintenanceHistory yeucau = new DevicesMaintenanceHistory
                 {
-                    var scan = new ZXingScannerPage();
-                    scan.Title = "Tìm kiếm thiết bị";
-                    Shell.SetTabBarIsVisible(scan, false);
-                    await Navigation.PushAsync(scan);
-                    scan.OnScanResult += (result) =>
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            //show form lên
-                            try
-                            {
-                                DependencyService.Get<IBeepService>().Beep();
-                                if (IsBusy) return;
-
-                                IsBusy = true;
-                                string ma = result.Text.Split('=')[1];
-                                var Item = await RunHttpClientGet<DanhMuc_ThietBi>("api/qltb/getTimKiemThietBi?mathietbi=" + ma);
-                                if (Item.Lists.Count > 0)
-                                {
-                                    await Navigation.PopAsync();
-                                    DevicesMaintenanceHistory yeucau = new DevicesMaintenanceHistory
-                                    {
-                                        DocumentNo_ = ma,
-                                        NoiDungLoi = "",
-                                        NguoiGuiYeuCau = Preferences.Get(Config.FullName, ""),
-                                        TenThietBi = Item.Lists[0].Description2
-                                    };
-                                    await Navigation.PushAsync(new Yeu_Cau_Xu_Ly_Loi_Page(yeucau));
-                                }
-                                else
-                                    DependencyService.Get<IMessage>().LongAlert("Không tìm thấy thiết bị này trong hệ thống");
-                            }
-                            catch { }
-                            finally { IsBusy = false; }
-                        });
-                    };
-                }
-                catch (Exception ex)
-                {
-                    await new MessageBox(ex.Message).Show();
-                }
+                    DocumentNo_ = "",
+                    NoiDungLoi = "",
+                    NguoiGuiYeuCau = Preferences.Get(Config.User, ""),
+                    TenThietBi = "",
+                    YeuCauTheoThietBi = true
+                };
+                await Navigation.PushAsync(new Yeu_Cau_Xu_Ly_Loi_Page(yeucau));
             });
             CapNhatThongTinLoiCommand = new Command(async () =>
             {
@@ -327,7 +296,8 @@ namespace APP_HOATHO.ViewModels
                                         DocumentNo_ = ma,
                                         ITXuLy = Preferences.Get(Config.FullName, ""),
                                         TenThietBi = Item.Lists[0].Description2,
-                                        NguoiGuiYeuCau = Item.Lists[0].NguoiGuiYeuCau
+                                        NguoiGuiYeuCau = Item.Lists[0].NguoiGuiYeuCau,
+                                        RowID = Item.Lists[0].RowID
                                     };
                                     await Navigation.PushAsync(new Cap_Nhat_Thong_Tin_Loi_Page(yeucau));
                                 }
@@ -566,6 +536,28 @@ namespace APP_HOATHO.ViewModels
                 try
                 {
                     await Navigation.PushAsync(new Xuat_Kho_Theo_Ke_Vai_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            LichSuYeuCauXuLyCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new Lich_Su_Gui_Yeu_Cau_Xu_Ly_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            DeNghiThanhToanChoNhanVienCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page());
                 }
                 catch (Exception ex)
                 {

@@ -11,7 +11,7 @@ namespace APP_HOATHO.Global
 {
     public class Config
     {        
-        //public static string URL = "http://192.168.1.12:8889/";
+        //public static string URL = "http://192.168.1.9:8889/";
         public static string URL =  "https://htapis.hoatho.com.vn:59443/";
         public static string User = "User";
         public static string Password = "Password";
@@ -19,6 +19,7 @@ namespace APP_HOATHO.Global
         public static string FullName = "FullName";
         public static string PhoneNumber = "PhoneNumber";
         public static string Email = "Email";
+        public static string EmployeeNo = "EmployeeNo";
         public static string Token { get; set; }
         public static string NhaMay = "NhaMay";
         public static string MaXuong = "MaXuong";

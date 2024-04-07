@@ -51,7 +51,7 @@
                 <Setter Property="AllowFiltering" Value="True"></Setter>
                 <Setter Property="ClearButtonColor" Value="Red"></Setter>
                 <Setter Property="WatermarkColor" Value="#06264c"></Setter>
-                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="White"/>                 
             </Style>
             <Style TargetType="SearchBar" x:Key="styleSearch">
                 <Setter Property="TextColor" Value="#06264c"></Setter>
@@ -136,7 +136,7 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="HasUnevenRows"      Value="True" />
-                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="White"/>                     
             </Style>
             <Style TargetType="Frame" x:Key="styleFrame">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>                       

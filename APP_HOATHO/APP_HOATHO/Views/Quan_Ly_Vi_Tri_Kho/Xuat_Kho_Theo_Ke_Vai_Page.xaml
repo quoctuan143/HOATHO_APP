@@ -111,7 +111,7 @@
                     <sfDataGrid:GroupColumnDescription ColumnName="Art" />
                 </sfDataGrid:SfDataGrid.GroupColumnDescriptions>
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity}, chiều dài: {SumQuantity} "
                                                     Position="Bottom"
                                                     ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>
@@ -119,7 +119,12 @@
                                                           Format="{}{Count}"
                                                           MappingName="Color"
                                                           SummaryType="DoubleAggregate" />
+                            <sfDataGrid:GridSummaryColumn Name="SumQuantity"
+                                                          Format="{}{Sum}"
+                                                          MappingName="TonKho"
+                                                          SummaryType="DoubleAggregate" />
                         </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                        
                     </sfDataGrid:GridTableSummaryRow>
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
             </sfDataGrid:SfDataGrid>

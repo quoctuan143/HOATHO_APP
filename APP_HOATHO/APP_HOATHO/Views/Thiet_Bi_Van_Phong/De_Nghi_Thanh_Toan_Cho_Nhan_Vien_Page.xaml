@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" 
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"                     
+             x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page"
+             Title="Đề nghị thanh toán"
+             Shell.TabBarIsVisible="False"
+             x:Name="this"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView Scrolled="ScrollView_Scrolled">
+                <StackLayout Spacing="6">
+                    <Grid ColumnDefinitions="5*,5*">
+                        <StackLayout Grid.Column="0" Spacing="0">
+                            <Label Text="Loại đối tượng" Style="{StaticResource styleLableBold}"></Label>
+                            <sfcombobox:SfComboBox x:Name="cbLoaiDoiTuong"
+                                       SelectedValue="{Binding SuggestedPayment.SuggestedPaymentHeader.PaytoType , Mode=TwoWay}"
+                                       DataSource="{Binding LoaiDoiTuongs}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"
+                                                  
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Chọn loại đối tượng"
+                                       IsEditableMode="False"
+                                       SelectionChanged="cbLoaiDoiTuong_SelectionChanged"
+                                       ShowClearButton="True">
+                            </sfcombobox:SfComboBox>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Loại hàng hóa" Style="{StaticResource styleLableBold}"></Label>
+                            <sfcombobox:SfComboBox x:Name="cbLoaiHangHoa"
+                                       SelectedValue="{Binding SuggestedPayment.SuggestedPaymentHeader.Type , Mode=TwoWay}"
+                                       DataSource="{Binding LoaiHangHoas}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"
+                                                  
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Chọn loại hàng hóa"   
+                                       IsEditableMode="False"
+                                       ShowClearButton="True">
+                            </sfcombobox:SfComboBox>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="4*,6*">
+                        <StackLayout Grid.Column="0" Spacing="0">
+                            <Label Text="Hình thức thanh toán" Style="{StaticResource styleLableBold}"></Label>
+                            <sfcombobox:SfComboBox x:Name="cbLoaiThanhToan"
+                                       SelectedValue="{Binding SuggestedPayment.SuggestedPaymentHeader.PaymentMethod , Mode=TwoWay}"
+                                       DataSource="{Binding HinhThucThanhToans}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"                                                         
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Chọn hình thức thanh toán"
+                                       IsEditableMode="False"
+                                       ShowClearButton="True">
+                            </sfcombobox:SfComboBox>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Đối tượng thanh toán" Style="{StaticResource styleLableBold}"></Label>
+                            <sfcombobox:SfComboBox x:Name="cbdoituongthanhtoan"
+                                       SelectedValue="{Binding SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_ , Mode=TwoWay}"
+                                       DataSource="{Binding DoiTuongs}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"
+                                                  
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Đối tượng thanh toán"
+                                       IsEditableMode="True"
+                                       ShowClearButton="True"
+                                               >
+                            </sfcombobox:SfComboBox>
+                        </StackLayout>
+                    </Grid>
+
+
+
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding SuggestedPayment.SuggestedPaymentHeader.Description , Mode=TwoWay}"
+                       Placeholder="Nội dung thanh toán"></Entry>
+
+                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" VerticalOptions="CenterAndExpand">
+                        <Label Text="Chi tiết thanh toán như sau:" Style="{StaticResource styleLableBold}" VerticalOptions="Center"></Label>
+                        <Image Source="add.png"
+                           BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="addChiTiet" Tapped="addChiTiet_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+
+                    <ListView  Style="{StaticResource styleListView}"
+                    x:Name="listChiTiet"
+                    ItemsSource="{Binding SuggestedPayment.SuggestedPaymentLines, Mode=TwoWay}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    SelectionMode="None">
+                        <ListView.Footer>                                   
+                                <Grid  ColumnDefinitions="5*,5*" 
+                                        BackgroundColor="LightGray"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                    <Label  Text="Tổng tiền cần thanh toán: "
+                                            Padding="5"
+                                            Grid.Column="0"     
+                                            VerticalOptions="CenterAndExpand"
+                                            Style="{StaticResource styleLableBold}"></Label>
+                                    <Label  Text="{Binding Total, StringFormat='{0:#,##0}'}"                                              
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            TextColor="Red"
+                                            VerticalOptions="CenterAndExpand"
+                                            Style="{StaticResource styleLableBold}"></Label>
+                                </Grid>                            
+                        </ListView.Footer>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Grid ColumnDefinitions="4*,6*"
+                                            RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            Margin="10">
+                                            <Label Text="Số hóa đơn:"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                                    Grid.Column="0"
+                                                    Grid.Row="0" />
+                                            <Entry Grid.Column="1"
+                                            Grid.Row="0"                                                      
+                                            Placeholder="Số hóa đơn nếu có"
+                                            Text="{Binding InvoiceCode, Mode=TwoWay}" 
+                                            />
+                                            <Label Text="Thuế VAT:"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                                    Grid.Column="0"
+                                                    Grid.Row="1" 
+                                                    VerticalOptions="CenterAndExpand"/>
+                                            <Picker x:Name="picker"
+                                                    Grid.Column="1"
+                                                    Grid.Row="1"
+                                                    SelectedItem="{Binding VAT, Mode=TwoWay}"
+                                                    Title="Chọn % VAT"
+                                                    TextColor="Black"
+                                                >
+                                                <Picker.ItemsSource>
+                                                    <x:Array Type="{x:Type x:String}">
+                                                        <x:String>0</x:String>
+                                                        <x:String>8</x:String>
+                                                        <x:String>10</x:String>
+                                                    </x:Array>
+                                                </Picker.ItemsSource>
+                                            </Picker>
+                                            
+                                            <Label Text="Tiền thanh toán:"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLablenotwhite}"
+                                        Grid.Column="0"
+                                        Grid.Row="2" />
+                                            <Entry Keyboard="Numeric" Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding FormatNumberAmount, Mode=TwoWay}" 
+                                        x:Name="txtAmount"
+                                                   Style="{StaticResource styleEntry}"
+                                                   FontSize="18"
+                                                   TextColor="Blue"
+                                        TextChanged="txtAmount_TextChanged"/>
+                                       
+                                            <Label Text="Tiền chưa thuế:"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLablenotwhite}"
+                                        Grid.Column="0"
+                                        Grid.Row="3" />
+                                            <Label Text="{Binding AmountChuaVat , StringFormat='{0:#,##0.##}'}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLableBold}"
+                                        TextColor="Red"
+                                        FontSize="18"
+                                        Grid.Column="1"
+                                        Grid.Row="3" />
+
+                                            <Label Text="Tiền thuế:"
+                                        Style="{StaticResource styleLablenotwhite}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Grid.Column="0"
+                                        Grid.Row="4" />
+                                            <Label Text="{Binding AmountVAT , StringFormat='{0:#,##0.##}'}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLableBold}"
+                                        TextColor="Red"
+                                        FontSize="18"
+                                        Grid.Column="1"
+                                        Grid.Row="4" />
+                                            <Label Text="Tiền sau thuế:"
+                                        Style="{StaticResource styleLablenotwhite}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Grid.Column="0"
+                                        Grid.Row="5" />
+                                            <Label Text="{Binding AmountIncludingVAT, StringFormat='{0:#,##0.##}'}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLableBold}"
+                                        FontSize="18"
+                                        TextColor="Red"
+                                        Grid.Column="1"
+                                        Grid.Row="5" />
+                                            <sfbutton:SfButton 
+                                        Grid.Row="6"
+                                        Grid.Column="1"
+                                        Style="{StaticResource sfbuttonCancel}"
+                                        x:Name="btnXoaChiTiet"
+                                        Text="Xóa"                                                          
+                                        Clicked="btnXoaChiTiet_Clicked"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="EndAndExpand">
+
+                                            </sfbutton:SfButton>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+            <sfbutton:SfButton Style="{StaticResource stylesfButton}"
+                    Text="Gửi đề nghị thanh toán"
+                    x:Name="GuiYeuCau"
+                    Clicked="GuiYeuCau_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"></sfbutton:SfButton>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

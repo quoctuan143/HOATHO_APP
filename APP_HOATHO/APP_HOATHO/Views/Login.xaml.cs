@@ -54,10 +54,11 @@ namespace APP_HOATHO.Views
                     Preferences.Set(Config.MaXuong, user[0].MaXuong);
                     Preferences.Set(Config.FullName, user[0].FullName);
                     Preferences.Set(Config.Email , user[0].Email);
+                    Preferences.Set(Config.EmployeeNo, user[0].EmployeeNo);
                     //lưu lại token 
-                   // if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
-                   // {
-                        TokenFirebase firebase = new TokenFirebase();
+                    // if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                    // {
+                    TokenFirebase firebase = new TokenFirebase();
                         firebase.Device = Device.RuntimePlatform;
                         firebase.Token = CrossFirebasePushNotification.Current.Token;
                         firebase.UserID = btnusername.Text;

@@ -65,7 +65,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             {
                 DependencyService.Get<IMessage>().LongAlert("Cập nhật xử lý lỗi thành công");
                 await Navigation.PopAsync();
-                MessagingCenter.Send(this, "capnhatxulyloi", Item.DocumentNo_);
+                MessagingCenter.Send(this, "capnhatxulyloi", Item.RowID);
                 MessagingCenter.Send(this, "langngheduyet", DocumentType.DanhSachChoITXuLy);
             }    
                 

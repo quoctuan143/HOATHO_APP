@@ -25,6 +25,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="20.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="20.4.0.38" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.2.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="20.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="20.4.0.38" />
     <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="20.4.0.38" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Update="Views\ThietBi\DuyetYeuCauThueThietBiPage_Header.xaml.cs">
       <DependentUpon>DuyetYeuCauThueThietBiPage_Header.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Thiet_Bi_Van_Phong\De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page.xaml.cs">
+      <DependentUpon>De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Thiet_Bi_Van_Phong\Lich_Su_Gui_Yeu_Cau_Xu_Ly_Page.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Lich_Su_Gui_Yeu_Cau_Xu_Ly_Page.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\ThongTinThietBiRoi.xaml.cs">
       <DependentUpon>ThongTinThietBiRoi.xaml</DependentUpon>
@@ -318,6 +326,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Thiet_Bi_Van_Phong\Cap_Nhat_Thong_Tin_Loi_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Thiet_Bi_Van_Phong\Lich_Su_Gui_Yeu_Cau_Xu_Ly_Page.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Thiet_Bi_Van_Phong\Danh_Sach_Cho_Xu_Ly_Page.xaml">

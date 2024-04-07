@@ -5,9 +5,12 @@ using FFImageLoading.Forms.Platform;
 using Foundation;
 using Plugin.FirebasePushNotification;
 using Plugin.Media;
+using Syncfusion.ListView.XForms.iOS;
+using Syncfusion.SfNumericTextBox.XForms.iOS;
 using Syncfusion.SfPicker.XForms.iOS;
 using Syncfusion.SfPullToRefresh.XForms.iOS;
 using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.XForms.iOS.EffectsView;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 using UserNotifications;
@@ -46,7 +49,10 @@ namespace APP_HOATHO.iOS
             Rg.Plugins.Popup.Popup.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             Syncfusion.XForms.iOS.PopupLayout.SfPopupLayoutRenderer.Init();
+            new SfNumericTextBoxRenderer();
             SfCheckBoxRenderer.Init();
+            SfListViewRenderer.Init();
+            SfEffectsViewRenderer.Init();
             CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
             {
                 System.Diagnostics.Debug.WriteLine("NOTIFICATION RECEIVED", p.Data);

@@ -69,7 +69,7 @@
                         <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
-                              BackgroundColor="Transparent"  
+                              BackgroundColor="Transparent"
                               VerticalOptions="FillAndExpand"
                               HasShadow="False"
                               IsVisible="{Binding IsMainDonHang}"
@@ -136,7 +136,6 @@
                                                        ActionCommand="{Binding TBSXDCCommand}"
                                                        Disable="{Binding IsTBSX, Mode=TwoWay}">
                                     </control:IconMainView>
-
                                 </Grid>
                             </StackLayout>
                         </Frame>
@@ -251,23 +250,23 @@
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"
-                              HeightRequest="180"
                               HasShadow="False"
                               IsVisible="{Binding IsNhanHelpDesk}"
                               Opacity="{Binding IsNhanHelpDesk, Converter={StaticResource OpacityDisable}}">
                             <StackLayout Padding="5">
                                 <Label Grid.Row="0"
-                                   Text="Quản lý thiết bị văn phòng"
+                                   Text="Dịch vụ văn phòng"
                                    TextDecorations="Underline"
                                    TextColor="{StaticResource Primary}"
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
                                 <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
+                                      RowDefinitions="auto,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand">
-
+                                    <!--dong 1-->
                                     <control:IconMainView  Title="Yêu cầu hỗ trợ CNTT"
                                                        Grid.Column="0"
                                                        IconImageSource="duyetdonhang.png"
@@ -289,13 +288,30 @@
                                                        ActionCommand="{Binding DanhSachChoXuLyCommand}"
                                                        Disable="{Binding IsDanhSachChoXuLy}">
                                     </control:IconMainView>
+                                    <!--dòng 2-->
+                                    <control:IconMainView  Title="Lịch sử yêu &#10;cầu xử lý"
+                                                       Grid.Column="0"
+                                                       Grid.Row="1"
+                                                       IconImageSource="duyetdonhang.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding LichSuYeuCauXuLyCommand}"
+                                                       Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Đề nghị thanh toán"
+                                                       Grid.Column="1"
+                                                       Grid.Row="1"
+                                                       IconImageSource="denghitt.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding DeNghiThanhToanChoNhanVienCommand}"
+                                                       Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
+                                    </control:IconMainView>
                                 </Grid>
                             </StackLayout>
                         </Frame>
                         <Frame    Padding="2"
                               BorderColor="#06264c"
                               CornerRadius="10"
-                              BackgroundColor="Transparent"                              
+                              BackgroundColor="Transparent"
                               HasShadow="False"
                               IsVisible="{Binding IsQuanLyViTriKho}"
                               Opacity="{Binding IsQuanLyViTriKho, Converter={StaticResource OpacityDisable}}">
@@ -394,7 +410,6 @@
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"
-                              HeightRequest="180"
                               HasShadow="False"
                               IsVisible="{Binding IsQuanLyViTriKho}"
                               Opacity="{Binding IsQuanLyViTriKho, Converter={StaticResource OpacityDisable}}">
@@ -424,7 +439,7 @@
                                                        BadgeText=""
                                                        ActionCommand="{Binding XuatVaiKhongGanNhanKhoiKeCommand}"
                                                        Disable="{Binding IsCapNhatViTriKho}">
-                                    </control:IconMainView>                                       
+                                    </control:IconMainView>
                                 </Grid>
                             </StackLayout>
                         </Frame>
@@ -432,7 +447,6 @@
                               BorderColor="#06264c"
                               CornerRadius="10"
                               BackgroundColor="Transparent"
-                              HeightRequest="260"
                               HasShadow="False"
                               IsVisible="{Binding IsMainSoi}"
                               Opacity="{Binding IsMainSoi, Converter={StaticResource OpacityDisable}}">
@@ -489,6 +503,5 @@
                 </ScrollView>
             </Grid>
         </ScrollView>
-        
     </ContentPage.Content>
 </ContentPage>

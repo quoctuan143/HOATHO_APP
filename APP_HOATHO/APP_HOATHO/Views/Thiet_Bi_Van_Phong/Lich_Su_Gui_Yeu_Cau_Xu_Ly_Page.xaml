@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Lich_Su_Gui_Yeu_Cau_Xu_Ly_Page"
+             Title="Lịch sử yêu cầu"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <ListView Style="{StaticResource styleListView}"
+                  ItemsSource="{Binding ListItem, Mode=TwoWay}"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand" 
+                  SelectionMode="None"                           
+                  SeparatorColor="Blue">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid ColumnDefinitions="4*,6*"
+                                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand"
+                                  Margin="10">
+                                <Label Text="Mã thiết bị:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="0" />
+                                <Label Text="{Binding DocumentNo_}"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="1"
+                                       Grid.Row="0" />
+
+                                <Label Text="Tên thiết bị:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="1" />
+                                <Label Text="{Binding Description2}"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="1"
+                                       Grid.Row="1" />
+
+                                <Label Text="Nội dung lỗi:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="2" />
+                                <Label Text="{Binding NoiDungLoi}"
+                                       Style="{StaticResource styleLableBold}"
+                                       TextColor="Red"
+                                       Grid.Column="1"
+                                       Grid.Row="2" />
+
+                                <Label Text="Nguyên nhân:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="3" />                 
+                                <Label Text="{Binding NguyenNhan}"
+                                       Style="{StaticResource styleLableBold}"
+                                       TextColor="Red"
+                                       Grid.Column="1"
+                                       Grid.Row="3" />
+                                <Label Text="Cách xử lý:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="4" />
+                                <Label Text="{Binding CachXuLy}"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="1"
+                                       Grid.Row="4" />
+                                <Label Text="Ngày yêu cầu:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="5" />
+                                <Label Text="{Binding ThoiDiemPhatSinh}"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="1"
+                                       Grid.Row="5" />                                 
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
