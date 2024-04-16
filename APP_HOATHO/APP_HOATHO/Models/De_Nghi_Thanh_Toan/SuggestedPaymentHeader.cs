@@ -9,85 +9,133 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
 {
     public class SuggestedPaymentHeader : Bindable
     {
-        [JsonProperty("Pay-to Type")]
-        public int PaytoType { get; set; }
-
+        public int RowID { get; set; }
         [JsonProperty("Document Type")]
         public int DocumentType { get; set; }
+        public string No_ { get; set; }
 
-        [JsonProperty("Payment Method")]
-        public int PaymentMethod { get; set; }
-        public int Type { get; set; }
+
+        [JsonProperty("Buy-from Vendor Name")]
+        public string BuyfromVendorName { get; set; }
 
         [JsonProperty("Pay-to Vendor No_")]
         public string PaytoVendorNo_ { get; set; }
-        public string Description { get; set; }
+
+        [JsonProperty("Pay-to Name")]
+        public string PaytoName { get; set; }
+
+        [JsonProperty("Pay-to Address")]
+        public string PaytoAddress { get; set; }
+
+        [JsonProperty("External Document No_")]
+        public string ExternalDocumentNo_ { get; set; }
+
+        [JsonProperty("Posting Date")]
+        public DateTime PostingDate { get; set; }
+
+        [JsonProperty("Document Date")]
+        public DateTime DocumentDate { get; set; }
+
         [JsonProperty("Login ID")]
-        public string LoginID  { get; set; }
+        public string LoginID { get; set; }
+
+        [JsonProperty("Payment Method")]
+        public int PaymentMethod { get; set; }
+
+
+        public string Description { get; set; }
+        public int Status { get; set; }
+
+        [JsonProperty("Bank Name Code")]
+        public string BankNameCode { get; set; }
+
+        [JsonProperty("Currency Code")]
+        public string CurrencyCode { get; set; }
+
+        [JsonProperty("Currency Factor")]
+        public decimal CurrencyFactor { get; set; }
+        public int Type { get; set; }
+
+        public int KyDienTu { get; set; }
+
+        [JsonProperty("Department Code")]
+        public string DepartmentCode { get; set; }
+
+        [JsonProperty("Source Code")]
+        public string SourceCode { get; set; }
+
+
+
+        [JsonProperty("Pay-to Type")]
+        public int PaytoType { get; set; }
+        [JsonProperty("Due Date")]
+        public DateTime? HanThanhToan { get; set; } = DateTime.Now.Date;
     }
 
     public class SuggestedPaymentLine : Bindable
     {
-        public SuggestedPaymentLine()
-        {
-            VATs = new ObservableCollection<LookupValueInt> { new LookupValueInt { Code = 0, Name = "0 %" },
-                                           new LookupValueInt { Code = 8, Name = "8 %" },
-                                           new LookupValueInt { Code = 10, Name = "10 %" }};
-        }
+        
+        public int RowID { get; set; }
         [JsonProperty("Invoice Code")]
         public string InvoiceCode { get; set; }
         
 
         [JsonProperty("Amount VAT")]
-        public double AmountVAT { get; set; }
-        public double AmountChuaVat { get; set; }
+        public double? AmountVAT { get; set; }        
 
         [JsonProperty("Amount Including VAT")]
-        public double AmountIncludingVAT { get; set; }
+        public double? AmountIncludingVAT { get; set; }
 
         string _vat;
-        public string VAT { get => _vat; 
-            set { 
-                SetProperty(ref _vat, value);
-                var vat = int.Parse(_vat);
-                AmountVAT = Amount * vat / 100.0;
-                AmountChuaVat = Amount - AmountVAT;
-                AmountIncludingVAT = Amount;
-                OnPropertyChanged("AmountVAT");
-                OnPropertyChanged("AmountChuaVat");
-                OnPropertyChanged("AmountIncludingVAT");
-            } 
-        }
-        double _amount;
-        public double Amount
-        {
-            get => _amount;
-            set
+        public string VAT { get => _vat;set
             {
-                SetProperty(ref _amount, value);
-                var vat = int.Parse(VAT);
-                AmountVAT = Amount * vat / 100.0;
-                AmountChuaVat = Amount - AmountVAT;
+                SetProperty(ref _vat,value);
+                var vat = int.Parse((_vat ?? "0"));
+                AmountVAT = AmountChuaVat * vat / 100.0;
+                Amount = AmountChuaVat + AmountVAT;
                 AmountIncludingVAT = Amount;
                 OnPropertyChanged("Amount");
                 OnPropertyChanged("AmountVAT");
                 OnPropertyChanged("AmountChuaVat");
                 OnPropertyChanged("AmountIncludingVAT");
+                OnPropertyChanged("FormatNumberAmount");
             }
+        }
+        double? _amountChuaVat;
+        public double? AmountChuaVat { get => _amountChuaVat; set {
+                SetProperty(ref _amountChuaVat, value);
+                var vat = int.Parse((_vat ?? "0"));
+                AmountVAT = _amountChuaVat * vat / 100.0;
+                Amount = _amountChuaVat + AmountVAT;
+                AmountIncludingVAT = Amount;
+                OnPropertyChanged("Amount");
+                OnPropertyChanged("AmountVAT");
+                OnPropertyChanged("AmountChuaVat");
+                OnPropertyChanged("AmountIncludingVAT");
+                OnPropertyChanged("FormatNumberAmount");
+
+            } }
+        
+        public double? Amount
+        {
+            get;set;
         }
         public string FormatNumberAmount
         {
-            get { return string.Format("{0:#,##0.##}", Amount);  }
+            get {
+                return string.Format("{0:#,##0.##}", AmountChuaVat);
+            }
             set
             {
                 if (!CheckThapPhan(value))
                 {
                     try
                     {
-                        FormatNumberString(ref _amount, value);
-                        Amount = _amount;
+                        double response = 0;
+                        FormatNumberString(ref response, value);
+                        AmountChuaVat = response;                           
                         OnPropertyChanged("FormatNumberAmount");
-                        OnPropertyChanged("Amount");
+                        OnPropertyChanged("AmountChuaVat");
                     }
                     catch
                     {
@@ -97,13 +145,53 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
                 }
             }
         }
-        ObservableCollection<LookupValueInt> _vats;
-        public ObservableCollection<LookupValueInt> VATs {get => _vats; set => SetProperty(ref _vats,value); }
+        double? _soNgay =0;
+        [JsonProperty("Date Sum")]
+        public double? SoNgay { get => _soNgay; set => SetProperty(ref _soNgay, value); } 
+        double? _donGia = 0;
+        [JsonProperty("Unit Price")]
+        public double? DonGia { get => _donGia; set => SetProperty(ref _donGia, value); } 
+        [JsonProperty("Node")]
+        public string Notes { get; set; }
+        bool _isShow;
+        public bool IsShow { get=> _isShow; set => SetProperty(ref _isShow,value); }
+        [JsonProperty("Document Date")]
+        public DateTime? NgayHoaDon { get; set; } = DateTime.Now.Date;
     }
 
     public class SuggestedPaymentRequest:Bindable
     {
-        public SuggestedPaymentHeader SuggestedPaymentHeader { get; set; }        
-        public ObservableCollection<SuggestedPaymentLine> SuggestedPaymentLines { get; set; }
+        public SuggestedPaymentRequest()
+        {
+            SuggestedPaymentHeader = new SuggestedPaymentHeader();
+            SuggestedPaymentLines = new ObservableCollection<SuggestedPaymentLine>();
+        }
+        public SuggestedPaymentHeader SuggestedPaymentHeader { get; set; }
+        ObservableCollection<SuggestedPaymentLine> _suggestedPaymentLines;
+        public ObservableCollection<SuggestedPaymentLine> SuggestedPaymentLines { get => _suggestedPaymentLines; set => SetProperty(ref _suggestedPaymentLines, value); }
+    }
+
+    public class ViewSuggestedPayment
+    {
+        public string TenDoiTuong { get; set; }
+        public double SoTien { get; set; }
+        public string NoiDung { get; set; }
+        public string HinhThucThanhToan { get; set; }
+        public string SoTaiKhoan { get; set; }
+        public string NganHang { get; set; }
+        public DateTime ThoiHanThanhToan { get; set; }
+        public SuggestedPaymentRequest SuggestedPaymentRequest { get; set; }
+    }
+
+    public class DanhSachDeNghiThanhToan
+    {
+        public string No_ { get; set; }
+        public string DoiTuong { get; set; }
+        public string Description { get; set; }
+        public string HinhThucThanhToan { get; set; }
+        public double Total { get; set; }
+        public DateTime? HanThanhToan { get; set; }
+        public string SoTaiKhoan { get; set; }
+        public string NganHang { get; set; }
     }
 }

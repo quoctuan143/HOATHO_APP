@@ -305,6 +305,14 @@
                                                        ActionCommand="{Binding DeNghiThanhToanChoNhanVienCommand}"
                                                        Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
                                     </control:IconMainView>
+                                    <control:IconMainView  Title="Danh sách ĐNTT"
+                                                       Grid.Column="2"
+                                                       Grid.Row="1"
+                                                       IconImageSource="kiemke.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding DanhSachDNTTNhanVienCommand}"
+                                                       Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
+                                    </control:IconMainView>
                                 </Grid>
                             </StackLayout>
                         </Frame>

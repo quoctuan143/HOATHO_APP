@@ -15,6 +15,8 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using APP_HOATHO.Dialog;
 using Plugin.Connectivity;
+using Newtonsoft.Json.Linq;
+using ZXing;
 
 namespace APP_HOATHO.ViewModels
 {
@@ -81,6 +83,26 @@ namespace APP_HOATHO.ViewModels
             catch (Exception ex)
             {
                 return new HttpClientResponseModel<T> { Status = new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.BadRequest }, ErrorString = ex.Message};
+            }
+
+        }
+
+        public async Task<T> RunHttpClientGetObject<T>(string apiUrl) where T : class
+        {
+            try
+            {
+                var respon = await Config.client.GetAsync(apiUrl);               
+                T objReturn = Activator.CreateInstance<T>();                
+                if (respon.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    string _json = await respon.Content.ReadAsStringAsync();
+                    objReturn= JsonConvert.DeserializeObject<T>(_json);
+                }
+                return objReturn;
+            }
+            catch (Exception ex)
+            {                
+               return Activator.CreateInstance<T>();
             }
 
         }

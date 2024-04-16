@@ -142,6 +142,7 @@ namespace APP_HOATHO.ViewModels
         public ICommand XuatKhoTheoKeVaiCommand { get; set; }
         public ICommand LichSuYeuCauXuLyCommand { get; set; }
         public ICommand DeNghiThanhToanChoNhanVienCommand { get; set; }
+        public ICommand DanhSachDNTTNhanVienCommand { get; set; }
         #endregion "Command"
 
         public MainViewModel()
@@ -557,7 +558,18 @@ namespace APP_HOATHO.ViewModels
             {
                 try
                 {
-                    await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page());
+                    await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(""));
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            DanhSachDNTTNhanVienCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new Danh_Sach_DNTT_Nhan_Vien());
                 }
                 catch (Exception ex)
                 {

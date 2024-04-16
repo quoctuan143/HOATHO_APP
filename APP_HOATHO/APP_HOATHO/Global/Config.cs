@@ -10,7 +10,7 @@ using Xamarin.Forms;
 namespace APP_HOATHO.Global
 {
     public class Config
-    {        
+    {
         //public static string URL = "http://192.168.1.9:8889/";
         public static string URL =  "https://htapis.hoatho.com.vn:59443/";
         public static string User = "User";

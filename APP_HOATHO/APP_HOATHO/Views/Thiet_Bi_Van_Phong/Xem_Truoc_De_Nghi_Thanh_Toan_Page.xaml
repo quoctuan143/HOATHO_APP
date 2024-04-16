@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" 
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"                     
+             x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Xem_Truoc_De_Nghi_Thanh_Toan_Page"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Title="Xem đề nghị thanh toán"
+             Shell.TabBarIsVisible="False"
+             x:Name="this"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="6">
+                    <Grid ColumnDefinitions="7*,3*">
+                        <StackLayout Grid.Column="0" Spacing="0">
+                            <Label Text="Tên đối tượng" Style="{StaticResource styleLableBold}"></Label>
+                            <Label Text="{Binding ViewSuggestedPayment.TenDoiTuong}" Style="{StaticResource styleLablenotwhite}"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Số tiền" Style="{StaticResource styleLableBold}"></Label>
+                            <Label Text="{Binding ViewSuggestedPayment.SoTien , StringFormat='{0:#,###}'}" Style="{StaticResource styleLableBold}" TextColor="Red"></Label>
+                        </StackLayout>
+                    </Grid>
+                    <Grid ColumnDefinitions="5*,5*">
+                        <StackLayout Grid.Column="0" Spacing="0">
+                            <Label Text="Nội dung" Style="{StaticResource styleLableBold}"></Label>
+                            <Label Text="{Binding ViewSuggestedPayment.NoiDung}" Style="{StaticResource styleLablenotwhite}"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Hình thức TT" Style="{StaticResource styleLableBold}"></Label>
+                            <Label Text="{Binding ViewSuggestedPayment.HinhThucThanhToan}" Style="{StaticResource styleLablenotwhite}"></Label>
+                        </StackLayout>
+                    </Grid>
+                    <Grid ColumnDefinitions="5*,5*">
+                        <StackLayout Grid.Column="0" Spacing="0">
+                            <Label Text="Số tài khoản" Style="{StaticResource styleLableBold}"></Label>
+                            <Label Text="{Binding ViewSuggestedPayment.SoTaiKhoan}" Style="{StaticResource styleLablenotwhite}"></Label>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Ngân hàng" Style="{StaticResource styleLableBold}"></Label>
+                            <Label Text="{Binding ViewSuggestedPayment.NganHang}" Style="{StaticResource styleLablenotwhite}"></Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label Text="Hạn thanh toán:" Style="{StaticResource styleLableBold}" VerticalOptions="Center"></Label>
+                        <Label Text="{Binding ViewSuggestedPayment.ThoiHanThanhToan , StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource styleLableBold}"></Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" VerticalOptions="CenterAndExpand"
+                                 >
+                        <Label Text="Chi tiết thanh toán như sau:" Style="{StaticResource styleLableBold}" VerticalOptions="Center"></Label>
+                        
+                    </StackLayout>
+
+                    <ListView  Style="{StaticResource styleListView}"
+                    x:Name="listChiTiet"
+                    ItemsSource="{Binding ViewSuggestedPayment.SuggestedPaymentRequest.SuggestedPaymentLines, Mode=TwoWay}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    SelectionMode="None">                            
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Grid ColumnDefinitions="4*,6*"
+                                            RowDefinitions="auto,auto,auto,auto,auto,auto"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"                                              
+                                            Margin="5">  
+                                            <Label Text="Số hóa đơn:"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                                    Grid.Column="0"
+                                                    Grid.Row="0" />
+                                            <Label Grid.Column="1"
+                                            Grid.Row="0"        
+                                            Text="{Binding InvoiceCode, Mode=TwoWay}" 
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                            />
+                                            <Label Text="Ngày hóa đơn:"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                                    Grid.Column="0"
+                                                    Grid.Row="1" />
+                                            <Label Text="{Binding NgayHoaDon, StringFormat='{0:dd/MM/yyyy}'}"                                                              
+                                                        VerticalOptions="CenterAndExpand"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                                        Grid.Column="1"
+                                                        Grid.Row="1" ></Label>
+                                            <Label Text="Tiền hàng:"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLablenotwhite}"
+                                        Grid.Column="0"
+                                        Grid.Row="2" />
+                                            <Label Text="{Binding Amount , StringFormat='{0:#,##0.##}'}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLableBold}"
+                                        TextColor="Red"
+                                        FontSize="18"
+                                        Grid.Column="1"
+                                        Grid.Row="2" />
+
+                                            <Label Text="Tiền thuế:"
+                                        Style="{StaticResource styleLablenotwhite}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Grid.Column="0"
+                                        Grid.Row="3" />
+                                            <Label Text="{Binding AmountVAT , StringFormat='{0:#,##0.##}'}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLableBold}"
+                                        TextColor="Red"
+                                        FontSize="18"
+                                        Grid.Column="1"
+                                        Grid.Row="3" />
+                                            
+                                            
+                                            <Label Text="Tiền thanh toán:"
+                                        Style="{StaticResource styleLablenotwhite}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Grid.Column="0"
+                                        Grid.Row="4" />
+                                            <Label Text="{Binding AmountIncludingVAT, StringFormat='{0:#,##0.##}'}"
+                                        VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource styleLableBold}"
+                                        FontSize="18"
+                                        TextColor="Red"
+                                        Grid.Column="1"
+                                        Grid.Row="4" />
+                                            <Label Text="Ghi chú:"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                                    Grid.Column="0"
+                                                    Grid.Row="5" />
+                                            <Label Grid.Column="1"
+                                            Grid.Row="5"    
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Style="{StaticResource styleLablenotwhite}"
+                                            Text="{Binding InvoiceCode, Mode=TwoWay}" 
+                                            />
+                                           
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal">                 
+                <sfbutton:SfButton Style="{StaticResource stylesfButton}"
+                    Text="Gửi đề nghị thanh toán"
+                    x:Name="GuiYeuCau"
+                    Clicked="GuiYeuCau_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"></sfbutton:SfButton>
+            </StackLayout>
+            
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
