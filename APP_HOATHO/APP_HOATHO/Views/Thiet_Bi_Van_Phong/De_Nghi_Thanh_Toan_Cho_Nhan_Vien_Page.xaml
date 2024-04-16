@@ -44,7 +44,7 @@
                             </sfcombobox:SfComboBox>
                         </StackLayout>
                     </Grid>
-                    <Grid ColumnDefinitions="5*,5*" Margin="0, -20 ,0, -10">
+                    <Grid ColumnDefinitions="5*,5*">
                         <StackLayout Grid.Column="0" Spacing="0">
                             <Label Text="Hạn thanh toán" Style="{StaticResource styleLableBold}"></Label>
                             <DatePicker Date="{Binding SuggestedPayment.SuggestedPaymentHeader.HanThanhToan, Mode=TwoWay}" MinimumDate="{x:Static sys:DateTime.Now}"
@@ -81,7 +81,7 @@
 
                     <Entry Style="{StaticResource styleEntry}" Text="{Binding SuggestedPayment.SuggestedPaymentHeader.Description , Mode=TwoWay}"
                        Placeholder="Nhập nội dung thanh toán tại đây"
-                           Margin="0, -20, 0,-10"></Entry>
+                           ></Entry>
 
                     <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" VerticalOptions="CenterAndExpand"
                                  >
