@@ -45,7 +45,7 @@
                         </StackLayout>
                     </Grid>
                     <Grid ColumnDefinitions="5*,5*" Margin="{OnPlatform Android='0,-20,0,-10', Default='0'}">
-                        
+
 
                         <StackLayout Grid.Column="0" Spacing="0">
                             <Label Text="Hạn thanh toán" Style="{StaticResource styleLableBold}"></Label>
@@ -102,21 +102,21 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     SelectionMode="None">
-                        <ListView.Footer>                                   
-                                <StackLayout Orientation="Horizontal"
+                        <ListView.Footer>
+                            <StackLayout Orientation="Horizontal"
                                         BackgroundColor="LightGray"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="CenterAndExpand">
-                                    <Label  Text="Tổng tiền cần thanh toán: "
+                                <Label  Text="Tổng tiền cần thanh toán: "
                                             Padding="5"                                                           
                                             VerticalOptions="CenterAndExpand"
                                             Style="{StaticResource styleLableBold}"></Label>
-                                    <Label  Text="{Binding Total, StringFormat='{0:#,##0}'}" 
+                                <Label  Text="{Binding Total, StringFormat='{0:#,##0}'}" 
                                             FontSize="16"
                                             TextColor="Red"
                                             VerticalOptions="CenterAndExpand"
                                             Style="{StaticResource styleLableBold}"></Label>
-                                </StackLayout>                            
+                            </StackLayout>
                         </ListView.Footer>
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -197,7 +197,7 @@
                                                     </x:Array>
                                                 </Picker.ItemsSource>
                                             </Picker>
-                                            
+
                                             <Label Text="Tiền chưa VAT:"
                                         VerticalOptions="CenterAndExpand"
                                         Style="{StaticResource styleLablenotwhite}"
@@ -239,7 +239,7 @@
                                         FontSize="18"
                                         Grid.Column="1"
                                         Grid.Row="7" />
-                                           
+
                                             <Label Text="Tiền sau thuế:"
                                         Style="{StaticResource styleLablenotwhite}"
                                         VerticalOptions="CenterAndExpand"
@@ -288,9 +288,9 @@
                     x:Name="XemDNTT"
                     Clicked="XemDNTT_Clicked"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="End"></sfbutton:SfButton>                    
+                    VerticalOptions="End"></sfbutton:SfButton>
             </StackLayout>
-            
+
         </StackLayout>
 
     </ContentPage.Content>
