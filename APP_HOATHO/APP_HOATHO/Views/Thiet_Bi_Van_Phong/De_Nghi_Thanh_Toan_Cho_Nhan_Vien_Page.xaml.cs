@@ -150,6 +150,8 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                     {
                         SuggestedPayment.SuggestedPaymentLines.Remove(item);
                         OnPropertyChanged("SuggestedPayment.SuggestedPaymentLines");
+                        Total = SuggestedPayment.SuggestedPaymentLines.Sum(x => x.AmountIncludingVAT ?? 0);
+                        OnPropertyChanged("Total");
                     }
                 }
             }

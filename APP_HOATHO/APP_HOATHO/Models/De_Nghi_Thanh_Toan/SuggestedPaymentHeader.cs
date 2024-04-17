@@ -78,10 +78,19 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
         public int RowID { get; set; }
         [JsonProperty("Invoice Code")]
         public string InvoiceCode { get; set; }
-        
 
+        double? _amountVAT =0;
         [JsonProperty("Amount VAT")]
-        public double? AmountVAT { get; set; }        
+        public double? AmountVAT { get => _amountVAT; set {
+            SetProperty(ref _amountVAT, value);
+                Amount = _amountChuaVat + AmountVAT;
+                AmountIncludingVAT = Amount;
+                OnPropertyChanged("Amount");  
+                OnPropertyChanged("AmountIncludingVAT");                
+                OnPropertyChanged("FormatAmount");
+                OnPropertyChanged("FormatAmountIncludingVAT");
+                OnPropertyChanged("FormatAmountVAT");
+            } }        
 
         [JsonProperty("Amount Including VAT")]
         public double? AmountIncludingVAT { get; set; }
@@ -90,29 +99,35 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
         public string VAT { get => _vat;set
             {
                 SetProperty(ref _vat,value);
-                var vat = int.Parse((_vat ?? "0"));
-                AmountVAT = AmountChuaVat * vat / 100.0;
+                var vat = int.Parse((_vat ?? "0"));                
+                AmountVAT = Math.Round(((AmountChuaVat ?? 0) * vat / 100.0),0);
                 Amount = AmountChuaVat + AmountVAT;
                 AmountIncludingVAT = Amount;
                 OnPropertyChanged("Amount");
                 OnPropertyChanged("AmountVAT");
                 OnPropertyChanged("AmountChuaVat");
                 OnPropertyChanged("AmountIncludingVAT");
-                OnPropertyChanged("FormatNumberAmount");
+                OnPropertyChanged("FormatAmountChuaVaT");
+                OnPropertyChanged("FormatAmount");
+                OnPropertyChanged("FormatAmountIncludingVAT");
+                OnPropertyChanged("FormatAmountVAT");
             }
         }
         double? _amountChuaVat;
         public double? AmountChuaVat { get => _amountChuaVat; set {
                 SetProperty(ref _amountChuaVat, value);
                 var vat = int.Parse((_vat ?? "0"));
-                AmountVAT = _amountChuaVat * vat / 100.0;
+                AmountVAT = Math.Round((AmountChuaVat * vat / 100.0).Value, 0);
                 Amount = _amountChuaVat + AmountVAT;
                 AmountIncludingVAT = Amount;
                 OnPropertyChanged("Amount");
                 OnPropertyChanged("AmountVAT");
                 OnPropertyChanged("AmountChuaVat");
                 OnPropertyChanged("AmountIncludingVAT");
-                OnPropertyChanged("FormatNumberAmount");
+                OnPropertyChanged("FormatAmountChuaVaT");
+                OnPropertyChanged("FormatAmount");
+                OnPropertyChanged("FormatAmountIncludingVAT");
+                OnPropertyChanged("FormatAmountVAT");
 
             } }
         
@@ -120,7 +135,7 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
         {
             get;set;
         }
-        public string FormatNumberAmount
+        public string FormatAmountChuaVaT
         {
             get {
                 return string.Format("{0:#,##0.##}", AmountChuaVat);
@@ -134,8 +149,86 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
                         double response = 0;
                         FormatNumberString(ref response, value);
                         AmountChuaVat = response;                           
-                        OnPropertyChanged("FormatNumberAmount");
+                        OnPropertyChanged("FormatAmountChuaVaT");
                         OnPropertyChanged("AmountChuaVat");
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+            }
+        }
+        public string FormatAmount
+        {
+            get
+            {
+                return string.Format("{0:#,##0.##}", Amount);
+            }
+            set
+            {
+                if (!CheckThapPhan(value))
+                {
+                    try
+                    {
+                        double response = 0;
+                        FormatNumberString(ref response, value);
+                        Amount = response;
+                        OnPropertyChanged("FormatAmount");
+                        OnPropertyChanged("Amount");
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+            }
+        }
+        public string FormatAmountVAT
+        {
+            get
+            {
+                return string.Format("{0:#,##0.##}", AmountVAT);
+            }
+            set
+            {
+                if (!CheckThapPhan(value))
+                {
+                    try
+                    {
+                        double response = 0;
+                        FormatNumberString(ref response, value);
+                        AmountVAT = response;
+                        OnPropertyChanged("FormatAmountVAT");
+                        OnPropertyChanged("AmountVAT");
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+            }
+        }
+        public string FormatAmountIncludingVAT
+        {
+            get
+            {
+                return string.Format("{0:#,##0.##}", AmountIncludingVAT);
+            }
+            set
+            {
+                if (!CheckThapPhan(value))
+                {
+                    try
+                    {
+                        double response = 0;
+                        FormatNumberString(ref response, value);
+                        AmountIncludingVAT = response;
+                        OnPropertyChanged("FormatAmountIncludingVAT");
+                        OnPropertyChanged("AmountIncludingVAT");
                     }
                     catch
                     {
@@ -193,5 +286,6 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
         public DateTime? HanThanhToan { get; set; }
         public string SoTaiKhoan { get; set; }
         public string NganHang { get; set; }
+        public int Status { get; set; }
     }
 }

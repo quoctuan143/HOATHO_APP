@@ -44,7 +44,9 @@
                             </sfcombobox:SfComboBox>
                         </StackLayout>
                     </Grid>
-                    <Grid ColumnDefinitions="5*,5*">
+                    <Grid ColumnDefinitions="5*,5*" Margin="{OnPlatform Android='0,-20,0,-10', Default='0'}">
+                        
+
                         <StackLayout Grid.Column="0" Spacing="0">
                             <Label Text="Hạn thanh toán" Style="{StaticResource styleLableBold}"></Label>
                             <DatePicker Date="{Binding SuggestedPayment.SuggestedPaymentHeader.HanThanhToan, Mode=TwoWay}" MinimumDate="{x:Static sys:DateTime.Now}"
@@ -81,7 +83,7 @@
 
                     <Entry Style="{StaticResource styleEntry}" Text="{Binding SuggestedPayment.SuggestedPaymentHeader.Description , Mode=TwoWay}"
                        Placeholder="Nhập nội dung thanh toán tại đây"
-                           ></Entry>
+                           Margin="{OnPlatform Android='0,-20,0,-10', Default='0'}"></Entry>
 
                     <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" VerticalOptions="CenterAndExpand"
                                  >
@@ -203,9 +205,8 @@
                                         Grid.Row="5" />
                                             <Entry Keyboard="Numeric" Grid.Column="1"
                                         Grid.Row="5"
-                                        Text="{Binding FormatNumberAmount, Mode=TwoWay}" 
-                                        x:Name="txtAmount"
-                                                   IsReadOnly="{Binding IsShow, Mode=TwoWay}"
+                                        Text="{Binding FormatAmountChuaVaT, Mode=TwoWay}" 
+                                        x:Name="txtAmount"                                                                              
                                                    Style="{StaticResource styleEntry}"
                                                    FontSize="18"
                                                    TextColor="Blue"
@@ -215,9 +216,12 @@
                                         VerticalOptions="CenterAndExpand"
                                         Grid.Column="0"
                                         Grid.Row="6" />
-                                            <Label Text="{Binding AmountVAT , StringFormat='{0:#,##0.##}'}"
+                                            <Entry Text="{Binding FormatAmountVAT ,Mode=TwoWay}"
+                                                   x:Name="txtTienThu"
+                                                   Keyboard="Numeric"
+                                                   TextChanged="txtAmount_TextChanged"
                                         VerticalOptions="CenterAndExpand"
-                                        Style="{StaticResource styleLableBold}"
+                                        Style="{StaticResource styleEntry}"
                                         TextColor="Red"
                                         FontSize="18"
                                         Grid.Column="1"
@@ -227,9 +231,10 @@
                                         Style="{StaticResource styleLablenotwhite}"
                                         Grid.Column="0"
                                         Grid.Row="7" />
-                                            <Label Text="{Binding Amount , StringFormat='{0:#,##0.##}'}"
+                                            <Entry Text="{Binding FormatAmount ,Mode=TwoWay}"
                                         VerticalOptions="CenterAndExpand"
-                                        Style="{StaticResource styleLableBold}"
+                                                   Keyboard="Numeric"
+                                        Style="{StaticResource styleEntry}"
                                         TextColor="Red"
                                         FontSize="18"
                                         Grid.Column="1"
@@ -240,12 +245,13 @@
                                         VerticalOptions="CenterAndExpand"
                                         Grid.Column="0"
                                         Grid.Row="8" />
-                                            <Label Text="{Binding AmountIncludingVAT, StringFormat='{0:#,##0.##}'}"
+                                            <Entry Text="{Binding FormatAmountIncludingVAT, Mode=TwoWay}"
                                         VerticalOptions="CenterAndExpand"
-                                        Style="{StaticResource styleLableBold}"
-                                        FontSize="18"
+                                        Style="{StaticResource styleEntry}"
+                                                   Keyboard="Numeric"
                                         TextColor="Red"
                                         Grid.Column="1"
+                                                   FontSize="18"
                                         Grid.Row="8" />
                                             <Label Text="Ghi chú:"
                                                     VerticalOptions="CenterAndExpand"
@@ -255,7 +261,7 @@
                                             <Entry Grid.Column="1"
                                             Grid.Row="9"                                                      
                                             Placeholder="Ghi chú"
-                                            Text="{Binding InvoiceCode, Mode=TwoWay}" 
+                                            Text="{Binding Notes, Mode=TwoWay}" 
                                             />
                                             <sfbutton:SfButton 
                                         Grid.Row="10"

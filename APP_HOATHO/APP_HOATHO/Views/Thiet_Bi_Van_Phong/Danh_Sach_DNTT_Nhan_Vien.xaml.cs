@@ -61,6 +61,11 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 var item = e.SelectedItem as DanhSachDeNghiThanhToan;
                 if (item != null)
                 {
+                    if (item.Status == 2)
+                    {
+                        await new MessageBox("Vui lòng mở lại mới được điều chỉnh").Show();
+                        return;
+                    }
                     await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
                 }    
                
@@ -72,8 +77,26 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             }
         }
 
-       
-            
+        private async void reopen_Tapped(object sender, EventArgs e)
+        {
+            var image = sender as Image;
+            if (image != null)
+            {
+                var item = image.BindingContext as DanhSachDeNghiThanhToan;
+                if (item != null)
+                {
+                    var ask = await new MessageYesNo("Bạn có muốn mở lại không?").Show();
+                    if (ask == DialogReturn.OK)
+                    {
+                        var openOk = await viewModel.RunHttpClientPost($"api/dntt/ReopenDNTT?documentNo={item.No_}", null);
+                        if (openOk.IsSuccessStatusCode)
+                        {
+                            await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
+                        }    
+                    }    
+                }    
+            }    
+        }
     }
 
     

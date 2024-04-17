@@ -46,7 +46,7 @@
                         <ColumnDefinition Width="5*"></ColumnDefinition>
                         <ColumnDefinition Width="5*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <sfbutton:SfButton  Grid.Column="0" 
+                    <sfbutton:SfButton  Grid.Column="1" 
                                         x:Name="btnOK" 
                                         Text="OK" FontSize="20"   
                                         ImageSource="ok.png" 
@@ -55,7 +55,7 @@
                                         Style="{StaticResource stylesfButton}"
                                         HeightRequest="50">
                     </sfbutton:SfButton>
-                    <sfbutton:SfButton Grid.Column="1" 
+                    <sfbutton:SfButton Grid.Column="0" 
                             x:Name="btnCancel" Text="Cancel" 
                             ImageSource="ic_delete.png" 
                             Clicked="btnCancel_Clicked" 

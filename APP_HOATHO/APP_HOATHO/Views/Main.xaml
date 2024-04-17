@@ -297,7 +297,7 @@
                                                        ActionCommand="{Binding LichSuYeuCauXuLyCommand}"
                                                        Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
                                     </control:IconMainView>
-                                    <control:IconMainView  Title="Đề nghị thanh toán"
+                                    <control:IconMainView  Title="Tạo Đề nghị &#10;thanh toán"
                                                        Grid.Column="1"
                                                        Grid.Row="1"
                                                        IconImageSource="denghitt.png"
@@ -305,7 +305,7 @@
                                                        ActionCommand="{Binding DeNghiThanhToanChoNhanVienCommand}"
                                                        Disable="{Binding IsYeuCauXuLyLoi, Mode=TwoWay}">
                                     </control:IconMainView>
-                                    <control:IconMainView  Title="Danh sách ĐNTT"
+                                    <control:IconMainView  Title="Điều chỉnh &#10;ĐNTT"
                                                        Grid.Column="2"
                                                        Grid.Row="1"
                                                        IconImageSource="kiemke.png"

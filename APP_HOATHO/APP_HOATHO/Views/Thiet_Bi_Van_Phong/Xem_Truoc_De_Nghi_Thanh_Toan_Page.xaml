@@ -139,7 +139,7 @@
                                             Grid.Row="5"    
                                                     VerticalOptions="CenterAndExpand"
                                                     Style="{StaticResource styleLablenotwhite}"
-                                            Text="{Binding InvoiceCode, Mode=TwoWay}" 
+                                            Text="{Binding Notes, Mode=TwoWay}" 
                                             />
                                            
                                         </Grid>
