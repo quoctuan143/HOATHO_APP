@@ -250,6 +250,32 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
         public bool IsShow { get=> _isShow; set => SetProperty(ref _isShow,value); }
         [JsonProperty("Document Date")]
         public DateTime? NgayHoaDon { get; set; } = DateTime.Now.Date;
+        public string FormatDonGia
+        {
+            get
+            {
+                return string.Format("{0:#,##0.##}", DonGia);
+            }
+            set
+            {
+                if (!CheckThapPhan(value))
+                {
+                    try
+                    {
+                        double response = 0;
+                        FormatNumberString(ref response, value);
+                        DonGia = response;
+                        OnPropertyChanged("FormatDonGia");
+                        OnPropertyChanged("DonGia");
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+            }
+        }
     }
 
     public class SuggestedPaymentRequest:Bindable

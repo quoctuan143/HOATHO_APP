@@ -9,8 +9,8 @@
                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand" 
-                  SelectionMode="Single"
-                  ItemSelected="ListView_ItemSelected"
+                  ItemTapped="ListView_ItemTapped_1"
+                  SelectionMode="None"
                   SeparatorColor="Blue">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -37,7 +37,8 @@
                                        Grid.Column="0"
                                        Grid.Row="1" />
                                     <Label Text="{Binding Total, StringFormat='{0:#,###}'}"
-                                       Style="{StaticResource styleLablenotwhite}"
+                                       Style="{StaticResource styleLableBold}"
+                                           TextColor="Red"
                                        Grid.Column="1"
                                        Grid.Row="1" />
 

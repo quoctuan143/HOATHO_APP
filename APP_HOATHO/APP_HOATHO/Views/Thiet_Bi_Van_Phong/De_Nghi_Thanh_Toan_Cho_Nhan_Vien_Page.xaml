@@ -155,7 +155,7 @@
                                                    x:Name="txtDonGia"
                                                    Keyboard="Numeric"
                                                    TextChanged="txtAmount_TextChanged"
-                                            Text="{Binding DonGia, Mode=TwoWay}" 
+                                            Text="{Binding FormatDonGia, Mode=TwoWay}" 
                                             />
                                             <Label Text="Số hóa đơn:"
                                                     VerticalOptions="CenterAndExpand"

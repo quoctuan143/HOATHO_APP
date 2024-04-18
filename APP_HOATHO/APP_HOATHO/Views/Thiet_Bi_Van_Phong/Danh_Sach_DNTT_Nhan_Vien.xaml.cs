@@ -23,7 +23,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Danh_Sach_DNTT_Nhan_Vien : ContentPage, INotifyPropertyChanged
     {
-        public ObservableCollection<DanhSachDeNghiThanhToan> ListItem { get; set; }
+        public ObservableCollection<DanhSachDeNghiThanhToan> ListItem { get; set; } 
         BaseViewModel viewModel;
         
         public Danh_Sach_DNTT_Nhan_Vien()
@@ -54,29 +54,6 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             }
         }
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            try
-            {                
-                var item = e.SelectedItem as DanhSachDeNghiThanhToan;
-                if (item != null)
-                {
-                    if (item.Status == 2)
-                    {
-                        await new MessageBox("Vui lòng mở lại mới được điều chỉnh").Show();
-                        return;
-                    }
-                    await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
-                }    
-               
-            }
-            catch (Exception ex)
-            {
-
-                await new MessageBox(ex.Message).Show();
-            }
-        }
-
         private async void reopen_Tapped(object sender, EventArgs e)
         {
             var image = sender as Image;
@@ -92,10 +69,38 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                         if (openOk.IsSuccessStatusCode)
                         {
                             await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
-                        }    
+                        }
+                        else
+                        {
+                            await new MessageBox(openOk.Content.ReadAsStringAsync().Result).Show();
+                        }
                     }    
                 }    
             }    
+        }
+       
+
+        private async void ListView_ItemTapped_1(object sender, ItemTappedEventArgs e)
+        {
+            try
+            {
+                var item = e.Item as DanhSachDeNghiThanhToan;
+                if (item != null)
+                {
+                    if (item.Status == 2)
+                    {
+                        await new MessageBox("Vui lòng mở lại mới được điều chỉnh").Show();
+                        return;
+                    }
+                    await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                await new MessageBox(ex.Message).Show();
+            }
         }
     }
 
