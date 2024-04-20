@@ -11,6 +11,7 @@
                   VerticalOptions="FillAndExpand" 
                   ItemTapped="ListView_ItemTapped_1"
                   SelectionMode="None"
+                  HasUnevenRows="True"
                   SeparatorColor="Blue">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -21,7 +22,7 @@
           AbsoluteLayout.LayoutFlags="All"
                                   RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
                                   HorizontalOptions="FillAndExpand"
-                                  VerticalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand"                                       
                                   Margin="10">
                                     <Label Text="Tên đối tượng"
                                        Style="{StaticResource styleLablenotwhite}"
