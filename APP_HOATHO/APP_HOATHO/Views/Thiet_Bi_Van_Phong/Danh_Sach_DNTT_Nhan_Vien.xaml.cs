@@ -5,6 +5,7 @@ using APP_HOATHO.Models.De_Nghi_Thanh_Toan;
 using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
 using APP_HOATHO.ViewModels;
 using Newtonsoft.Json;
+using Syncfusion.XForms.Buttons;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -54,32 +55,6 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             }
         }
 
-        private async void reopen_Tapped(object sender, EventArgs e)
-        {
-            var image = sender as Image;
-            if (image != null)
-            {
-                var item = image.BindingContext as DanhSachDeNghiThanhToan;
-                if (item != null)
-                {
-                    var ask = await new MessageYesNo("Bạn có muốn mở lại không?").Show();
-                    if (ask == DialogReturn.OK)
-                    {
-                        var openOk = await viewModel.RunHttpClientPost($"api/dntt/ReopenDNTT?documentNo={item.No_}", null);
-                        if (openOk.IsSuccessStatusCode)
-                        {
-                            await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
-                        }
-                        else
-                        {
-                            await new MessageBox(openOk.Content.ReadAsStringAsync().Result).Show();
-                        }
-                    }    
-                }    
-            }    
-        }
-       
-
         private async void ListView_ItemTapped_1(object sender, ItemTappedEventArgs e)
         {
             try
@@ -100,6 +75,31 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             {
 
                 await new MessageBox(ex.Message).Show();
+            }
+        }
+
+        private async void btnMoLai_Clicked(object sender, EventArgs e)
+        {
+            var image = sender as SfButton;
+            if (image != null)
+            {
+                var item = image.BindingContext as DanhSachDeNghiThanhToan;
+                if (item != null)
+                {
+                    var ask = await new MessageYesNo("Bạn có muốn mở lại không?").Show();
+                    if (ask == DialogReturn.OK)
+                    {
+                        var openOk = await viewModel.RunHttpClientPost($"api/dntt/ReopenDNTT?documentNo={item.No_}", null);
+                        if (openOk.IsSuccessStatusCode)
+                        {
+                            await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
+                        }
+                        else
+                        {
+                            await new MessageBox(openOk.Content.ReadAsStringAsync().Result).Show();
+                        }
+                    }
+                }
             }
         }
     }

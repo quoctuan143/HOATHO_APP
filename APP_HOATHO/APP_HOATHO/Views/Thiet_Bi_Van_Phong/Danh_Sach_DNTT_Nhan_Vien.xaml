@@ -89,19 +89,17 @@
                                         Grid.Row="7"
                                         Grid.Column="1"
                                         IsVisible="False"
-                                        Style="{StaticResource sfbuttonCancel}"
+                                        Style="{StaticResource stylesfButton}"
                                         x:Name="btnMoLai"
                                         Text="Mở lại"                                                          
-                                        Clicked="reopen_Tapped"
+                                        Clicked="btnMoLai_Clicked"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="EndAndExpand">
-                                        <sfbutton:SfButton.Triggers>
-                                            <DataTrigger TargetType="Image"
-                                                     Binding="{Binding Status}"
-                                                     Value="2">
-                                                            <Setter Property="IsVisible" Value="True" />
-                                                        </DataTrigger>
-                                        </sfbutton:SfButton.Triggers>
+                                    <sfbutton:SfButton.Triggers>
+                                        <DataTrigger TargetType="sfbutton:SfButton" Binding="{Binding Status}" Value="2">
+                                            <Setter Property="IsVisible" Value="true"/>
+                                        </DataTrigger>
+                                    </sfbutton:SfButton.Triggers>
                                             </sfbutton:SfButton>
                                 </Grid>
                                 
