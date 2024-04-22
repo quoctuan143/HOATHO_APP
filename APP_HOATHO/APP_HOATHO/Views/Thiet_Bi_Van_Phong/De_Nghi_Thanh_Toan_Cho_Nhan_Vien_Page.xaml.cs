@@ -78,7 +78,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                         PaytoType = 5, // loại đối tượng
                         PaymentMethod = 2, // hình thức thanh toán
                         DocumentType = 3, // nội địa trả trước
-                        Type = 2, // loai hàng hóa,
+                        Type = 4, // loai hàng hóa,
                         LoginID = Preferences.Get(Config.User, "")
                     }
                 };
@@ -127,6 +127,8 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     listChiTiet.ScrollTo(SuggestedPayment.SuggestedPaymentLines.FirstOrDefault(), Xamarin.Forms.ScrollToPosition.Start, true);
+
+                    
                 });
             }
             catch (Exception ex)

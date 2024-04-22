@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Danh_Sach_DNTT_Nhan_Vien"
              Title="Danh sách ĐNTT"
              Shell.TabBarIsVisible="False">
@@ -17,10 +17,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
-                            <AbsoluteLayout>
-                                <Grid ColumnDefinitions="4*,6*"  AbsoluteLayout.LayoutBounds="0,0,1,1"
-          AbsoluteLayout.LayoutFlags="All"
-                                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
+                           
+                                <Grid ColumnDefinitions="4*,6*" 
+                                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand"                                       
                                   Margin="10">
@@ -86,21 +85,27 @@
                                        Style="{StaticResource styleLablenotwhite}"
                                        Grid.Column="1"
                                        Grid.Row="6" />
-                                </Grid>
-                                <Image Source="edit.png" IsVisible="False"  AbsoluteLayout.LayoutBounds="0.9,0.95,40,40" 
-                                        AbsoluteLayout.LayoutFlags="PositionProportional">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="reopen" Tapped="reopen_Tapped"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                    <Image.Triggers>
-                                        <DataTrigger TargetType="Image"
+                                    <sfbutton:SfButton 
+                                        Grid.Row="7"
+                                        Grid.Column="1"
+                                        IsVisible="False"
+                                        Style="{StaticResource sfbuttonCancel}"
+                                        x:Name="btnMoLai"
+                                        Text="Mở lại"                                                          
+                                        Clicked="reopen_Tapped"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="EndAndExpand">
+                                        <sfbutton:SfButton.Triggers>
+                                            <DataTrigger TargetType="Image"
                                                      Binding="{Binding Status}"
                                                      Value="2">
                                                             <Setter Property="IsVisible" Value="True" />
                                                         </DataTrigger>
-                                                    </Image.Triggers>
-                                </Image>
-                            </AbsoluteLayout>
+                                        </sfbutton:SfButton.Triggers>
+                                            </sfbutton:SfButton>
+                                </Grid>
+                                
+                           
                             
                         </ViewCell.View>
                     </ViewCell>
