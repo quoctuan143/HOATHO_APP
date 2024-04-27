@@ -300,6 +300,7 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
         public string NganHang { get; set; }
         public DateTime ThoiHanThanhToan { get; set; }
         public SuggestedPaymentRequest SuggestedPaymentRequest { get; set; }
+        public string LoaiThanhToan { get; set; }
     }
 
     public class DanhSachDeNghiThanhToan
@@ -313,5 +314,6 @@ namespace APP_HOATHO.Models.De_Nghi_Thanh_Toan
         public string SoTaiKhoan { get; set; }
         public string NganHang { get; set; }
         public int Status { get; set; }
+        public string LoaiThanhToan { get; set; }
     }
 }

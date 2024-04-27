@@ -30,6 +30,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
         public List<LookupValue> HinhThucThanhToans { get; set; }
         public List<LookupValue> LoaiHangHoas { get; set; }
         public List<LookupValue> LoaiDoiTuongs { get; set; }
+        public List<LookupValue> LoaiThanhToans { get; set; }
         public ObservableCollection<LookupValue> DoiTuongs { get; set; }
         double _total;
         public double Total { get => _total; set { _total = value; OnPropertyChanging("Total"); } }
@@ -54,7 +55,12 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             LoaiDoiTuongs = new  List<LookupValue>{ new LookupValue { Code = "3", Name = "Nhà cung cấp" },
                                                                new LookupValue { Code = "5", Name = "Nhân viên" }};
             OnPropertyChanged("LoaiDoiTuongs");
-            
+
+            LoaiThanhToans = new List<LookupValue>{ new LookupValue { Code = "3", Name = " NĐ Trả trước" },
+                                                               new LookupValue { Code = "4", Name = "NĐ Trả sau" }};
+            OnPropertyChanged("LoaiDoiTuongs");
+
+
             DoiTuongs = new ObservableCollection<LookupValue>();
             BindingContext = this;
         }
@@ -283,7 +289,12 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                         await new MessageBox("Vui lòng nhập nội dung thanh toán").Show();
                         return;
                     }
-                    if (SuggestedPayment.SuggestedPaymentLines.Count == 0)
+                    if (SuggestedPayment.SuggestedPaymentHeader.DocumentType == 0)
+                    {
+                        await new MessageBox("Vui lòng chọn loại thanh toán trả trước hoặc trả sau").Show();
+                        return;
+                    }
+                if (SuggestedPayment.SuggestedPaymentLines.Count == 0)
                     {
                         await new MessageBox($"Chưa có chi tiết thanh toán").Show();
                         return;
@@ -312,7 +323,8 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                         SoTaiKhoan = doituong?.Description,
                         TenDoiTuong = doituong.Name,
                         SoTien = this.Total,
-                        HinhThucThanhToan = HinhThucThanhToans.FirstOrDefault(x=>x.Code == SuggestedPayment.SuggestedPaymentHeader.PaymentMethod.ToString())?.Name
+                        HinhThucThanhToan = HinhThucThanhToans.FirstOrDefault(x=>x.Code == SuggestedPayment.SuggestedPaymentHeader.PaymentMethod.ToString())?.Name,
+                        LoaiThanhToan = LoaiThanhToans.FirstOrDefault(x => x.Code == SuggestedPayment.SuggestedPaymentHeader.DocumentType.ToString())?.Name,
                     };
                     await Navigation.PushAsync(new Xem_Truoc_De_Nghi_Thanh_Toan_Page(viewSuggested));
                 }

@@ -48,6 +48,10 @@
                         <Label Text="Hạn thanh toán:" Style="{StaticResource styleLableBold}" VerticalOptions="Center"></Label>
                         <Label Text="{Binding ViewSuggestedPayment.ThoiHanThanhToan , StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource styleLableBold}"></Label>
                     </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Label Text="Loại thanh toán:" Style="{StaticResource styleLableBold}" VerticalOptions="Center"></Label>
+                        <Label Text="{Binding ViewSuggestedPayment.LoaiThanhToan}" Style="{StaticResource styleLablenotwhite}"></Label>
+                    </StackLayout>
 
                     <StackLayout Orientation="Horizontal" BackgroundColor="LightGray" VerticalOptions="CenterAndExpand"
                                  >

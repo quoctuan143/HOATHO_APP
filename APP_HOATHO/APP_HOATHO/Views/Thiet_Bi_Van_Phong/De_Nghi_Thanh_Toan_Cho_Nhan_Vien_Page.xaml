@@ -66,9 +66,10 @@
                             </sfcombobox:SfComboBox>
                         </StackLayout>
                     </Grid>
-                    <StackLayout Spacing="0">
-                        <Label Text="Đối tượng thanh toán" Style="{StaticResource styleLableBold}"></Label>
-                        <sfcombobox:SfComboBox x:Name="cbdoituongthanhtoan"
+                    <Grid ColumnDefinitions="6*,4*">
+                        <StackLayout Spacing="0" Grid.Column="0">
+                            <Label Text="Đối tượng thanh toán" Style="{StaticResource styleLableBold}"></Label>
+                            <sfcombobox:SfComboBox x:Name="cbdoituongthanhtoan"
                                        SelectedValue="{Binding SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_ , Mode=TwoWay}"
                                        DataSource="{Binding DoiTuongs, Mode=TwoWay}"
                                        DisplayMemberPath="Name"
@@ -77,10 +78,32 @@
                                        Watermark="Đối tượng thanh toán"
                                        IsEditableMode="True"
                                        ShowClearButton="True"
-                                               >
-                        </sfcombobox:SfComboBox>
-                    </StackLayout>
-
+                                                   DropDownItemHeight="43"
+                                                   DropDownWidth="300">
+                                <sfcombobox:SfComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+                                            <Image Source="User.png" WidthRequest="15" Aspect="AspectFit" Margin="{OnPlatform Android='0,-25,0,0'}"/>
+                                            <Label Text="{Binding Name}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </sfcombobox:SfComboBox.ItemTemplate>
+                            </sfcombobox:SfComboBox>
+                        </StackLayout>
+                        <StackLayout Spacing="0" Grid.Column="1">
+                            <Label Text="Loại TT" Style="{StaticResource styleLableBold}"></Label>
+                            <sfcombobox:SfComboBox x:Name="cbloaitt"
+                                       SelectedValue="{Binding SuggestedPayment.SuggestedPaymentHeader.DocumentType , Mode=TwoWay}"
+                                       DataSource="{Binding LoaiThanhToans, Mode=TwoWay}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"                                                               
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Loại TT"
+                                       IsEditableMode="True"
+                                       ShowClearButton="True">
+                            </sfcombobox:SfComboBox>
+                        </StackLayout>
+                    </Grid>
                     <Entry Style="{StaticResource styleEntry}" Text="{Binding SuggestedPayment.SuggestedPaymentHeader.Description , Mode=TwoWay}"
                        Placeholder="Nhập nội dung thanh toán tại đây"
                            Margin="{OnPlatform Android='0,-20,0,-10', Default='0'}"></Entry>
