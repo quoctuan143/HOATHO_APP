@@ -99,7 +99,7 @@
                                        SelectedValuePath="Code"                                                               
                                        Style="{StaticResource styleCombobox}"
                                        Watermark="Loại TT"
-                                       IsEditableMode="True"
+                                       IsEditableMode="False"
                                        ShowClearButton="True">
                             </sfcombobox:SfComboBox>
                         </StackLayout>

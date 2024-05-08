@@ -102,6 +102,31 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 }
             }
         }
+
+        private async void btnHuy_Clicked(object sender, EventArgs e)
+        {
+            var image = sender as SfButton;
+            if (image != null)
+            {
+                var item = image.BindingContext as DanhSachDeNghiThanhToan;
+                if (item != null)
+                {
+                    var ask = await new MessageYesNo("Bạn có muốn Hủy không?").Show();
+                    if (ask == DialogReturn.OK)
+                    {
+                        var openOk = await viewModel.RunHttpClientPost($"api/dntt/Delete?documentNo={item.No_}", null);
+                        if (openOk.IsSuccessStatusCode)
+                        {
+                            await ExcuteLoadLichSuBaoTri();
+                        }
+                        else
+                        {
+                            await new MessageBox(openOk.Content.ReadAsStringAsync().Result).Show();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     

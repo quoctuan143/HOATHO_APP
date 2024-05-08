@@ -118,7 +118,17 @@
                                         </DataTrigger>
                                     </sfbutton:SfButton.Triggers>
                                             </sfbutton:SfButton>
-                                </Grid>
+                                <sfbutton:SfButton 
+                                        Grid.Row="9"
+                                        Grid.Column="0"                                         
+                                        Style="{StaticResource sfbuttonCancel}"
+                                        x:Name="btnHuy"
+                                        Text="Hủy"                                                          
+                                        Clicked="btnHuy_Clicked"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="EndAndExpand">                                      
+                                </sfbutton:SfButton>
+                            </Grid>
                                 
                            
                             

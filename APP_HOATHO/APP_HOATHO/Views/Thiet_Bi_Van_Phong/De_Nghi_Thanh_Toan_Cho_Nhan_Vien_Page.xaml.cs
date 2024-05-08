@@ -83,7 +83,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                     {
                         PaytoType = 5, // loại đối tượng
                         PaymentMethod = 2, // hình thức thanh toán
-                        DocumentType = 3, // nội địa trả trước
+                        DocumentType = 4, // nội địa trả sau
                         Type = 4, // loai hàng hóa,
                         LoginID = Preferences.Get(Config.User, "")
                     }
