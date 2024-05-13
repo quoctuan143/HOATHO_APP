@@ -149,4 +149,12 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
 
         public string Art { get; set; } 
     }
+
+    public class UpdateCayVaiRequest
+    {
+        public string Id { get; set; }
+        public double? SoLuong { get; set; }
+        public string DocumentNo { get; set; }
+        public string RollNo { get; set; }
+    }
 }

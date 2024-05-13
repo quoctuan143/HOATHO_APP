@@ -49,17 +49,30 @@
 
                     <sfDataGrid:GridTemplateColumn  HeaderText="Roll No"
                                                     MappingName="RollNo"
-                                                    Width="100"
+                                                    Width="140"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding RollNo}"
-                                       TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"
-                                       WidthRequest="100"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                <StackLayout Orientation="Horizontal" Spacing="2">
+                                    <Entry Text="{Binding RollNo, Mode=TwoWay}"
+                                      TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"                                         
+                                           HorizontalOptions="FillAndExpand"
+                                           WidthRequest="100"
+                                       />
+                                    <Image Source="check.png"
+                                       WidthRequest="30"
+                                       HeightRequest="30"
+                                       Aspect="AspectFit"
+                                           Margin="0,0,2,0"
+                                           HorizontalOptions="EndAndExpand"
+                                       >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CapNhatRollNo, Source={x:Reference Name=PackingList}}"
+                                                              CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -116,7 +129,7 @@
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="2">
-                                    <Entry Text="{Binding FormatNumberInvoicedMeter}"
+                                    <Entry Text="{Binding FormatNumberInvoicedMeter, Mode=TwoWay}"
                                       TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                         Keyboard="Numeric"
                                            HorizontalOptions="FillAndExpand"

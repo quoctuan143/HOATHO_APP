@@ -26,6 +26,8 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
 
         public ICommand CapNhatSoLuongCayVai { get; set; }
 
+        public ICommand CapNhatRollNo { get; set; }
+
         public PurchaseLinePackingList_ViewModel(string soChungTu)
         {
             TitleButton = "Quét kệ chứa cây vải";
@@ -78,20 +80,56 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
 
             CapNhatSoLuongCayVai = new Command(async (obj) =>
             {
-                PurchaseLinePackingList_Model item = obj as PurchaseLinePackingList_Model;
-                if (item != null)
+                try
                 {
-                    var ok = await Config.client.GetAsync($"api/qltb/CapNhatSoLuongPackingList?id={item.Id}&documentno={item.DocumentNo}&soluong={item.InvoicedMeter}");
+                    PurchaseLinePackingList_Model item = obj as PurchaseLinePackingList_Model;
+                    if (item != null)
+                    {
+                        UpdateCayVaiRequest request = new UpdateCayVaiRequest { DocumentNo = item.DocumentNo, Id = item.Id, SoLuong = item.InvoicedMeter };
+                        var ok = await RunHttpClientPost($"api/qltb/CapNhatSoLuongPackingList", request);
 
-                    if (ok.IsSuccessStatusCode)
-                    {
-                        await new MessageBox("Cập nhật số lượng cây vải thành công").Show();
-                    }
-                    else
-                    {
-                        await new MessageBox(ok.Content.ReadAsStringAsync().Result).Show();
+                        if (ok.IsSuccessStatusCode)
+                        {
+                            await new MessageBox("Cập nhật số lượng cây vải thành công").Show();
+                        }
+                        else
+                        {
+                            await new MessageBox(ok.Content.ReadAsStringAsync().Result).Show();
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+
+            });
+
+            CapNhatRollNo = new Command(async (obj) =>
+            {
+                try
+                {
+                    PurchaseLinePackingList_Model item = obj as PurchaseLinePackingList_Model;
+                    if (item != null)
+                    {
+                        UpdateCayVaiRequest request = new UpdateCayVaiRequest { DocumentNo = item.DocumentNo, Id = item.Id, RollNo = item.RollNo };
+                        var ok = await RunHttpClientPost($"api/qltb/CapNhatRollNoPackingList", request);
+
+                        if (ok.IsSuccessStatusCode)
+                        {
+                            await new MessageBox("Cập nhật roll no thành công").Show();
+                        }
+                        else
+                        {
+                            await new MessageBox(ok.Content.ReadAsStringAsync().Result).Show();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+                
             });
         }
     }
