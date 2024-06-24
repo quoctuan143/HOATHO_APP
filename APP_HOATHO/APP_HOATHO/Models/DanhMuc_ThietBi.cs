@@ -22,5 +22,7 @@ namespace APP_HOATHO.Models
         public string KhoNhaMay { get; set; } // 
         public string TinhTrangThietBi { get; set; } // công suất 
         public DateTime? NgaySuDung { get; set; } // ngày đưa vào sử dụng
+        public string Position { get; set; } // vi tri lưu
+        public string PositionName { get; set; } // vi tri lưu 
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="45" android:versionName="1.7.45" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="46" android:versionName="1.7.46" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
 	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="33" />
 	<application android:label="Hoatho Smart App" android:usesCleartextTraffic="true" android:icon="@mipmap/logo">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.app_hoathocorp.fileprovider" android:exported="false" android:grantUriPermissions="true">

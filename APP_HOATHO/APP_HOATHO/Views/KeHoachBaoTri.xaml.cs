@@ -73,6 +73,12 @@ namespace APP_HOATHO.Views
         {
             try
             {
+                if (string.IsNullOrEmpty(entryMaTB.Text))
+                {
+                    DependencyService.Get<IMessage>().ShortAlert("Vui lòng quét mã qrcode trước khi bảo trì");
+                    listThietBi.SelectedItem = null;
+                    return;
+                }    
                 APP_HOATHO.Models.KeHoachBaoTri item = listThietBi.SelectedItem as APP_HOATHO.Models.KeHoachBaoTri;
                 if (item != null)
                 {
