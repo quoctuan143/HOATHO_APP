@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.Them_Cay_Vai_Moi_Vao_Ke_Page"
+             Shell.TabBarIsVisible="False"
+             Title="Lưu cây vải tồn kho">
+    <ContentPage.Content>
+        <ScrollView Orientation="Both">
+            <StackLayout Spacing="0">
+                <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="*,*,*,*,*,*,*,*,*,*" Padding="5" RowSpacing="0">
+                    <Label Text="Art NPL" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
+                    <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="txtArt"  FontSize="16" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="100"></Entry>
+                        <sfbutton:SfButton Style="{x:StaticResource stylesfButton}" x:Name="btnCheckArt"  Clicked="btnCheckArt_Clicked" HorizontalOptions="EndAndExpand" Text="Tìm kiếm"></sfbutton:SfButton>
+                    </StackLayout>                      
+                    <sfcombobox:SfComboBox x:Name="cbLoaiDoiTuong"                                                 
+                                       SelectedValue="{Binding Item.ItemNo , Mode=TwoWay}"                                           
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"
+                                       Grid.ColumnSpan="2" Grid.Row="1"  
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Chọn mã nguyên phụ liệu"
+                                       IsEditableMode="True"    
+                                       SelectionChanged="cbLoaiDoiTuong_SelectionChanged">
+                    </sfcombobox:SfComboBox>
+                    
+                    <Label Text="Chất lượng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.Quality,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
+                    <Label Text="Roll No" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.RollNo,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
+                    <sfcombobox:SfComboBox x:Name="cbmau"
+                                           
+                                       SelectedValue="{Binding Item.Color , Mode=TwoWay}"
+                                       DataSource="{Binding danhSachMauNPL}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"
+                                       Grid.ColumnSpan="2" Grid.Row="4"  
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Chọn màu phụ liệu"
+                                       IsEditableMode="True"  
+                                       ShowClearButton="True">
+                    </sfcombobox:SfComboBox>                             
+                    <Label Text="Gross Length" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.FormatNumberGrossLength,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
+                    <Label Text="Allowance" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.FormatNumberAllowance,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
+                    <Label Text="Số lượng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.FormatNumberInvoicedMeter ,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></Entry>
+                    <Label Text="Đơn vị tính" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
+                    <sfcombobox:SfComboBox x:Name="cbDonViTinh"                                    
+                                   Grid.Column="1"
+                                   Grid.Row="8"
+                                   SelectedValue="{Binding Item.DonViTinh , Mode=TwoWay}"                                      
+                                   DisplayMemberPath="Name"
+                                   SelectedValuePath="Code"
+                                   Style="{StaticResource styleCombobox}"
+                                   Watermark="Chọn đơn vị tính" 
+                                           IsEditableMode="False"
+                                   HeightRequest="50"
+                                   ShowClearButton="True">
+
+                    </sfcombobox:SfComboBox>
+                    <Label Text="Barcode" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
+                    <Label Text="{Binding Item.BarcodeId ,Mode=TwoWay}" Grid.Column="1" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
+
+                </Grid>
+                <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                    <sfbutton:SfButton Text="Gán Nhãn"  x:Name="btnGanNhan" Clicked="Button_Clicked" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                    <sfbutton:SfButton Text="Gán Ô chứa vải" x:Name="btnGanOVai" Clicked="btnGanOVai_Clicked" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource sfbuttonCancel }"></sfbutton:SfButton>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="End" Margin="0, 10, 0, 0">
+                    <sfbutton:SfButton Text="Lưu Kho" x:Name="btnCapNhat" Clicked="btnCapNhat_Clicked" FontSize="16"
+                        CornerRadius="60" HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

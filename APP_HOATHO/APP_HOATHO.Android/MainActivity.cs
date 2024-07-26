@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Android.Content;
 using Plugin.LocalNotification;
 using FFImageLoading.Forms.Platform;
+using Android;
 
 namespace APP_HOATHO.Droid
 {
@@ -85,5 +86,23 @@ namespace APP_HOATHO.Droid
             NotificationCenter.NotifyNotificationTapped(intent);
             base.OnNewIntent(intent);
         }
+        protected override void OnStart()
+        {
+            base.OnStart();
+            const int requestLocationId = 0;
+
+            string[] notiPermission =
+            {
+                Manifest.Permission.PostNotifications
+            };
+
+            if ((int)Build.VERSION.SdkInt < 33) return;
+
+            if (this.CheckSelfPermission(Manifest.Permission.PostNotifications) != Permission.Granted)
+            {
+                this.RequestPermissions(notiPermission, requestLocationId);
+            }
+        }
+
     }
 }

@@ -24,5 +24,7 @@ namespace APP_HOATHO.Models
         public DateTime? NgaySuDung { get; set; } // ngày đưa vào sử dụng
         public string Position { get; set; } // vi tri lưu
         public string PositionName { get; set; } // vi tri lưu 
+        public string TrangThai { get; set; } // Đang Sử Dụng,Thanh Lý/Tồn 0,Chờ Thanh Lý
+        public string ThietBiRoi { get; set; }
     }
 }

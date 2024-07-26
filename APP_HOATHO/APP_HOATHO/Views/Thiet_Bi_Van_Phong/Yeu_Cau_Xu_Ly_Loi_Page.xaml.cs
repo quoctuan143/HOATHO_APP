@@ -50,8 +50,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             }
             if (Item.YeuCauTheoThietBi == false && Item.DocumentNo_ == "")
             {
-                DependencyService.Get<IMessage>().LongAlert("Vui lòng nhập nhóm yêu cầu xử lý!");
-                return;
+                Item.DocumentNo_ = "Máy tính";
             }
 
             //post ảnh trước 

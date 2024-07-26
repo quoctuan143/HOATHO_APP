@@ -133,7 +133,18 @@
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                            
                         </sfDataGrid:GridTemplateColumn>
+                        <sfDataGrid:GridTemplateColumn MappingName="ViTriLuu" 
+                                                   Width="140"                                                               
+                                                   HeaderText="Vị trí lưu" 
+                                                   HeaderFontAttribute="Bold" 
+                                                   HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding ViTriLuu}"  XAlign="Start" YAlign="Center"  TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
 
+                        </sfDataGrid:GridTemplateColumn>
                         <sfDataGrid:GridTemplateColumn MappingName="Da_Bao_Tri" 
                                                    Width="100"     
                                                    HeaderText="Đã Bảo Trì" 

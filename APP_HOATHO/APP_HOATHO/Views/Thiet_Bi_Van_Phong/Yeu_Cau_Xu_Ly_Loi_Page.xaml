@@ -13,8 +13,8 @@
                         <Label Text="Yêu cầu theo thiết bị" VerticalOptions="CenterAndExpand" Style="{StaticResource styleLableBold}"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                        <Entry Text="{Binding DocumentNo_}" IsVisible="{Binding NotYeuCauTheoThietBi}" HorizontalOptions="FillAndExpand"
-                           Placeholder="Nhập nhóm yêu cầu xử lý"/>
+                        <!--<Entry Text="{Binding DocumentNo_}" IsVisible="{Binding NotYeuCauTheoThietBi}" HorizontalOptions="FillAndExpand"
+                           Placeholder="Nhập nhóm yêu cầu xử lý"/>-->
                         <sfbutton:SfButton x:Name="btnQuetQr" Style="{StaticResource stylesfButton}" Text="Quét QR thiết bị" IsVisible="{Binding YeuCauTheoThietBi}"
                             Clicked="btnQuetQr_Clicked"/>
                     </StackLayout>

@@ -93,7 +93,11 @@ namespace APP_HOATHO.Views
                 {
                     noidung += "||" + entryNoiDungKhac.Text;
                 }    
-                
+                if (media ==  null)
+                {
+                    await new MessageBox("Vui lòng chụp hình sau khi bảo trì").Show();
+                    return;
+                }
                 var result = await new MessageYesNo("Bạn có muốn cập nhật lần bảo trì này không?").Show();
                 if (result == Global.DialogReturn.OK)
                 {
@@ -137,7 +141,7 @@ namespace APP_HOATHO.Views
                         var response = client.PostAsync("api/qltb/PostLichSuBaoTri_Picture", content).Result;
                         if (response.IsSuccessStatusCode)
                         {
-                            var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri", lsu);
+                            var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri_V1", lsu);
                             if (ok.IsSuccessStatusCode)
                             {
                                 await Navigation.PopAsync();
@@ -159,7 +163,7 @@ namespace APP_HOATHO.Views
                     {
                         HttpClient client = new HttpClient();
                         client.BaseAddress = new Uri(Config.URL);
-                        var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri", lsu);
+                        var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri_V1", lsu);
                         if (ok.IsSuccessStatusCode)
                         {
 

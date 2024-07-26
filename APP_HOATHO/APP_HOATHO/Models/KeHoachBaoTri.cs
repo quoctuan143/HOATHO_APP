@@ -16,5 +16,6 @@ namespace APP_HOATHO.Models
         public string LoaiBaoTri { get; set; } 
         public Boolean Da_Bao_Tri { get; set; }  
         public string ItemCategoryCode { get; set; }
+        public string ViTriLuu { get; set; }
     }
 }

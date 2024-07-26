@@ -294,6 +294,11 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                         await new MessageBox("Vui lòng chọn loại thanh toán trả trước hoặc trả sau").Show();
                         return;
                     }
+                if (SuggestedPayment.SuggestedPaymentHeader.HanThanhToan.HasValue && (SuggestedPayment.SuggestedPaymentHeader.HanThanhToan.Value.DayOfWeek == DayOfWeek.Saturday || SuggestedPayment.SuggestedPaymentHeader.HanThanhToan.Value.DayOfWeek == DayOfWeek.Sunday))
+                {
+                    await new MessageBox("Hạn thanh toán không được chọn thứ 7 hoặc chủ nhật").Show();
+                    return;
+                }
                 if (SuggestedPayment.SuggestedPaymentLines.Count == 0)
                     {
                         await new MessageBox($"Chưa có chi tiết thanh toán").Show();

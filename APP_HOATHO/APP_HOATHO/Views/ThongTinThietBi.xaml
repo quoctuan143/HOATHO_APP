@@ -32,7 +32,7 @@
             <tabView:SfTabItem Title="Thông Tin" ImageSource="information.png">
                 <tabView:SfTabItem.Content>
                     <ScrollView>
-                        <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,*,auto,auto" Padding="10" RowSpacing="10">
+                        <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,auto,*,auto,auto,auto" Padding="10" RowSpacing="10">
                             <Label Text="Nhà máy" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
                             <Label Text="{Binding Item.KhoNhaMay}" Grid.Column="1" Grid.Row="0" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
                             <Label Text="Mã Thiết Bị" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
@@ -64,7 +64,12 @@
                             <Label Text="{Binding Item.Description}" Grid.Column="1" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
                             <Label Text="Vị trí lưu" Grid.Column="0" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
                             <Label Text="{Binding Item.PositionName}" Grid.Column="1" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
-                            <Label Grid.ColumnSpan="2" Grid.Row="11">
+                            <Label Text="Trạng thái" Grid.Column="0" Grid.Row="11" FontSize="16" TextColor="Black"></Label>
+                            <Label Text="{Binding Item.TrangThai}" Grid.Column="1" Grid.Row="11" FontSize="16" TextColor="Black"></Label>
+                            <Label Text="Thiết bị rỗi" Grid.Column="0" Grid.Row="12" FontSize="16" TextColor="Black"></Label>
+                            <Label Text="{Binding Item.ThietBiRoi}" Grid.Column="1" Grid.Row="12" FontSize="16" TextColor="Black"></Label>
+
+                            <Label Grid.ColumnSpan="2" Grid.Row="13">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="link video"
@@ -79,16 +84,16 @@
                             </Label>
                             <Image Source="{Binding Item.Picture}" Aspect="AspectFill"
                                x:Name="imagePicture"
-                               Grid.Row="12" Grid.ColumnSpan="2"></Image>
+                               Grid.Row="14" Grid.ColumnSpan="2"></Image>
                             <Image Source="camera.png" HeightRequest="40" WidthRequest="40" VerticalOptions="End"
                                HorizontalOptions="End" Margin="0,0,10,10"
-                               Grid.Row="13" Grid.Column="1">
+                               Grid.Row="15" Grid.Column="1">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1">
                                     </TapGestureRecognizer>
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Label  Grid.ColumnSpan="2" Grid.Row="14">
+                            <Label  Grid.ColumnSpan="2" Grid.Row="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Tài liệu kĩ thuật"

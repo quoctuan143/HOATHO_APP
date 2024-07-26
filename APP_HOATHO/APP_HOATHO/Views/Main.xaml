@@ -331,7 +331,7 @@
                                    FontSize="20"
                                    FontAttributes="Italic"></Label>
                                 <Grid ColumnDefinitions="3.3*,3.3*,3.4*"
-                                  RowDefinitions="auto,auto,auto"
+                                  RowDefinitions="auto,auto,auto,auto"
                                   Margin="0,5,0,0"
                                   ColumnSpacing="0"
                                   HorizontalOptions="FillAndExpand"
@@ -409,6 +409,14 @@
                                                        IconImageSource="phieuxuatkho.png"
                                                        BadgeText=""
                                                        ActionCommand="{Binding XuatKhoTheoKeVaiCommand}"
+                                                       Disable="{Binding IsPhieuXuatKho}">
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Nhập cây vải tồn kho"
+                                                       Grid.Column="0"
+                                                       Grid.Row="3"
+                                                       IconImageSource="duyetdonhang.png"
+                                                       BadgeText=""
+                                                       ActionCommand="{Binding NhapCayVaiTonKhoCommand}"
                                                        Disable="{Binding IsPhieuXuatKho}">
                                     </control:IconMainView>
                                 </Grid>

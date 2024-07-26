@@ -101,6 +101,9 @@
     <Compile Update="Views\Quan_Ly_Vi_Tri_Kho\CapNhatOChuaVai_Page.xaml.cs">
       <DependentUpon>CapNhatOChuaVai_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Quan_Ly_Vi_Tri_Kho\Them_Cay_Vai_Moi_Vao_Ke_Page.xaml.cs">
+      <DependentUpon>Them_Cay_Vai_Moi_Vao_Ke_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Quan_Ly_Vi_Tri_Kho\TaoPhieuXuatKhoGomVai_Page.xaml.cs">
       <DependentUpon>TaoPhieuXuatKhoGomVai_Page.xaml</DependentUpon>
     </Compile>
