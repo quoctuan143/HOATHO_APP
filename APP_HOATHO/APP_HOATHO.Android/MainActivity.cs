@@ -13,6 +13,9 @@ using Android.Content;
 using Plugin.LocalNotification;
 using FFImageLoading.Forms.Platform;
 using Android;
+using System.Linq;
+using AndroidX.Core.Content;
+using AndroidX.Core.App;
 
 namespace APP_HOATHO.Droid
 {
@@ -77,6 +80,21 @@ namespace APP_HOATHO.Droid
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
+            if (Xamarin.Essentials.DeviceInfo.Version.Major >= 13 && (permissions.Where(p => p.Equals("android.permission.WRITE_EXTERNAL_STORAGE")).Any() || permissions.Where(p => p.Equals("android.permission.READ_EXTERNAL_STORAGE")).Any()))
+            {
+                var wIdx = Array.IndexOf(permissions, "android.permission.WRITE_EXTERNAL_STORAGE");
+                var rIdx = Array.IndexOf(permissions, "android.permission.READ_EXTERNAL_STORAGE");
+
+                if (wIdx != -1 && wIdx < permissions.Length) grantResults[wIdx] = Permission.Granted;
+                if (rIdx != -1 && rIdx < permissions.Length) grantResults[rIdx] = Permission.Granted;
+            }
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            {
+                if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.PostNotifications) != Permission.Granted)
+                {
+                    ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.PostNotifications }, 101);
+                }
+            }
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);

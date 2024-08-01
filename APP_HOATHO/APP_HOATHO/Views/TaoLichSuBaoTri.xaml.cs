@@ -199,18 +199,26 @@ namespace APP_HOATHO.Views
         {
             try
             {
-                await CrossMedia.Current.Initialize();
-                if (!CrossMedia.Current.IsPickPhotoSupported)
+                //await CrossMedia.Current.Initialize();
+                //if (!CrossMedia.Current.IsPickPhotoSupported)
+                //{
+                //    await new MessageBox( "Điện thoại không hỗ trợ chức năng chụp hình").Show();
+                //    return;
+                //}
+                //media = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions { SaveToAlbum = true });
+                //if (media == null) return;
+                //imagePicture.Source = ImageSource.FromStream(() =>
+                //{
+                //    return media.GetStream();
+                //});
+                var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
                 {
-                    await new MessageBox( "Điện thoại không hỗ trợ chức năng chụp hình").Show();
-                    return;
-                }
-                media = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions { SaveToAlbum = true });
-                if (media == null) return;
-                imagePicture.Source = ImageSource.FromStream(() =>
-                {
-                    return media.GetStream();
+                    Title = "Chọn một bức hình"
                 });
+
+                var stream = await result.OpenReadAsync();
+
+                imagePicture.Source = ImageSource.FromStream(() => stream);
             }
             catch (Exception ex )
             {
