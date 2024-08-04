@@ -143,5 +143,54 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 await new MessageBox(ex.Message).Show();
             }
         }
+
+        private async void ChonHinh_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await new MessageBox("Điện thoại không hỗ trợ chức năng chụp hình").Show();
+                    return;
+                }
+                media = await CrossMedia.Current.PickPhotoAsync();
+                if (media == null) return;
+                imagePicture.Source = ImageSource.FromStream(() =>
+                {
+                    return media.GetStream();
+                });
+
+            }
+            catch (Exception ex)
+            {
+
+                await new MessageBox(ex.Message).Show();
+            }
+        }
+
+        private async void ChupHinh_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await new MessageBox("Điện thoại không hỗ trợ chức năng chụp hình").Show();
+                    return;
+                }
+                media = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions { SaveToAlbum = true });
+                if (media == null) return;
+                imagePicture.Source = ImageSource.FromStream(() =>
+                {
+                    return media.GetStream();
+                });
+            }
+            catch (Exception ex)
+            {
+
+                await new MessageBox(ex.Message).Show();
+            }
+        }
     }
 }

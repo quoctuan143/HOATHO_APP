@@ -39,8 +39,10 @@
                     Placeholder="Sdt/Zalo/UltraView (Id/Pass)"                   
                    HorizontalOptions="FillAndExpand"
                    Keyboard="Text"/>
-                    <Label Style="{StaticResource styleLableBold}"
-                   Text="Đính kèm hình ảnh" />
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Chọn ảnh" x:Name="ChonHinh" Clicked="ChonHinh_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
+                        <Button Text="Chụp ảnh" x:Name="ChupHinh" Clicked="ChupHinh_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
+                    </StackLayout>
                     <StackLayout Padding="10">
                         <Frame CornerRadius="20"                              
                            Padding="0"
@@ -48,9 +50,9 @@
                             <Image x:Name="imagePicture" Source="noimage.jpg" Aspect="AspectFill" 
                                 HeightRequest="300"
                            WidthRequest="300">
-                                <Image.GestureRecognizers>
+                                <!--<Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                </Image.GestureRecognizers>
+                                </Image.GestureRecognizers>-->
                             </Image>
                         </Frame>
                     </StackLayout>

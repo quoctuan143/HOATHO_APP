@@ -52,28 +52,6 @@
                             <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
                         </sfinputText:SfTextInputLayout.HintLabelStyle>
                     </sfinputText:SfTextInputLayout>
-                   
-
-                    <!--<sfcombox:SfComboBox  x:Name="cbNoiDung" Watermark="Chọn nội dung bảo trì" WatermarkColor="#06264c"                             
-                             Grid.Row="0"
-                             DataSource="{Binding QUY_TRINH_BAO_TRIs , Mode=TwoWay}"                            
-                             HorizontalOptions="FillAndExpand"                              
-                             NoResultsFoundText="Không tìm thấy kết quả" 
-                             DisplayMemberPath="Description" 
-                             MultiSelectMode="Token"
-                                              IsEditableMode="False"
-                                              EnableAutoSize="True"
-                                              TokensWrapMode="Wrap"                                             
-                             Style="{StaticResource styleCombobox}">
-                        <sfcombox:SfComboBox.TokenSettings>
-                            <sfcombox:TokenSettings FontSize="16" BackgroundColor="#06264c" 
-                                        TextColor="White" SelectedBackgroundColor="#ffffe0" 
-                                        DeleteButtonColor="White" IsCloseButtonVisible="true" 
-                                                        
-                                        CornerRadius="15" DeleteButtonPlacement="Right">
-                            </sfcombox:TokenSettings>
-                        </sfcombox:SfComboBox.TokenSettings>
-                    </sfcombox:SfComboBox>-->
                     <sfinputText:SfTextInputLayout Hint="Nội dung khác"      
                                                ContainerType="Outlined"   
                                               >
@@ -92,14 +70,18 @@
                             <sfinputText:LabelStyle FontSize="16" FontAttributes="Bold"  />
                         </sfinputText:SfTextInputLayout.HintLabelStyle>
                     </sfinputText:SfTextInputLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Chọn ảnh" x:Name="ChonHinh" Clicked="ChonHinh_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
+                        <Button Text="Chụp ảnh" x:Name="ChupHinh" Clicked="ChupHinh_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
+                    </StackLayout>
                     <StackLayout Padding="10">
                         <Frame CornerRadius="20" 
                            Padding="0"
                            IsClippedToBounds="True">
                             <Image x:Name="imagePicture" Source="noimage.jpg" Aspect="AspectFit" >
-                                <Image.GestureRecognizers>
+                                <!--<Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                </Image.GestureRecognizers>
+                                </Image.GestureRecognizers>-->
                             </Image>
                         </Frame>
                     </StackLayout>
