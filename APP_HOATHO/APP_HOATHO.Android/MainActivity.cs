@@ -30,6 +30,7 @@ namespace APP_HOATHO.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            RequestNotificationPermission();
             NotificationCenter.CreateNotificationChannel();
             await CrossMedia.Current.Initialize();
             Rg.Plugins.Popup.Popup.Init(this);
@@ -122,5 +123,15 @@ namespace APP_HOATHO.Droid
             }
         }
 
+        public void RequestNotificationPermission()
+        {
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Tiramisu)
+            {
+                if (ContextCompat.CheckSelfPermission(this, Android.Manifest.Permission.PostNotifications) != Permission.Granted)
+                {
+                    ActivityCompat.RequestPermissions(this, new string[] { Android.Manifest.Permission.PostNotifications }, 101);
+                }
+            }
+        }
     }
 }
