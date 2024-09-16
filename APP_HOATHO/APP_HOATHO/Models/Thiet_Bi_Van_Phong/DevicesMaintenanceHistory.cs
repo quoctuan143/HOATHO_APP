@@ -57,5 +57,7 @@ namespace APP_HOATHO.Models.Thiet_Bi_Van_Phong
                 OnPropertyChanged(nameof(NotYeuCauTheoThietBi));
             } }
         public bool NotYeuCauTheoThietBi { get; set; }
+        public DateTime? Du_Kien_Hoan_Thanh { get; set; }
+        public string IT_Tiep_Nhan { get; set; }
     }
 }

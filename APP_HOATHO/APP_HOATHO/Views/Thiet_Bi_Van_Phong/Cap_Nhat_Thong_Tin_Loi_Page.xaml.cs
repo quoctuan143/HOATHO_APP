@@ -72,6 +72,11 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             else
                 DependencyService.Get<IMessage>().LongAlert(ok.Content.ReadAsStringAsync().Result);
         }
+
+        private async void tiepnhan_Clicked(object sender, EventArgs e)
+        {
+            await new IT_Tiep_Nhan_Yeu_Cau(Item).Show();
+        }
     }
     internal class PhanNhomLoi
     {

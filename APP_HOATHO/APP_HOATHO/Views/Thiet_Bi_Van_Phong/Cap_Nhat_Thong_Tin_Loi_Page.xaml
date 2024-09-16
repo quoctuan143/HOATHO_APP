@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Cap_Nhat_Thong_Tin_Loi_Page"
              Title="Xử lý yêu cầu của User"
              Shell.TabBarIsVisible="False">
@@ -37,11 +38,19 @@
                                    ShowClearButton="True">
 
             </sfcombobox:SfComboBox>
-            <Button Style="{StaticResource styleButton}"
-                    Text="Cập Nhật"
-                    x:Name="GuiYeuCau"
-                    Clicked="GuiYeuCau_Clicked"
-                    VerticalOptions="EndAndExpand"></Button>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <sfbutton:SfButton Style="{StaticResource stylesfButton}"
+                        Text="Cập Nhật"
+                        x:Name="GuiYeuCau"
+                        Clicked="GuiYeuCau_Clicked"                                   
+                        VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"></sfbutton:SfButton>
+                <sfbutton:SfButton Style="{StaticResource sfbuttonCancel}"
+                        Text="Tiếp nhận"
+                        x:Name="tiepnhan"
+                        Clicked="tiepnhan_Clicked"
+                        VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"></sfbutton:SfButton>
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

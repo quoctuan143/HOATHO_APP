@@ -8,6 +8,7 @@ using APP_HOATHO.Views.KiDienTu;
 using APP_HOATHO.Views.Thiet_Bi_Van_Phong;
 using APP_HOATHO.Views.ThietBi;
 using Plugin.FirebasePushNotification;
+using Plugin.LocalNotification;
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -110,6 +111,15 @@ namespace APP_HOATHO.Views
                 var loaiphieu = DocumentType.DuyetDatMuaPhuTung;
                 try
                 {
+                    var notification = new NotificationRequest
+                    {
+                        Description = p.Data["body"].ToString(),
+                        Title = p.Data["title"].ToString(),
+                        NotificationId = 1403,
+                        BadgeNumber = 1,
+                    };
+                    await NotificationCenter.Current.Show(notification);
+                    await DisplayAlert(notification.Title, notification.Description, "ok");
                     if (p.Data["sochungtu"].ToString() != "")
                     {
                         DuyetChungTuModel item = new DuyetChungTuModel { No_ = p.Data["sochungtu"].ToString() };
@@ -171,6 +181,7 @@ namespace APP_HOATHO.Views
                 }
                 catch
                 {
+                    
                 }
             });
         }

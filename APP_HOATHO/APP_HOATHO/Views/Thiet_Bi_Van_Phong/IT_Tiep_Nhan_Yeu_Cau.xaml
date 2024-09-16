@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                 x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.IT_Tiep_Nhan_Yeu_Cau">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8"
+                                   DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True" />
+    </pages:PopupPage.Animation>
+    <Frame CornerRadius="15"
+           Margin="40,0,40,0"
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="Center">
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     Spacing="10">
+
+            <syncfusion:SfTimePicker x:Name="timePicker"  HeaderText="Thời gian dự kiến hoàn thành" 
+                                     HourHeaderText="Giờ"
+                                     MinutesHeaderText="Phút"
+                                     SecondsHeaderText="Giây"
+                                     EnableLooping="True" />
+            <sfbutton:SfButton          x:Name="btnOK"
+                                        Margin="20,10,20,0"
+                                        Text="Đã tiếp nhận"
+                                        FontSize="17"
+                                        CornerRadius="30"
+                                        Clicked="btnOK_Clicked"                                            
+                                        FontAttributes="None"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource stylesfButton}">
+            </sfbutton:SfButton>
+        </StackLayout>
+
+    </Frame>
+    </pages:PopupPage>
