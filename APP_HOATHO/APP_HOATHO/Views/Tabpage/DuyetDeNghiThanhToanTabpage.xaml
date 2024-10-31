@@ -10,7 +10,8 @@
             Shell.TabBarIsVisible="False"
             SelectedTabColor="Red"
             UnselectedTabColor="White"            
-            BarTextColor="White"  
+            BarTextColor="White"
+            BackgroundColor="White"
             BarBackgroundColor="{StaticResource Primary}"            
             Title="Đề nghị thanh toán">
   <!--Pages can be added as references or inline-->

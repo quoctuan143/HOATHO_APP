@@ -5,6 +5,7 @@
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Cap_Nhat_Thong_Tin_Loi_Page"
              Title="Xử lý yêu cầu của User"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>             

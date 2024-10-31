@@ -6,7 +6,8 @@
              xmlns:page="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
                 mc:Ignorable="d"
-             x:Class="APP_HOATHO.Dialog.ShowImage">  
+             x:Class="APP_HOATHO.Dialog.ShowImage"
+                BackgroundColor="White">  
         <page:PopupPage.Animation>
             <animations:MoveAnimation 
             PositionIn="Bottom" 
@@ -14,7 +15,7 @@
             </animations:MoveAnimation>
         </page:PopupPage.Animation>
         <Frame CornerRadius="15"
-           OutlineColor="Black"          
+           BorderColor="Black"          
            VerticalOptions="End"
            HorizontalOptions="FillAndExpand"   >
         <Image Source="{Binding IMAGE_LINK}" Aspect="AspectFill"></Image>

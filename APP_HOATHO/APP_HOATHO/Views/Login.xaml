@@ -6,7 +6,7 @@
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:sfinputText="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"   
              mc:Ignorable="d"   
-             BackgroundColor="White"
+             BackgroundColor="White"             
              x:Class="APP_HOATHO.Views.Login">
     <ContentPage.Resources>
         <Style TargetType="Entry" Class="entryClass">

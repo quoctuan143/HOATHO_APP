@@ -5,6 +5,7 @@
              xmlns:helper="clr-namespace:APP_HOATHO.Helpers"
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" 
              xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False"
              Title="{Binding Title}">
     <ContentPage.Content>

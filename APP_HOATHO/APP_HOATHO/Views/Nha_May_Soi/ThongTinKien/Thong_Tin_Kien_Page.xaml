@@ -4,6 +4,7 @@
              xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              Title="Cập nhật thông tin kiện"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              x:Class="APP_HOATHO.Views.Nha_May_Soi.Thong_Tin_Kien_Page">
     <StackLayout>
         <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,auto" Padding="10" RowSpacing="10">

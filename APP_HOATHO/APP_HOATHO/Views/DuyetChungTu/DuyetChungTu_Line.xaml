@@ -6,6 +6,7 @@
              x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetChungTu_Line"
              Title="{Binding Title}"          
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              >
     
     <ContentPage.Content>
@@ -21,7 +22,7 @@
                     <sfDataGrid:GridTemplateColumn MappingName="No_" HeaderText="Mã" HeaderFontAttribute="Bold" Width="160" HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding No_}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding No_}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -30,7 +31,10 @@
                     <sfDataGrid:GridTemplateColumn  MappingName="Name" HeaderText="Tên" Width="180"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16" >
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding Name}" TextColor="Black"  Padding="5,2,5,2"   XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding Name}"
+                                       TextColor="Black"
+                                       Padding="5,2,5,2"
+                                       HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

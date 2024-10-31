@@ -9,6 +9,7 @@
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.TaoPhieuXuatKhoGomVai_Page"
              x:Name="this"
              Title="Tạo phiếu xuất kho tổng"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Always"

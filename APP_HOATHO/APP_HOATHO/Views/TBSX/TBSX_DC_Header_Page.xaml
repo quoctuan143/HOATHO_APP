@@ -4,6 +4,7 @@
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="APP_HOATHO.Views.TBSX.TBSX_DC_Header_Page"
              Title="TBSX Điều Chỉnh"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>

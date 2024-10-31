@@ -8,6 +8,7 @@
              xmlns:custom="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              mc:Ignorable="d"
              Title="HOA THO CORP"
+             BackgroundColor="White"
              x:Class="APP_HOATHO.Views.Main">
     <Shell.TitleView>
         <StackLayout Orientation="Horizontal"

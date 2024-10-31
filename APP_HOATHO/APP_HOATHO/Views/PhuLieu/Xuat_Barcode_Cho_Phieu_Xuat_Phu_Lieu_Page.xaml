@@ -5,6 +5,7 @@
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.PhuLieu.Xuat_Barcode_Cho_Phieu_Xuat_Phu_Lieu_Page"
              Title="{Binding Title}"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>

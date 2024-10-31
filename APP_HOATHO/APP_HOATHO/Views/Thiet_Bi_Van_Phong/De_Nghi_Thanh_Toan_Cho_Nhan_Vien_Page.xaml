@@ -7,6 +7,7 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="Đề nghị thanh toán"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              x:Name="this"
              >
     <ContentPage.Content>

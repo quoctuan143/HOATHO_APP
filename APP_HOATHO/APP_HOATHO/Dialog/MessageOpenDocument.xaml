@@ -9,7 +9,8 @@
                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
                 mc:Ignorable="d"
                 CloseWhenBackgroundIsClicked="False"
-             x:Class="APP_HOATHO.Dialog.MessageOpenDocument">
+             x:Class="APP_HOATHO.Dialog.MessageOpenDocument"
+                BackgroundColor="White">
     <page:PopupPage.Animation >
         <animations:ScaleAnimation 
             PositionIn="Center"

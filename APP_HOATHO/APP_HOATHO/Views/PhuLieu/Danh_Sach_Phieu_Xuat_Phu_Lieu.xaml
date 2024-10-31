@@ -10,6 +10,7 @@
              x:Class="APP_HOATHO.Views.PhuLieu.Danh_Sach_Phieu_Xuat_Phu_Lieu"
              x:Name="this"
              Title="Phiếu xuất phụ liệu"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Always"

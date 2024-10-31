@@ -9,7 +9,8 @@
             Shell.TabBarIsVisible="False"
             SelectedTabColor="Red"
             UnselectedTabColor="White"            
-            BarTextColor="White"  
+            BarTextColor="White"
+            BackgroundColor="White"
             BarBackgroundColor="{StaticResource Primary}"   
             Title="Lệnh cấp phát FOB"
             >

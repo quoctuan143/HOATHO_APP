@@ -5,6 +5,7 @@
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.Purchase_Line_Page"
              Title="Chi tiết nhập kho"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>

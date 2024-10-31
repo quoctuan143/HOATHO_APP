@@ -6,6 +6,7 @@
              x:Class="APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL.Chat_Luong_Kien_Bong_Page"
              Title="{Binding Title}"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              x:Name="XuatKienChiTiet">
     <ContentPage.Resources>
         <ResourceDictionary>

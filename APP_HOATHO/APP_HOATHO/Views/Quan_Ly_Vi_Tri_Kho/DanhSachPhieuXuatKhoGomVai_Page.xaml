@@ -6,6 +6,7 @@
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.DanhSachPhieuXuatKhoGomVai_Page"
              xmlns:helper="clr-namespace:APP_HOATHO.Helpers"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              Title="Xuất kho nhiều phiếu xuất">
     <ContentPage.Content>
         <StackLayout Spacing="0" Margin="3">

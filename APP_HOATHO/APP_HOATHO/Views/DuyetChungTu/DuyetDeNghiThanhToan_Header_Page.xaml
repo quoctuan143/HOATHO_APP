@@ -5,7 +5,8 @@
              NavigationPage.HasNavigationBar="True" 
              Title="Duyệt đề nghị thanh toán"
              Shell.TabBarIsVisible="False"
-             x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetDeNghiThanhToan_Header_Page">
+             x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetDeNghiThanhToan_Header_Page"
+             BackgroundColor="White">
    
     <ContentPage.Content>
         <StackLayout>

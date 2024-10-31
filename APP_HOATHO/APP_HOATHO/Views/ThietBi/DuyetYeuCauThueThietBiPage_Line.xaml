@@ -4,6 +4,7 @@
              x:Class="APP_HOATHO.Views.ThietBi.DuyetYeuCauThueThietBiPage_Line"
              Title="{Binding Title}"     
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              >
     
     <ContentPage.Content>

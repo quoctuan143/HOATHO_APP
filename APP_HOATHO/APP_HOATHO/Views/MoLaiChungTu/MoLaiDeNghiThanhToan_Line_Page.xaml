@@ -4,6 +4,7 @@
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              Title="Chi tiết mở lại"
              x:Class="APP_HOATHO.Views.MoLaiChungTu.MoLaiDeNghiThanhToan_Line_Page"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     
     <ContentPage.Content>

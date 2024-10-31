@@ -4,6 +4,7 @@
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.ChuyenKeVaiASangB_Page"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              Title="Chuyển toàn bộ cây vải">
     <ContentPage.Content>
         <StackLayout Padding="10">

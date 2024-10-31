@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:APP_HOATHO.Helpers"
              xmlns:helper="clr-namespace:APP_HOATHO.Helpers"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              Title="Danh sách phiếu xuất kho">
     <ContentPage.Content>
         <StackLayout Spacing="0" Margin="3">

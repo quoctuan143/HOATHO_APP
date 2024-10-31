@@ -8,6 +8,7 @@
              xmlns:local2="clr-namespace:APP_HOATHO.Converter"
              x:Class="APP_HOATHO.Views.HangKhongGanNhan.HangKhongGanNhan_Line_Page"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              Title="Xếp vải lên kệ">
     <ContentPage.Resources>
         <ResourceDictionary>

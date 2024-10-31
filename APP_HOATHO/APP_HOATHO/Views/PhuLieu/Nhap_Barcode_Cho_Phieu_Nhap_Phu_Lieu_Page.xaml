@@ -5,6 +5,7 @@
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.PhuLieu.Nhap_Barcode_Cho_Phieu_Nhap_Phu_Lieu_Page"
              Title="Gán barcode cho phụ liệu"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>

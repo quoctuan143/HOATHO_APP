@@ -6,6 +6,7 @@
              x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Xem_Truoc_De_Nghi_Thanh_Toan_Page"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="Xem đề nghị thanh toán"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False"
              x:Name="this"
              >

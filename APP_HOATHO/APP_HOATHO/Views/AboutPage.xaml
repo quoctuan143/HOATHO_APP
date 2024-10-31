@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="APP_HOATHO.Views.AboutPage"
              xmlns:helper="clr-namespace:APP_HOATHO.Helpers"
+             BackgroundColor="White"
              xmlns:vm="clr-namespace:APP_HOATHO.ViewModels"
              Title="{Binding Title}">
     <ContentPage.BindingContext>

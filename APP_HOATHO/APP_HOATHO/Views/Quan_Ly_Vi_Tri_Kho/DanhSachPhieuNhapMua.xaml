@@ -10,6 +10,7 @@
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.DanhSachPhieuNhapMua"
              x:Name="this"
              Title="Phiếu nhập mua hàng"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Always"

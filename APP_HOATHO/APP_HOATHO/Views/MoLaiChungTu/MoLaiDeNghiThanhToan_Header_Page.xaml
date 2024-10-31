@@ -6,6 +6,7 @@
             xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              x:Class="APP_HOATHO.Views.MoLaiChungTu.MoLaiDeNghiThanhToan_Header_Page"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              >
    
     <ContentPage.Content>

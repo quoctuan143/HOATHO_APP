@@ -11,6 +11,7 @@
              xmlns:local="clr-namespace:APP_HOATHO.Views" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
                 xmlns:local1="clr-namespace:APP_HOATHO.Style"
              InputTransparent="False"
+             BackgroundColor="White"
              Title="Cập nhật bảo trì">
     <ContentPage.Resources>
         <ResourceDictionary>

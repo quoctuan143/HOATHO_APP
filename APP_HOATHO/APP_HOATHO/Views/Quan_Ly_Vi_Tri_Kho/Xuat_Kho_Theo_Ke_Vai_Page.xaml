@@ -5,6 +5,7 @@
              xmlns:local1="clr-namespace:APP_HOATHO.Style" xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.Xuat_Kho_Theo_Ke_Vai_Page"
              Title="Thông tin cây vải trên kệ vải"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Resources>
         <ResourceDictionary>

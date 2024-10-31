@@ -5,6 +5,7 @@
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.CapNhatViTriChuaOVai_Page"
              Title="Thay đổi vị trí kệ vải"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              x:Name="ThayDoiViTriKien">
     <ContentPage.Content>
         <StackLayout>

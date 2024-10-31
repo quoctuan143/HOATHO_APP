@@ -13,6 +13,7 @@
              xmlns:textinput="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
              xmlns:sfCheck="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              x:Class="APP_HOATHO.Views.ThongTinThietBiRoi">
     <ContentPage.Resources>
         <ResourceDictionary>

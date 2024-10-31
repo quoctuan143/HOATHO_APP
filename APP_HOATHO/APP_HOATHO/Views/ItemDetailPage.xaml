@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="APP_HOATHO.Views.ItemDetailPage"
+             BackgroundColor="White"
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="15">

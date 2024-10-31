@@ -5,6 +5,7 @@
              xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.Them_Cay_Vai_Moi_Vao_Ke_Page"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              Title="Lưu cây vải tồn kho">
     <ContentPage.Content>
         <ScrollView Orientation="Both">

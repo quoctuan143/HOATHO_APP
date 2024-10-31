@@ -7,6 +7,7 @@
              x:Class="APP_HOATHO.Views.HangKhongGanNhan.Xuat_Hang_Khong_Gan_Nhan_Page"
              xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              Title="{Binding Title}">     
     <ContentPage.Content>
         <StackLayout>

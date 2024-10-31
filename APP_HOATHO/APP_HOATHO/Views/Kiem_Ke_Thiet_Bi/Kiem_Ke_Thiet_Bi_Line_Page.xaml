@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="APP_HOATHO.Views.Kiem_Ke_Thiet_Bi.Kiem_Ke_Thiet_Bi_Line_Page"
              Title="{Binding Title}"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Spacing="0">

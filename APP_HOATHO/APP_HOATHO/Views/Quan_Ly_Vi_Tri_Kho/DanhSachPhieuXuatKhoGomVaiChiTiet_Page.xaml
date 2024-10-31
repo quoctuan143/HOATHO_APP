@@ -7,6 +7,7 @@
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.DanhSachPhieuXuatKhoGomVaiChiTiet_Page"
               xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              Title="Chi tiết xuất kho">
     <ContentPage.Resources>
         <ResourceDictionary>

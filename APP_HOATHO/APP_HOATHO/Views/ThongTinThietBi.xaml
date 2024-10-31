@@ -9,6 +9,7 @@
              mc:Ignorable="d"
              Title="{Binding Title}"
              Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              x:Class="APP_HOATHO.Views.ThongTinThietBi">
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -4,7 +4,8 @@
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="APP_HOATHO.Views.DuyetChungTu.DuyetDeNghiThanhToan_Line_Page"
              Shell.TabBarIsVisible="False"
-             Title="Chi tiết thanh toán">
+             Title="Chi tiết thanh toán"
+             BackgroundColor="White">
     
     <ContentPage.Content>
         <StackLayout Spacing="0">

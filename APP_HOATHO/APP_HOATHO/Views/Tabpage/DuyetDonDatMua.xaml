@@ -8,7 +8,8 @@
            Shell.TabBarIsVisible="False"
             SelectedTabColor="Red"
             UnselectedTabColor="White"            
-            BarTextColor="White"  
+            BarTextColor="White"
+            BackgroundColor="White"
             BarBackgroundColor="{StaticResource Primary}"  
             Title="Đặt mua nguyên phụ liệu">
   <!--Pages can be added as references or inline-->    

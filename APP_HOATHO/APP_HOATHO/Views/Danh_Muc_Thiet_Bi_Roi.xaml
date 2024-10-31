@@ -11,6 +11,7 @@
              Title="Danh Mục Thiết Bị Rỗi"
              mc:Ignorable="d"
             Shell.TabBarIsVisible="False"
+             BackgroundColor="White"
              x:Class="APP_HOATHO.Views.Danh_Muc_Thiet_Bi_Roi">
     <ContentPage.Resources>
         <ResourceDictionary>

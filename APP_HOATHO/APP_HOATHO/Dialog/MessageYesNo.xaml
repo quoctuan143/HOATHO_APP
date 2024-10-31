@@ -9,7 +9,8 @@
                 xmlns:local="clr-namespace:APP_HOATHO.Helpers"
                 CloseWhenBackgroundIsClicked="False" 
                 mc:Ignorable="d"
-             x:Class="APP_HOATHO.Dialog.MessageYesNo">
+             x:Class="APP_HOATHO.Dialog.MessageYesNo"
+                BackgroundColor="White">
     <page:PopupPage.Animation >
         <animations:ScaleAnimation 
             PositionIn="Center"

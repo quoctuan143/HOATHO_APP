@@ -4,6 +4,7 @@
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.XuatKhoTheoCayVai_Page"
              xmlns:local2="clr-namespace:APP_HOATHO.Converter"
              Title="{Binding Title}"
+             BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Resources>
         <ResourceDictionary>

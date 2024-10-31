@@ -13,6 +13,7 @@
              mc:Ignorable="d"
              Shell.TabBarIsVisible="False"
              Title="{Binding Title}"
+             BackgroundColor="White"
              x:Class="APP_HOATHO.Views.KeHoachBaoTri">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="scan.png" Clicked="ToolbarItem_Clicked_1"></ToolbarItem>
