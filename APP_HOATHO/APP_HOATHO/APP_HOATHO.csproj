@@ -98,6 +98,15 @@
       <SubType>Code</SubType>
       <DependentUpon>Xuat_Kien_Line_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PhuLieu\Chi_Tiet_Phieu_Xuat_Kho_Phu_Lieu_Page.xaml.cs">
+      <DependentUpon>Chi_Tiet_Phieu_Xuat_Kho_Phu_Lieu_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PhuLieu\Danh_Sach_Phieu_Xuat_Phu_Lieu.xaml.cs">
+      <DependentUpon>Danh_Sach_Phieu_Xuat_Phu_Lieu.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PhuLieu\Xuat_Barcode_Cho_Phieu_Xuat_Phu_Lieu_Page.xaml.cs">
+      <DependentUpon>Xuat_Barcode_Cho_Phieu_Xuat_Phu_Lieu_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Quan_Ly_Vi_Tri_Kho\CapNhatOChuaVai_Page.xaml.cs">
       <DependentUpon>CapNhatOChuaVai_Page.xaml</DependentUpon>
     </Compile>
@@ -266,6 +275,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MoLaiChungTu\MoLaiLenhCapPhatGiaCong_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PhuLieu\Chi_Tiet_Phieu_Nhap_Kho_Phu_Lieu_Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PhuLieu\Danh_Sach_Phieu_Nhap_Phu_Lieu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PhuLieu\Nhap_Barcode_Cho_Phieu_Nhap_Phu_Lieu_Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Quan_Ly_Vi_Tri_Kho\CapNhatOChuaVai_Page.xaml">

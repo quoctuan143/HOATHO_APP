@@ -1,4 +1,5 @@
-﻿using APP_HOATHO.Global;
+﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
 using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
@@ -62,8 +63,8 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             }
             var ok = await BaseView.RunHttpClientPost("api/qltb/CapNhatThongTinSauKhiSuaLoi", Item);
             if (ok.IsSuccessStatusCode)
-            {
-                DependencyService.Get<IMessage>().LongAlert("Cập nhật xử lý lỗi thành công");
+            {                
+                await new MessageBox("Cập nhật xử lý lỗi thành công").Show();
                 await Navigation.PopAsync();
                 MessagingCenter.Send(this, "capnhatxulyloi", Item.RowID);
                 MessagingCenter.Send(this, "langngheduyet", DocumentType.DanhSachChoITXuLy);

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -72,7 +73,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             var ok = await BaseView.RunHttpClientPost("api/qltb/GuiYeuCauXuLyLoiThietBi" , Item);
             if (ok.IsSuccessStatusCode)
             {
-                DependencyService.Get<IMessage>().LongAlert("Đã gửi yêu cầu xử lý lỗi thành công");
+                await new MessageBox("Đã gửi yêu cầu xử lý lỗi thành công").Show();                
                 await Navigation.PopAsync();
             }                    
             else

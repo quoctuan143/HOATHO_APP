@@ -95,6 +95,10 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 if (ok.IsSuccessStatusCode)
                 {
                     await new MessageBox("Xuất kho thành công").Show();
+                    foreach (var item in ListItem)
+                    {
+                        item.Chon = false;
+                    }
                     await Navigation.PopAsync();
                 }    
                 else

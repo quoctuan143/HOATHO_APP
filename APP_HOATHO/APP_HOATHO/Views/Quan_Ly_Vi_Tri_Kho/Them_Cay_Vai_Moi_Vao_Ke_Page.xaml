@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <ScrollView Orientation="Both">
             <StackLayout Spacing="0">
-                <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="*,*,*,*,*,*,*,*,*,*" Padding="5" RowSpacing="0">
+                <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*" Padding="5" RowSpacing="0">
                     <Label Text="Art NPL" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
                     <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Entry x:Name="txtArt"  FontSize="16" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="100"></Entry>
@@ -46,12 +46,24 @@
                     <Entry Text="{Binding Item.FormatNumberGrossLength,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Allowance" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
                     <Entry Text="{Binding Item.FormatNumberAllowance,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
-                    <Label Text="Số lượng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.FormatNumberInvoicedMeter ,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></Entry>
-                    <Label Text="Đơn vị tính" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
+                    <Label Text="Số cây vải"
+                           Grid.Column="0"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="7"
+                           FontSize="16"
+                           TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.SoCayVai ,Mode=TwoWay}"
+                           Keyboard="Numeric"
+                           Grid.Column="1"
+                           Grid.Row="7"
+                           FontSize="16"
+                           TextColor="Black"></Entry>
+                    <Label Text="Chiều dài(m)" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.FormatNumberInvoicedMeter ,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="8" FontSize="16" TextColor="Black"></Entry>
+                    <Label Text="Đơn vị tính" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
                     <sfcombobox:SfComboBox x:Name="cbDonViTinh"                                    
                                    Grid.Column="1"
-                                   Grid.Row="8"
+                                   Grid.Row="9"
                                    SelectedValue="{Binding Item.DonViTinh , Mode=TwoWay}"                                      
                                    DisplayMemberPath="Name"
                                    SelectedValuePath="Code"
@@ -62,8 +74,8 @@
                                    ShowClearButton="True">
 
                     </sfcombobox:SfComboBox>
-                    <Label Text="Barcode" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
-                    <Label Text="{Binding Item.BarcodeId ,Mode=TwoWay}" Grid.Column="1" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
+                    <Label Text="Barcode" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
+                    <Label Text="{Binding Item.BarcodeId ,Mode=TwoWay}" Grid.Column="1" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
 
                 </Grid>
                 <StackLayout Orientation="Horizontal" VerticalOptions="End">

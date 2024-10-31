@@ -103,7 +103,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 
                 if (Item.InvoicedMeter == 0)
                 {
-                    await new MessageBox("Số lượng phải khác 0").Show();
+                    await new MessageBox("chiều dài cây vải phải khác 0").Show();
                     return;
                 }
 
@@ -112,18 +112,17 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     await new MessageBox("Vui lòng chọn đơn vị tính").Show();
                     return;
                 }
-
-                if (string.IsNullOrEmpty( Item.BarcodeId ))
-                {
-                    await new MessageBox("Vui lòng quét mã qrcode cho cây vải").Show();
-                    return;
-                }
+                
                 if (string.IsNullOrEmpty(Item.PositionId))
                 {
                     await new MessageBox("Vui lòng chọn Ô để lưu").Show();
                     return;
                 }
-                
+                if (Item.SoCayVai  <= 0)
+                {
+                    await new MessageBox("Vui lòng nhập số cây vải để lưu").Show();
+                    return;
+                }
                 var ok = await Config.client.PostAsJsonAsync("api/qltb/CapNhatIdCayVaiMoi", Item);
                 if (ok.StatusCode != System.Net.HttpStatusCode.OK)
                 {

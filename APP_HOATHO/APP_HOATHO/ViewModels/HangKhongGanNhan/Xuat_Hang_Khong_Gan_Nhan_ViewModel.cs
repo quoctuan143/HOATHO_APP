@@ -61,7 +61,11 @@ namespace APP_HOATHO.ViewModels.HangKhongGanNhan
                         if (post.IsSuccessStatusCode)
                         {
                             await new MessageBox("Xuất vải ra khỏi kệ thành công").Show();
-                            await navigation.PopAsync();
+                            foreach (var item in ListItem)
+                            {
+                                item.Chon = false;
+                            }
+                            await navigation.PopAsync();                            
                         }
                         else
                         {

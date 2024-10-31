@@ -419,6 +419,22 @@
                                                        ActionCommand="{Binding NhapCayVaiTonKhoCommand}"
                                                        Disable="{Binding IsPhieuXuatKho}">
                                     </control:IconMainView>
+                                    <control:IconMainView  Title="Nhập kho phụ liệu"
+                                                           Grid.Column="1"
+                                                           Grid.Row="3"
+                                                           IconImageSource="duyetgiacong.png"
+                                                           BadgeText=""
+                                                           ActionCommand="{Binding NhapKhoPhuLieuCommand}"
+                                                           Disable="{Binding IsPhieuXuatKho}">
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Xuất kho phụ liệu"
+                                                           Grid.Column="2"
+                                                           Grid.Row="3"
+                                                           IconImageSource="kytruongphong.png"
+                                                           BadgeText=""
+                                                           ActionCommand="{Binding XuatKhoPhuLieuCommand}"
+                                                           Disable="{Binding IsPhieuXuatKho}">
+                                    </control:IconMainView>
                                 </Grid>
                             </StackLayout>
                         </Frame>

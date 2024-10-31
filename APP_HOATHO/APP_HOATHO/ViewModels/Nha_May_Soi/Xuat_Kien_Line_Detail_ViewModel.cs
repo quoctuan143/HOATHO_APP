@@ -60,8 +60,8 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
                     var result = await RunHttpClientPost("api/Soi/postXuatKienLineDetail", listupdate);
                     HideLoading();
                     if (result.IsSuccessStatusCode)
-                    {
-                        DependencyService.Get<IMessage>().LongAlert("Đã cập nhật thành công");
+                    {                        
+                        await new MessageBox("Đã cập nhật thành công").Show();
                         await navigation.PopAsync();
                     }
                     else

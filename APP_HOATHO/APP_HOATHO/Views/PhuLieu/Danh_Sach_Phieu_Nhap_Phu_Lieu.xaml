@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helper="clr-namespace:APP_HOATHO.Helpers"
+             xmlns:control="clr-namespace:APP_HOATHO.Template"
+             xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:local="clr-namespace:APP_HOATHO.Helpers"
+             x:Class="APP_HOATHO.Views.PhuLieu.Danh_Sach_Phieu_Nhap_Phu_Lieu"
+             x:Name="this"
+             Title="Phiếu nhập nguyên liệu"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Always"
+                    Orientation="Vertical">
+            <StackLayout Spacing="0"
+                         Margin="3">
+                <Grid HorizontalOptions="FillAndExpand"
+                      Style="{x:StaticResource styleGrid}"
+                      ColumnDefinitions="5*,5*"
+                      RowDefinitions="*">
+                    <sfinputtext:SfTextInputLayout Hint="Từ ngày"
+                                                   Grid.Column="0"
+                                                   IsHintAlwaysFloated="True"
+                                                   LeadingViewPosition="Inside"
+                                                   ContainerType="Outlined">
+                        <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}'}"
+                                    HorizontalOptions="Start" DateSelected="DatePicker_DateSelected" />
+                        <sfinputtext:SfTextInputLayout.LeadingView>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIcons"
+                                                     Glyph="{Binding Source={x:Static helper:FontIconClass.Calendar}}"
+                                                     Color="{StaticResource Primary}"
+                                                     Size="25" />
+                                </Image.Source>
+                            </Image>
+                        </sfinputtext:SfTextInputLayout.LeadingView>
+                    </sfinputtext:SfTextInputLayout>
+                    <sfinputtext:SfTextInputLayout Hint="Đến ngày"
+                                                   Grid.Column="1"
+                                                   IsHintAlwaysFloated="True"
+                                                   LeadingViewPosition="Inside"
+                                                   ContainerType="Outlined">
+                        <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}' }"
+                                    HorizontalOptions="Start"
+                                    MaximumDate="{x:Static helper:FontIconClass.MaxDate }" DateSelected="DatePicker_DateSelected" />
+                        <sfinputtext:SfTextInputLayout.LeadingView>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIcons"
+                                                     Glyph="{Binding Source={x:Static helper:FontIconClass.Calendar}}"
+                                                     Color="{StaticResource Primary}"
+                                                     Size="25" />
+                                </Image.Source>
+                            </Image>
+                        </sfinputtext:SfTextInputLayout.LeadingView>
+                    </sfinputtext:SfTextInputLayout>                     
+                    
+                </Grid>
+                <Grid ColumnDefinitions="10*">
+                    <SearchBar Placeholder="Tìm số lô,số chứng từ"
+                               CancelButtonColor="Red"
+                               HorizontalOptions="Start"
+                               x:Name="txtSearch"
+                               TextChanged="SearchBar_TextChanged"></SearchBar>
+                    <Image HorizontalOptions="End">
+                        <Image.Source>
+                            <FontImageSource FontFamily="UserIcons"
+                                             Glyph="{Binding Source={x:Static local:FontIconClass.BarcodeScan}}"
+                                             Size="40"
+                                             Color="{StaticResource Key=Primary}" />
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="btnScanPhieuNhap"
+                                                  Tapped="btnScanPhieuNhap_Tapped"
+                                                  NumberOfTapsRequired="1"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                       ItemsSource="{Binding ListItem, Mode=TwoWay}"
+                                       SelectionChanged="listChiTiet_SelectionChanged"
+                                       SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                       Style="{StaticResource styleDataGrid}"
+                                       SelectionMode="Single"
+                                       FrozenColumnsCount="1">
+                    <sfDataGrid:SfDataGrid.Columns>
+
+
+                        <sfDataGrid:GridTemplateColumn  HeaderText="Số chứng từ"
+                                                        Width="120"
+                                                        MappingName="ExternalDocumentNo"
+                                                        HeaderFontAttribute="Bold"
+                                                        HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding ExternalDocumentNo}"
+                                           TextColor="Black"
+                                           Padding="5,0,0,0"
+                                           WidthRequest="100"
+                                           XAlign="Start"
+                                           YAlign="Center" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                        </sfDataGrid:GridTemplateColumn>
+
+                        <sfDataGrid:GridTemplateColumn  HeaderText="Ngày"
+                                                        Width="100"
+                                                        MappingName="PostingDate"
+                                                        HeaderFontAttribute="Bold"
+                                                        HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding PostingDate ,StringFormat='{0:dd/MM/yyyy}'}"
+                                           TextColor="Black"
+                                           Padding="5,0,0,0"
+                                           WidthRequest="100"
+                                           XAlign="Start"
+                                           YAlign="Center" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                        </sfDataGrid:GridTemplateColumn>                         
+                        <sfDataGrid:GridTemplateColumn  HeaderText="Tên khách hàng"
+                                                        Width="160"
+                                                        MappingName="CustomerName"
+                                                        HeaderFontAttribute="Bold"
+                                                        HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding CustomerName}"
+                                           TextColor="Black"
+                                           Padding="5,0,0,0"
+                                           WidthRequest="140"
+                                           XAlign="Start"
+                                           YAlign="Center" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                        </sfDataGrid:GridTemplateColumn>
+                        
+                        <sfDataGrid:GridTemplateColumn MappingName="LocationName"
+                                                       Width="160"
+                                                       HeaderText="Tên kho"
+                                                       HeaderFontAttribute="Bold"
+                                                       HeaderCellTextSize="16">
+                            <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding LocationName}"
+                                           TextColor="Black"
+                                           Padding="5,0,0,0"
+                                           XAlign="Start"
+                                           YAlign="Center" />
+                                </DataTemplate>
+                            </sfDataGrid:GridTemplateColumn.CellTemplate>
+                        </sfDataGrid:GridTemplateColumn>
+                    </sfDataGrid:SfDataGrid.Columns>
+                    <sfDataGrid:SfDataGrid.TableSummaryRows>
+                        <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                                        Position="Bottom"
+                                                        ShowSummaryInRow="True">
+                            <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                                <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                              Format="{}{Count}"
+                                                              MappingName="No_"
+                                                              SummaryType="DoubleAggregate" />
+                            </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                        </sfDataGrid:GridTableSummaryRow>
+
+                    </sfDataGrid:SfDataGrid.TableSummaryRows>
+                </sfDataGrid:SfDataGrid>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>    

@@ -147,7 +147,8 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
 
         public string ViTriDay { get; set; }
 
-        public string Art { get; set; } 
+        public string Art { get; set; }
+        public int SoCayVai { get; set; } = 1;
     }
 
     public class UpdateCayVaiRequest

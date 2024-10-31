@@ -1,4 +1,5 @@
-﻿using APP_HOATHO.Global;
+﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
 using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
@@ -53,7 +54,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 if (ok.IsSuccessStatusCode)
                 {
                     BaseView.HideLoading();
-                    DependencyService.Get<IMessage>().LongAlert("Đã gửi thông báo tiếp nhận đến user yêu cầu");
+                    await new MessageBox("Đã gửi thông báo tiếp nhận đến user yêu cầu").Show();                    
                     await Navigation.PopPopupAsync();
                     await Navigation.PopAsync();
                 }

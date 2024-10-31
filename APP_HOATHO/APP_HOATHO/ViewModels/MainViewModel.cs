@@ -19,6 +19,7 @@ using APP_HOATHO.Views.Kiem_Ke_Thiet_Bi;
 using APP_HOATHO.Views.Nha_May_Soi;
 using APP_HOATHO.Views.Nha_May_Soi.KyLenhXuatHang;
 using APP_HOATHO.Views.Nha_May_Soi.Xuat_Kien_NVL;
+using APP_HOATHO.Views.PhuLieu;
 using APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Tabpage;
 using APP_HOATHO.Views.TBSX;
@@ -144,6 +145,9 @@ namespace APP_HOATHO.ViewModels
         public ICommand DeNghiThanhToanChoNhanVienCommand { get; set; }
         public ICommand DanhSachDNTTNhanVienCommand { get; set; }
         public ICommand NhapCayVaiTonKhoCommand { get; set; }
+        public ICommand NhapKhoPhuLieuCommand { get; set; }
+        public ICommand XuatKhoPhuLieuCommand { get; set; }
+
         #endregion "Command"
 
         public MainViewModel()
@@ -582,6 +586,28 @@ namespace APP_HOATHO.ViewModels
                 try
                 {
                     await Navigation.PushAsync(new Them_Cay_Vai_Moi_Vao_Ke_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            NhapKhoPhuLieuCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new Danh_Sach_Phieu_Nhap_Phu_Lieu());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            XuatKhoPhuLieuCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new Danh_Sach_Phieu_Xuat_Phu_Lieu());
                 }
                 catch (Exception ex)
                 {
