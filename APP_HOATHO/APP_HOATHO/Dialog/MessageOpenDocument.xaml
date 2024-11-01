@@ -10,7 +10,7 @@
                 mc:Ignorable="d"
                 CloseWhenBackgroundIsClicked="False"
              x:Class="APP_HOATHO.Dialog.MessageOpenDocument"
-                BackgroundColor="White">
+                >
     <page:PopupPage.Animation >
         <animations:ScaleAnimation 
             PositionIn="Center"
@@ -26,6 +26,7 @@
     <Frame CornerRadius="15"
            Margin="20,0,20,0"                 
            HorizontalOptions="FillAndExpand"
+           BackgroundColor="White"
            VerticalOptions="Center">
         <StackLayout HorizontalOptions="FillAndExpand" Spacing="20">
 

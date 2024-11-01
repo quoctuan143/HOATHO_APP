@@ -118,8 +118,8 @@ namespace APP_HOATHO.Views
                         NotificationId = 1403,
                         BadgeNumber = 1,
                     };
-                    await NotificationCenter.Current.Show(notification);
-                    await DisplayAlert(notification.Title, notification.Description, "ok");
+                    await LocalNotificationCenter.Current.Show(notification);
+                    //await DisplayAlert(notification.Title, notification.Description, "ok");
                     if (p.Data["sochungtu"].ToString() != "")
                     {
                         DuyetChungTuModel item = new DuyetChungTuModel { No_ = p.Data["sochungtu"].ToString() };

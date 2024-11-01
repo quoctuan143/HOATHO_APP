@@ -31,7 +31,7 @@ namespace APP_HOATHO.Droid
 
             base.OnCreate(savedInstanceState);
             RequestNotificationPermission();
-            NotificationCenter.CreateNotificationChannel();
+            LocalNotificationCenter.CreateNotificationChannel();
             await CrossMedia.Current.Initialize();
             Rg.Plugins.Popup.Popup.Init(this);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
@@ -39,7 +39,7 @@ namespace APP_HOATHO.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CachedImageRenderer.Init(true);
-            NotificationCenter.NotifyNotificationTapped(Intent );
+            LocalNotificationCenter.NotifyNotificationTapped(Intent );
             FirebasePushNotificationManager.ProcessIntent(this, Intent);   
          
 #if DEBUG
@@ -102,7 +102,7 @@ namespace APP_HOATHO.Droid
         }
         protected override void OnNewIntent(Intent intent)
         {
-            NotificationCenter.NotifyNotificationTapped(intent);
+            LocalNotificationCenter.NotifyNotificationTapped(intent);
             base.OnNewIntent(intent);
         }
         protected override void OnStart()
