@@ -120,7 +120,8 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string ItemNo { get; set; }
 
         public string Id { get; set; }
-
+        public StatusFormatColor DaGanNhan { get; set; }
+        public StatusFormatColor DaXeplenKe { get; set; }
         public string _barcodeId;
         public string BarcodeId { get => _barcodeId; set
             {
@@ -138,17 +139,36 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
             }
         }
 
-        public string PositionId { get; set; }
+        string _positionId;
+        public string PositionId
+        {
+            get => _positionId; set
+            {
+                SetProperty(ref _positionId, value);
+                if (_positionId != "")
+                {
+                    DaXeplenKe = StatusFormatColor.HoanThanh;
+                    OnPropertyChanged("DaXeplenKe");
+                }
+                else
+                {
+                    DaXeplenKe = StatusFormatColor.ChuaHoanThanh;
+                    OnPropertyChanged("DaXeplenKe");
+                }
+            }
+        }
 
         public double? TonKho { get; set; }
-
-        public StatusFormatColor DaGanNhan { get; set; }        
+        
         public string DonViTinh { get; set; } 
 
         public string ViTriDay { get; set; }
 
         public string Art { get; set; }
         public int SoCayVai { get; set; } = 1;
+
+        bool _chon;
+        public bool Chon {  get => _chon; set => SetProperty (ref _chon, value); } 
     }
 
     public class UpdateCayVaiRequest

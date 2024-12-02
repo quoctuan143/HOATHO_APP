@@ -65,8 +65,9 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                         {
                             //kiểm tra xem barcode có trong danh sách không?
                             Item.BarcodeId = result;
-
+                            viewModel.ShowLoading("Đang kiểm tra. vui lòng đợi...");
                             var ok = await Config.client.PostAsJsonAsync("api/qltb/PostKiemTraBarcodeIdCayVai", Item);
+                            viewModel.HideLoading();
                             if (ok.StatusCode != System.Net.HttpStatusCode.OK)
                             {
                                 Item.BarcodeId = "";
@@ -76,6 +77,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                         }
                         catch
                         {
+                            viewModel.HideLoading();
                             await new MessageBox("Barcode không tồn tại trong hệ thống").Show();
                         }
                     });
@@ -123,7 +125,9 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     await new MessageBox("Vui lòng nhập số cây vải để lưu").Show();
                     return;
                 }
+                viewModel.ShowLoading("Đang cập nhật. vui lòng đợi...");
                 var ok = await Config.client.PostAsJsonAsync("api/qltb/CapNhatIdCayVaiMoi", Item);
+                viewModel.HideLoading();
                 if (ok.StatusCode != System.Net.HttpStatusCode.OK)
                 {
                     await new MessageBox(ok.Content.ReadAsStringAsync().ToString()).Show();
@@ -134,6 +138,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             }
             catch (Exception ex)
             {
+                viewModel.HideLoading();
                 await new MessageBox(ex.Message).Show();
             }
         }
@@ -150,7 +155,9 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                         try
                         {
                             CellPositionModel item = new CellPositionModel { Code = result };
+                            viewModel.ShowLoading("Đang cập nhật. vui lòng đợi...");
                             var ok = await Config.client.PostAsJsonAsync("api/qltb/PostKiemTraOChuaVai", item);
+                            viewModel.HideLoading();    
                             if (ok.IsSuccessStatusCode)
                             {
                                 Item.PositionId = result;
@@ -165,6 +172,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                         }
                         catch (Exception ex)
                         {
+                            viewModel.HideLoading();
                             await new MessageBox(ex.Message).Show();
                         }
                     });
@@ -180,7 +188,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
 
         private async void btnCheckArt_Clicked(object sender, EventArgs e)
         {
-            viewModel.ShowLoading("đang kiểm tra mã NPL");            
+                      
             try
             {            
                 if (string.IsNullOrEmpty(txtArt.Text))
@@ -188,6 +196,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     await new MessageBox("Nhập art để tìm kiếm").Show();
                     return;
                 }
+                viewModel.ShowLoading("đang kiểm tra mã NPL");
                 var ok = await viewModel.RunHttpClientGet<LookupValue>($"api/qltb/LayMaNguyenPhuLieuTheoArt?art={txtArt.Text}");
                 viewModel.HideLoading();
                 ListNguyenPhuLieu = ok.Lists.ToList();
@@ -205,11 +214,11 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
         private async void cbLoaiDoiTuong_SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
         {
             try
-            {
-                viewModel.ShowLoading("đang kiểm tra màu");
+            {                
                 LookupValue item = (LookupValue )cbLoaiDoiTuong.SelectedItem;
                 if (item != null)
                 {
+                    viewModel.ShowLoading("đang kiểm tra màu");
                     var b = await viewModel.RunHttpClientGet<LookupValue>($"api/qltb/GetDanhSachMauNPLXuatKho?manpl={item.Code}");
                     viewModel.HideLoading();
                     danhSachMauNPL = b.Lists.ToList();

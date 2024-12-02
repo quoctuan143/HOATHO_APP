@@ -39,45 +39,59 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
 
         private async void GuiYeuCau_Clicked(object sender, EventArgs e)
         {
-            if (Item.NoiDungLoi == "")
+            try
             {
-                DependencyService.Get<IMessage>().LongAlert("Vui lòng nhập nội dung muốn gửi IT");
-                return;
-            }
-            if (Item.YeuCauTheoThietBi == true && Item.DocumentNo_ == "")
-            {
-                DependencyService.Get<IMessage>().LongAlert("Vui lòng quét thiết bị để gửi yêu cầu. nếu bạn muốn nhập mã thì vui lòng bỏ chọn Yêu cầu theo thiết bị");
-                return;
-            }
-            if (Item.YeuCauTheoThietBi == false && Item.DocumentNo_ == "")
-            {
-                Item.DocumentNo_ = "Máy tính";
-            }
-
-            //post ảnh trước 
-            if (media != null)
-            {
-                var content = new MultipartFormDataContent();
+                if (Item.NoiDungLoi == "")
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Vui lòng nhập nội dung muốn gửi IT");
+                    return;
+                }
+                if (Item.YeuCauTheoThietBi == true && Item.DocumentNo_ == "")
+                {
+                    DependencyService.Get<IMessage>().LongAlert("Vui lòng quét thiết bị để gửi yêu cầu. nếu bạn muốn nhập mã thì vui lòng bỏ chọn Yêu cầu theo thiết bị");
+                    return;
+                }
+                if (Item.YeuCauTheoThietBi == false && Item.DocumentNo_ == "")
+                {
+                    Item.DocumentNo_ = "Máy tính";
+                }
+                BaseView.ShowLoading("Đang gửi yêu cầu tới IT");
+                //post ảnh trước 
                 if (media != null)
                 {
-                    content.Add(new StreamContent(media.GetStream()), "\"file\"", $"\"{media.Path}\"");
+                    var content = new MultipartFormDataContent();
+                    if (media != null)
+                    {
+                        content.Add(new StreamContent(media.GetStream()), "\"file\"", $"\"{media.Path}\"");
+                    }
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri(Config.URL);
+                    var ok1 = client.PostAsync($"api/qltb/UploadImageChoITXuLy", content).Result;
+                    var filename = media.Path.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+                    Item.ImageLink = filename;
                 }
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(Config.URL);
-                var ok1 = client.PostAsync($"api/qltb/UploadImageChoITXuLy", content).Result;                
-                var filename = media.Path.Split('\\').LastOrDefault().Split('/').LastOrDefault();
-                Item.ImageLink = filename ;
-            }    
-            
 
-            var ok = await BaseView.RunHttpClientPost("api/qltb/GuiYeuCauXuLyLoiThietBi" , Item);
-            if (ok.IsSuccessStatusCode)
+
+                var ok = await BaseView.RunHttpClientPost("api/qltb/GuiYeuCauXuLyLoiThietBi", Item);
+                BaseView.HideLoading();
+                if (ok.IsSuccessStatusCode)
+                {
+                    await new MessageBox("Đã gửi yêu cầu xử lý lỗi thành công").Show();
+                    await Navigation.PopAsync();
+                }
+                else
+                    DependencyService.Get<IMessage>().LongAlert(ok.Content.ReadAsStringAsync().Result);
+            }
+            catch (Exception ex)
             {
-                await new MessageBox("Đã gửi yêu cầu xử lý lỗi thành công").Show();                
-                await Navigation.PopAsync();
-            }                    
-            else
-                DependencyService.Get<IMessage>().LongAlert(ok.Content.ReadAsStringAsync().Result );
+                BaseView.HideLoading();
+                await new MessageBox(ex.Message).Show();
+            }
+            finally
+            {
+                BaseView.HideLoading();
+            }
+            
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

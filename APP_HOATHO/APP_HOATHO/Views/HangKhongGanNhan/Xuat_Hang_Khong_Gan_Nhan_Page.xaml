@@ -45,7 +45,7 @@
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="{Binding Chon}"  HorizontalOptions="CenterAndExpand"/>
+                                <CheckBox IsChecked="{Binding Chon, Mode=TwoWay}"  HorizontalOptions="CenterAndExpand"/>
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

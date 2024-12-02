@@ -58,7 +58,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             CellPositionModel item = new CellPositionModel { Code = result };
+                            ShowLoading("Đang kiểm tra. vui lòng đợi");
                             var ok = await RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
+                            HideLoading();
                             if (ok.IsSuccessStatusCode)
                             {
                                 ViTriOVai = result;
@@ -74,6 +76,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 }
                 catch (Exception ex)
                 {
+                    HideLoading();
                     await new MessageBox(ex.Message).Show();
                 }
             });
@@ -86,8 +89,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     if (item != null)
                     {
                         UpdateCayVaiRequest request = new UpdateCayVaiRequest { DocumentNo = item.DocumentNo, Id = item.Id, SoLuong = item.InvoicedMeter };
+                        ShowLoading("Đang cập nhật. vui lòng đợi...");
                         var ok = await RunHttpClientPost($"api/qltb/CapNhatSoLuongPackingList", request);
-
+                        HideLoading();
                         if (ok.IsSuccessStatusCode)
                         {
                             await new MessageBox("Cập nhật số lượng cây vải thành công").Show();
@@ -100,6 +104,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 }
                 catch (Exception ex)
                 {
+                    HideLoading();
                     await new MessageBox(ex.Message).Show();
                 }
 
@@ -113,8 +118,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     if (item != null)
                     {
                         UpdateCayVaiRequest request = new UpdateCayVaiRequest { DocumentNo = item.DocumentNo, Id = item.Id, RollNo = item.RollNo };
+                        ShowLoading("Đang cập nhật. vui lòng đợi...");
                         var ok = await RunHttpClientPost($"api/qltb/CapNhatRollNoPackingList", request);
-
+                        HideLoading();
                         if (ok.IsSuccessStatusCode)
                         {
                             await new MessageBox("Cập nhật roll no thành công").Show();
@@ -127,6 +133,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 }
                 catch (Exception ex)
                 {
+                    ShowLoading("Đang cập nhật. vui lòng đợi...");
                     await new MessageBox(ex.Message).Show();
                 }
                 

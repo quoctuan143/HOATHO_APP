@@ -459,7 +459,7 @@
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand">
 
-                                    <control:IconMainView  Title="Định vị cây vải lên kệ"
+                                    <control:IconMainView  Title="Nhập xuất theo Packing list"
                                                        Grid.Column="0"
                                                        IconImageSource="duyetdonhang.png"
                                                        BadgeText=""

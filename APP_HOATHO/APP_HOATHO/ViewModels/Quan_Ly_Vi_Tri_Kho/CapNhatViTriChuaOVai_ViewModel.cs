@@ -69,7 +69,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                 }
 
                                 CellPositionModel item = new CellPositionModel { Code = result, PositionId = "00.00.00" };
+                                ShowLoading("Đang kiểm tra. vui lòng đợi...");
                                 var ok1 = await RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
+                                HideLoading();
                                 if (!ok1.IsSuccessStatusCode)
                                 {
                                     await new MessageBox($"Kệ: {result} này không tồn tại trong hệ thống").Show();
@@ -77,15 +79,12 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                 }
 
                                 ListItem.Add(item);
-                                DependencyService.Get<IMessage>().LongAlert("Đã quét thành công");
-
-
-                                
-
+                                DependencyService.Get<IMessage>().LongAlert("Đã quét thành công");    
 
                             }
                             catch (Exception ex)
                             {
+                                HideLoading();
                                 await new MessageBox(ex.Message).Show();
                             }
                         });

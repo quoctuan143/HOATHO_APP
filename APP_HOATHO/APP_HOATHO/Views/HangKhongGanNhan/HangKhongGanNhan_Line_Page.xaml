@@ -9,7 +9,8 @@
              x:Class="APP_HOATHO.Views.HangKhongGanNhan.HangKhongGanNhan_Line_Page"
              Shell.TabBarIsVisible="False"
              BackgroundColor="White"
-             Title="Xếp vải lên kệ">
+             x:Name="PackingList"
+             Title="Nhập xuất theo Packing List">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local2:Format_Mau_XuatKhoCayVai x:Key="Format_Mau_KHTB"/>
@@ -37,51 +38,71 @@
             </Grid>
 
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"
-                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"                                   
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
+                                   SelectionChanged="listChiTiet_SelectionChanged"
                                    Style="{StaticResource styleDataGrid}"
                                    SelectionMode="Single"
                                    FrozenColumnsCount="1"
                                    LiveDataUpdateMode="AllowDataShaping"
-                                   AllowSwiping="True"
-                                   SwipeEnded="listChiTiet_SwipeEnded"
+                                   AllowSwiping="True"                                         
+                                   SwipeEnded="listChiTiet_SwipeEnded"                                          
                                    MaxSwipeOffset="200">
                 <sfDataGrid:SfDataGrid.Columns>
-
                     <sfDataGrid:GridTemplateColumn  HeaderText="Chọn"
-                                                    MappingName="Chon"  
-                                                    HeaderFontAttribute="Bold"
+                                                    MappingName="Chon"
+                                                    HeaderFontAttribute="Bold"                                                                
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <CheckBox IsChecked="{Binding Chon}" IsVisible="{Binding IsReadonly}" HorizontalOptions="CenterAndExpand"/>
+                                <CheckBox IsChecked="{Binding Chon, Mode=TwoWay}"
+                                          HorizontalOptions="CenterAndExpand" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Roll No"
-                                                    MappingName="RollNo"
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Art"
+                                                    MappingName="Art"
                                                     Width="100"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding RollNo}"
-                                       TextColor="{Binding DaXepLenKe, Converter={StaticResource Format_Mau_KHTB} }"
+                                <Label Text="{Binding Art}"
+                                       TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       WidthRequest="100"
                                        XAlign="Start"
                                        YAlign="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Roll No"
+                                                    MappingName="RollNo"
+                                                    Width="100"                                                           
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="2">
+                                    <Label Text="{Binding RollNo, Mode=TwoWay}"
+                                           TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
+                                           HorizontalOptions="FillAndExpand"
+                                           WidthRequest="100"
+                                           Padding="5,0,0,0"
+                                           XAlign="Start"
+                                           YAlign="Center" />                                     
+                                </StackLayout>
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Tên NPL"
-                                                    MappingName="ItemName"
+                                                    MappingName="Name"
                                                     HeaderFontAttribute="Bold"
                                                     Width="130"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding ItemName}"
-                                       TextColor="{Binding DaXepLenKe, Converter={StaticResource Format_Mau_KHTB} }"
+                                <Label Text="{Binding Name}"
+                                       TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
                                        XAlign="Start"
                                        YAlign="Center" />
@@ -96,28 +117,14 @@
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding Color}"
-                                       TextColor="{Binding DaXepLenKe, Converter={StaticResource Format_Mau_KHTB} }"
+                                       TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
                                        XAlign="Start"
                                        YAlign="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Art"
-                                                    MappingName="Art"
-                                                    Width="100"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
-                        <sfDataGrid:GridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Label Text="{Binding Art}"
-                                       TextColor="{Binding DaXepLenKe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
-                            </DataTemplate>
-                        </sfDataGrid:GridTemplateColumn.CellTemplate>
-                    </sfDataGrid:GridTemplateColumn>
+                   
                     <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng/ chiều dài"
                                                     MappingName="InvoicedMeter"
                                                     HeaderFontAttribute="Bold"
@@ -125,30 +132,19 @@
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <StackLayout Orientation="Horizontal" Spacing="2">
-                                    <Label Text="{Binding InvoicedMeter, StringFormat='{0:#,###.##}'}"
-                                            XAlign="Start"
-                                           Padding="5,0,0,0"
-                                       YAlign="Center"
-                                      TextColor="{Binding DaXepLenKe, Converter={StaticResource Format_Mau_KHTB} }"                                        
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="2">
+                                    <Label Text="{Binding FormatNumberInvoicedMeter, Mode=TwoWay}"
+                                           TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"                                             
                                            HorizontalOptions="FillAndExpand"
-                                       />
-                                    <!--<Image Source="check.png"
-                                       WidthRequest="30"
-                                       HeightRequest="30"
-                                       Aspect="AspectFit"
-                                           Margin="0,0,2,0"
-                                       >
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.CapNhatSoLuongCayVai, Source={x:Reference Name=PackingList}}"
-                                                              CommandParameter="{Binding .}" />
-                                        </Image.GestureRecognizers>
-                                    </Image>-->
+                                           XAlign="Start"
+                                           YAlign="Center" />                                       
                                 </StackLayout>
 
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
-                    </sfDataGrid:GridTemplateColumn>                          
+                    </sfDataGrid:GridTemplateColumn>
+                    
                     <sfDataGrid:GridTemplateColumn  HeaderText="Kệ vải"
                                                     MappingName="PositionId"
                                                     Width="80"
@@ -157,29 +153,30 @@
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding PositionId, Mode=TwoWay}"
-                                       TextColor="{Binding DaXepLenKe, Converter={StaticResource Format_Mau_KHTB} }"
+                                       TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
                                        XAlign="Start"
                                        YAlign="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
-                    </sfDataGrid:GridTemplateColumn>                        
+                    </sfDataGrid:GridTemplateColumn>                     
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.LeftSwipeTemplate>
                     <DataTemplate>
-                        <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
+                        <Grid ColumnSpacing="0"
+                              HorizontalOptions="FillAndExpand">
                             <ContentView Grid.Column="0">
                                 <ContentView.GestureRecognizers>
-                                    <TapGestureRecognizer x:Name="btnXoaBarcodeId" Tapped="btnXoaBarcodeId_Tapped"></TapGestureRecognizer>
+                                    <TapGestureRecognizer x:Name="btnXoaBarcodeId"
+                                                          Tapped="btnXoaBarcodeId_Tapped"></TapGestureRecognizer>
                                 </ContentView.GestureRecognizers>
                                 <Grid  BackgroundColor="Green">
-                                    <Label
-                                       Text ="Xóa Kệ"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"
-                                       LineBreakMode ="NoWrap"
-                                       BackgroundColor="Transparent"
-                                       TextColor ="White" />
+                                    <Label Text="Xóa Khỏi Kệ"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           LineBreakMode="NoWrap"
+                                           BackgroundColor="Transparent"
+                                           TextColor="White" />
                                 </Grid>
                             </ContentView>
                         </Grid>
@@ -203,6 +200,12 @@
                 <sfbutton:SfButton Text="{Binding TitleButton}"  Command="{Binding QuetOChuaCayVaiCommand}" FontSize="16"
                         CornerRadius="60" HorizontalOptions="FillAndExpand"
                          Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="Xuất Kho"
+                                   Command="{Binding XuatKhoTheoPackingListCommand}"
+                                   FontSize="16"
+                                   CornerRadius="60"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

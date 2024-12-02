@@ -9,8 +9,13 @@ namespace APP_HOATHO.Models.HangKhongGanNhan
     public class Nhap_Hang_Khong_Gan_Nhan_Header_Model
     {
         public string No_ { get; set; }
+        public string ExternalDocumentNo { get; set; }
+        public string VendorName { get; set; }
+        public string LocationName { get; set; }
+        public string CustomerName { get; set; }
         public DateTime PostingDate { get; set; }
         public double SoKien { get; set; }
+        public bool DaCapNhatQR { get; set; }      
         public string Description { get; set; }
         public bool DaDinhViKe { get; set; }
     }
@@ -39,6 +44,7 @@ namespace APP_HOATHO.Models.HangKhongGanNhan
         public string ItemName { get; set; }
         public string Color { get; set; }
         public string Art { get; set; }
-        public string Id { get; set; }       
+        public string Id { get; set; }    
+        public string ItemNo { get; set; }
     }
 }

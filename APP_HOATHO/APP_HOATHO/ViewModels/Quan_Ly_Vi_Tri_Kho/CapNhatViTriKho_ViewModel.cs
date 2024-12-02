@@ -53,7 +53,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                     BarcodeId = result,
                                     PositionId = MaViTri
                                 };
+                                ShowLoading("Đang cập nhật. vui lòng đợi...");
                                 var ok = await RunHttpClientPost("api/qltb/CapNhatOChuaCayVai", item);
+                                HideLoading();
                                 if (ok.StatusCode == System.Net.HttpStatusCode.OK)
                                 {
                                     ListItem.Add(item);
@@ -66,6 +68,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                             }
                             catch (Exception ex)
                             {
+                                HideLoading();
                                 await new MessageBox(ex.Message).Show();
                             }
                         });

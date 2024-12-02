@@ -25,7 +25,7 @@
                                                IsHintAlwaysFloated="True"
                                                LeadingViewPosition="Inside"
                                                ContainerType="Outlined">
-                        <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:MM/dd/yyyy}'}"
+                        <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}'}"
                                HorizontalOptions="Start"  />
                         <sfinputtext:SfTextInputLayout.LeadingView>
                             <Image>
@@ -41,7 +41,7 @@
                                                IsHintAlwaysFloated="True"
                                                LeadingViewPosition="Inside"
                                                ContainerType="Outlined">
-                        <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:MM/dd/yyyy}' }"
+                        <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}' }"
 
                                HorizontalOptions="Start" 
                                 MaximumDate="{x:Static helper:FontIconClass.MaxDate }" />

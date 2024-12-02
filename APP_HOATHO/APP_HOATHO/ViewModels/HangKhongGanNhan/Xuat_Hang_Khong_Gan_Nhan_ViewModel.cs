@@ -56,8 +56,9 @@ namespace APP_HOATHO.ViewModels.HangKhongGanNhan
                     var ask = await new MessageYesNo("Bạn có muốn xuất kho không?").Show();
                     if (ask == Global.DialogReturn.OK)
                     {
+                        ShowLoading("Đang xử lý. vui lòng đợi...");
                         var post = await RunHttpClientPost($"api/HangKhongGanNhan/XuatVaiKhoiKe?userId={Preferences.Get (Config.User,"")}", items);
-
+                        HideLoading();
                         if (post.IsSuccessStatusCode)
                         {
                             await new MessageBox("Xuất vải ra khỏi kệ thành công").Show();
@@ -76,6 +77,7 @@ namespace APP_HOATHO.ViewModels.HangKhongGanNhan
                 }
                 catch (Exception ex)
                 {
+                    HideLoading();
                     await new MessageBox(ex.Message).Show();
                 }
             });

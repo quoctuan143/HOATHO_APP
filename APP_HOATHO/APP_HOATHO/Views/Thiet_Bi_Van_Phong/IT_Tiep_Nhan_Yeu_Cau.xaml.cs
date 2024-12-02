@@ -66,9 +66,9 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 }    
                     
             }
-            catch
+            catch(Exception ex)
             {
-                
+                await new MessageBox(ex.Message).Show();
             }
             finally
             {

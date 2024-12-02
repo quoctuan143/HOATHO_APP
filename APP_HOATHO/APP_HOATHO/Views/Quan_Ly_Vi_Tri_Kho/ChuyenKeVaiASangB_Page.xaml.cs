@@ -31,11 +31,14 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    BaseViewModel viewModel = new BaseViewModel();
                     try
                     {
-                        BaseViewModel viewModel = new BaseViewModel();
+                        
                         CellPositionModel item = new CellPositionModel { Code = result, PositionId = "" };
+                        viewModel.ShowLoading("đang kiểm tra màu");
                         var ok1 = await viewModel.RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
+                        viewModel.HideLoading();
                         if (!ok1.IsSuccessStatusCode)
                         {
                             await new MessageBox($"Kệ : {result} này không tồn tại trong hệ thống").Show();
@@ -45,6 +48,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     }
                     catch (Exception ex)
                     {
+                        viewModel.HideLoading();
                         await new MessageBox(ex.Message).Show();
                     }
                 });

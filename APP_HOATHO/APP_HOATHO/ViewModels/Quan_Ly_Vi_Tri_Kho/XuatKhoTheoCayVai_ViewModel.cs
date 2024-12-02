@@ -165,9 +165,11 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     
                     if (await new MessageYesNo(message != "" ? message : "Bạn có muốn xuất những cây vải này không?").Show() == DialogReturn.OK)
                     {
+                        ShowLoading("Đang xử lý. vui lòng đợi");
                         var ok = await RunHttpClientPost("api/qltb/XuatKhoTheoDanhSachIdCayVai", ListItem.Where(x => x.RowID == "0").ToList());
                         if (ok.IsSuccessStatusCode)
                         {
+                            HideLoading();
                             await new MessageBox("Cập nhật thành công").Show();
                             await Navigation.PopAsync();
                         }
@@ -175,6 +177,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 }
                 catch (Exception ex)
                 {
+                    HideLoading();
                     await new MessageBox(ex.Message).Show();
                 }
             });

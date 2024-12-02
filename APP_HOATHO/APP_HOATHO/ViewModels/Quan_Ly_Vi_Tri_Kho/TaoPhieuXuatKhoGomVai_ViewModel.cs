@@ -55,9 +55,12 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     }    
                     if (await new MessageBox ("Bạn có muốn tạo phiếu gộp không?").Show() == Global.DialogReturn.OK)
                     {
+                        ShowLoading("Đang xử lý. vui lòng đợi....");
                         var find = await RunHttpClientPost($"api/qltb/PostTaoPhieuGomVaiXuatKho?user={Preferences.Get(Config.User,"")}", _list);
+                        HideLoading();
                         if (find.IsSuccessStatusCode)
                         {
+                           
                             await new MessageBox("Tạo phiếu xuất tổng thành công").Show();
                             _list.ForEach (x=> ListItem.Remove(x));
                         }
@@ -70,6 +73,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 }
                 catch (Exception ex)
                 {
+                    HideLoading();
                     await new MessageBox(ex.Message).Show();    
                 }
 

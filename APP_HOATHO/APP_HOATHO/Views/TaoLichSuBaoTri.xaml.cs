@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using APP_HOATHO.Interface;
 using Syncfusion.SfDataGrid.XForms;
+using APP_HOATHO.ViewModels;
 
 namespace APP_HOATHO.Views
 {
@@ -31,10 +32,11 @@ namespace APP_HOATHO.Views
         public  APP_HOATHO.Models.KeHoachBaoTri Item { get; set; }
         LICH_SU_BAO_TRI lsu;
         MediaFile media;
+        BaseViewModel BaseViewModel { get; set; }
         public TaoLichSuBaoTri(APP_HOATHO.Models.KeHoachBaoTri item) 
         {
             InitializeComponent();
-           
+            BaseViewModel = new BaseViewModel ();
             Item = item;
             QUY_TRINH_BAO_TRIs = new ObservableCollection<QUY_TRINH_BAO_TRI>();
             BindingContext = this;
@@ -64,7 +66,7 @@ namespace APP_HOATHO.Views
         {
             try
             {
-                
+               
                 if (string.IsNullOrEmpty(entryTinhTrang.Text))
                    
                 {
@@ -128,10 +130,11 @@ namespace APP_HOATHO.Views
                     lsu.NGUOI_XAC_NHAN = Preferences.Get(Config.User, ""); ;
                     lsu.THANG = Item.Thang;
                     lsu.NAM = Item.Nam;
-                    
+
 
 
                     //nếu up hình thành công thì up lich sử lên luôn
+                    BaseViewModel.ShowLoading("Đang xử lý. vui lòng đợi....!");
                     if (media != null )
                     {
                         var content = new MultipartFormDataContent();
@@ -142,8 +145,9 @@ namespace APP_HOATHO.Views
                         if (response.IsSuccessStatusCode)
                         {
                             var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri_V1", lsu);
-                            if (ok.IsSuccessStatusCode)
-                            {
+                            BaseViewModel.HideLoading();
+                            if (ok.IsSuccessStatusCode)                            {
+                                
                                 await Navigation.PopAsync();
                                 await new MessageBox("Cập nhật thành công").Show();
                                 MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);                                
@@ -155,6 +159,7 @@ namespace APP_HOATHO.Views
                         }
                         else
                         {
+                            BaseViewModel.HideLoading();
                             await new MessageBox( response.Content.ReadAsStringAsync().Result).Show();
                             return;
                         }
@@ -164,9 +169,10 @@ namespace APP_HOATHO.Views
                         HttpClient client = new HttpClient();
                         client.BaseAddress = new Uri(Config.URL);
                         var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri_V1", lsu);
+                        BaseViewModel.HideLoading();
                         if (ok.IsSuccessStatusCode)
                         {
-
+                            BaseViewModel.ShowLoading("Đang xử lý. vui lòng đợi....!");
                             await new MessageBox("Cập nhật thành công").Show();
                             MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);
                             await Navigation.PopAsync();
@@ -182,10 +188,13 @@ namespace APP_HOATHO.Views
             }
             catch (Exception ex )
             {
-
+                BaseViewModel.HideLoading();
                 await new MessageBox( ex.Message ).Show();
             }
-           
+           finally
+            {
+                BaseViewModel.HideLoading();
+            }
            
            
         }

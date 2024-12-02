@@ -56,7 +56,7 @@ namespace APP_HOATHO.Views.HangKhongGanNhan
             if (item != null)
             {
 
-                if (item.No_.ToLower().Contains(filterText) || item.Description.ToLower().Contains(filterText) || item.SoKien.ToString().ToLower().Contains(filterText))
+                if (item.No_.ToLower().Contains(filterText)  || item.SoKien.ToString().ToLower().Contains(filterText))
                     return true;
             }
             return false;

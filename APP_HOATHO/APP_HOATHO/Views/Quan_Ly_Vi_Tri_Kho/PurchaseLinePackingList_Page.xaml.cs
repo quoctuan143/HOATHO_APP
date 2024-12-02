@@ -142,7 +142,9 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 var find = viewModel.ListItem.FirstOrDefault(x => x.Id == _selectItem.Id);
                 if (find != null)
                 {
+                    viewModel.ShowLoading("Đang xóa....vui lòng đợi");
                     var ok = await Config.client.PostAsJsonAsync("api/qltb/XoaBarcodeIdCayVai", find);
+                    viewModel.HideLoading();
                     if (ok.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         find.BarcodeId = "";
@@ -156,6 +158,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             }
             catch (Exception ex)
             {
+                viewModel.HideLoading();
                 await new MessageBox(ex.Message).Show();
             }
         }

@@ -108,8 +108,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 DanhSachPhieuXuatKhoChiTiet_Model item = obj as DanhSachPhieuXuatKhoChiTiet_Model;
                 if (item != null)
                 {
+                    ShowLoading("Đang cập nhật. vui lòng đợi...");
                     var ok = await Config.client.GetAsync($"api/qltb/CapNhatSoLuongKhauTru?rowid={item.RowID}&soluong={item.SoLuongKhauTru}");
-
+                    HideLoading();
                     if (ok.IsSuccessStatusCode)
                     {
                         await new MessageBox("Cập nhật số lượng khấu trừ thành công").Show();

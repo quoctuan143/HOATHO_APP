@@ -91,7 +91,9 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             var ask = await new MessageYesNo("Bạn có muốn xuất không?").Show();
             if (ask == Global.DialogReturn.OK)
             {
+                viewModel.ShowLoading("Đang cập nhật. vui lòng đợi...");
                 var ok =await viewModel.RunHttpClientPost($"api/qltb/XuatVaiKhoiKe?userId={Preferences.Get(Global.Config.User,"")}", listXuat);
+                viewModel.HideLoading();
                 if (ok.IsSuccessStatusCode)
                 {
                     await new MessageBox("Xuất kho thành công").Show();

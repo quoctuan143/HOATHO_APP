@@ -70,7 +70,7 @@
                     <Grid ColumnDefinitions="6*,4*">
                         <StackLayout Spacing="0" Grid.Column="0">
                             <Label Text="Đối tượng thanh toán" Style="{StaticResource styleLableBold}"></Label>
-                            <sfcombobox:SfComboBox x:Name="cbdoituongthanhtoan"
+                            <!--<sfcombobox:SfComboBox x:Name="cbdoituongthanhtoan"
                                        SelectedValue="{Binding SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_ , Mode=TwoWay}"
                                        DataSource="{Binding DoiTuongs, Mode=TwoWay}"
                                        DisplayMemberPath="Name"
@@ -89,7 +89,18 @@
                                         </StackLayout>
                                     </DataTemplate>
                                 </sfcombobox:SfComboBox.ItemTemplate>
-                            </sfcombobox:SfComboBox>
+                            </sfcombobox:SfComboBox>-->
+                            <Label Text="Chọn đối tượng"
+                                   FontSize="14"
+                                   x:Name="btnDoiTuong"
+                                   BackgroundColor="Transparent"
+                                   LineBreakMode="WordWrap"
+                                   TextColor="{StaticResource Primary}"
+                                   HorizontalOptions="Start">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="btnDoiTuong_Clicked"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
                         <StackLayout Spacing="0" Grid.Column="1">
                             <Label Text="Loại TT" Style="{StaticResource styleLableBold}"></Label>

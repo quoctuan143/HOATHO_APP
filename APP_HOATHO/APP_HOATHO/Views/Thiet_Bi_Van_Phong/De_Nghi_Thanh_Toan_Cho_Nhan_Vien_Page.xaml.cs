@@ -119,7 +119,8 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
             if (!string.IsNullOrEmpty(doituong))
             {
                 var item1 = DoiTuongs.FirstOrDefault(x => x.Code == SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_);
-                cbdoituongthanhtoan.SelectedItem = item1;
+                //cbdoituongthanhtoan.SelectedItem = item1;
+                btnDoiTuong.Text = item1?.Name ?? "Chọn đối tượng";
             }
             OnPropertyChanged("DoiTuongs");
         }
@@ -279,7 +280,7 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                         await new MessageBox("Vui lòng chọn hình thức thanh toán").Show();
                         return;
                     }
-                    if (string.IsNullOrEmpty(SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_))
+                    if (btnDoiTuong.Text == "Chọn đối tượng")
                     {
                         await new MessageBox("Vui lòng chọn đối tượng thanh toán").Show();
                         return;
@@ -354,6 +355,15 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
              }
             
 
+        }
+
+        private async void btnDoiTuong_Clicked(object sender, EventArgs e)
+        {
+            var lookup = new LookupItem(DoiTuongs, "Chọn đối tượng");
+            lookup.closeForm += (s,item) => { btnDoiTuong.Text = item.Name;
+                SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_ = item.Code;                
+            };
+           await Navigation.PushModalAsync(lookup);
         }
     }
 }

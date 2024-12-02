@@ -2,6 +2,7 @@
 using APP_HOATHO.Dialog;
 using APP_HOATHO.Global;
 using APP_HOATHO.Models.HangKhongGanNhan;
+using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.ViewModels.HangKhongGanNhan;
 using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
 using System;
@@ -23,7 +24,7 @@ namespace APP_HOATHO.Views.HangKhongGanNhan
             InitializeComponent();
             viewModel = new HangKhongGanNhan_Line_ViewModel(soChungTu);
             viewModel.navigation = Navigation;
-            BindingContext = viewModel;
+            BindingContext = viewModel;            
         }
 
         protected override void OnAppearing()
@@ -47,7 +48,7 @@ namespace APP_HOATHO.Views.HangKhongGanNhan
         public bool FilterRecords(object o)
         {
             filterText = filterText.ToLower();
-            var item = o as Nhap_Hang_Khong_Gan_Nhan_Line_Model;
+            var item = o as PurchaseLinePackingList_Model;
             if (item != null)
             {
                 if (ChonNhom1 == StatusFormatColor.TatCa)
@@ -57,18 +58,18 @@ namespace APP_HOATHO.Views.HangKhongGanNhan
                 }
                 else
                 {
-                    if ((item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText)) && item.DaXepLenKe == ChonNhom1)
+                    if ((item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText)) && item.DaXeplenKe == ChonNhom1)
                         return true;
                 }
             }
             return false;
         }
 
-        private Nhap_Hang_Khong_Gan_Nhan_Line_Model _selectItem;
+        private PurchaseLinePackingList_Model _selectItem;
 
         private void listChiTiet_SwipeEnded(object sender, Syncfusion.SfDataGrid.XForms.SwipeEndedEventArgs e)
         {
-            _selectItem = e.RowData as Nhap_Hang_Khong_Gan_Nhan_Line_Model;
+            _selectItem = e.RowData as PurchaseLinePackingList_Model;
         }
 
         private async void btnXoaBarcodeId_Tapped(object sender, EventArgs e)
@@ -78,11 +79,13 @@ namespace APP_HOATHO.Views.HangKhongGanNhan
                 var find = viewModel.ListItem.FirstOrDefault(x => x.Id == _selectItem.Id);
                 if (find != null)
                 {
+                    viewModel.ShowLoading("Đang xóa vui lòng đợi....");
                     var ok = await Config.client.PostAsJsonAsync("api/HangKhongGanNhan/XoaCayVaiKhoiKe", find);
+                    viewModel.HideLoading();
                     if (ok.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         find.PositionId = "";
-                        find.DaXepLenKe = StatusFormatColor.ChuaHoanThanh;
+                        find.DaXeplenKe = StatusFormatColor.ChuaHoanThanh;
                         listChiTiet.Refresh();
                     }
                     else
@@ -93,6 +96,7 @@ namespace APP_HOATHO.Views.HangKhongGanNhan
             }
             catch (Exception ex)
             {
+                viewModel.HideLoading();
                 await new MessageBox(ex.Message).Show();
             }
         }
@@ -119,6 +123,11 @@ namespace APP_HOATHO.Views.HangKhongGanNhan
             }
             listChiTiet.View.Filter = FilterRecords;
             listChiTiet.View.RefreshFilter();
+        }
+
+        private void listChiTiet_SelectionChanged(object sender, Syncfusion.SfDataGrid.XForms.GridSelectionChangedEventArgs e)
+        {
+
         }
     }
 }
