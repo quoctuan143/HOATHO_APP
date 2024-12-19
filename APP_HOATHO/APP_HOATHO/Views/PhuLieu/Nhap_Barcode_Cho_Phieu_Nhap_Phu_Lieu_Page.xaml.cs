@@ -43,7 +43,7 @@ namespace APP_HOATHO.Views.PhuLieu
             BarcodeId = "Quét QR";
             ViTriLuu = "Vị trí lưu";
             ListItem = list;
-            ListItem.ForEach(x => x.SoLuongCanNhap = x.Quantity);
+            ListItem.ForEach(x => x.SoLuongCanNhap = x.Quantity - (x.SoLuongDaNhap ?? 0));
             BindingContext = this;
         }
         protected override  void OnAppearing()

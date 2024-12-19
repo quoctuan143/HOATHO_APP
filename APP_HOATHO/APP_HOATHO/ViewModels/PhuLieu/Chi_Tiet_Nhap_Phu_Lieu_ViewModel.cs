@@ -64,7 +64,7 @@ namespace APP_HOATHO.ViewModels.PhuLieu
     public class Chi_Tiet_Nhap_Phu_Lieu_Model : PurchaseLine_Model
     {
         public string DocumentNo { get; set; }  
-        public decimal? SoLuongDaNhap { get; set; }  
+        public double? SoLuongDaNhap { get; set; }  
         double _soLuongCanNhap = 0;
         public double SoLuongCanNhap { get; set; }
         public string FormatSoLuongCanNhap
