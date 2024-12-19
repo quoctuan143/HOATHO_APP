@@ -66,7 +66,7 @@ namespace APP_HOATHO.ViewModels.PhuLieu
         public string DocumentNo { get; set; }  
         public decimal? SoLuongDaNhap { get; set; }  
         double _soLuongCanNhap = 0;
-        public double SoLuongCanNhap { get; set; } = 0;
+        public double SoLuongCanNhap { get; set; }
         public string FormatSoLuongCanNhap
         {
 
@@ -184,7 +184,8 @@ namespace APP_HOATHO.ViewModels.PhuLieu
 
         public DateTime? CreateDate { get; set; }
 
-        public string UserId { get; set; }
+        public string UserId { get; set; }      
+        public string ViTriLuu { get; set; }
 
     }
 

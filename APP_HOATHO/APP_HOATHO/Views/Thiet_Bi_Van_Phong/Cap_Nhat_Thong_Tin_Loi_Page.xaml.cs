@@ -61,7 +61,9 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 DependencyService.Get<IMessage>().LongAlert("Vui lòng chọn phân loại lỗi");
                 return;
             }
+            BaseView. ShowLoading("Đang xử lý. vui lòng đợi...");
             var ok = await BaseView.RunHttpClientPost("api/qltb/CapNhatThongTinSauKhiSuaLoi", Item);
+            BaseView.HideLoading();
             if (ok.IsSuccessStatusCode)
             {                
                 await new MessageBox("Cập nhật xử lý lỗi thành công").Show();

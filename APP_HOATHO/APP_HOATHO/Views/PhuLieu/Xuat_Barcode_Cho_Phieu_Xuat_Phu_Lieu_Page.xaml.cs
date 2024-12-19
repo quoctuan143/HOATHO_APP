@@ -81,7 +81,10 @@ namespace APP_HOATHO.Views.PhuLieu
 
             if (ok == DialogReturn.OK) 
             {
+                viewModel.ShowLoading("Đang xử lý. vui lòng đợi...");
                 var runOk = await viewModel.RunHttpClientPost("api/PhuLieu/xuatKhoPhuLieu", listNhap);
+                viewModel.HideLoading();
+
                 if (runOk.StatusCode  == System.Net.HttpStatusCode.OK)
                 {                   
                     await new MessageBox("Đã xuất kho thành công").Show();

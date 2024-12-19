@@ -55,13 +55,14 @@ namespace APP_HOATHO.ViewModels.Ki_Dien_Tu_Thiet_Bi
                 {
                     ShowLoading("Đang xử lý....");
                     var result = await RunHttpClientPost("api/DuyetChungTu/DuyetKiDienTuTongHop_NhaMay", KiemChungTuModel);
+                    HideLoading();
                     if (result.StatusCode == System.Net.HttpStatusCode.OK )
                     {                      
                        await navigation.PopAsync();
                        DependencyService.Get<IMessage>().LongAlert("Đã duyệt và gửi mail thành công");
                        MessagingCenter.Send(this, "DuyetChungTu", KiemChungTuModel.No_);
                     }
-                    HideLoading();
+                    
                 }    
             }
             catch (Exception ex)

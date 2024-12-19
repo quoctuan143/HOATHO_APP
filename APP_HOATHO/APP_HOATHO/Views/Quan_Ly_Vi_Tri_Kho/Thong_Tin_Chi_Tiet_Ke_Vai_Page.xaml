@@ -65,6 +65,21 @@
                                 SelectionChanged="listThietBi_SelectionChanged">
                 <sfDataGrid:SfDataGrid.Columns>
 
+                    <sfDataGrid:GridTemplateColumn  MappingName="Art"
+                                                    HeaderText="Art"
+                                                    Width="120"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Art}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  MappingName="Color" HeaderText="Màu" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -122,6 +137,22 @@
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding PositionId}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="ViTri"
+                                                   Width="100"
+                                                   HeaderText="Vị trí"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ViTri}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       WidthRequest="120"
+                                       XAlign="Start"
+                                       YAlign="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

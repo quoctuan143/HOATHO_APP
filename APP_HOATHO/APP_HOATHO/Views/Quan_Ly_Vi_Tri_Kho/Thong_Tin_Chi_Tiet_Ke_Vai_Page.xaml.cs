@@ -22,15 +22,16 @@ using ZXing;
 namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Thong_Tin_Chi_Tiet_Ke_Vai_Page : ContentPage,INotifyPropertyChanged
+    public partial class Thong_Tin_Chi_Tiet_Ke_Vai_Page : ContentPage, INotifyPropertyChanged
     {
-        public ObservableCollection<ThongTinChiTietKeVai_Model> ListItem {get;set;}
-        private  BaseViewModel viewModel;
+        public ObservableCollection<ThongTinChiTietKeVai_Model> ListItem { get; set; }
+        private BaseViewModel viewModel;
+
         public Thong_Tin_Chi_Tiet_Ke_Vai_Page()
         {
             InitializeComponent();
             ListItem = new ObservableCollection<ThongTinChiTietKeVai_Model>();
-            viewModel = new BaseViewModel();           
+            viewModel = new BaseViewModel();
             BindingContext = this;
         }
 
@@ -41,21 +42,19 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 var item = listThietBi.SelectedItem as ThongTinChiTietKeVai_Model;
                 if (item != null)
                 {
-                    var Item = await viewModel.RunHttpClientGet<ThongTinChiTietCayVai_Model>($"api/qltb/XemThongTinChiTietCayVai?barcodeId={item.BarcodeId}");
+                    var Item = await viewModel.RunHttpClientGet<ThongTinChiTietCayVai_Model>($"api/qltb/XemThongTinChiTietCayVaiById?id={item.Id}");
                     if (Item.Lists.Count > 0)
                     {
                         await Navigation.PushAsync(new ThongTinChiTietCayVai_Page(Item.Lists[0]));
                     }
                     else
-                        await new MessageBox($"Không tìm thấy cây vải có barcodeId {item.BarcodeId} trong hệ thống").Show();
+                        await new MessageBox($"Không tìm thấy cây vải này trong hệ thống").Show();
                 }
             }
             catch (Exception ex)
             {
-
                 await new MessageBox(ex.Message).Show();
             }
-              
         }
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
@@ -64,16 +63,17 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             listThietBi.View.Filter = FilterRecords;
             listThietBi.View.RefreshFilter();
         }
+
         private string filterText = string.Empty;
+
         public bool FilterRecords(object o)
         {
             filterText = filterText.ToLower();
             var item = o as ThongTinChiTietKeVai_Model;
             if (item != null)
             {
-                if (item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.BarcodeId.ToLower().Contains(filterText))
+                if (item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.BarcodeId.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText))
                     return true;
-
             }
             return false;
         }
@@ -101,12 +101,11 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 viewModel.HideLoading();
                 await new MessageBox(ex.Message).Show();
             }
-            
         }
 
         private async void btnQuetQR_Clicked(object sender, EventArgs e)
         {
-            ScanBarcode scan = new ScanBarcode(false, "Quét QR cây vải",true);
+            ScanBarcode scan = new ScanBarcode(false, "Quét QR cây vải", true);
             scan.ScanBarcodeResult += (s, result) =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -135,7 +134,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     {
                         BarcodeId = "%",
                         KeVai = result,
-                        RollNo = "%" 
+                        RollNo = "%"
                     };
 
                     var Item = await viewModel.RunHttpClientGet<ThongTinChiTietKeVai_Model>($"api/VaiLot/ThongTinKeVai", request);
@@ -147,5 +146,5 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             };
             await Navigation.PushAsync(scan);
         }
-    }    
+    }
 }

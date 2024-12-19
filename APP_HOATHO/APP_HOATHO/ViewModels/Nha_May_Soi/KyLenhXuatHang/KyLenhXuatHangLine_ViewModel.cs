@@ -76,7 +76,9 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi.KyLenhXuatHang
                 var ask = await new MessageYesNo("Bạn có muốn duyệt không").Show();
                 if (ask == DialogReturn.OK )
                 {
+                    ShowLoading("Đang xử lý. vui lòng đợi...");
                     var ok = await RunHttpClientPost("api/Soi/DuyetLenhXuatHang",request );
+                    HideLoading();
                     if (ok.IsSuccessStatusCode)
                     {
                         await navigation.PopAsync();

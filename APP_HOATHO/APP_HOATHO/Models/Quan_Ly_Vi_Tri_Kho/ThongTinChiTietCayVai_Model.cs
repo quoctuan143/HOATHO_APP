@@ -13,14 +13,14 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string ItemName { get; set; }
         public double? TonKho { get; set; }
         public string PositionId { get; set; }
+        public string ViTri { get; set; }
     }
 
     public class ThongTinChiTietCayVai_Model : ThongTinCayVaiBase
     {
         public double? GrossLength { get; set; }
         public double? Quantity { get; set; }
-        public double? Width { get; set; }   
-        public string ViTri { get; set; }
+        public double? Width { get; set; }           
         public string PhieuNhap { get; set; }
         public string LoVai { get; set; }
         public string DVT { get; set; }
@@ -32,6 +32,6 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string Id { get; set; }
         public double? InvoicedMeter { get; set; }      
         public bool Chon { get; set; }
-        public string UserId { get; set; }
+        public string UserId { get; set; }        
     }
 }

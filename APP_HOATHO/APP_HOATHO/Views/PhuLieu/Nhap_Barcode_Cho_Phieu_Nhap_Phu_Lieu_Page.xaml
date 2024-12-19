@@ -21,7 +21,18 @@
                                    LiveDataUpdateMode="AllowSummaryUpdate">
                 <sfDataGrid:SfDataGrid.Columns>
 
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Chọn"
+                                                    MappingName="Chon"
+                                                    Width="40"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Chon, Mode=TwoWay}"/>
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
 
+                    </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Tên NPL"
                                                     MappingName="Name"
                                                     Width="150"
@@ -141,6 +152,12 @@
                          VerticalOptions="End">
                 <sfbutton:SfButton Text="{Binding BarcodeId, Mode=TwoWay}"
                                    Clicked="SfButton_Clicked"
+                                   FontSize="16"
+                                   CornerRadius="60"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="{Binding ViTriLuu, Mode=TwoWay}"
+                                   Clicked="SfButton_Clicked_1"
                                    FontSize="16"
                                    CornerRadius="60"
                                    HorizontalOptions="FillAndExpand"

@@ -50,7 +50,9 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                     return;
                 }
                 Item.Du_Kien_Hoan_Thanh = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, time.Hours, time.Minutes, time.Seconds);
+                BaseView.ShowLoading("Đang xử lý. vui lòng đợi...");
                 var ok = await BaseView.RunHttpClientPost($"api/qltb/IT_Tiep_Nhan_Yeu_Cau", Item);
+                BaseView.HideLoading();
                 if (ok.IsSuccessStatusCode)
                 {
                     BaseView.HideLoading();

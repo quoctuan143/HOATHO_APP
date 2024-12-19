@@ -130,7 +130,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     var ask = await new MessageYesNo("Bạn có muốn cập nhật không").Show();
                     if (ask == DialogReturn.OK)
                     {
+                        ShowLoading("Đang xử lý. vui lòng đợi...");
                         var ok = await RunHttpClientPost($"api/qltb/ThayDoiViTriChuaOVai", ListItem);
+                        HideLoading();
                         if (ok.StatusCode == System.Net.HttpStatusCode.OK)
                         {
                             await new MessageBox("Đã cập nhật thành công").Show();

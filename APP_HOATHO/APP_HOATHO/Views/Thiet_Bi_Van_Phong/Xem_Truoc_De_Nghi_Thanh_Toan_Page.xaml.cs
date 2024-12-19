@@ -85,7 +85,9 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                 if (ask == DialogReturn.OK)
                 {
                     var a= JsonConvert.SerializeObject(ViewSuggestedPayment.SuggestedPaymentRequest);
+                     viewModel.ShowLoading("Đang xử lý. vui lòng đợi...");
                     var response = await viewModel.RunHttpClientPost("api/dntt/GuiDeNghiThanhToan", ViewSuggestedPayment.SuggestedPaymentRequest);
+                    viewModel.HideLoading();
                     if (response.IsSuccessStatusCode)
                     {
                         await new MessageBox("Gửi yêu cầu thành công").Show();

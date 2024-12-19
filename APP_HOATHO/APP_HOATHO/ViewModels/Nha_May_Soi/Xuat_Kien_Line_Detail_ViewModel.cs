@@ -94,7 +94,9 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
                     else
                     {
                         //xóa trên database
+                        ShowLoading("Đang xử lý. vui lòng đợi...");
                         var delete = await RunHttpClientPost("api/Soi/deleteXuatKienLineDetail", item);
+                        HideLoading();
                         if (delete.IsSuccessStatusCode)
                         {
                             ListItem.Remove(item);
@@ -185,8 +187,9 @@ namespace APP_HOATHO.ViewModels.Nha_May_Soi
                                 StatusUpdate = StatusUpdate.Status.Add
                             }
                            };
-
+                            ShowLoading("Đang xử lý. vui lòng đợi...");
                             var result1 = await RunHttpClientPost("api/Soi/postXuatKienLineDetail", item);
+                            HideLoading();
                             if (result1.IsSuccessStatusCode)
                             {
                                 string url = $"api/Soi/getXuatKienLineDetail?sochungtu={KiemChungTuModel.Document_No_}&lineno={KiemChungTuModel.Line_No_}";

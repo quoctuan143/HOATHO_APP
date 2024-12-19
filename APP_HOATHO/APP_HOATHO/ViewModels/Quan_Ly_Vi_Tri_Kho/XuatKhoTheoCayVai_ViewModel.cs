@@ -167,6 +167,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     {
                         ShowLoading("Đang xử lý. vui lòng đợi");
                         var ok = await RunHttpClientPost("api/qltb/XuatKhoTheoDanhSachIdCayVai", ListItem.Where(x => x.RowID == "0").ToList());
+                        HideLoading();
                         if (ok.IsSuccessStatusCode)
                         {
                             HideLoading();

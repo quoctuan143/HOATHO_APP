@@ -68,7 +68,9 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             if (await new MessageYesNo ($"Bạn có muốn chuyển tất cả những cây vải trong kệ {txtKeA.Text} sang kệ {txtKeB.Text}").Show() == Global.DialogReturn.OK)
             {
                 BaseViewModel viewModel = new BaseViewModel();
+                viewModel.ShowLoading("Đang xử lý. vui lòng đợi...");
                 var ok = await viewModel.RunHttpClientPost($"api/qltb/ChuyenVaiTuKeASangKeB?keA={txtKeA.Text}&keB={txtKeB.Text}&user={Preferences.Get(Config.User,"")}", null);
+                viewModel.HideLoading();
                 if (ok.IsSuccessStatusCode)
                 {
                     await new MessageBox("Cập nhật thành công").Show();
@@ -93,7 +95,9 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     {
                         BaseViewModel viewModel = new BaseViewModel();
                         CellPositionModel item = new CellPositionModel { Code = result, PositionId = "" };
+                        viewModel.ShowLoading("Đang xử lý. vui lòng đợi...");
                         var ok1 = await viewModel.RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
+                        viewModel.HideLoading();
                         if (!ok1.IsSuccessStatusCode)
                         {
                             await new MessageBox($"Kệ : {result} này không tồn tại trong hệ thống").Show();

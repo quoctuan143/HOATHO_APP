@@ -77,9 +77,10 @@ namespace APP_HOATHO.ViewModels.Kiem_Ke_Thiet_Bi
                                 Serial = a.Lists[0].No_3,
                                 Nguoi_Kiem_Ke = Preferences.Get(Config.User, ""),
                                 So_Luong = 1                               
-                            };    
-                            
+                            };
+                            ShowLoading("Đang xử lý, vui lòng đợi");
                             var res = await RunHttpClientPost("api/qltb/CapNhatThietBiKiemKe", item);
+                            HideLoading();
                             if (res.StatusCode == System.Net.HttpStatusCode.OK)
                             {                                
                                 if (ListItem.Where(x=> x.Ma_Thiet_Bi == item.Ma_Thiet_Bi).Count () == 0)

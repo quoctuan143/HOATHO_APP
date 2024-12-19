@@ -89,7 +89,9 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                     var ask = await new MessageYesNo("Bạn có muốn mở lại không?").Show();
                     if (ask == DialogReturn.OK)
                     {
+                        viewModel.ShowLoading("Đang xử lý. vui lòng đợi...");
                         var openOk = await viewModel.RunHttpClientPost($"api/dntt/ReopenDNTT?documentNo={item.No_}", null);
+                        viewModel.HideLoading();
                         if (openOk.IsSuccessStatusCode)
                         {
                             await Navigation.PushAsync(new De_Nghi_Thanh_Toan_Cho_Nhan_Vien_Page(item.No_));
@@ -114,7 +116,9 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                     var ask = await new MessageYesNo("Bạn có muốn Hủy không?").Show();
                     if (ask == DialogReturn.OK)
                     {
+                        viewModel.ShowLoading("Đang xử lý. vui lòng đợi...");
                         var openOk = await viewModel.RunHttpClientPost($"api/dntt/Delete?documentNo={item.No_}", null);
+                        viewModel.HideLoading();
                         if (openOk.IsSuccessStatusCode)
                         {
                             await ExcuteLoadLichSuBaoTri();

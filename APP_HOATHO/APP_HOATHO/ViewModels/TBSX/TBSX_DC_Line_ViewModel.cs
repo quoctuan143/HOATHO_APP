@@ -52,7 +52,9 @@ namespace APP_HOATHO.ViewModels.TBSX
                     var asked = await new MessageYesNo("Bạn có muốn duyệt không?").Show();
                     if (asked == DialogReturn.OK)
                     {
+                        ShowLoading("Đang xử lý. vui lòng đợi...");
                         var send = await RunHttpClientPost("api/tbsx/postPhuLucThongBaoSanXuat_Header", request);
+                        HideLoading();
                         if (send.IsSuccessStatusCode)
                         {
                             LongAlert("Đã duyệt và send email đến các bộ phận liên quan!");
