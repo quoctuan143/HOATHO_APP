@@ -24,7 +24,7 @@
                                                IsHintAlwaysFloated="True"
                                                LeadingViewPosition="Inside"
                                                ContainerType="Outlined">
-                    <Entry x:Name="txtRollNo" Placeholder="Chọn Roll No"
+                    <Entry x:Name="txtRollNo" Placeholder="Chọn Roll No" Style="{StaticResource styleEntry}" 
                                HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing"  />
                 </sfinputtext:SfTextInputLayout>
                 <sfbutton:SfButton Text="Tìm kiếm" x:Name="btnScan" Clicked="btnScan_Clicked" FontSize="16" 
@@ -51,6 +51,7 @@
             </Grid>
             <Entry x:Name="search" TextChanged="search_TextChanged" ClearButtonVisibility="WhileEditing"
                HorizontalOptions="FillAndExpand" Placeholder="Tìm theo Roll No, màu, barcode"
+                   Style="{StaticResource styleEntry}" 
                    Margin="0,-20,0,0"></Entry>
             <sfDataGrid:SfDataGrid  x:Name="listThietBi"
                                 ItemsSource="{Binding ListItem}"

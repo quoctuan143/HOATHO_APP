@@ -13,7 +13,7 @@
                 <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*" Padding="5" RowSpacing="0">
                     <Label Text="Art NPL" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
                     <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Entry x:Name="txtArt"  FontSize="16" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="100"></Entry>
+                        <Entry x:Name="txtArt" Style="{StaticResource styleEntry}" Placeholder="Chọn Art" FontSize="16" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="100"></Entry>
                         <sfbutton:SfButton Style="{x:StaticResource stylesfButton}" x:Name="btnCheckArt"  Clicked="btnCheckArt_Clicked" HorizontalOptions="EndAndExpand" Text="Tìm kiếm"></sfbutton:SfButton>
                     </StackLayout>                      
                     <sfcombobox:SfComboBox x:Name="cbLoaiDoiTuong"                                                 
@@ -28,9 +28,9 @@
                     </sfcombobox:SfComboBox>
                     
                     <Label Text="Chất lượng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.Quality,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Placeholder="Chất lượng" Text="{Binding Item.Quality,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Roll No" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.RollNo,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}"  Placeholder="Nhập Roll No" Text="{Binding Item.RollNo,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
                     <sfcombobox:SfComboBox x:Name="cbmau"
                                            
                                        SelectedValue="{Binding Item.Color , Mode=TwoWay}"
@@ -44,9 +44,9 @@
                                        ShowClearButton="True">
                     </sfcombobox:SfComboBox>                             
                     <Label Text="Gross Length" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.FormatNumberGrossLength,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.FormatNumberGrossLength,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Allowance" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.FormatNumberAllowance,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.FormatNumberAllowance,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Số cây vải"
                            Grid.Column="0"
                            VerticalTextAlignment="Center"
@@ -56,11 +56,12 @@
                     <Entry Text="{Binding Item.SoCayVai ,Mode=TwoWay}"
                            Keyboard="Numeric"
                            Grid.Column="1"
+                           Style="{StaticResource styleEntry}" 
                            Grid.Row="7"
                            FontSize="16"
                            TextColor="Black"></Entry>
                     <Label Text="Chiều dài(m)" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.FormatNumberInvoicedMeter ,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="8" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.FormatNumberInvoicedMeter ,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="8" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Đơn vị tính" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="9" FontSize="16" TextColor="Black"></Label>
                     <sfcombobox:SfComboBox x:Name="cbDonViTinh"                                    
                                    Grid.Column="1"

@@ -18,8 +18,9 @@
                                                Margin="0,0,10,0"
                                                >
                     <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:D/MM/yyyy}'}" 
-                               DateSelected="DatePicker_DateSelected"
-                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                DateSelected="DatePicker_DateSelected"
+                                TextColor="#06264c"
+                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                />
                     <sfinputtext:SfTextInputLayout.LeadingView>
                         <Image>
@@ -35,8 +36,9 @@
                                                LeadingViewPosition="Inside"  
                                                ContainerType="Outlined">
                     <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:D/MM/yyyy}' }" 
-                            DateSelected="DatePicker_DateSelected"
-                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                DateSelected="DatePicker_DateSelected"
+                                TextColor="#06264c"
+                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                 MaximumDate="{x:Static helper:FontIconClass.MaxDate }"
                                 />
                     <sfinputtext:SfTextInputLayout.LeadingView>

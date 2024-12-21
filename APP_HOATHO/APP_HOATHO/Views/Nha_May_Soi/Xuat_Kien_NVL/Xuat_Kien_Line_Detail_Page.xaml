@@ -80,6 +80,7 @@
                             <DataTemplate>
                                 <Entry Text="{Binding FormatNumberQuantity}"
                                        TextColor="Black"
+                                       Style="{StaticResource styleEntry}" 
                                        Keyboard="Numeric"
                                         />
                             </DataTemplate>

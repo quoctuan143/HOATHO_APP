@@ -24,6 +24,7 @@
                 <SearchBar Placeholder="Tìm kiếm" CancelButtonColor="Red"
                            Grid.Column="0"
                            HorizontalOptions="FillAndExpand"
+                           Style="{StaticResource styleSearch}"
                            TextChanged="SearchBar_TextChanged">
                 </SearchBar>
                 <combobox:SfComboBox x:Name="ChonNhom" Grid.Column="1" IsEditableMode="False" SelectionChanged="ChonNhom_SelectionChanged" ShowBorder="False" Style="{StaticResource styleCombobox}"  Watermark="Chọn nhóm cần lọc">

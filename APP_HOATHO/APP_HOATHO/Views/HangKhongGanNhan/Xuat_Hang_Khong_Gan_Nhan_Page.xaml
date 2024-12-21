@@ -16,6 +16,7 @@
                   HorizontalOptions="FillAndExpand">
                 <SearchBar Placeholder="Tìm kiếm" CancelButtonColor="Red"
                            Grid.Column="0"
+                           Style="{StaticResource styleSearch}"
                            HorizontalOptions="FillAndExpand"
                            TextChanged="SearchBar_TextChanged">
                 </SearchBar>

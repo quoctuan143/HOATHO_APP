@@ -22,6 +22,7 @@
                   HorizontalOptions="FillAndExpand">
                 <SearchBar Placeholder="Tìm kiếm" CancelButtonColor="Red"
                            Grid.Column="0"
+                           Style="{StaticResource styleSearch}"
                            HorizontalOptions="FillAndExpand"
                            TextChanged="SearchBar_TextChanged">                        
                 </SearchBar>
@@ -60,6 +61,7 @@
                                       TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"                                         
                                            HorizontalOptions="FillAndExpand"
                                            WidthRequest="100"
+                                           Style="{StaticResource styleEntry}" 
                                        />
                                     <Image Source="check.png"
                                        WidthRequest="30"
@@ -133,6 +135,7 @@
                                     <Entry Text="{Binding FormatNumberInvoicedMeter, Mode=TwoWay}"
                                       TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                         Keyboard="Numeric"
+                                           Style="{StaticResource styleEntry}" 
                                            HorizontalOptions="FillAndExpand"
                                        />
                                     <Image Source="check.png"

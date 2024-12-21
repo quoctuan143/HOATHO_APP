@@ -16,6 +16,7 @@ namespace APP_HOATHO
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTE4NTQ2NUAzMjMwMmUzNDJlMzBhaEV4Y3J2TTZyZ2FRdTBkZ1k4VUtPVzUwbHp1Y0pUeWJ0cW56cFJpM1JFPQ==");
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<IBeepService>();
+            DependencyService.Register<IProcessLoader>();
             new Config();
             Device.SetFlags(new string[] { "CollectionView_Experimental", "Brush_Experimental", "SwipeView_Experimental", "CarouseView_Experimental", "IndicatorView_Experimental" });
             if (isNotification == false)

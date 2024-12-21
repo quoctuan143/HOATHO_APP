@@ -15,6 +15,7 @@
                 <Grid ColumnDefinitions="8*,2*">
                     <Entry Text="{Binding Text}"
                        Grid.Column="0"
+                           Style="{StaticResource styleEntry}"
                        HorizontalOptions="FillAndExpand"
                        IsReadOnly="True" />
                     <Image Grid.Column="1" Aspect="AspectFit" 

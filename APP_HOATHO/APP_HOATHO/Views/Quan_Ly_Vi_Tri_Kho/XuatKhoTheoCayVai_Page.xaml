@@ -67,6 +67,7 @@
                                 <Entry Text="{Binding FormatNumberCanXuat}"
                                        TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Keyboard="Numeric"
+                                       Style="{StaticResource styleEntry}" 
                                        IsReadOnly="{Binding DaXuatKho}"
                                        />
                             </DataTemplate>

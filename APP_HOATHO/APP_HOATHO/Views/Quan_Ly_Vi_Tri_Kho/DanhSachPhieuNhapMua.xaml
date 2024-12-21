@@ -26,6 +26,7 @@
                                                LeadingViewPosition="Inside"
                                                ContainerType="Outlined">
                         <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}'}"
+                                    TextColor="#06264c"
                                HorizontalOptions="Start"  />
                         <sfinputtext:SfTextInputLayout.LeadingView>
                             <Image>
@@ -42,8 +43,8 @@
                                                LeadingViewPosition="Inside"
                                                ContainerType="Outlined">
                         <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}' }"
-
-                               HorizontalOptions="Start" 
+                                TextColor="#06264c"
+                                HorizontalOptions="Start" 
                                 MaximumDate="{x:Static helper:FontIconClass.MaxDate }" />
                         <sfinputtext:SfTextInputLayout.LeadingView>
                             <Image>
@@ -80,9 +81,10 @@
                 </Grid>
                 <Grid ColumnDefinitions="10*">
                     <SearchBar Placeholder="Tìm số lô,số chứng từ" CancelButtonColor="Red"
-                       HorizontalOptions="Start"             
+                               HorizontalOptions="Start"
+                               Style="{StaticResource styleSearch}"
                                x:Name="txtSearch"
-                       TextChanged="SearchBar_TextChanged"
+                               TextChanged="SearchBar_TextChanged"
                               ></SearchBar>
                     <Image HorizontalOptions="End">
                         <Image.Source>

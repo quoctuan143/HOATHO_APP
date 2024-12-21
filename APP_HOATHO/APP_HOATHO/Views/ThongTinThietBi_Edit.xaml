@@ -16,17 +16,17 @@
             <Label Text="Tên Thiết Bị" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
             <Label Text="{Binding Item.NameVN}" Grid.Column="1" Grid.Row="1" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
             <Label Text="Số Máy" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
-            <Entry Text="{Binding Item.No_3,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
+            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.No_3,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
             <Label Text="Model" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
-            <Entry Text="{Binding Item.No_2,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
+            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.No_2,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
             <Label Text="Xuất Xứ" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="4" FontSize="16" TextColor="Black"></Label>
-            <Entry Text="{Binding Item.CountryofOriginCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="4" FontSize="16" TextColor="Black"></Entry>
+            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.CountryofOriginCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="4" FontSize="16" TextColor="Black"></Entry>
             <Label Text="Hãng Sản Xuất" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
-            <Entry Text="{Binding Item.ManufacturerCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
+            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.ManufacturerCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
             <Label Text="Công Suất" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
-            <Entry Text="{Binding Item.QualityMeasureCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
+            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.QualityMeasureCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
             <Label Text="Ngày Sử Dụng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
-            <DatePicker Date="{Binding Item.NgaySuDung ,Mode=TwoWay, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></DatePicker>
+            <DatePicker  Date="{Binding Item.NgaySuDung ,Mode=TwoWay, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></DatePicker>
             <Label Text="Vị trí lưu" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
             <sfcombobox:SfComboBox x:Name="cbloaitt"
                                    Grid.Column="1"

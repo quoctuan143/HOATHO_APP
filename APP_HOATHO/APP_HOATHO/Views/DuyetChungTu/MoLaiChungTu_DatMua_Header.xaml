@@ -17,10 +17,11 @@
                                                IsHintAlwaysFloated="True"
                                                LeadingViewPosition="Inside"  
                                                ContainerType="Outlined"
-                                               Margin="0,0,10,0"
+                                               Margin="0,0,10,0"                                                                                             
                                                >
-                    <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:D/MM/yyyy}'}" 
-                               DateSelected="DatePicker_DateSelected"
+                    <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}'}" 
+                               DateSelected="DatePicker_DateSelected"                                
+                               TextColor="#06264c"
                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                />
                     <sfinputtext:SfTextInputLayout.LeadingView>
@@ -36,9 +37,10 @@
                                                IsHintAlwaysFloated="True"
                                                LeadingViewPosition="Inside"  
                                                ContainerType="Outlined">
-                    <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:D/MM/yyyy}' }" 
-                            DateSelected="DatePicker_DateSelected"
-                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                    <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}' }" 
+                                DateSelected="DatePicker_DateSelected"
+                                TextColor="#06264c"
+                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                 MaximumDate="{x:Static helper:FontIconClass.MaxDate }"
                                 />
                     <sfinputtext:SfTextInputLayout.LeadingView>
@@ -52,7 +54,8 @@
                 </sfinputtext:SfTextInputLayout>
             </StackLayout>
             <SearchBar HorizontalOptions="FillAndExpand" Placeholder="Số chứng từ cần mở lại"  
-                       PlaceholderColor="Gray" Style="{StaticResource styleSearch}" TextChanged="search_TextChanged"></SearchBar>
+                       PlaceholderColor="Gray" Style="{StaticResource styleSearch}"
+                       TextChanged="search_TextChanged"></SearchBar>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"                                           
                                             ItemsSource="{Binding ListItem, Mode=TwoWay}"  
                                             SelectionChanged="listChiTiet_SelectionChanged"

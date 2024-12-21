@@ -33,6 +33,7 @@
                 <SearchBar Placeholder="Tìm số chứng từ chi tiết" CancelButtonColor="Red"
                        HorizontalOptions="FillAndExpand"
                            Margin="0, -15, 0 ,0"
+                           Style="{StaticResource styleSearch}"
                        TextChanged="SearchBar_TextChanged"></SearchBar>
                 <sfDataGrid:SfDataGrid x:Name="listChiTiet"
                                    ItemsSource="{Binding ListItem, Mode=TwoWay}"                                       

@@ -18,17 +18,17 @@
                     <Label Text="Tên NPL" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
                     <Label Text="{Binding Item.Name}" Grid.Column="1" Grid.Row="1" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
                     <Label Text="Chất lượng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.Quality,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Text="{Binding Item.Quality,Mode=TwoWay}" Style="{StaticResource styleEntry}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Roll No" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.RollNo,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.RollNo,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Parcel No" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="4" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.ParcelNo,Mode=TwoWay}" Grid.Column="1" Grid.Row="4" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.ParcelNo,Mode=TwoWay}" Grid.Column="1" Grid.Row="4" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Gross Length" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.FormatNumberGrossLength,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.FormatNumberGrossLength,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Allowance" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.FormatNumberAllowance,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.FormatNumberAllowance,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Số lượng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
-                    <Entry Text="{Binding Item.FormatNumberInvoicedMeter ,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></Entry>
+                    <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.FormatNumberInvoicedMeter ,Mode=TwoWay}" Keyboard="Numeric" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></Entry>
                     <Label Text="Đơn vị tính" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
                     <sfcombobox:SfComboBox x:Name="cbDonViTinh"                                    
                                    Grid.Column="1"

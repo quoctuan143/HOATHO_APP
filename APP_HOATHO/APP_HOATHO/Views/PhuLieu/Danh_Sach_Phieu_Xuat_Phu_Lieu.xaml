@@ -27,6 +27,7 @@
                                                    LeadingViewPosition="Inside"
                                                    ContainerType="Outlined">
                         <DatePicker Date="{Binding FromDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}'}"
+                                    TextColor="#06264c"
                                     HorizontalOptions="Start" DateSelected="DatePicker_DateSelected" />
                         <sfinputtext:SfTextInputLayout.LeadingView>
                             <Image>
@@ -46,6 +47,7 @@
                                                    ContainerType="Outlined">
                         <DatePicker Date="{Binding ToDate , Mode=TwoWay , StringFormat='{0:dd/MM/yyyy}' }"
                                     HorizontalOptions="Start"
+                                    TextColor="#06264c"
                                     MaximumDate="{x:Static helper:FontIconClass.MaxDate }"  DateSelected="DatePicker_DateSelected"/>
                         <sfinputtext:SfTextInputLayout.LeadingView>
                             <Image>
@@ -64,6 +66,7 @@
                                CancelButtonColor="Red"
                                HorizontalOptions="Start"
                                x:Name="txtSearch"
+                               Style="{StaticResource styleSearch}"
                                TextChanged="SearchBar_TextChanged"></SearchBar>
                     <Image HorizontalOptions="End">
                         <Image.Source>

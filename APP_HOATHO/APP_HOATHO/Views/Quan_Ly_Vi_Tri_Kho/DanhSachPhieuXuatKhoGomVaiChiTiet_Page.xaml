@@ -22,6 +22,7 @@
                            Grid.Column="0"
                        HorizontalOptions="FillAndExpand"
                        TextChanged="SearchBar_TextChanged"
+                           Style="{StaticResource styleSearch}"
                        ></SearchBar>
                 <combobox:SfComboBox x:Name="ChonNhom" Grid.Column="1" IsEditableMode="False" SelectionChanged="ChonNhom_SelectionChanged" ShowBorder="False" Style="{StaticResource styleCombobox}"  Watermark="Chọn nhóm cần lọc" >
                     <combobox:SfComboBox.ComboBoxSource>

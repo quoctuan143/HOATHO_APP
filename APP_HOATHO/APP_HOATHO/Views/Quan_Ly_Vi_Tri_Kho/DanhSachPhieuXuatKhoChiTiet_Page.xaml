@@ -21,8 +21,9 @@
                   HorizontalOptions="FillAndExpand">
                 <SearchBar Placeholder="Tìm kiếm" CancelButtonColor="Red"
                            Grid.Column="0"
-                       HorizontalOptions="FillAndExpand"
-                       TextChanged="SearchBar_TextChanged"
+                           Style="{StaticResource styleSearch}"
+                           HorizontalOptions="FillAndExpand"
+                           TextChanged="SearchBar_TextChanged"
                        ></SearchBar>
                 <combobox:SfComboBox x:Name="ChonNhom" Grid.Column="1" IsEditableMode="False" SelectionChanged="ChonNhom_SelectionChanged" ShowBorder="False" Style="{StaticResource styleCombobox}"  Watermark="Chọn nhóm cần lọc" >
                     <combobox:SfComboBox.ComboBoxSource>
@@ -139,6 +140,7 @@
                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                         Keyboard="Numeric"
                                            HorizontalOptions="FillAndExpand"
+                                           Style="{StaticResource styleEntry}"
                                        />
                                     <Image Source="check.png"
                                        WidthRequest="30"

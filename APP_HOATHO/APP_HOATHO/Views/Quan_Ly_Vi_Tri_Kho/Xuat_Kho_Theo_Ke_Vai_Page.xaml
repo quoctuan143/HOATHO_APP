@@ -15,6 +15,7 @@
     <ContentPage.Content>
         <StackLayout>               
             <Entry x:Name="search" TextChanged="search_TextChanged" ClearButtonVisibility="WhileEditing"
+                   Style="{StaticResource styleEntry}" 
                HorizontalOptions="FillAndExpand" Placeholder="Tìm theo Roll No, màu, barcode"
                    ></Entry>
             <sfDataGrid:SfDataGrid  x:Name="listThietBi"

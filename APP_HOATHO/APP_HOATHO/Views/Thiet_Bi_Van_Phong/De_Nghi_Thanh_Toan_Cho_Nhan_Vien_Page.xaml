@@ -51,7 +51,9 @@
                         <StackLayout Grid.Column="0" Spacing="0">
                             <Label Text="Hạn thanh toán" Style="{StaticResource styleLableBold}"></Label>
                             <DatePicker Date="{Binding SuggestedPayment.SuggestedPaymentHeader.HanThanhToan, Mode=TwoWay}" MinimumDate="{x:Static sys:DateTime.Now}"
-                                        FontSize="16"></DatePicker>
+                                        FontSize="16"
+                                        Background="white"
+                                        TextColor="#06264c"></DatePicker>
                         </StackLayout>
                         <StackLayout Grid.Column="1" Spacing="0">
                             <Label Text="Hình thức TT" Style="{StaticResource styleLableBold}"></Label>
@@ -173,6 +175,7 @@
                                                    x:Name="txtSoNgay"
                                                    Keyboard="Numeric"
                                             Placeholder="Số ngày công tác"
+                                                   Style="{StaticResource styleEntry}"
                                                    TextChanged="txtAmount_TextChanged"
                                                    IsVisible="{Binding IsShow, Mode=TwoWay}"
                                             Text="{Binding SoNgay, Mode=TwoWay}" 
@@ -189,6 +192,7 @@
                                                    IsVisible="{Binding IsShow, Mode=TwoWay}"
                                                    x:Name="txtDonGia"
                                                    Keyboard="Numeric"
+                                                   Style="{StaticResource styleEntry}"
                                                    TextChanged="txtAmount_TextChanged"
                                             Text="{Binding FormatDonGia, Mode=TwoWay}" 
                                             />
@@ -198,7 +202,8 @@
                                                     Grid.Column="0"
                                                     Grid.Row="2" />
                                             <Entry Grid.Column="1"
-                                            Grid.Row="2"                                                      
+                                            Grid.Row="2"
+                                                   Style="{StaticResource styleEntry}"
                                             Placeholder="Số hóa đơn nếu có"
                                             Text="{Binding InvoiceCode, Mode=TwoWay}" 
                                             />
@@ -210,6 +215,8 @@
                                             <DatePicker Date="{Binding NgayHoaDon, Mode=TwoWay}"                                                              
                                                         FontSize="16"
                                                         Grid.Column="1"
+                                                        Background="white"
+                                                        TextColor="#06264c"
                                                         Grid.Row="3" ></DatePicker>
                                             <Label Text="Thuế VAT:"
                                                     Style="{StaticResource styleLablenotwhite}"
@@ -219,6 +226,7 @@
                                             <Picker x:Name="picker"
                                                     Grid.Column="1"
                                                     Grid.Row="4"
+                                                    Background="white"
                                                     SelectedItem="{Binding VAT, Mode=TwoWay}"
                                                     Title="Chọn % VAT"
                                                     TextColor="Black"  
@@ -239,9 +247,9 @@
                                         Grid.Column="0"
                                         Grid.Row="5" />
                                             <Entry Keyboard="Numeric" Grid.Column="1"
-                                        Grid.Row="5"
-                                        Text="{Binding FormatAmountChuaVaT, Mode=TwoWay}" 
-                                        x:Name="txtAmount"                                                                              
+                                                    Grid.Row="5"
+                                                    Text="{Binding FormatAmountChuaVaT, Mode=TwoWay}" 
+                                                    x:Name="txtAmount"                                                                              
                                                    Style="{StaticResource styleEntry}"
                                                    FontSize="18"
                                                    TextColor="Blue"
@@ -253,7 +261,7 @@
                                         Grid.Row="6" />
                                             <Entry Text="{Binding FormatAmountVAT ,Mode=TwoWay}"
                                                    x:Name="txtTienThu"
-                                                   Keyboard="Numeric"
+                                                   Keyboard="Numeric"                                                   
                                                    TextChanged="txtAmount_TextChanged"
                                         VerticalOptions="CenterAndExpand"
                                         Style="{StaticResource styleEntry}"
@@ -296,6 +304,7 @@
                                             <Entry Grid.Column="1"
                                             Grid.Row="9"                                                      
                                             Placeholder="Ghi chú"
+                                                   Style="{StaticResource styleEntry}"
                                             Text="{Binding Notes, Mode=TwoWay}" 
                                             />
                                             <sfbutton:SfButton 

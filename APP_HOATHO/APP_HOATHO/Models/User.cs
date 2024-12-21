@@ -4,8 +4,13 @@ using System.Text;
 
 namespace APP_HOATHO.Models
 {
+    
     public class User
-    {       
+    {
+        public User ()
+        {
+
+        }
         public string UserName { get; set; }
         public string Password { get; set; }
         public int? Role { get; set; }

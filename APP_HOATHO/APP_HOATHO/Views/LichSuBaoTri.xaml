@@ -26,7 +26,7 @@
                                                HeightRequest="50"
                                                ContainerType="Outlined">
                 <Entry x:Name="search" HorizontalOptions="FillAndExpand"  
-                           Style="{StaticResource styleSearch}"
+                           Style="{StaticResource styleEntry}"
                             ClearButtonVisibility="WhileEditing"                       
                            TextChanged="search_TextChanged"/>
                 <sfinputtext:SfTextInputLayout.LeadingView>

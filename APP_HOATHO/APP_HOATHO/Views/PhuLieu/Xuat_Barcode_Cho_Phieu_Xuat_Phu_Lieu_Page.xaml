@@ -12,6 +12,7 @@
             <SearchBar Placeholder="Tìm kiếm"
                        CancelButtonColor="Red"
                        HorizontalOptions="FillAndExpand"
+                       Style="{StaticResource styleSearch}"
                        TextChanged="SearchBar_TextChanged"></SearchBar>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"
                                    ItemsSource="{Binding ListItem, Mode=TwoWay}"                                   
@@ -133,6 +134,7 @@
                                              Spacing="2">
                                     <Entry Text="{Binding FormatSoLuongCanXuat, Mode=TwoWay}"                                            
                                            Keyboard="Numeric"
+                                           Style="{StaticResource styleEntry}" 
                                            HorizontalOptions="FillAndExpand" />                                       
                                 </StackLayout>
 

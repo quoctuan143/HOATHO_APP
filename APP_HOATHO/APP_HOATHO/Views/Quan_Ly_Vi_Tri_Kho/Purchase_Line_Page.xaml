@@ -11,6 +11,7 @@
         <StackLayout>
             <SearchBar Placeholder="Tìm kiếm" CancelButtonColor="Red"
                        HorizontalOptions="FillAndExpand"
+                       Style="{StaticResource styleSearch}"
                        TextChanged="SearchBar_TextChanged"
                        ></SearchBar>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"

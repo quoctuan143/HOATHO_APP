@@ -13,6 +13,7 @@
                 <Entry Placeholder="Nhập barcode mà không quét được"
                        PlaceholderColor="Red"
                        x:Name="txtBarcode"
+                       Style="{StaticResource styleEntry}" 
                        ClearButtonVisibility="WhileEditing"
                          />
                 <sfbutton:SfButton Text="Chọn" x:Name="btnChon"  Clicked="btnChon_Clicked" FontSize="16"
