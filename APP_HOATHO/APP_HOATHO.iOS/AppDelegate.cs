@@ -78,7 +78,24 @@ namespace APP_HOATHO.iOS
             UINavigationBar.Appearance.BackgroundColor = color;
             UINavigationBar.Appearance.BarTintColor = color;
             UITabBar.Appearance.BackgroundColor  = color;
-            UITabBar.Appearance.BarTintColor = color;           
+            UITabBar.Appearance.BarTintColor = color;
+            // Gán CustomNotificationDelegate
+            UNUserNotificationCenter.Current.Delegate = new CustomNotificationDelegate();
+
+            // Yêu cầu quyền thông báo
+            UNUserNotificationCenter.Current.RequestAuthorization(
+                UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Badge,
+                (granted, error) =>
+                {
+                    if (granted)
+                    {
+                        Console.WriteLine("Notification permission granted.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Notification permission denied.");
+                    }
+                });
             return base.FinishedLaunching(app, options);
            
         }
@@ -110,8 +127,63 @@ namespace APP_HOATHO.iOS
             FirebasePushNotificationManager.DidReceiveMessage(userInfo);
             // Do your magic to handle the notification data
             System.Console.WriteLine(userInfo);
-          
-            completionHandler(UIBackgroundFetchResult.NewData);
+            if (userInfo != null)
+            {
+                string title = string.Empty;
+                string message = string.Empty;
+
+                // Trích xuất title và message từ payload
+                if (userInfo.ContainsKey(new NSString("title")))
+                {
+                    title = userInfo["title"].ToString();
+                }
+                if (userInfo.ContainsKey(new NSString("body")) || userInfo.ContainsKey(new NSString("message")))
+                {
+                    message = userInfo.ContainsKey(new NSString("body")) ? userInfo["body"].ToString() : userInfo["message"].ToString();
+                }
+
+                // Hiển thị thông báo
+                ShowNotification(title, message);
+            }
+
+            // Hoàn thành xử lý
+            completionHandler(UIBackgroundFetchResult.NewData);           
         }
+
+        public void ShowNotification(string title, string body)
+        {
+            // Tạo nội dung thông báo
+            var content = new UNMutableNotificationContent
+            {
+                Title = title,
+                Body = body,
+                Sound = UNNotificationSound.Default
+            };
+
+            // Thiết lập thời gian kích hoạt thông báo (sau 5 giây)
+            var trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(5, false);
+
+            // Tạo Request với một ID duy nhất
+            var request = UNNotificationRequest.FromIdentifier(Guid.NewGuid().ToString(), content, trigger);
+
+            // Thêm thông báo vào hệ thống
+            UNUserNotificationCenter.Current.AddNotificationRequest(request, (error) =>
+            {
+                if (error != null)
+                {
+                    Console.WriteLine($"Error: {error.LocalizedDescription}");
+                }
+            });
+        }
+    }
+
+    public class CustomNotificationDelegate : UNUserNotificationCenterDelegate
+    {
+        // Xử lý thông báo khi ứng dụng đang ở chế độ foreground
+        public override void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
+        {
+            // Hiển thị thông báo ngay cả khi ứng dụng đang mở
+            completionHandler(UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Sound);
+        }        
     }
 }

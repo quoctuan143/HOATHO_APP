@@ -16,6 +16,7 @@ using Android;
 using System.Linq;
 using AndroidX.Core.Content;
 using AndroidX.Core.App;
+using static Android.Util.EventLogTags;
 
 namespace APP_HOATHO.Droid
 {
@@ -32,6 +33,7 @@ namespace APP_HOATHO.Droid
             base.OnCreate(savedInstanceState);
             RequestNotificationPermission();
             LocalNotificationCenter.CreateNotificationChannel();
+            NotificationHelper.CreateNotificationChannel(this);
             await CrossMedia.Current.Initialize();
             Rg.Plugins.Popup.Popup.Init(this);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
@@ -77,6 +79,13 @@ namespace APP_HOATHO.Droid
                 NotificationData = p.Data;
                 IsNotification = false;                
             };
+            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            {
+                var Description = p.Data["body"].ToString();
+                var Title = p.Data["title"].ToString();
+                NotificationSender.ShowNotification(this, Title, Description);
+            };
+            
             LoadApplication(new App(IsNotification, NotificationData));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
