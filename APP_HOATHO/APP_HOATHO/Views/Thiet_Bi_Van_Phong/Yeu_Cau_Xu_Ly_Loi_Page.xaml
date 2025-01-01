@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="APP_HOATHO.Views.Thiet_Bi_Van_Phong.Yeu_Cau_Xu_Ly_Loi_Page"
              Title="Gửi yêu cầu tới IT"
              BackgroundColor="White"
@@ -9,54 +10,91 @@
         <StackLayout>
             <ScrollView>
                 <StackLayout Padding="5">
-                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                        <CheckBox IsChecked="{Binding YeuCauTheoThietBi}"/>
-                        <Label Text="Yêu cầu theo thiết bị" VerticalOptions="CenterAndExpand" Style="{StaticResource styleLableBold}"/>
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="CenterAndExpand">
+                        <CheckBox IsChecked="{Binding YeuCauTheoThietBi}" />
+                        <Label Text="Yêu cầu theo thiết bị"
+                               VerticalOptions="CenterAndExpand"
+                               Style="{StaticResource styleLableBold}" />
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal"
+                                 VerticalOptions="CenterAndExpand">
                         <!--<Entry Text="{Binding DocumentNo_}" IsVisible="{Binding NotYeuCauTheoThietBi}" HorizontalOptions="FillAndExpand"
                            Placeholder="Nhập nhóm yêu cầu xử lý"/>-->
-                        <sfbutton:SfButton x:Name="btnQuetQr" Style="{StaticResource stylesfButton}" Text="Quét QR thiết bị" IsVisible="{Binding YeuCauTheoThietBi}"
-                            Clicked="btnQuetQr_Clicked"/>
+                        <sfbutton:SfButton x:Name="btnQuetQr"
+                                           Style="{StaticResource stylesfButton}"
+                                           Text="Quét QR thiết bị"
+                                           IsVisible="{Binding YeuCauTheoThietBi}"
+                                           Clicked="btnQuetQr_Clicked" />
                     </StackLayout>
                     <Label Style="{StaticResource styleLableBold}"
-                       IsVisible="{Binding YeuCauTheoThietBi}"
-                   Text="Tên thiết bị" 
-                   />
+                           IsVisible="{Binding YeuCauTheoThietBi}"
+                           Text="Tên thiết bị" />
                     <Label Style="{StaticResource styleLablenotwhite}"
-                       IsVisible="{Binding YeuCauTheoThietBi}"
-                   Text="{Binding TenThietBi}" 
-                   LineBreakMode="WordWrap"/>
+                           IsVisible="{Binding YeuCauTheoThietBi}"
+                           Text="{Binding TenThietBi}"
+                           LineBreakMode="WordWrap" />
                     <Label Style="{StaticResource styleLableBold}"
-                   Text="Mô tả rõ yêu cầu xử lý:" />
+                           Text="Mô tả rõ yêu cầu xử lý:" />
                     <Editor Text="{Binding NoiDungLoi}"
-                        Placeholder="Vui lòng nhập thông tin lỗi tại đây"
-                            PlaceholderColor="#06264c"
+                            Placeholder="Vui lòng nhập thông tin lỗi tại đây"
+                            PlaceholderColor="{StaticResource Primary}"
                             Background="white"
-                            TextColor="#06264c"
-                   HeightRequest="150"
-                   HorizontalOptions="FillAndExpand"
-                   Keyboard="Text"/>
+                            TextColor="{StaticResource Primary}"
+                            HeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Text" />
                     <Label Style="{StaticResource styleLableBold}"
-                   Text="Thông tin liên lạc (Sdt/Zalo/UltraView (Id/Pass)):" />
+                           Text="Thông tin liên lạc (Sdt/Zalo/UltraView (Id/Pass)):" />
                     <Editor Text="{Binding ThongTinLienLac}"
-                            PlaceholderColor="#06264c"
+                            PlaceholderColor="{StaticResource Primary}"
                             Background="white"
-                            TextColor="#06264c"
-                    Placeholder="Sdt/Zalo/UltraView (Id/Pass)"                   
-                   HorizontalOptions="FillAndExpand"
-                   Keyboard="Text"/>
+                            HeightRequest="100"
+                            TextColor="{StaticResource Primary}"
+                            Placeholder="Sdt/Zalo/UltraView (Id/Pass)"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Text" />
+                    <Label Style="{StaticResource styleLableBold}"
+                           Text="Tình trạng" />
+                    <Picker x:Name="picker"
+                            Background="white"
+                            SelectedItem="{Binding UserRequire, Mode=TwoWay}"
+                            Title="Chọn tình trạng"
+                            TextColor="{StaticResource Primary}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Gấp</x:String>
+                                <x:String>Không Gấp</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <Label Style="{StaticResource styleLableBold}"
+                           Text="Thời gian mong muốn hoàn thành" />
+                    <TimePicker Time="{Binding TimeRequire, Mode=TwoWay}"
+                                TextColor="{StaticResource Primary}"></TimePicker>
                     <StackLayout Orientation="Horizontal">
-                        <Button Text="Chọn ảnh" x:Name="ChonHinh" Clicked="ChonHinh_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
-                        <Button Text="Chụp ảnh" x:Name="ChupHinh" Clicked="ChupHinh_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
+                        <Button Text="Chọn ảnh"
+                                x:Name="ChonHinh"
+                                Clicked="ChonHinh_Clicked"
+                                Style="{StaticResource styleButton}"
+                                VerticalOptions="End"
+                                HorizontalOptions="FillAndExpand"></Button>
+                        <Button Text="Chụp ảnh"
+                                x:Name="ChupHinh"
+                                Clicked="ChupHinh_Clicked"
+                                Style="{StaticResource styleButton}"
+                                VerticalOptions="End"
+                                HorizontalOptions="FillAndExpand"></Button>
                     </StackLayout>
                     <StackLayout Padding="10">
-                        <Frame CornerRadius="20"                              
-                           Padding="0"
-                           IsClippedToBounds="True">
-                            <Image x:Name="imagePicture" Source="noimage.jpg" Aspect="AspectFill" 
-                                HeightRequest="300"
-                           WidthRequest="300">
+                        <Frame CornerRadius="20"
+                               Padding="0"
+                               IsClippedToBounds="True">
+                            <Image x:Name="imagePicture"
+                                   Source="noimage.jpg"
+                                   Aspect="AspectFill"
+                                   HeightRequest="300"
+                                   WidthRequest="300">
                                 <!--<Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                 </Image.GestureRecognizers>-->
@@ -66,12 +104,12 @@
                 </StackLayout>
             </ScrollView>
             <sfbutton:SfButton Style="{StaticResource stylesfButton}"
-                    Text="Gửi yêu cầu"
-                    x:Name="GuiYeuCau"
-                    Clicked="GuiYeuCau_Clicked"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="EndAndExpand"></sfbutton:SfButton>
+                               Text="Gửi yêu cầu"
+                               x:Name="GuiYeuCau"
+                               Clicked="GuiYeuCau_Clicked"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="EndAndExpand"></sfbutton:SfButton>
         </StackLayout>
-        
+
     </ContentPage.Content>
 </ContentPage>

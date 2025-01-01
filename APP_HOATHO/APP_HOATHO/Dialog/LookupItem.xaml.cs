@@ -56,8 +56,9 @@ namespace APP_HOATHO.Dialog
             var item = o as LookupValue;
             if (item != null)
             {
-
-                if (item.Code.ToLower().Contains(filterText) || item.Name.ToLower().Contains(filterText) || ( !string.IsNullOrEmpty(item.Description) && item.Description.Contains(filterText) ))
+                filterText = filterText.Normalize(NormalizationForm.FormC).ToLower();
+                var name = item.Name.Normalize(NormalizationForm.FormC).ToLower();
+                if (item.Code.Normalize(NormalizationForm.FormC).ToLower().Contains(filterText) || name.Contains(filterText) || ( !string.IsNullOrEmpty(item.Description) && item.Description.Normalize(NormalizationForm.FormC).Contains(filterText) ))
                     return true;
             }
             return false;
@@ -89,6 +90,11 @@ namespace APP_HOATHO.Dialog
                 await new MessageBox(ex.Message).Show();
             }
         }
-        
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync(true);
+            closeForm?.Invoke(this, new LookupValue ());
+        }
     }
 }

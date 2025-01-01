@@ -25,7 +25,8 @@
         <StackLayout HorizontalOptions="FillAndExpand"
                      Spacing="10">
 
-            <syncfusion:SfTimePicker x:Name="timePicker"  HeaderText="Thời gian dự kiến hoàn thành" 
+            <syncfusion:SfTimePicker x:Name="timePicker"  
+                                     HeaderText="Thời gian dự kiến hoàn thành" 
                                      HourHeaderText="Giờ"
                                      MinutesHeaderText="Phút"
                                      SecondsHeaderText="Giây"

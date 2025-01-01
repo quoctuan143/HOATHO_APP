@@ -18,7 +18,7 @@
                     <ViewCell>
                         <ViewCell.View>
                             <Grid ColumnDefinitions="4*,6*"
-                                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
+                                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
                                   HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand"
                                   Margin="10">
@@ -75,11 +75,27 @@
                                        Style="{StaticResource styleLablenotwhite}"
                                        Grid.Column="1"
                                        Grid.Row="5" />
+                                <Label Text="Tình trạng:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="6" />
+                                <Label Text="{Binding UserRequire}"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="1"
+                                       Grid.Row="6" />
+                                <Label Text="Mong muốn hoàn thành:"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="0"
+                                       Grid.Row="7" />
+                                <Label Text="{Binding UserTimeRespect, StringFormat='{0:HH:mm}'}"
+                                       Style="{StaticResource styleLablenotwhite}"
+                                       Grid.Column="1"
+                                       Grid.Row="7" />
                                 <Frame CornerRadius="20" 
                                        IsVisible="{Binding IsShowImage}"
                                        Padding="0"
                                        Grid.ColumnSpan="2"
-                                       Grid.Row="6">
+                                       Grid.Row="8">
                                     <StackLayout>                                                   
                                         <Image x:Name="imagePicture" Aspect="AspectFill" 
                                             HeightRequest="300"

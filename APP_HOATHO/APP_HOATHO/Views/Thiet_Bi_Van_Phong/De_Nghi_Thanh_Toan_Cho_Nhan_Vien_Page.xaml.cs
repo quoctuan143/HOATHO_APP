@@ -360,8 +360,12 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
         private async void btnDoiTuong_Clicked(object sender, EventArgs e)
         {
             var lookup = new LookupItem(DoiTuongs, "Chọn đối tượng");
-            lookup.closeForm += (s,item) => { btnDoiTuong.Text = item.Name;
-                SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_ = item.Code;                
+            lookup.closeForm += (s,item) => { 
+                if (!string.IsNullOrEmpty(item.Name))
+                {
+                    btnDoiTuong.Text = item.Name;
+                    SuggestedPayment.SuggestedPaymentHeader.PaytoVendorNo_ = item.Code;
+                }                                    
             };
            await Navigation.PushModalAsync(lookup);
         }
