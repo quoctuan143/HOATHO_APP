@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using APP_HOATHO.Interface;
 using Syncfusion.SfDataGrid.XForms;
 using APP_HOATHO.ViewModels;
+using ZXing;
 
 namespace APP_HOATHO.Views
 {
@@ -134,52 +135,54 @@ namespace APP_HOATHO.Views
 
 
                     //nếu up hình thành công thì up lich sử lên luôn
-                    BaseViewModel.ShowLoading("Đang xử lý. vui lòng đợi....!");
+                    
                     if (media != null )
                     {
                         var content = new MultipartFormDataContent();
                         content.Add(new StreamContent(media.GetStream()), "\"file\"", $"\"{media.Path}\"");
-                        HttpClient client = new HttpClient();
-                        client.BaseAddress = new Uri(Config.URL);
-                        var response = client.PostAsync("api/qltb/PostLichSuBaoTri_Picture", content).Result;
+                        
+                        BaseViewModel.ShowLoading("Đang xử lý. vui lòng đợi....!");
+                        var response = await BaseViewModel.RunHttpClientPost("api/qltb/PostLichSuBaoTri_Picture", content);
                         if (response.IsSuccessStatusCode)
                         {
-                            var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri_V1", lsu);
+                            var ok = await BaseViewModel.RunHttpClientPost("api/qltb/postLichSuBaoTri_V1", lsu);
                             BaseViewModel.HideLoading();
-                            if (ok.IsSuccessStatusCode)                            {
-                                
+                            if (ok.IsSuccessStatusCode)   
+                            {                                
                                 await Navigation.PopAsync();
                                 await new MessageBox("Cập nhật thành công").Show();
                                 MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);                                
                             }
                             else
                             {
-                                await new MessageBox( ok.Content.ReadAsStringAsync().Result.ToLower()).Show();
+                                var message = await ok.Content.ReadAsStringAsync();
+                                await new MessageBox(message).Show();
                             }
                         }
                         else
                         {
                             BaseViewModel.HideLoading();
-                            await new MessageBox( response.Content.ReadAsStringAsync().Result).Show();
+                            var message = await response.Content.ReadAsStringAsync();
+                            await new MessageBox(message).Show();
                             return;
                         }
                     }
                     else
                     {
-                        HttpClient client = new HttpClient();
-                        client.BaseAddress = new Uri(Config.URL);
-                        var ok = await client.PostAsJsonAsync("api/qltb/postLichSuBaoTri_V1", lsu);
+                        
+                        BaseViewModel.ShowLoading("Đang xử lý. vui lòng đợi....!");
+                        var ok = await BaseViewModel.RunHttpClientPost("api/qltb/postLichSuBaoTri_V1", lsu);
                         BaseViewModel.HideLoading();
                         if (ok.IsSuccessStatusCode)
-                        {
-                            BaseViewModel.ShowLoading("Đang xử lý. vui lòng đợi....!");
+                        {                            
                             await new MessageBox("Cập nhật thành công").Show();
                             MessagingCenter.Send(this, "AddLichSuBaoTri", lsu);
                             await Navigation.PopAsync();
                         }
                         else
                         {
-                            await new MessageBox( ok.Content.ReadAsStringAsync().Result.ToLower()).Show();
+                            var message = await ok.Content.ReadAsStringAsync();
+                            await new MessageBox(message).Show();
                         }
                     }    
                     
@@ -225,20 +228,13 @@ namespace APP_HOATHO.Views
             }
 
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
-                var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getQuyTrinhBaoTri_ChiTiet?mathietbi=" + Item.No_ + "&nhom=" + Item.ItemCategoryCode + "&mabaotri=" + Item.Code).Result;
-                _json = _json.Replace("\\r\\n", "").Replace("\\", "");
-                if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)
-                {
-                    Int32 from = _json.IndexOf("[");
-                    Int32 to = _json.IndexOf("]");
-                    string result = _json.Substring(from, to - from + 1);
-                    QUY_TRINH_BAO_TRIs = JsonConvert.DeserializeObject<ObservableCollection<QUY_TRINH_BAO_TRI>>(result);
-                }
+                var result =await BaseViewModel.RunHttpClientGet<QUY_TRINH_BAO_TRI>("api/qltb/getQuyTrinhBaoTri_ChiTiet?mathietbi=" + Item.No_ + "&nhom=" + Item.ItemCategoryCode + "&mabaotri=" + Item.Code);
+                QUY_TRINH_BAO_TRIs = result.Lists;
             }
             catch (Exception ex)
             {
