@@ -5,45 +5,180 @@
              Shell.TabBarIsVisible="False"
              BackgroundColor="White"
              x:Class="APP_HOATHO.Views.ThongTinThietBi_Edit">
-    <StackLayout>
-        <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto" Padding="10" RowSpacing="10">
-            <Label Text="Mã Thiết Bị" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" FontSize="16" TextColor="Black"></Label>
-            <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
-                <Label Text="{Binding Item.No_}" VerticalTextAlignment="Center" FontSize="16" TextColor="Black"></Label>
-                
-            </StackLayout>
+    <ScrollView Orientation="Vertical">
+        <StackLayout>
+            <Grid x:Name="Information"
+                  ColumnDefinitions="4*,6*"
+                  RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                  Padding="10"
+                  RowSpacing="10">
+                <Label Text="Mã Thiết Bị"
+                       VerticalTextAlignment="Center"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <StackLayout Grid.Column="1"
+                             Grid.Row="0"
+                             Orientation="Horizontal">
+                    <Label Text="{Binding Item.No_}"
+                           VerticalTextAlignment="Center"
+                           FontSize="16"
+                           TextColor="Black"></Label>
 
-            <Label Text="Tên Thiết Bị" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
-            <Label Text="{Binding Item.NameVN}" Grid.Column="1" Grid.Row="1" FontSize="16" TextColor="Black" LineBreakMode="WordWrap"></Label>
-            <Label Text="Số Máy" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="2" FontSize="16" TextColor="Black"></Label>
-            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.No_3,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" FontSize="16" TextColor="Black"></Entry>
-            <Label Text="Model" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="3" FontSize="16" TextColor="Black"></Label>
-            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.No_2,Mode=TwoWay}"  Grid.Column="1" Grid.Row="3" FontSize="16" TextColor="Black"></Entry>
-            <Label Text="Xuất Xứ" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="4" FontSize="16" TextColor="Black"></Label>
-            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.CountryofOriginCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="4" FontSize="16" TextColor="Black"></Entry>
-            <Label Text="Hãng Sản Xuất" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="5" FontSize="16" TextColor="Black"></Label>
-            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.ManufacturerCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="5" FontSize="16" TextColor="Black"></Entry>
-            <Label Text="Công Suất" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="6" FontSize="16" TextColor="Black"></Label>
-            <Entry Style="{StaticResource styleEntry}" Text="{Binding Item.QualityMeasureCode,Mode=TwoWay}" Grid.Column="1" Grid.Row="6" FontSize="16" TextColor="Black"></Entry>
-            <Label Text="Ngày Sử Dụng" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="7" FontSize="16" TextColor="Black"></Label>
-            <DatePicker  Date="{Binding Item.NgaySuDung ,Mode=TwoWay, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="1" Grid.Row="7" FontSize="16" TextColor="Black"></DatePicker>
-            <Label Text="Vị trí lưu" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="8" FontSize="16" TextColor="Black"></Label>
-            <sfcombobox:SfComboBox x:Name="cbloaitt"
-                                   Grid.Column="1"
-                                   Grid.Row="8"
-                                       SelectedValue="{Binding Item.Position , Mode=TwoWay}"
-                                       DataSource="{Binding DanhSachTos, Mode=TwoWay}"
+                </StackLayout>
+
+                <Label Text="Tên Thiết Bị"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="1"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Label Text="{Binding Item.NameVN}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       FontSize="16"
+                       TextColor="Black"
+                       LineBreakMode="WordWrap"></Label>
+                <Label Text="Số Máy"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="2"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Entry Style="{StaticResource styleEntry}"
+                       Text="{Binding Item.No_3,Mode=TwoWay}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       FontSize="16"
+                       TextColor="Black"></Entry>
+                <Label Text="Model"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="3"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Entry Style="{StaticResource styleEntry}"
+                       Text="{Binding Item.No_2,Mode=TwoWay}"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       FontSize="16"
+                       TextColor="Black"></Entry>
+                <Label Text="Xuất Xứ"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="4"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Entry Style="{StaticResource styleEntry}"
+                       Text="{Binding Item.CountryofOriginCode,Mode=TwoWay}"
+                       Grid.Column="1"
+                       Grid.Row="4"
+                       FontSize="16"
+                       TextColor="Black"></Entry>
+                <Label Text="Hãng Sản Xuất"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="5"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Entry Style="{StaticResource styleEntry}"
+                       Text="{Binding Item.ManufacturerCode,Mode=TwoWay}"
+                       Grid.Column="1"
+                       Grid.Row="5"
+                       FontSize="16"
+                       TextColor="Black"></Entry>
+                <Label Text="Công Suất"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="6"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Entry Style="{StaticResource styleEntry}"
+                       Text="{Binding Item.QualityMeasureCode,Mode=TwoWay}"
+                       Grid.Column="1"
+                       Grid.Row="6"
+                       FontSize="16"
+                       TextColor="Black"></Entry>
+                <Label Text="Ngày Sử Dụng"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="7"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <DatePicker  Date="{Binding Item.NgaySuDung ,Mode=TwoWay, StringFormat='{0:dd/MM/yyyy}'}"
+                             Grid.Column="1"
+                             Grid.Row="7"
+                             FontSize="16"
+                             TextColor="Black"></DatePicker>
+                <Label Text="Nhà máy"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="8"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <sfcombobox:SfComboBox x:Name="cbNhaMay"
+                                       Grid.Column="1"
+                                       Grid.Row="8"
+                                       HeightRequest="50"
+                                       SelectedValue="{Binding Item.NhaMay , Mode=TwoWay}"
+                                       DataSource="{Binding DanhSachNhaMays, Mode=TwoWay}"
                                        DisplayMemberPath="Name"
-                                       SelectedValuePath="Code"                                                               
+                                       SelectedValuePath="Code"
                                        Style="{StaticResource styleCombobox}"
-                                       Watermark="Vị trí lưu"
+                                       SelectionChanged="cbNhaMay_SelectionChanged"
+                                       Watermark="Nhà máy"
                                        IsEditableMode="true"
                                        ShowClearButton="True">
-            </sfcombobox:SfComboBox>
+                </sfcombobox:SfComboBox>
+                <Label Text="Xưởng"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="9"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <sfcombobox:SfComboBox x:Name="cbxuong"
+                                       Grid.Column="1"
+                                       Grid.Row="9"
+                                       HeightRequest="50"
+                                       SelectedValue="{Binding Item.Xuong , Mode=TwoWay}"
+                                       DataSource="{Binding DanhSachXuongs, Mode=TwoWay}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"
+                                       Style="{StaticResource styleCombobox}"
+                                       SelectionChanged="cbxuong_SelectionChanged"
+                                       Watermark="Xưởng"
+                                       IsEditableMode="true"
+                                       ShowClearButton="True">
+                </sfcombobox:SfComboBox>
+                <Label Text="Tổ"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       Grid.Row="10"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <sfcombobox:SfComboBox x:Name="cbloaitt"
+                                       Grid.Column="1"
+                                       Grid.Row="10"
+                                       HeightRequest="50"
+                                       SelectedValue="{Binding Item.ToSanXuat , Mode=TwoWay}"
+                                       DataSource="{Binding DanhSachTos, Mode=TwoWay}"
+                                       DisplayMemberPath="Name"
+                                       SelectedValuePath="Code"
+                                       Style="{StaticResource styleCombobox}"
+                                       Watermark="Tổ"
+                                       IsEditableMode="true"
+                                       ShowClearButton="True">
+                </sfcombobox:SfComboBox>
 
 
-        </Grid>
-        <Button Style="{StaticResource styleButton}" Text="Cập Nhật" Clicked="Button_Clicked"></Button>
-    </StackLayout>
+            </Grid>
+            <Button Style="{StaticResource styleButton}"
+                    Text="Cập Nhật"
+                    Clicked="Button_Clicked"
+                    VerticalOptions="End"></Button>
+        </StackLayout>
+    </ScrollView>
+    
  
 </ContentPage>

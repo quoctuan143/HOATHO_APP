@@ -10,6 +10,7 @@
              x:Class="APP_HOATHO.Views.TaoLichSuBaoTri"
              xmlns:local="clr-namespace:APP_HOATHO.Views" xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
                 xmlns:local1="clr-namespace:APP_HOATHO.Style"
+             xmlns:sfcombobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              InputTransparent="False"
              BackgroundColor="White"
              Title="Cập nhật bảo trì">
@@ -24,13 +25,12 @@
             <ScrollView Orientation="Vertical">
                 <StackLayout Spacing="0">
                     <sfDataGrid:SfDataGrid x:Name="listquytrinh"  
-                                          ItemsSource="{Binding QUY_TRINH_BAO_TRIs, Mode=TwoWay}"   
-                                            AutoGenerateColumns="False" 
+                                           IsVisible="{Binding ShowGrid}"
+                                          ItemsSource="{Binding QUY_TRINH_BAO_TRIs, Mode=TwoWay}"
                                             GridStyle="{StaticResource dark}"                                            
                                             Style="{StaticResource styleDataGrid}"
                                             ColumnSizer="LastColumnFill"
-                                           FrozenColumnsCount="1"
-                                              >
+                                           FrozenColumnsCount="1">
                         <sfDataGrid:SfDataGrid.Columns>
                             <sfDataGrid:GridSwitchColumn MappingName="IsCheck" HeaderText="">
 
@@ -44,7 +44,40 @@
                             </sfDataGrid:GridTemplateColumn>
                         </sfDataGrid:SfDataGrid.Columns>
                     </sfDataGrid:SfDataGrid>
-
+                    <sfcombobox:SfComboBox x:Name="cbNhaMay"
+                                           HeightRequest="50"
+                                           SelectedValue="{Binding Item.NhaMay , Mode=TwoWay}"
+                                           DataSource="{Binding DanhSachNhaMays}"
+                                           DisplayMemberPath="Name"
+                                           SelectedValuePath="Code"
+                                           Style="{StaticResource styleCombobox}"
+                                           SelectionChanged="cbNhaMay_SelectionChanged"
+                                           Watermark="Chọn Nhà máy"
+                                           IsEditableMode="true"
+                                           ShowClearButton="True"></sfcombobox:SfComboBox>
+                    <sfcombobox:SfComboBox x:Name="cbxuong"                                              
+                                           HeightRequest="50"
+                                           SelectedValue="{Binding Item.Xuong , Mode=TwoWay}"
+                                           DataSource="{Binding DanhSachXuongs}"
+                                           DisplayMemberPath="Name"
+                                           SelectedValuePath="Code"
+                                           Style="{StaticResource styleCombobox}"
+                                           SelectionChanged="cbxuong_SelectionChanged"
+                                           Watermark="Chọn Xưởng"
+                                           IsEditableMode="true"
+                                           ShowClearButton="True">
+                    </sfcombobox:SfComboBox>
+                    <sfcombobox:SfComboBox x:Name="cbtosx"                                              
+                                           HeightRequest="50"
+                                           SelectedValue="{Binding Item.ToSanXuat , Mode=TwoWay}"
+                                           DataSource="{Binding DanhSachTos}"
+                                           DisplayMemberPath="Name"
+                                           SelectedValuePath="Code"
+                                           Style="{StaticResource styleCombobox}"
+                                           Watermark="Chọn tổ sản xuất"
+                                           IsEditableMode="true"
+                                           ShowClearButton="True">
+                    </sfcombobox:SfComboBox>
                     <sfinputText:SfTextInputLayout Hint="Phụ tùng thay thế"      
                                                ContainerType="Outlined"              
                                               >
@@ -88,8 +121,14 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-            <Button Text="Cập Nhật" Clicked="Save_Clicked" Style="{StaticResource styleButton}" VerticalOptions="End" HorizontalOptions="FillAndExpand" ></Button>
-           
+            <Button Text="Cập Nhật"
+                    Grid.Column="0"
+                    Clicked="Save_Clicked"
+                    Style="{StaticResource styleButton}"
+                    VerticalOptions="End"
+                    HorizontalOptions="FillAndExpand"></Button>
+
+
         </StackLayout>
       
     </ContentPage.Content>

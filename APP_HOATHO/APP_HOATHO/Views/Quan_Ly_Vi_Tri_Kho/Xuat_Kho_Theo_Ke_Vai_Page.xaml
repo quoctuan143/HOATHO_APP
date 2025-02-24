@@ -141,6 +141,14 @@
                                    VerticalOptions="Start"
                         CornerRadius="5"
                         Style="{StaticResource sfbuttonCancel }"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="Chuyển Kệ"
+                                   x:Name="btnChuyenKe"
+                                   Clicked="btnChuyenKe_Clicked"
+                                   FontSize="16"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Start"
+                                   CornerRadius="5"
+                                   BackgroundColor="green"></sfbutton:SfButton>
             </StackLayout>
             
         </StackLayout>

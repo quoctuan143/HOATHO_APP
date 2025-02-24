@@ -1,10 +1,11 @@
-﻿using System;
+﻿using APP_HOATHO.Models.Nha_May_Soi;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace APP_HOATHO.Models
 {
-   public class DanhMuc_ThietBi
+   public class DanhMuc_ThietBi : Bindable
     {
         public string No_ { get; set; }
         public string No_2 { get; set; }
@@ -26,5 +27,12 @@ namespace APP_HOATHO.Models
         public string PositionName { get; set; } // vi tri lưu 
         public string TrangThai { get; set; } // Đang Sử Dụng,Thanh Lý/Tồn 0,Chờ Thanh Lý
         public string ThietBiRoi { get; set; }
+        public string NhaMay { get; set; }
+        public string Xuong { get; set; }
+        public string ToSanXuat { get; set; }
+
+        public string TenNhaMay { get; set; }
+        public string TenXuong { get; set; }
+        public string TenToSanXuat { get; set; } 
     }
 }

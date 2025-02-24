@@ -1,6 +1,7 @@
 ﻿using APP_HOATHO.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace APP_HOATHO.Models
@@ -46,5 +47,6 @@ namespace APP_HOATHO.Models
         public int THANG { get; set; }
         public int NAM { get; set; }
         public string NHOM_BAO_TRI { get; set; }
+        public string ToSanXuat { get; set; }
     }
 }

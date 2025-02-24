@@ -404,7 +404,7 @@
                                                        ActionCommand="{Binding ThongTinChiTietKeVaiCommand}"
                                                        Disable="{Binding IsCapNhatOChuaVai}">
                                     </control:IconMainView>
-                                    <control:IconMainView  Title="Xuất kho theo kệ vải"
+                                    <control:IconMainView  Title="Xuất/Chuyển vải theo kệ vải"
                                                        Grid.Column="2"
                                                        Grid.Row="2"
                                                        IconImageSource="phieuxuatkho.png"

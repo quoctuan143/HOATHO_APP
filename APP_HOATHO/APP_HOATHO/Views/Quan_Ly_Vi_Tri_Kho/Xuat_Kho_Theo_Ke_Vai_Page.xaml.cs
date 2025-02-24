@@ -109,6 +109,64 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 }    
             }    
         }
+
+        private async void btnChuyenKe_Clicked(object sender, EventArgs e)
+        {
+            //xử lý chuyển ở đây
+            var listXuat = ListItem.Where(x => x.Chon == true).ToList();
+            if (listXuat.Count == 0)
+            {
+                await new MessageBox("Chọn cây vải để chuyển").Show();
+                return;
+            }
+            ScanBarcode scan = new ScanBarcode(false, "Chọn kệ chuyển đến");
+            scan.ScanBarcodeResult += (s, result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    try
+                    {
+                        BaseViewModel viewModel = new BaseViewModel();
+                        CellPositionModel item = new CellPositionModel { Code = result, PositionId = "" };
+                        viewModel.ShowLoading("Đang xử lý. vui lòng đợi...");
+                        var ok1 = await viewModel.RunHttpClientPost("api/qltb/PostKiemTraOChuaVai", item);
+                        viewModel.HideLoading();
+                        if (!ok1.IsSuccessStatusCode)
+                        {
+                            await new MessageBox($"Kệ : {result} này không tồn tại trong hệ thống").Show();
+                            return;
+                        }                        
+
+                        var ask = await new MessageYesNo($"Bạn có muốn chuyển những cây vải này sang kệ {result} không?").Show();
+                        if (ask == Global.DialogReturn.OK)
+                        {
+                            viewModel.ShowLoading("Đang chuyển kệ. vui lòng đợi...");
+                            var ok = await viewModel.RunHttpClientPost($"api/qltb/ChuyenVaiQuaKeKhac?kemoi={result}", listXuat);
+                            viewModel.HideLoading();
+                            if (ok.IsSuccessStatusCode)
+                            {
+                                await new MessageBox("Chuyển kệ thành công").Show();
+                                foreach (var vai in ListItem)
+                                {
+                                    vai.Chon = false;
+                                }
+                                await Navigation.PopAsync();
+                            }
+                            else
+                            {
+                                await new MessageBox(await ok.Content.ReadAsStringAsync()).Show();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        await new MessageBox(ex.Message).Show();
+                    }
+                });
+
+            };
+            await Navigation.PushAsync(scan);
+        }
     }
 
     public class TraCuuCayVai
