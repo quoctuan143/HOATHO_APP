@@ -133,9 +133,17 @@
                                                        Grid.Column="1"
                                                        Grid.Row="1"
                                                        IconImageSource="duyethietbi.png"
-                                                       BadgeText="{Binding NofiTBSXDC}"
+                                                           BadgeText="{Binding NofiTBSXDC}"
                                                        ActionCommand="{Binding TBSXDCCommand}"
                                                        Disable="{Binding IsTBSX, Mode=TwoWay}">
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Thanh lý &#10;NPL"
+                                                           Grid.Column="2"
+                                                           Grid.Row="1"
+                                                           IconImageSource="kytruongphong.png"
+                                                           BadgeText="{Binding NofiTLNPL}"
+                                                           ActionCommand="{Binding TLNPLCommand}"
+                                                           Disable="{Binding IsDuyetLCPGC, Mode=TwoWay}">
                                     </control:IconMainView>
                                 </Grid>
                             </StackLayout>
@@ -243,6 +251,14 @@
                                                       BadgeText="{Binding NofiDanhMucThietBiRoi}"
                                                       ActionCommand="{Binding DanhMucThietBiRoiCommand}"
                                                       Disable="{Binding IsDanhMucThietBi, Mode=TwoWay}">
+                                    </control:IconMainView>
+                                    <control:IconMainView  Title="Thanh lý &#10;NPL"
+                                                           Grid.Column="1"
+                                                           Grid.Row="3"
+                                                           IconImageSource="kytruongphong.png"
+                                                           BadgeText="{Binding NofiTLNPL}"
+                                                           ActionCommand="{Binding TLNPLCommand}"
+                                                           Disable="{Binding IsKiDienTuThietBi, Mode=TwoWay}">
                                     </control:IconMainView>
                                 </Grid>
                             </StackLayout>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="APP_HOATHO.Views.TBSX.ThanhLyNguyenPhuLieu"
+             Title="Duyệt thanh lý NPL"
+             BackgroundColor="White"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"                                           
+                                            ItemsSource="{Binding ListItem, Mode=TwoWay}"  
+                                            SelectionChanged="listChiTiet_SelectionChanged"
+                                            AutoGenerateColumns="False"               
+                                            Style="{StaticResource styleDataGrid}"
+                                            SelectionMode="Single"
+                                            LiveDataUpdateMode="AllowSummaryUpdate"
+                                           >
+                <sfDataGrid:SfDataGrid.Columns>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Số chứng từ"                                                
+                                                        Width="100"           
+                                                    MappingName="No_"
+                                                HeaderFontAttribute="Bold" 
+                                                HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding No_}" TextColor="Black" Padding="5,0,0,0"  XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Ngày lập"                                                
+                                                        Width="100"          
+                                                    MappingName="PostingDate"
+                                                HeaderFontAttribute="Bold" 
+                                                HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PostingDate,StringFormat= '{0:dd/MM/yyyy}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="PO"                                                
+                                                        Width="140"
+                                                MappingName="PO" 
+                                                HeaderFontAttribute="Bold" 
+                                                HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PO}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="Style" 
+                                                   Width="120"
+                                                   HeaderText="Style" 
+                                                   HeaderFontAttribute="Bold" 
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Style}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn MappingName="CustomerName" 
+                                                   Width="180"
+                                                   HeaderText="Tên khách hàng" 
+                                                   HeaderFontAttribute="Bold" 
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding CustomerName}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn MappingName="WorkCenterCode" 
+                                                   Width="100"
+                                                   HeaderText="Nhà máy" 
+                                                   HeaderFontAttribute="Bold" 
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding WorkCenterCode}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                </sfDataGrid:SfDataGrid.Columns>
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                Position="Bottom"
+                                ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                      Format="{}{Count}"
+                                      MappingName="ExternalDocumentNo"
+                                      SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

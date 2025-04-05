@@ -105,7 +105,10 @@ namespace APP_HOATHO.Views
                         No_2 = viewModel.Item.No_2,
                         No_3 = viewModel.Item.No_3,
                         Da_Bao_Tri = false,
-                        ItemCategoryCode = viewModel.Item.ItemCategory 
+                        ItemCategoryCode = viewModel.Item.ItemCategory,
+                        NhaMay = viewModel.Item.NhaMay,
+                        Xuong = viewModel.Item.Xuong,
+                        ToSanXuat =viewModel.Item.ToSanXuat                        
 
                     };
                     await Navigation.PushAsync(new TaoLichSuBaoTri(item1));

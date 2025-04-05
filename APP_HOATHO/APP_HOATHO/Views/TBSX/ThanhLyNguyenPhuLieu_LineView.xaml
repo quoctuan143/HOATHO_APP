@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="APP_HOATHO.Views.TBSX.ThanhLyNguyenPhuLieu_LineView"
+             Title="Chi tiết thanh lý"
+             BackgroundColor="White"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
+                                   AutoGenerateColumns="False"
+                                   Style="{StaticResource styleDataGrid}"
+                                   SelectionMode="None"
+                                   VerticalOptions="FillAndExpand"
+                                   LiveDataUpdateMode="AllowSummaryUpdate">
+                <sfDataGrid:SfDataGrid.Columns>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Tên NPL"
+                                                    Width="100"
+                                                    MappingName="ItemName"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ItemName}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Đvt"
+                                                    Width="100"
+                                                    MappingName="Dvt"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Dvt}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng"
+                                                    Width="100"
+                                                    MappingName="Quantity"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Quantity}"
+                                       TextColor="Black"
+                                       Padding="5,0,0,0"
+                                       WidthRequest="140"
+                                       XAlign="Start"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="Quantity"
+                                                   Width="60"
+                                                   HeaderText="Số lượng"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Quantity,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn MappingName="Quota"
+                                                   Width="80"
+                                                   HeaderText="Định mức"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Quota,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+
+                    <sfDataGrid:GridTemplateColumn MappingName="Scrap"
+                                                   Width="80"
+                                                   HeaderText="Hao hụt"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Scrap,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="Demand"
+                                                   Width="80"
+                                                   HeaderText="Nhu cầu"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding Demand,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="BrandQuantity"
+                                                   Width="80"
+                                                   HeaderText="Chênh lệch"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding BrandQuantity,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="PSExportQuantityAmount"
+                                                   Width="80"
+                                                   HeaderText="Thực nhận"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PSExportQuantityAmount,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn MappingName="PSLiquidationQuantity"
+                                                   Width="80"
+                                                   HeaderText="Thanh lý PO-Style"
+                                                   HeaderFontAttribute="Bold"
+                                                   HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PSLiquidationQuantity,StringFormat='{0:#,##0.##}'}"
+                                       TextColor="Black"
+                                       Padding="5,0,5,0"
+                                       XAlign="End"
+                                       YAlign="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                </sfDataGrid:SfDataGrid.Columns>
+                <sfDataGrid:SfDataGrid.TableSummaryRows>
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng số lượng : {TotalQuantity} "
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                          Format="{}{Sum}"
+                                                          MappingName="Quantity"
+                                                          SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridTableSummaryRow>
+
+                </sfDataGrid:SfDataGrid.TableSummaryRows>
+            </sfDataGrid:SfDataGrid>
+            <Button Style="{StaticResource styleButton}"
+                    Text="Duyệt chứng từ"
+                    x:Name="GuiYeuCau"
+                    Command="{Binding ApproveCommand}"
+                    VerticalOptions="EndAndExpand"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

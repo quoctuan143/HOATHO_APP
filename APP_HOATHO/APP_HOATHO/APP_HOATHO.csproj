@@ -127,6 +127,12 @@
     <Compile Update="Views\TaoLichSuBaoTri.xaml.cs">
       <DependentUpon>TaoLichSuBaoTri.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\TBSX\ThanhLyNguyenPhuLieu_LineView.xaml.cs">
+      <DependentUpon>ThanhLyNguyenPhuLieu_LineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TBSX\ThanhLyNguyenPhuLieu.xaml.cs">
+      <DependentUpon>ThanhLyNguyenPhuLieu.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ThietBi\Ky_Dien_Tu_Tong_Hop_Thue_Thiet_Bi_Line_Page.xaml.cs">
       <DependentUpon>Ky_Dien_Tu_Tong_Hop_Thue_Thiet_Bi_Line_Page.xaml</DependentUpon>
     </Compile>

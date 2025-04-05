@@ -2,6 +2,7 @@
 using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
+using APP_HOATHO.Models.DuyetChungTu;
 using APP_HOATHO.Models.Nha_May_Soi;
 using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Models.Thiet_Bi_Van_Phong;
@@ -93,6 +94,7 @@ namespace APP_HOATHO.ViewModels
         public int NofiDanhSachChoITXuLy { get; set; }
         public int NofiTBSX { get; set; }
         public int NofiTBSXDC { get; set; }
+        public int NofiTLNPL { get; set; }
         public int NofiTPKyLenhXuaHang { get; set; }
         public int NofiGDKyLenhXuaHang { get; set; }
         private DuyetChungTuPhuTung_Header duyetChungTuPhuTung_Header;
@@ -147,6 +149,7 @@ namespace APP_HOATHO.ViewModels
         public ICommand NhapCayVaiTonKhoCommand { get; set; }
         public ICommand NhapKhoPhuLieuCommand { get; set; }
         public ICommand XuatKhoPhuLieuCommand { get; set; }
+        public ICommand TLNPLCommand { get; set; }
 
         #endregion "Command"
 
@@ -614,6 +617,17 @@ namespace APP_HOATHO.ViewModels
                     await new MessageBox(ex.Message).Show();
                 }
             });
+            TLNPLCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new ThanhLyNguyenPhuLieu());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
             Task.Factory.StartNew(async () => await Load());
 
             FullName = Preferences.Get(Config.FullName, "");
@@ -683,6 +697,14 @@ namespace APP_HOATHO.ViewModels
                 {
                     NofiTBSXDC--;
                     OnPropertyChanged(nameof(NofiTBSXDC));
+                }
+            });
+            MessagingCenter.Subscribe<ThanhLyNguyenPhuLieuViewModel>(this, "langngheduyet", (obj) =>
+            {
+                if (NofiTLNPL > 0)
+                {
+                    NofiTLNPL--;
+                    OnPropertyChanged(nameof(NofiTLNPL));
                 }
             });
             MessagingCenter.Subscribe<TBSX_Header_ViewModel>(this, "langngheduyet", (obj) =>
@@ -928,6 +950,10 @@ namespace APP_HOATHO.ViewModels
                                 NofiTBSXDC = k.Lists.Count();
                                 OnPropertyChanged(nameof(NofiTBSXDC));
                             }
+
+                            var tlnpl = await RunHttpClientGet<MaterialsLiquidationHeader>($"api/DuyetChungTu/GetThanhLyNPL?username={Preferences.Get(Config.User, "")}");
+                            NofiTLNPL = tlnpl.Lists.Count();
+                            OnPropertyChanged(nameof(NofiTLNPL));
 
                             var tgd_tbsx = Convert.ToBoolean(ISDBNULL(body[0].TGD_DUYET_TBSX.Value, false));
                             if (tgd_tbsx)
