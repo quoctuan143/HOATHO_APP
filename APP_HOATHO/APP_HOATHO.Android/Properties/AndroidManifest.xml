@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="66" android:versionName="1.7.66" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
-	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="76" android:versionName="1.7.76" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
 	<application android:label="Hoatho Smart App" android:usesCleartextTraffic="true" android:icon="@mipmap/logo">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.app_hoathocorp.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>

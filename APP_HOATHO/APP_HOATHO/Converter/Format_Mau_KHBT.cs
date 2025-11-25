@@ -67,6 +67,8 @@ namespace APP_HOATHO.Converter
         TatCa =-1,
         ChuaHoanThanh = 0,
         DoDang =1,
-        HoanThanh=2
+        HoanThanh=2,
+        DaDinhVi= 3,
+        ChuaDinhVi=4
     }
 }

@@ -18,6 +18,11 @@
                    Style="{StaticResource styleEntry}" 
                HorizontalOptions="FillAndExpand" Placeholder="Tìm theo Roll No, màu, barcode"
                    ></Entry>
+            <Entry x:Name="sochungtu"                   
+                   ClearButtonVisibility="WhileEditing"
+                   Style="{StaticResource styleEntry}"
+                   HorizontalOptions="FillAndExpand"
+                   Placeholder="Số phiếu xuất"></Entry>
             <sfDataGrid:SfDataGrid  x:Name="listThietBi"
                                 ItemsSource="{Binding ListItem}"
                                 AutoGenerateColumns="False"
@@ -42,7 +47,7 @@
                     <sfDataGrid:GridTemplateColumn  MappingName="ItemName" HeaderText="Tên NPL" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding ItemName}" TextColor="Black" Padding="5,0,0,0"  XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding ItemName}" TextColor="Black" Padding="5,0,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -50,7 +55,7 @@
                     <sfDataGrid:GridTemplateColumn  MappingName="Color" HeaderText="Màu" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding Color}" TextColor="Black" Padding="5,0,0,0"  XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding Color}" TextColor="Black" Padding="5,0,0,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -58,7 +63,7 @@
                     <sfDataGrid:GridTemplateColumn  MappingName="RollNo" HeaderText="Roll No" Width="80"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding RollNo}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding RollNo}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -70,7 +75,7 @@
                                                 HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding InvoicedMeter , StringFormat='{0:#,##0.##}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding InvoicedMeter , StringFormat='{0:#,##0.##}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -81,7 +86,7 @@
                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding TonKho , StringFormat='{0:#,##0.##}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding TonKho , StringFormat='{0:#,##0.##}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -92,7 +97,7 @@
                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding BarcodeId}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding BarcodeId}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -103,7 +108,7 @@
                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding PositionId}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding PositionId}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

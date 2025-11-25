@@ -33,7 +33,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
         public ICommand QuetQrCommand { get; set; }
         public ICommand CapNhatCommand { get; set; }
         public ICommand DeleteIdVaiCommand { get; set; }
-
+        public EventHandler<bool> EventHandler { get; set; }
         public XuatKhoTheoCayVai_ViewModel(DanhSachPhieuXuatKhoChiTiet_Model xuatKho)
         {
             XuatKho = xuatKho;
@@ -104,6 +104,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                                                 }
 
                                                 ListItem.Add(ketqua);
+                                                OnPropertyChanged("ListItem");
                                                 SoCayVai = ListItem.Count;
                                                 SoLuongDaQuet = ListItem.Sum(x => x.CanXuat);
                                                 ConLai = SoLuongPhieuXuat - SoLuongDaQuet;
@@ -155,6 +156,12 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                         await new MessageBox("Chưa có danh sách xuất kho").Show();
                         return;
                     }
+                    var request = ListItem.Where(x => x.RowID == "0").ToList();
+                    if (!request.Any())
+                    {
+                        await new MessageBox("Chưa có danh sách xuất kho").Show();
+                        return;
+                    }
                     var message = "";
                     var list = ListItem.Where(x => x.XuatLe == 1).ToList();
                     if (list.Count > 0)
@@ -166,14 +173,34 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                     if (await new MessageYesNo(message != "" ? message : "Bạn có muốn xuất những cây vải này không?").Show() == DialogReturn.OK)
                     {
                         ShowLoading("Đang xử lý. vui lòng đợi");
-                        var ok = await RunHttpClientPost("api/qltb/XuatKhoTheoDanhSachIdCayVai", ListItem.Where(x => x.RowID == "0").ToList());
+                        var ok = await RunHttpClientPost("api/qltb/XuatKhoTheoDanhSachIdCayVai", request);
                         HideLoading();
-                        if (ok.IsSuccessStatusCode)
+                       
+
+                        if (list.Count > 0)
                         {
-                            HideLoading();
-                            await new MessageBox("Cập nhật thành công").Show();
-                            await Navigation.PopAsync();
+                            message = "Bạn có muốn ghi nợ nhà máy cây vải có số roll " + String.Join(", ", list.Select(x => x.RollNo + " với số lượng: " + string.Format("{0:#,##0.##}", x.SoLuongConLai)));
+                            if (await new MessageYesNo(message).Show() == DialogReturn.OK)
+                            {
+                                ShowLoading("Đang xử lý. vui lòng đợi");
+                                var ok1 = await RunHttpClientPost("api/nguyenlieu/GhiNhanNoChoNhaMay",list.Select(x=> new NhaMayNoVaiKhoModel
+                                {
+                                    Action = BehaviorEnum.Add,                                    
+                                    Total = x.SoLuongConLai,
+                                    Balance = x.SoLuongConLai,
+                                    IdCayVai = x.Id,
+                                    ColorNo = x.Color,
+                                    ItemNo = x.ItemNo,
+                                    DocumentNo = x.DocumentNo,
+                                    Meta="",
+                                    UserId=x.UserId,
+                                    
+                                }).ToList());
+                                HideLoading();                               
+                            }
                         }
+                        ok.ShowThongBaoRunApi("Cập nhật thành công");
+                        await Navigation.PopAsync();
                     }
                 }
                 catch (Exception ex)
@@ -224,9 +251,9 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 IsBusy = true;
                 ShowLoading("Đang tải dữ liệu. vui lòng đợi");
                 await Task.Delay(1000);
-                string url = $"api/qltb/GetIdCayVaiTheoPhieuXuat?itemno={XuatKho.ItemNo}&color={XuatKho.Color}&documentno={XuatKho.DocumentNo}";
+                string url = $"api/qltb/GetIdCayVaiTheoPhieuXuat";
                 ListItem.Clear();
-                var a = await RunHttpClientGet<XuatKhoTheoCayVai_Model>(url);
+                var a = await RunHttpClientGet<XuatKhoTheoCayVai_Model>(url,new {ItemNo = XuatKho.ItemNo ,ColorNo = XuatKho.Color , DocumentNo = XuatKho.DocumentNo });
                 ListItem = a.Lists;
                 if (ListItem.Count > 0)
                 {

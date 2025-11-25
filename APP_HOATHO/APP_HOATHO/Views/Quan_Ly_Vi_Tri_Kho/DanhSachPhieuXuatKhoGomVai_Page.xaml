@@ -56,7 +56,7 @@
                        ></SearchBar>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"
                                    ItemsSource="{Binding ListItem, Mode=TwoWay}"
-                                   SelectionChanged="listChiTiet_SelectionChanged"
+                                   SelectionChanged="listChiTiet_SelectionChanged"                                     
                                    Style="{StaticResource styleDataGrid}"
                                    SelectionMode="Single"
                                    FrozenColumnsCount="1">
@@ -73,8 +73,8 @@
                                 <Label Text="{Binding ExternalDocumentNo}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                           
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -91,8 +91,8 @@
                                        TextColor="Black"
                                        Padding="5,0,0,0"
                                        WidthRequest="100"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -107,8 +107,8 @@
                                 <Label Text="{Binding Description}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                            
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 

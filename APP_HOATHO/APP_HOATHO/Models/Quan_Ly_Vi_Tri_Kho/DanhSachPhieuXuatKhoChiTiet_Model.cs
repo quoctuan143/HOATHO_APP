@@ -23,6 +23,7 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string TrimArt { get; set; }
         public string Art { get; set; } 
         public string DVT { get; set; }
+        public string ExternalDocumentNo_ { get; set; }
         double _xuatTheoIdVai;
         public double XuatTheoIdVai { get => _xuatTheoIdVai; set { 
                 SetProperty(ref _xuatTheoIdVai, value);

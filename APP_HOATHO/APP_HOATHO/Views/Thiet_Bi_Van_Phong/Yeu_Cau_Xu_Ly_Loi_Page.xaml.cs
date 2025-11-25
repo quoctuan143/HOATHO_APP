@@ -70,9 +70,9 @@ namespace APP_HOATHO.Views.Thiet_Bi_Van_Phong
                     var filename = media.Path.Split('\\').LastOrDefault().Split('/').LastOrDefault();
                     Item.ImageLink = filename;
                 }
-                var time = Item.TimeRequire;
+                var time = Item.TimeRequire ?? DateTime.Now.TimeOfDay;
                 var date = DateTime.Now.Date;
-                Item.UserTimeRespect = new DateTime(date.Year,date.Month,date.Day, time.Value.Hours,time.Value.Minutes,0);
+                Item.UserTimeRespect = new DateTime(date.Year,date.Month,date.Day, time.Hours,time.Minutes,0);
                 var ok = await BaseView.RunHttpClientPost("api/qltb/GuiYeuCauXuLyLoiThietBi", Item);
                 BaseView.HideLoading();
                 if (ok.IsSuccessStatusCode)

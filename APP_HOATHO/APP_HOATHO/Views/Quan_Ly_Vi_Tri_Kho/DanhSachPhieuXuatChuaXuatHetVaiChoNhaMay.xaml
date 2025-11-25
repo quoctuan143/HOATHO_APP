@@ -4,11 +4,11 @@
              xmlns:local2="clr-namespace:APP_HOATHO.Converter"
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.DanhSachPhieuXuatKhoGomVaiChiTiet_Page"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.DanhSachPhieuXuatChuaXuatHetVaiChoNhaMay"
               xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
              Shell.TabBarIsVisible="False"
              BackgroundColor="White"
-             Title="Chi tiết xuất kho">
+             Title="Phiếu nợ nhà máy">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local2:Format_Mau_XuatKhoCayVai x:Key="Format_Mau_KHTB" />
@@ -47,6 +47,21 @@
                                    MaxSwipeOffset="200">
                 <sfDataGrid:SfDataGrid.Columns>
 
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Số chứng từ"
+                                                    MappingName="ExternalDocumentNo_"
+                                                    Width="150"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ExternalDocumentNo_}"
+                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
+                                       Padding="5,0,0,0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Tên NPL"
                                                     MappingName="ItemName"
                                                     Width="150"
@@ -198,7 +213,7 @@
                                                     ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>
                             <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
-                                                          Format="{}{Sum}"
+                                                          Format="{}{Count}"
                                                           MappingName="Quantity"
                                                           SummaryType="DoubleAggregate" />
                         </sfDataGrid:GridTableSummaryRow.SummaryColumns>

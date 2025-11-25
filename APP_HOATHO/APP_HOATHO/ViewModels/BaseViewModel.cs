@@ -17,10 +17,13 @@ using APP_HOATHO.Dialog;
 using Plugin.Connectivity;
 using Newtonsoft.Json.Linq;
 using ZXing;
+using System.Linq;
+using System.Web;
+using Xamarin.Essentials;
 
 namespace APP_HOATHO.ViewModels
 {
-    public class BaseViewModel :  INotifyPropertyChanged
+    public  class BaseViewModel :  INotifyPropertyChanged
     {
 
 
@@ -87,6 +90,7 @@ namespace APP_HOATHO.ViewModels
 
         }
 
+
         public async Task<T> RunHttpClientGetObject<T>(string apiUrl) where T : class
         {
             try
@@ -138,7 +142,7 @@ namespace APP_HOATHO.ViewModels
         public async Task<HttpResponseMessage > RunHttpClientPost(string apiUrl , object  Value) 
         {
             try
-            {                
+            {               
                 HttpResponseMessage Status = await Config.client.PostAsJsonAsync(apiUrl, Value); 
                 return Status;
             }
@@ -147,6 +151,26 @@ namespace APP_HOATHO.ViewModels
                 return new HttpResponseMessage  { StatusCode = System.Net.HttpStatusCode.BadRequest };
             }
 
+        }
+
+        
+        public string GetQueryString(object obj)
+        {
+            if (obj == null)
+            {
+                return string.Empty;
+            }
+
+            var properties = from p in obj.GetType().GetProperties()
+                             where p.GetValue(obj, null) != null
+                             select p.Name + "=" + HttpUtility.UrlEncode(p.GetValue(obj, null).ToString());
+
+            return properties.Any() ? $"?{String.Join("&", properties.ToArray())}" : "";
+        }
+
+        public string GetUserId()
+        {
+            return Preferences.Get(Config.User, "");
         }
         /// <summary>
         /// Called when the view model is disappearing. View Model clean-up should be performed here.
@@ -193,5 +217,22 @@ namespace APP_HOATHO.ViewModels
 
         #endregion
 
+    }
+
+    public static class ShowMessageResponse
+    {
+
+        public static async void ShowThongBaoRunApi(this HttpResponseMessage message, string noidung)
+        {
+            if (message.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+               BaseViewModel baseViewModel = new BaseViewModel();
+                baseViewModel.LongAlert(noidung);
+            }
+            else
+            {
+               await new MessageBox(await message.Content.ReadAsStringAsync()).Show();
+            }    
+        }
     }
 }

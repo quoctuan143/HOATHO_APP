@@ -44,6 +44,7 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
                     if (_canxuat > 0 && _canxuat < TonKho)
                     {
                         XuatLe = 1;
+                        SoLuongConLai = TonKho - _canxuat;
                         OnPropertyChanged("XuatLe");
                     }
                     else
@@ -84,6 +85,7 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
 
 
         public int XuatLe { get; set; } = 2;
+        public double SoLuongConLai { get; set; }
         public DateTime? NgayXuat { get; set; }
     }
 }

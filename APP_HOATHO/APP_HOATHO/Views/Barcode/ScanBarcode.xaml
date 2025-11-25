@@ -13,6 +13,8 @@
                 <Entry Placeholder="Nhập barcode mà không quét được"
                        PlaceholderColor="Red"
                        x:Name="txtBarcode"
+                       Completed="txtBarcode_Completed"
+                       Unfocused="txtBarcode_Unfocused"
                        Style="{StaticResource styleEntry}" 
                        ClearButtonVisibility="WhileEditing"
                          />

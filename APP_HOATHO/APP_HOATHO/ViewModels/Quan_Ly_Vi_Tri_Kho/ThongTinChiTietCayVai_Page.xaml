@@ -6,7 +6,7 @@
              Title="Thông tin cây vải">
     <ContentPage.Content>
         <ScrollView>
-            <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,auto,auto,auto,auto,*,auto,auto" Padding="10" RowSpacing="10">
+            <Grid x:Name="Information" ColumnDefinitions="4*,6*" RowDefinitions="auto,auto,auto,30,30,30,30,30,30,20,auto,auto,auto,auto,auto,*,auto,auto,auto,auto" Padding="10" RowSpacing="10">
                 <Label Text="Roll No:" Grid.Column="0" Grid.Row="0" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="{Binding Item.RollNo}" Grid.Column="1" Grid.Row="0" FontSize="16" FontAttributes="Bold" TextColor="Red" LineBreakMode="WordWrap"></Label>
                 <Label Text="Parcel No:" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="1" FontSize="16" TextColor="Black"></Label>
@@ -39,6 +39,26 @@
                 <Label Text="{Binding Item.TonKho}" Grid.Column="1" Grid.Row="14" FontSize="16" FontAttributes="Bold" TextColor="Red"></Label>
                 <Label Text="Mã QR" Grid.Column="0" Grid.Row="15" FontSize="16" TextColor="Black"></Label>
                 <Label Text="{Binding Item.BarcodeId}" Grid.Column="1" Grid.Row="15" FontSize="16" TextColor="Black"></Label>
+                <Label Text="Nhà Cung cấp"
+                       Grid.Column="0"
+                       Grid.Row="16"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Label Text="{Binding Item.TenNhaCungCap}"
+                       Grid.Column="1"
+                       Grid.Row="16"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Label Text="Khách Hàng"
+                       Grid.Column="0"
+                       Grid.Row="17"
+                       FontSize="16"
+                       TextColor="Black"></Label>
+                <Label Text="{Binding Item.KhachHang}"
+                       Grid.Column="1"
+                       Grid.Row="17"
+                       FontSize="16"
+                       TextColor="Black"></Label>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

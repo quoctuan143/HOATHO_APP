@@ -40,21 +40,7 @@ namespace APP_HOATHO.Views.Barcode
                 {
                     if (IdVai)
                     {
-                        var result = txtBarcode.Text.ToUpper();
-                        if (result.Length != 9)
-                        {
-                            try
-                            {
-                                var number = Convert.ToDouble(result);
-                                result = number.ToString("000000000");
-                            }
-                            catch (Exception ex)
-                            {
-
-                                await new MessageBox("Mã barcode là kiểu number").Show();
-                                return;
-                            }
-                        }
+                        var result = txtBarcode.Text.ToUpper();                        
                         ScanBarcodeResult?.Invoke(this, result);
                         txtBarcode.Text = "";
                     }
@@ -70,21 +56,7 @@ namespace APP_HOATHO.Views.Barcode
                 {
                     if (IdVai)
                     {
-                        var result = txtBarcode.Text.ToUpper();
-                        if (result.Length != 9)
-                        {
-                            try
-                            {
-                                var number = Convert.ToDouble(result);
-                                result = number.ToString("000000000");
-                            }
-                            catch (Exception ex)
-                            {
-
-                                await new MessageBox("Mã barcode là kiểu number").Show();
-                                return;
-                            }
-                        }
+                        var result = txtBarcode.Text.ToUpper();                        
                         ScanBarcodeResult?.Invoke(this, result);
                         await Navigation.PopAsync();
                     }
@@ -124,6 +96,72 @@ namespace APP_HOATHO.Views.Barcode
                 }
             });              
             
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await Task.Delay(500);
+            this.txtBarcode.Focus();
+        }
+
+        private async void txtBarcode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private async void txtBarcode_Completed(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtBarcode.Text))
+                {
+                    await new MessageBox("Vui lòng nhập mã barcode").Show();
+                    return;
+                }
+                if (Loop)
+                {
+                    if (IdVai)
+                    {
+                        var result = txtBarcode.Text.ToUpper();                        
+                        ScanBarcodeResult?.Invoke(this, result);
+                        txtBarcode.Text = "";
+                    }
+                    else
+                    {
+                        ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());
+                        txtBarcode.Text = "";
+                    }
+
+                }
+
+                else
+                {
+                    if (IdVai)
+                    {
+                        var result = txtBarcode.Text.ToUpper();                        
+                        ScanBarcodeResult?.Invoke(this, result);
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        ScanBarcodeResult?.Invoke(this, txtBarcode.Text.ToUpper());
+                        await Navigation.PopAsync();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                await new MessageBox(ex.Message).Show();
+
+            }
+        }
+
+        private void txtBarcode_Unfocused(object sender, FocusEventArgs e)
+        {
+            Task.Delay(500);
+            this.txtBarcode.Focus();
         }
     }
 }

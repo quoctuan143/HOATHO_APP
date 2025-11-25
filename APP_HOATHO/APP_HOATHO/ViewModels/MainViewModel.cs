@@ -150,6 +150,7 @@ namespace APP_HOATHO.ViewModels
         public ICommand NhapKhoPhuLieuCommand { get; set; }
         public ICommand XuatKhoPhuLieuCommand { get; set; }
         public ICommand TLNPLCommand { get; set; }
+        public ICommand DanhSachPhieuNoNhaMayCommand { get; set; }
 
         #endregion "Command"
 
@@ -611,6 +612,17 @@ namespace APP_HOATHO.ViewModels
                 try
                 {
                     await Navigation.PushAsync(new Danh_Sach_Phieu_Xuat_Phu_Lieu());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            DanhSachPhieuNoNhaMayCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new DanhSachPhieuXuatChuaXuatHetVaiChoNhaMay());
                 }
                 catch (Exception ex)
                 {

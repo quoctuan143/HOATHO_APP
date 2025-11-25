@@ -21,12 +21,10 @@ namespace APP_HOATHO.Global
         // IMqttClient client;
         Image image;
         public SplashPage()
-        {
-            
-
-           // if (Device.RuntimePlatform == Device.iOS)
-           // {
-            NavigationPage.SetHasNavigationBar(this, false);
+        {           
+            try
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
                 var sub = new AbsoluteLayout();
                 image = new Image
                 {
@@ -40,9 +38,9 @@ namespace APP_HOATHO.Global
                 sub.Children.Add(image);
                 this.BackgroundColor = Color.White;
                 this.Content = sub;
-            //}
-
-
+            }
+            catch
+            { }
         }
 
         
@@ -50,18 +48,16 @@ namespace APP_HOATHO.Global
         protected override async void OnAppearing()
         {
             base.OnAppearing();           
-            if (!CrossConnectivity.Current.IsConnected)
-            {
-                await new MessageBox("Bạn đã mất kết nối internet. vui lòng kiểm tra lại").Show();
-                System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
-            }
-                await image.ScaleTo(1, 3000);//thời gian khởi tạo
-                                             //await image.ScaleTo(0.9, 1500, Easing.Linear);
-                                             // await image.ScaleTo(150, 500, Easing.Linear);
-
-            //kiêm tra xem user có thay đổi k
+           
             try
             {
+                if (!CrossConnectivity.Current.IsConnected)
+                {
+                    await new MessageBox("Bạn đã mất kết nối internet. vui lòng kiểm tra lại").Show();
+                    System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+                }
+                await image.ScaleTo(1, 3000);
+
                 var _json = Config.client.GetStringAsync(Config.URL + "api/qltb/getUser?username=" + Preferences.Get(Config.User, "1") + "&password=" + Preferences.Get(Config.Password, "1")).Result;
                 _json = _json.Replace("\\r\\n", "").Replace("\\", "");
                 if (_json.Contains("Không Tìm Thấy Dữ Liệu") == false && _json.Contains("[]") == false)

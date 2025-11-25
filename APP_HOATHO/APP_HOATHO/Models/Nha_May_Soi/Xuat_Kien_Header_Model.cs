@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using APP_HOATHO.Interface;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace APP_HOATHO.Models.Nha_May_Soi
 {
@@ -80,6 +82,10 @@ namespace APP_HOATHO.Models.Nha_May_Soi
     }
     public class Bindable : INotifyPropertyChanged
     {
+        public void ShortAlert(string title)
+        {
+            DependencyService.Get<IMessage>().ShortAlert(title);
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected bool SetProperty<T>(ref T backingStore, T value,
            [CallerMemberName] string propertyName = "",
@@ -164,6 +170,7 @@ namespace APP_HOATHO.Models.Nha_May_Soi
         [JsonProperty("Packing Desc")]
         public string PackingDesc { get; set; }
         public string ImageString { get; set; }
+        public string MaKien { get; set; } = string.Empty;
 
     }
 

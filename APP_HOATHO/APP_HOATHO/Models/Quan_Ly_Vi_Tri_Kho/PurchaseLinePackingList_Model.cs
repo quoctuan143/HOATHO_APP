@@ -118,7 +118,7 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string UserId { get; set; }
         public string DocumentNo { get; set; }
         public string ItemNo { get; set; }
-
+        public string SoLo { get; set; }
         public string Id { get; set; }
         public StatusFormatColor DaGanNhan { get; set; }
         public StatusFormatColor DaXeplenKe { get; set; }

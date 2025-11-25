@@ -1,9 +1,11 @@
 ﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Models;
 using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.Barcode;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,12 +61,27 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 ScanBarcode scan = new ScanBarcode(false, "Quét Phiếu Xuất");
                 scan.ScanBarcodeResult += (s, result) =>
                 {
-                    Device.BeginInvokeOnMainThread(() =>
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        filterText = result;
-                        txtSearch.Text = filterText;
-                        listChiTiet.View.Filter = FilterRecords;
-                        listChiTiet.View.RefreshFilter();
+                        try
+                        {
+                            filterText = result;
+                            var response = await viewModel.RunHttpClientGet<DocumentNoResponse>($"api/qltb/GetDocumentXuatKhoTheoExtNo?sochungtu={result}");
+                            if (response.Lists.Count > 0) 
+                            {
+                                var document = response.Lists[0].No_;
+                                await Navigation.PushAsync(new DanhSachPhieuXuatKhoChiTiet_Page(document));
+                            }
+                            else
+                            {
+                                await new MessageBox($"Không tìm thấy số chứng từ {result} trong hệ thống").Show();
+                            }    
+                        }
+                        catch (Exception ex)
+                        {
+                            await new MessageBox(ex.Message).Show();
+                        }
+                        
                     });
 
                 };
@@ -75,5 +92,10 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                 await new MessageBox(ex.Message).Show();
             }
         }
+    }
+
+    public class DocumentNoResponse
+    {
+        public string No_ { get; set; }
     }
 }

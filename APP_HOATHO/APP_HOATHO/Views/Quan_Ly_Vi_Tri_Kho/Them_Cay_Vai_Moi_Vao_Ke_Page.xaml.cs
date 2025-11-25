@@ -125,6 +125,11 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     await new MessageBox("Vui lòng nhập số cây vải để lưu").Show();
                     return;
                 }
+                if (string.IsNullOrEmpty(Item.SoLo))
+                {
+                    await new MessageBox("Vui lòng nhập số lô cho cây vải").Show();
+                    return;
+                }
                 viewModel.ShowLoading("Đang cập nhật. vui lòng đợi...");
                 var ok = await Config.client.PostAsJsonAsync("api/qltb/CapNhatIdCayVaiMoi", Item);
                 viewModel.HideLoading();

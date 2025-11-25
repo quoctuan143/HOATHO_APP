@@ -12,20 +12,20 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-       
+
         <StackLayout>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"
-                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"                                   
-                                   Style="{StaticResource styleDataGrid}"                                    
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
+                                   Style="{StaticResource styleDataGrid}"
                                    NavigationMode="Cell"
                                    EditTapAction="OnTap"
                                    SelectionMode="None"
-                                   AllowSwiping="True"               
-                                   SwipeEnded="listChiTiet_SwipeEnded"    
+                                   AllowSwiping="True"
+                                   SwipeEnded="listChiTiet_SwipeEnded"
                                    MaxSwipeOffset="200">
-                <sfDataGrid:SfDataGrid.Columns>                   
-                    
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Art"                                                      
+                <sfDataGrid:SfDataGrid.Columns>
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Art"
                                                     MappingName="Art"
                                                     Width="100"
                                                     HeaderFontAttribute="Bold"
@@ -34,14 +34,14 @@
                             <DataTemplate>
                                 <Label Text="{Binding Art}"
                                        TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       Padding="5,0,0,0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Roll No"                                                      
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Roll No"
                                                     MappingName="RollNo"
                                                     Width="100"
                                                     HeaderFontAttribute="Bold"
@@ -50,31 +50,36 @@
                             <DataTemplate>
                                 <Label Text="{Binding RollNo}"
                                        TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       Padding="5,0,0,0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
-                    </sfDataGrid:GridTemplateColumn>                           
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Sl Xuất"                                                      
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Sl Xuất"
                                                     MappingName="CanXuat"
                                                     Width="120"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Entry Text="{Binding FormatNumberCanXuat}"
+                                <!--<Entry Text="{Binding FormatNumberCanXuat}"
+                               TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
+                               Keyboard="Numeric"
+                               Style="{StaticResource styleEntry}" 
+                               IsReadOnly="{Binding DaXuatKho}"
+                               />-->
+                                <Label Text="{Binding FormatNumberCanXuat}"
                                        TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Keyboard="Numeric"
-                                       Style="{StaticResource styleEntry}" 
-                                       IsReadOnly="{Binding DaXuatKho}"
-                                       />
+                                       Padding="5,0,0,0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Tồn Kho"                                                      
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Tồn Kho"
                                                     MappingName="TonKho"
                                                     Width="120"
                                                     HeaderFontAttribute="Bold"
@@ -83,14 +88,14 @@
                             <DataTemplate>
                                 <Label Text="{Binding TonKho,StringFormat='{0:#,##0.##}'}"
                                        TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       Padding="5,0,0,0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Mã QR"                                                      
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Mã QR"
                                                     MappingName="BarcodeId"
                                                     Width="100"
                                                     HeaderFontAttribute="Bold"
@@ -99,25 +104,25 @@
                             <DataTemplate>
                                 <Label Text="{Binding BarcodeId}"
                                        TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       Padding="5,0,0,0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
-                    </sfDataGrid:GridTemplateColumn>                     
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Ngày Xuất"                                                      
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Ngày Xuất"
                                                     MappingName="NgayXuat"
-                                                    Width="100"                                                         
+                                                    Width="100"
                                                     HeaderFontAttribute="Bold"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding NgayXuat,StringFormat='{0:dd/MM/yyyy}'}"
                                        TextColor="{Binding XuatLe, Converter={StaticResource Format_Mau_KHTB} }"
-                                       Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       Padding="5,0,0,0"
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -125,47 +130,25 @@
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.LeftSwipeTemplate>
                     <DataTemplate>
-                        <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand"
-                              >
+                        <Grid ColumnSpacing="0"
+                              HorizontalOptions="FillAndExpand">
                             <ContentView Grid.Column="0">
-                                <ContentView.GestureRecognizers >
-                                    <TapGestureRecognizer x:Name="btnXoaCayVai" Tapped="btnXoaCayVai_Tapped"></TapGestureRecognizer>
+                                <ContentView.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="btnXoaCayVai"
+                                                          Tapped="btnXoaCayVai_Tapped"></TapGestureRecognizer>
                                 </ContentView.GestureRecognizers>
                                 <Grid  BackgroundColor="Green">
-                                    <Label 
-                                       Text ="Xóa dòng này" 
-                                       HorizontalTextAlignment="Center" 
-                                       VerticalTextAlignment="Center"  
-                                       LineBreakMode ="NoWrap" 
-                                       BackgroundColor="Transparent" 
-                                       TextColor ="White" />
+                                    <Label Text="Xóa dòng này"
+                                           HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
+                                           LineBreakMode="NoWrap"
+                                           BackgroundColor="Transparent"
+                                           TextColor="White" />
                                 </Grid>
-                            </ContentView>                                 
+                            </ContentView>
                         </Grid>
                     </DataTemplate>
                 </sfDataGrid:SfDataGrid.LeftSwipeTemplate>
-                <!--<sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="YC : {SLPhieuXuat}; Đã quét: {TotalQuantity}; Số cây : {SoCay}, Còn lại : {SLPhieuXuat - TotalQuantity} "
-                                                    Position="Bottom"
-                                                    ShowSummaryInRow="True">
-                        <sfDataGrid:GridTableSummaryRow.SummaryColumns>
-                            <sfDataGrid:GridSummaryColumn Name="SLPhieuXuat"
-                                                          Format="{}{Sum:F2}"
-                                                          MappingName="SoLuongPhieuXuat"
-                                                          SummaryType="DoubleAggregate"  />
-                            <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
-                                                          Format="{}{Sum:F2}"
-                                                          MappingName="CanXuat"
-                                                          SummaryType="DoubleAggregate"  />
-                            <sfDataGrid:GridSummaryColumn Name="SoCay"
-                                                          Format="{}{Count}"
-                                                          MappingName="CanXuat"
-                                                          SummaryType="DoubleAggregate"  />                                                            
-                        </sfDataGrid:GridTableSummaryRow.SummaryColumns>
-                        
-                    </sfDataGrid:GridTableSummaryRow>
-
-                </sfDataGrid:SfDataGrid.TableSummaryRows>-->
             </sfDataGrid:SfDataGrid>
             <Label Text="{Binding Summary}"
                    HorizontalOptions="FillAndExpand"
@@ -173,17 +156,25 @@
                    FontSize="14"
                    LineBreakMode="WordWrap"
                    VerticalOptions="End">
-                
+
             </Label>
-            <StackLayout Orientation="Horizontal" VerticalOptions="End">
-                <sfbutton:SfButton Text="Quét QR cây vải"  Command="{Binding QuetQrCommand}" FontSize="16"
-                        CornerRadius="4" HorizontalOptions="FillAndExpand"
-                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
-                <sfbutton:SfButton x:Name="btnCapNhat" Text="Cập nhật"  Clicked="btnCapNhat_Clicked"  FontSize="16"
-                        CornerRadius="4" HorizontalOptions="FillAndExpand"
-                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="End">
+                <sfbutton:SfButton Text="Quét QR cây vải"
+                                   Command="{Binding QuetQrCommand}"
+                                   FontSize="16"
+                                   CornerRadius="4"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                <sfbutton:SfButton x:Name="btnCapNhat"
+                                   Text="Cập nhật"
+                                   Clicked="btnCapNhat_Clicked"
+                                   FontSize="16"
+                                   CornerRadius="4"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
             </StackLayout>
         </StackLayout>
-       
+
     </ContentPage.Content>
 </ContentPage>

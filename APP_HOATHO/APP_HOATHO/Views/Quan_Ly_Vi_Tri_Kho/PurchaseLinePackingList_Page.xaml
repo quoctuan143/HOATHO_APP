@@ -32,6 +32,8 @@
                             <x:String>Tất Cả</x:String>
                             <x:String>Chưa Hoàn Thành</x:String>                             
                             <x:String>Hoàn Thành</x:String>
+                            <x:String>Đã Định Vị</x:String>
+                            <x:String>Chưa Định Vị</x:String>
                         </ListCollection:List>
                     </combobox:SfComboBox.ComboBoxSource>
                 </combobox:SfComboBox>

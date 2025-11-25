@@ -7,27 +7,24 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
 {
-    public class DanhSachPhieuXuatKhoGomVaiChiTiet_ViewModel : BaseViewModel
+    public class DanhSachPhieuXuatChuaXuatHetVaiChoNhaMayViewModel : BaseViewModel
     {
         public INavigation navigation { get; set; }
         DanhSachPhieuXuatKhoChiTiet_Model _selectItem;
-        public DanhSachPhieuXuatKhoChiTiet_Model SelectItem { get => _selectItem; set => SetProperty(ref _selectItem , value); }
+        public DanhSachPhieuXuatKhoChiTiet_Model SelectItem { get => _selectItem; set => SetProperty(ref _selectItem, value); }
         private ObservableCollection<DanhSachPhieuXuatKhoChiTiet_Model> _listItem;
         public ObservableCollection<DanhSachPhieuXuatKhoChiTiet_Model> ListItem { get => _listItem; set => SetProperty(ref _listItem, value); }
 
         public ICommand XemViTriKhoCommand { get; set; }
         public ICommand ViTriKhoTheoChungTuCommand { get; set; }
         public ICommand XuatKhoCommand { get; set; }
-        public ICommand BuTruCommand { get; set; }
-        public ICommand GhiNoCommand { get; set; }
+        public ICommand BuTruCommand { get; set; }      
         private string SoChungTu;
 
-        public DanhSachPhieuXuatKhoGomVaiChiTiet_ViewModel(string sochungtu)
-        {
-            SoChungTu = sochungtu;
+        public DanhSachPhieuXuatChuaXuatHetVaiChoNhaMayViewModel()
+        {           
             ListItem = new ObservableCollection<DanhSachPhieuXuatKhoChiTiet_Model>();
             XemViTriKhoCommand = new Command(async () =>
             {
@@ -35,7 +32,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 {
                     if (SelectItem != null)
                     {
-                        var ok = await RunHttpClientGet<PurchaseLinePackingList_Model>($"api/qltb/GetViTriTheoMaNPL?itemno={SelectItem.ItemNo}&color={SelectItem.Color}");
+                        var ok = await RunHttpClientGet<PurchaseLinePackingList_Model>($"api/nguyenlieu/GetViTriTheoMaNPL?itemno={SelectItem.ItemNo}&color={SelectItem.Color}");
                         if (ok.Status.IsSuccessStatusCode)
                         {
                             ObservableCollection<PurchaseLinePackingList_Model> Source = new ObservableCollection<PurchaseLinePackingList_Model>();
@@ -106,8 +103,8 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 try
                 {
                     if (SelectItem != null)
-                    {                        
-                        var page = new BuTruVaiNoChoNhaMay(new BuTruVaiRequest { ColorNo = SelectItem.Color , DocumentNo = sochungtu , ItemNo = SelectItem.ItemNo });
+                    {
+                        var page = new BuTruVaiNoChoNhaMay(new BuTruVaiRequest { ColorNo = SelectItem.Color, DocumentNo = SelectItem.DocumentNo, ItemNo = SelectItem.ItemNo });
                         page.ClosePage += (s, e) =>
                         {
                             ListItem.ForEach(x =>
@@ -127,7 +124,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 }
             });
 
-            GhiNoCommand = new Command(() => { });
+           
             OnAppearing();
         }
 
@@ -139,7 +136,7 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 IsBusy = true;
                 ShowLoading("Đang tải dữ liệu. vui lòng đợi");
                 await Task.Delay(1000);
-                string url = $"api/qltb/GetChiTietPhieuXuatKhoTongHop?sochungtu={SoChungTu}";
+                string url = $"api/nguyenlieu/DanhSachPhieuXuatConNoNhaMay";
                 ListItem.Clear();
                 var a = await RunHttpClientGet<DanhSachPhieuXuatKhoChiTiet_Model>(url);
                 ListItem = a.Lists;

@@ -13,6 +13,7 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string Description { get; set; }
         public string PO { get; set; }
         public string Style { get; set; } 
+        public string WorkCenterNo { get; set; }
 
     }
 }

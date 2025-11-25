@@ -16,14 +16,15 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
     public class DanhSachPhieuXuatKhoChiTiet_ViewModel : BaseViewModel
     {
         public INavigation navigation { get; set; }
-        public DanhSachPhieuXuatKhoChiTiet_Model SelectItem { get; set; }
+        DanhSachPhieuXuatKhoChiTiet_Model _selectItem;
+        public DanhSachPhieuXuatKhoChiTiet_Model SelectItem { get => _selectItem; set => SetProperty(ref _selectItem, value); }
         private ObservableCollection<DanhSachPhieuXuatKhoChiTiet_Model> _listItem;
         public ObservableCollection<DanhSachPhieuXuatKhoChiTiet_Model> ListItem { get => _listItem; set => SetProperty(ref _listItem, value); }
 
         public ICommand XemViTriKhoCommand { get; set; }
         public ICommand ViTriKhoTheoChungTuCommand { get; set; }
         public ICommand XuatKhoCommand { get; set; }
-
+        public ICommand BuTruCommand { get; set; }
         public ICommand UpdateSLKhauTruCommand { get; set; }
         private string SoChungTu;
 
@@ -122,6 +123,32 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
 
                 }
 
+            });
+
+            BuTruCommand = new Command(async () =>
+            {
+                try
+                {
+                    if (SelectItem != null)
+                    {
+                        var page = new BuTruVaiNoChoNhaMay(new BuTruVaiRequest { ColorNo = SelectItem.Color, DocumentNo = sochungtu, ItemNo = SelectItem.ItemNo });
+                        page.ClosePage += (s, e) =>
+                        {
+                            ListItem.ForEach(x =>
+                            {
+                                if (x.ItemNo == SelectItem.ItemNo && x.Color == SelectItem.Color)
+                                {
+                                    x.XuatTheoIdVai = x.XuatTheoIdVai + e;
+                                }
+                            });
+                        };
+                        await navigation.PushAsync(page);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
             });
             OnAppearing();
         }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -48,15 +49,16 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 try
                 {
                     var _list = ListItem.Where(x => x.Chon == true).ToList();
+                    var requests = _list.Select(x=> x.DocumentNo).ToList();
                     if (_list.Count == 0)
                     {
                         await new MessageBox("Bạn chưa chọn phiếu xuất để gom xuất").Show();
                         return;
                     }    
-                    if (await new MessageBox ("Bạn có muốn tạo phiếu gộp không?").Show() == Global.DialogReturn.OK)
+                    if (await new MessageYesNo ("Bạn có muốn tạo phiếu gộp không?").Show() == Global.DialogReturn.OK)
                     {
                         ShowLoading("Đang xử lý. vui lòng đợi....");
-                        var find = await RunHttpClientPost($"api/qltb/PostTaoPhieuGomVaiXuatKho?user={Preferences.Get(Config.User,"")}", _list);
+                        var find = await RunHttpClientPost($"api/qltb/TaoPhieuGomVaiNhieuPhieuXuat?user={Preferences.Get(Config.User,"")}", requests);
                         HideLoading();
                         if (find.IsSuccessStatusCode)
                         {
@@ -78,64 +80,18 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                 }
 
               
-            });
+            });                  
+          
+        }
 
-            ChooseMauNPLCommand = new Command(async () =>
+        public void AddPhieuXuat(string sochungtu)
+        {
+            if (!ListItem.Any(x=> x.DocumentNo == sochungtu))
             {
-                try
-                {                    
-                    var lookup = new LookupItem(danhSachMauNPL, "Danh sách màu NPL");
-                    lookup.closeForm += (s, e) =>
-                    {
-                        MauNPL = e.Code;
-                        SearchCommand.Execute(null);
-                    };
-
-                    await navigation.PushModalAsync(lookup);
-                }
-                catch
-                {                    
-                }
-                
-            });
-
-            ChooseMaNPLCommand = new Command(async () =>
-            {
-                try
-                {
-                    var lookup = new LookupItem(danhSachMaNPL, "Danh sách mã NPL");
-                    lookup.closeForm += async (s, e) =>
-                    {
-                        MaNPL = e.Code;
-                        SearchCommand.Execute(null);
-                        danhSachMauNPL.Clear();
-                        var b = await RunHttpClientGet<LookupValue>($"api/qltb/GetDanhSachMauNPLXuatKho?manpl={e.Code}");
-                        danhSachMauNPL = b.Lists;
-                        OnPropertyChanged("danhSachMauNPL");
-                    };
-
-                    await navigation.PushModalAsync(lookup);
-
-                }
-                catch 
-                {                    
-                }
-                
-            });
-
-            Task.Factory.StartNew(async() =>
-            {
-                try
-                {
-                    var a = await RunHttpClientGet<LookupValue>("api/qltb/GetDanhSachNPLXuatKho");   
-                    danhSachMaNPL = a.Lists;
-                    OnPropertyChanged("danhSachMaNPL");
-                }
-                catch
-                {
-                }
-                
-            });
+                this.ListItem.Add(new Tong_Hop_Gom_Phieu_Xuat_Model { Chon = true, DocumentNo = sochungtu });
+                OnPropertyChanged("ListItem");
+            }    
+            
         }
     }
     

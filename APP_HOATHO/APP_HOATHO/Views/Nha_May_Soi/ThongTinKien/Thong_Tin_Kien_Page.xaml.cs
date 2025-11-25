@@ -3,6 +3,7 @@ using APP_HOATHO.Global;
 using APP_HOATHO.Interface;
 using APP_HOATHO.Models;
 using APP_HOATHO.Models.Nha_May_Soi;
+using APP_HOATHO.Views.Barcode;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -59,7 +60,7 @@ namespace APP_HOATHO.Views.Nha_May_Soi
                     }                    
                     HttpClient client = new HttpClient();
                     client.BaseAddress = new Uri(Config.URL);
-                    var ok = client.PostAsync($"api/soi/UploadImageKien?PositionCode={Item.PositionCode}&NguoiUploadAnh={Item.NguoiUploadAnh}&PackingDesc={Item.PackingDesc}&RowID={Item.RowID}", content).Result;
+                    var ok = client.PostAsync($"api/soi/UploadImageKienV1?PositionCode={Item.PositionCode}&NguoiUploadAnh={Item.NguoiUploadAnh}&PackingDesc={Item.PackingDesc}&RowID={Item.RowID}&MaKien={Item.MaKien}", content).Result;
                     if (ok.IsSuccessStatusCode)
                     {                        
                         await Navigation.PopAsync();
@@ -100,6 +101,36 @@ namespace APP_HOATHO.Views.Nha_May_Soi
         {
             public string  Code { get; set; }
             public string Name { get; set; }
+        }
+
+        private async void btnScanPhieuXuat_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                ScanBarcode scan = new ScanBarcode(false, "Quét Phiếu Xuất");
+                scan.ScanBarcodeResult += (s, result) =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        try
+                        {
+                            Item.MaKien = result;
+                            OnPropertyChanged("Item");
+                        }
+                        catch (Exception ex)
+                        {
+                            await new MessageBox(ex.Message).Show();
+                        }
+
+                    });
+
+                };
+                await Navigation.PushAsync(scan);
+            }
+            catch (Exception ex)
+            {
+                await new MessageBox(ex.Message).Show();
+            }
         }
     }
 }

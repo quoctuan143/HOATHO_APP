@@ -38,8 +38,8 @@
 
             </Grid>
               <sfDataGrid:SfDataGrid x:Name="listChiTiet"
-                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
-                                   SelectionChanged="listChiTiet_SelectionChanged"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"                                         
+                                   SelectedItem="{Binding SelectItem , Mode=TwoWay}"
                                    Style="{StaticResource styleDataGrid}"                                       
                                    NavigationMode="Cell"
                                    EditTapAction="OnTap"
@@ -59,8 +59,8 @@
                                 <Label Text="{Binding ItemName}"
                                        TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -76,8 +76,8 @@
                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
 
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -92,8 +92,8 @@
                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
 
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -107,9 +107,8 @@
                                 <Label Text="{Binding DVT}"
                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -123,8 +122,8 @@
                                 <Label Text="{Binding SoLuongPhieu ,StringFormat='{0:#,##0.##}'}"
                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -168,8 +167,8 @@
                                 <Label Text="{Binding Quantity ,StringFormat='{0:#,##0.##}'}"
                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -183,8 +182,8 @@
                                 <Label Text="{Binding XuatTheoIdVai ,StringFormat='{0:#,##0.##}'}"
                                       TextColor="{Binding XuatOk, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -237,7 +236,8 @@
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
             </sfDataGrid:SfDataGrid>
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
-                <sfbutton:SfButton Text="Xem vị trí kho lưu"  Command="{Binding ViTriKhoTheoChungTuCommand}" FontSize="16"
+                <sfbutton:SfButton Text="Bù trừ với nhà máy"
+                                   Command="{Binding BuTruCommand}" FontSize="16"
                         CornerRadius="60" HorizontalOptions="FillAndExpand"
                          Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
             </StackLayout>

@@ -1,10 +1,10 @@
-﻿using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
+﻿using APP_HOATHO.Dialog;
+using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho;
-using Syncfusion.Data;
 using Syncfusion.Data.Extensions;
-using Syncfusion.SfDataGrid.XForms;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +26,7 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             viewModel.Navigation = Navigation;
             BindingContext = viewModel;
         }
-
+        
         private void btnXoaCayVai_Tapped(object sender, EventArgs e)
         {            
             viewModel.DeleteIdVaiCommand.Execute(null);
@@ -45,6 +45,6 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             {
                 ClosePage?.Invoke(this, sum);
             }
-        }
+        }       
     }
 }

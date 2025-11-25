@@ -64,9 +64,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Distribution: Phan Nhut Long (H69RC8L332)</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>hoathosmartprofile</CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <MtouchUseLlvm>false</MtouchUseLlvm>
     <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>

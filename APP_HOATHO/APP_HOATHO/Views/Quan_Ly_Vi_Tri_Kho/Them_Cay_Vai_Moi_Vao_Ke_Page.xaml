@@ -78,7 +78,17 @@
                     </sfcombobox:SfComboBox>
                     <Label Text="Barcode" Grid.Column="0" VerticalTextAlignment="Center" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
                     <Label Text="{Binding Item.BarcodeId ,Mode=TwoWay}" Grid.Column="1" Grid.Row="10" FontSize="16" TextColor="Black"></Label>
-
+                    <Label Text="Số Lô"
+                           Grid.Column="0"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="11"
+                           FontSize="16"
+                           TextColor="Black"></Label>
+                    <Entry Text="{Binding Item.SoLo ,Mode=TwoWay}"
+                           Grid.Column="1"
+                           Grid.Row="11"
+                           FontSize="16"
+                           TextColor="Black"></Entry>
                 </Grid>
                 <StackLayout Orientation="Horizontal" VerticalOptions="End">
                     <sfbutton:SfButton Text="Gán Nhãn"  x:Name="btnGanNhan" Clicked="Button_Clicked" FontSize="16"

@@ -8,14 +8,14 @@ using Xamarin.Forms.Xaml;
 namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DanhSachPhieuXuatKhoGomVaiChiTiet_Page : ContentPage
+    public partial class DanhSachPhieuXuatChuaXuatHetVaiChoNhaMay : ContentPage
     {
-        private DanhSachPhieuXuatKhoGomVaiChiTiet_ViewModel viewModel;
+        private DanhSachPhieuXuatChuaXuatHetVaiChoNhaMayViewModel viewModel;
 
-        public DanhSachPhieuXuatKhoGomVaiChiTiet_Page(string sochungtu)
+        public DanhSachPhieuXuatChuaXuatHetVaiChoNhaMay()
         {
             InitializeComponent();
-            viewModel = new DanhSachPhieuXuatKhoGomVaiChiTiet_ViewModel(sochungtu);
+            viewModel = new DanhSachPhieuXuatChuaXuatHetVaiChoNhaMayViewModel();
             viewModel.navigation = Navigation;
             BindingContext = viewModel;
         }
@@ -45,12 +45,12 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             {
                 if(ChonNhom1 == StatusFormatColor.TatCa )
                 {
-                    if (item.ItemName.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.DVT.ToLower().Contains(filterText))
+                    if (item.ItemName.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.DVT.ToLower().Contains(filterText) || item.ExternalDocumentNo_.ToLower().Contains(filterText))
                         return true;
                 }    
                 else
                 {
-                    if ((item.ItemName.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.DVT.ToLower().Contains(filterText)) && item.XuatOk == ChonNhom1)
+                    if ((item.ItemName.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.DVT.ToLower().Contains(filterText) || item.ExternalDocumentNo_.ToLower().Contains(filterText)) && item.XuatOk == ChonNhom1)
                         return true;
                 }    
             }

@@ -5,7 +5,7 @@
              xmlns:control="clr-namespace:APP_HOATHO.Template"
              xmlns:sfinputtext="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
              xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
-             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"               
              x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.TaoPhieuXuatKhoGomVai_Page"
              x:Name="this"
              Title="Tạo phiếu xuất kho tổng"
@@ -14,27 +14,30 @@
     <ContentPage.Content>
         <ScrollView VerticalScrollBarVisibility="Always"
                     Orientation="Vertical">
-            <StackLayout Spacing="0" Margin="3">
-                <Grid HorizontalOptions="FillAndExpand" Style="{x:StaticResource styleGrid}"
-                  ColumnDefinitions="5*,5*">                  
-
-                    <control:ButtonSearch Grid.Column="0"
-                                  HorizontalOptions="Start"
-                                  Text="{Binding MaNPL,Mode=TwoWay}"
-                                  Title="Chọn Mã NPL"             
-                                      HeightRequest="50"
-                                  ActionCommand="{Binding ChooseMaNPLCommand}" />
-                    <control:ButtonSearch Grid.Column="1"
-                                      Text="{Binding MauNPL,Mode=TwoWay}"
-                                      HorizontalOptions="Start"
-                                      Title="Chọn Màu NPL"
-                                      ActionCommand="{Binding ChooseMauNPLCommand}" />
-                </Grid>                 
-                <SearchBar Placeholder="Tìm số chứng từ chi tiết" CancelButtonColor="Red"
-                       HorizontalOptions="FillAndExpand"
-                           Margin="0, -15, 0 ,0"
+            <StackLayout Spacing="6" Margin="3">
+                <Grid ColumnDefinitions="10*"
+                      Margin="0,5,5,0">
+                    <Entry Placeholder="Quét qrcode phiếu xuất ở đây"
+                           ClearButtonVisibility="WhileEditing"
+                           HorizontalOptions="FillAndExpand"
+                           x:Name="qrcode"
                            Style="{StaticResource styleSearch}"
-                       TextChanged="SearchBar_TextChanged"></SearchBar>
+                           Completed="Entry_Completed"></Entry>
+                    <Image HorizontalOptions="End">
+                        <Image.Source>
+                            <FontImageSource FontFamily="UserIcons"
+                                             Glyph="{Binding Source={x:Static helper:FontIconClass.BarcodeScan}}"
+                                             Size="30"
+                                             Color="{StaticResource Key=Primary}" />
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="btnScanPhieuXuat"
+                                                  Tapped="btnScanPhieuXuat_Tapped"
+                                                  NumberOfTapsRequired="1"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                
                 <sfDataGrid:SfDataGrid x:Name="listChiTiet"
                                    ItemsSource="{Binding ListItem, Mode=TwoWay}"                                       
                                    Style="{StaticResource styleDataGrid}"
@@ -56,55 +59,21 @@
 
                         </sfDataGrid:GridTemplateColumn>
 
-                        <sfDataGrid:GridTemplateColumn  HeaderText="Số phiếu xuất"
-                                                    Width="120"
+                        <sfDataGrid:GridTemplateColumn  HeaderText="Số phiếu xuất"                                                       
                                                     MappingName="DocumentNo"
-                                                    HeaderFontAttribute="Bold"
+                                                    HeaderFontAttribute="Bold"                                                              
                                                     HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Label Text="{Binding DocumentNo}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                         
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"  />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                         </sfDataGrid:GridTemplateColumn>
-                        <sfDataGrid:GridTemplateColumn  HeaderText="ĐVT"
-                                                    Width="60"
-                                                    MappingName="DVT"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
-                            <sfDataGrid:GridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Label Text="{Binding DVT}"
-                                       TextColor="Black"
-                                       Padding="5,0,0,0"
-                                       WidthRequest="100"
-                                       XAlign="Start"
-                                       YAlign="Center" />
-                                </DataTemplate>
-                            </sfDataGrid:GridTemplateColumn.CellTemplate>
-
-                        </sfDataGrid:GridTemplateColumn>
-                        <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng"
-                                                    MappingName="Quantity"
-                                                    HeaderFontAttribute="Bold"
-                                                    Width="120"
-                                                    HeaderCellTextSize="16">
-                            <sfDataGrid:GridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Label Text="{Binding Quantity ,StringFormat='{0:#,##0.##}'}"                                          
-                                       Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
-                                </DataTemplate>
-                            </sfDataGrid:GridTemplateColumn.CellTemplate>
-                        </sfDataGrid:GridTemplateColumn>
-
-
 
 
                     </sfDataGrid:SfDataGrid.Columns>
@@ -114,23 +83,26 @@
                                                     ShowSummaryInRow="True">
                             <sfDataGrid:GridTableSummaryRow.SummaryColumns>
                                 <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
-                                                          Format="{}{Sum}"
-                                                          MappingName="Quantity"
+                                                          Format="{}{Count}"
+                                                              MappingName="DocumentNo"
                                                           SummaryType="DoubleAggregate" />
                             </sfDataGrid:GridTableSummaryRow.SummaryColumns>
                         </sfDataGrid:GridTableSummaryRow>
 
                     </sfDataGrid:SfDataGrid.TableSummaryRows>
                 </sfDataGrid:SfDataGrid>
-                <StackLayout Orientation="Horizontal" VerticalOptions="End" Grid.ColumnSpan="1" Grid.Row="1" HeightRequest="40">
-                    <!--<sfbutton:SfButton Text="Tìm kiếm" x:Name="btnScan" Command="{Binding SearchCommand}" FontSize="16" 
-                                   HorizontalOptions="Start"
-                                   VerticalOptions="Center"
-                        CornerRadius="5"
-                        Style="{StaticResource stylesfButton }"></sfbutton:SfButton>-->
-                    <sfbutton:SfButton Text="Tạo phiếu xuất tổng" Command="{Binding TaoPhieuCommand}" FontSize="16"
-                        CornerRadius="5" HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Start"
+                             Grid.ColumnSpan="1"
+                             Grid.Row="1"
+                             HeightRequest="40">
+
+                    <sfbutton:SfButton Text="Tạo phiếu xuất tổng"
+                                       Command="{Binding TaoPhieuCommand}"
+                                       FontSize="16"
+                                       CornerRadius="5"
+                                       HorizontalOptions="FillAndExpand"
+                                       Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

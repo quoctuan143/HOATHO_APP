@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho.BuTruVaiNoChoNhaMay"
+             Shell.TabBarIsVisible="False"
+             Title="Bù trừ vải nhà máy nợ">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView VerticalScrollBarVisibility="Always"
+                        Orientation="Vertical">
+                <StackLayout Spacing="0"
+                             Margin="3">
+
+                    <sfDataGrid:SfDataGrid x:Name="listChiTiet"
+                                           ItemsSource="{Binding ListItem, Mode=TwoWay}"                                           
+                                           Style="{StaticResource styleDataGrid}"
+                                           SelectionMode="Single"
+                                           FrozenColumnsCount="1">
+                        <sfDataGrid:SfDataGrid.Columns>
+
+
+                            <sfDataGrid:GridTemplateColumn  HeaderText="Chọn"
+                                                            Width="100"
+                                                            MappingName="Chon"
+                                                            HeaderFontAttribute="Bold"
+                                                            HeaderCellTextSize="16">
+                                <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding Chon, Mode=TwoWay}"
+                                                  HorizontalOptions="CenterAndExpand" />
+                                    </DataTemplate>
+                                </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                            </sfDataGrid:GridTemplateColumn>
+                            <sfDataGrid:GridTemplateColumn  HeaderText="Tên NPL"
+                                                            Width="100"
+                                                            MappingName="ItemNo"
+                                                            HeaderFontAttribute="Bold"
+                                                            HeaderCellTextSize="16">
+                                <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Text="{Binding ItemNo}"
+                                               TextColor="Black"
+                                               Padding="5,0,0,0"
+                                               WidthRequest="100"
+                                               HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center" />
+                                    </DataTemplate>
+                                </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                            </sfDataGrid:GridTemplateColumn>
+
+
+                            <sfDataGrid:GridTemplateColumn  HeaderText="Color"
+                                                            Width="100"
+                                                            MappingName="ColorNo"
+                                                            HeaderFontAttribute="Bold"
+                                                            HeaderCellTextSize="16">
+                                <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Text="{Binding ColorNo}"
+                                               TextColor="Black"
+                                               Padding="5,0,0,0"
+                                               WidthRequest="100"
+                                               HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center" />
+                                    </DataTemplate>
+                                </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                            </sfDataGrid:GridTemplateColumn>
+                            <sfDataGrid:GridTemplateColumn  HeaderText="Nhà máy nợ"
+                                                            Width="160"
+                                                            MappingName="Total"
+                                                            HeaderFontAttribute="Bold"
+                                                            HeaderCellTextSize="16">
+                                <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Text="{Binding Total, StringFormat='{0:#,##0.##}'}"
+                                               TextColor="Black"
+                                               Padding="5,0,0,0"
+                                               WidthRequest="140"
+                                               HorizontalTextAlignment="Start"
+                                               VerticalTextAlignment="Center" />
+                                    </DataTemplate>
+                                </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                            </sfDataGrid:GridTemplateColumn>
+
+                            <sfDataGrid:GridTemplateColumn MappingName="Balance"
+                                                           Width="160"
+                                                           HeaderText="Khấu trừ"
+                                                           HeaderFontAttribute="Bold"
+                                                           HeaderCellTextSize="16">
+                                <sfDataGrid:GridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Entry Text="{Binding Balance , Mode=TwoWay, StringFormat='{0:#,##0.##}'}" Keyboard="Numeric"></Entry>
+                                    </DataTemplate>
+                                </sfDataGrid:GridTemplateColumn.CellTemplate>
+                            </sfDataGrid:GridTemplateColumn>
+                        </sfDataGrid:SfDataGrid.Columns>
+                        <sfDataGrid:SfDataGrid.TableSummaryRows>
+                            <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+                                                            Position="Bottom"
+                                                            ShowSummaryInRow="True">
+                                <sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                                    <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
+                                                                  Format="{}{Sum}"
+                                                                  MappingName="Balance"
+                                                                  SummaryType="DoubleAggregate" />
+                                </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+                            </sfDataGrid:GridTableSummaryRow>
+
+                        </sfDataGrid:SfDataGrid.TableSummaryRows>
+                    </sfDataGrid:SfDataGrid>
+                </StackLayout>
+            </ScrollView>
+            
+            <sfbutton:SfButton Text="Khấu trừ"
+                               Command="{Binding KhauTruCommand}"
+                               FontSize="16"
+                               CornerRadius="60"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="EndAndExpand"
+                               Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

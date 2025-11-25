@@ -34,7 +34,12 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             BindingContext = this;
         }
 
-        
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await Task.Delay(500);
+            this.sochungtu.Focus();
+        }
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
             filterText = e.NewTextValue;
@@ -81,33 +86,50 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
 
         private async void btnXuatKho_Clicked(object sender, EventArgs e)
         {
-            var listXuat = ListItem.Where(x=> x.Chon == true).ToList();
-            if (listXuat.Count ==0 )
+            try
             {
-                await new MessageBox("Chọn cây vải để xuất").Show();
-                return;
-            }
-
-            var ask = await new MessageYesNo("Bạn có muốn xuất không?").Show();
-            if (ask == Global.DialogReturn.OK)
-            {
-                viewModel.ShowLoading("Đang cập nhật. vui lòng đợi...");
-                var ok =await viewModel.RunHttpClientPost($"api/qltb/XuatVaiKhoiKe?userId={Preferences.Get(Global.Config.User,"")}", listXuat);
-                viewModel.HideLoading();
-                if (ok.IsSuccessStatusCode)
+                if (string.IsNullOrEmpty(this.sochungtu.Text))
                 {
-                    await new MessageBox("Xuất kho thành công").Show();
-                    foreach (var item in ListItem)
+                    await new MessageBox("Vui lòng chọn số phiếu xuất").Show();
+                    return;
+                }
+                var listXuat = ListItem.Where(x => x.Chon == true).ToList();
+                if (listXuat.Count == 0)
+                {
+                    await new MessageBox("Chọn cây vải để xuất").Show();
+                    return;
+                }
+                listXuat.ForEach(x =>
+                {
+                    x.SoChungTuXuat = this.sochungtu.Text.Trim();
+                });
+                var ask = await new MessageYesNo("Bạn có muốn xuất không?").Show();
+                if (ask == Global.DialogReturn.OK)
+                {
+                    viewModel.ShowLoading("Đang cập nhật. vui lòng đợi...");
+                    var ok = await viewModel.RunHttpClientPost($"api/qltb/XuatVaiKhoiKe?userId={Preferences.Get(Global.Config.User, "")}", listXuat);
+                    viewModel.HideLoading();
+                    if (ok.IsSuccessStatusCode)
                     {
-                        item.Chon = false;
+                        await new MessageBox("Xuất kho thành công").Show();
+                        foreach (var item in ListItem)
+                        {
+                            item.Chon = false;
+                        }
+                        await Navigation.PopAsync();
                     }
-                    await Navigation.PopAsync();
-                }    
-                else
-                {
-                    await new MessageBox(ok.Content.ReadAsStringAsync().Result.ToString()).Show();
-                }    
-            }    
+                    else
+                    {
+                        await new MessageBox(ok.Content.ReadAsStringAsync().Result.ToString()).Show();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                await new MessageBox(ex.Message).Show();
+            }
+            
         }
 
         private async void btnChuyenKe_Clicked(object sender, EventArgs e)

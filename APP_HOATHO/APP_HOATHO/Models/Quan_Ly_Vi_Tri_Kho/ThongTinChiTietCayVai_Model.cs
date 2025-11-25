@@ -24,7 +24,9 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string PhieuNhap { get; set; }
         public string LoVai { get; set; }
         public string DVT { get; set; }
-        public DateTime? NgayNhap { get; set; } 
+        public DateTime? NgayNhap { get; set; }
+        public string TenNhaCungCap { get; set; }
+        public string KhachHang { get; set; }
     }
 
     public class ThongTinChiTietKeVai_Model : ThongTinCayVaiBase
@@ -32,6 +34,7 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public string Id { get; set; }
         public double? InvoicedMeter { get; set; }      
         public bool Chon { get; set; }
-        public string UserId { get; set; }        
+        public string UserId { get; set; }  
+        public string SoChungTuXuat { get; set; }
     }
 }

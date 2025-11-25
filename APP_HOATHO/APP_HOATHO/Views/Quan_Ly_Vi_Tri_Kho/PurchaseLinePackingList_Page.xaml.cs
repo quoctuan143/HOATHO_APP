@@ -58,11 +58,20 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     if (item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText))
                         return true;
                 }    
-                else
+                else if(ChonNhom1 == StatusFormatColor.HoanThanh || ChonNhom1 == StatusFormatColor.ChuaHoanThanh)
                 {
                     if ((item.RollNo.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.PositionId.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText)) && item.DaGanNhan == ChonNhom1)
                         return true;
-                }    
+                }
+                else if (ChonNhom1 == StatusFormatColor.DaDinhVi)
+                {
+                    if (!string.IsNullOrEmpty(item.PositionId))
+                        return true;
+                }else
+                {
+                    if (string.IsNullOrEmpty(item.PositionId))
+                        return true;
+                }
                
             }
             return false;
@@ -172,17 +181,25 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
             {
                 ChonNhom1 = StatusFormatColor.TatCa;
             }
-            if (e.Value.ToString() == "Chưa Hoàn Thành")
+            else if (e.Value.ToString() == "Chưa Hoàn Thành")
             {
                 ChonNhom1 = StatusFormatColor.ChuaHoanThanh;
             }
-            if (e.Value.ToString() == "Dở Dang")
+            else if (e.Value.ToString() == "Dở Dang")
             {
                 ChonNhom1 = StatusFormatColor.DoDang;
             }
-            if (e.Value.ToString() == "Hoàn Thành")
+            else if (e.Value.ToString() == "Hoàn Thành")
             {
                 ChonNhom1 = StatusFormatColor.HoanThanh;
+            }
+            else if (e.Value.ToString() == "Đã Định Vị")
+            {
+                ChonNhom1 = StatusFormatColor.DaDinhVi;
+            }
+            else if (e.Value.ToString() == "Chưa Định Vị")
+            {
+                ChonNhom1 = StatusFormatColor.ChuaDinhVi;
             }
             listChiTiet.View.Filter = FilterRecords;
             listChiTiet.View.RefreshFilter();
