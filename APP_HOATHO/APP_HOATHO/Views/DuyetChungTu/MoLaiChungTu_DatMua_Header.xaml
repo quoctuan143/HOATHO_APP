@@ -74,7 +74,7 @@
                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding ExternalDocNo}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding ExternalDocNo}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -87,7 +87,7 @@
                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding PostingDate , StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding PostingDate , StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -99,7 +99,7 @@
                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding VendorName}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding VendorName}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -111,7 +111,7 @@
                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding UserRequest}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding UserRequest}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

@@ -200,6 +200,8 @@ namespace APP_HOATHO.ViewModels.Quan_Ly_Vi_Tri_Kho
                             }
                         }
                         ok.ShowThongBaoRunApi("Cập nhật thành công");
+                        ListItem.Clear();
+                        OnPropertyChanged("ListItem");
                         await Navigation.PopAsync();
                     }
                 }

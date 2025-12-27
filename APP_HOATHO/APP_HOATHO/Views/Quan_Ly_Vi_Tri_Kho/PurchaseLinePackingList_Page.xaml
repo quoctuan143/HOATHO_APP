@@ -24,13 +24,13 @@
                            Grid.Column="0"
                            Style="{StaticResource styleSearch}"
                            HorizontalOptions="FillAndExpand"
-                           TextChanged="SearchBar_TextChanged">                        
+                           TextChanged="SearchBar_TextChanged">
                 </SearchBar>
                 <combobox:SfComboBox x:Name="ChonNhom" Grid.Column="1" IsEditableMode="False" SelectionChanged="ChonNhom_SelectionChanged" ShowBorder="False" Style="{StaticResource styleCombobox}"  Watermark="Chọn nhóm cần lọc">
                     <combobox:SfComboBox.ComboBoxSource>
                         <ListCollection:List x:TypeArguments="x:String">
                             <x:String>Tất Cả</x:String>
-                            <x:String>Chưa Hoàn Thành</x:String>                             
+                            <x:String>Chưa Hoàn Thành</x:String>
                             <x:String>Hoàn Thành</x:String>
                             <x:String>Đã Định Vị</x:String>
                             <x:String>Chưa Định Vị</x:String>
@@ -48,7 +48,9 @@
                                    LiveDataUpdateMode="AllowDataShaping"
                                    AllowSwiping="True"
                                    SwipeEnded="listChiTiet_SwipeEnded"
-                                   MaxSwipeOffset="200">
+                                   MaxSwipeOffset="200"                                   
+                                   GridStyle="{StaticResource dark}"
+                                   AutoExpandGroups="True">
                 <sfDataGrid:SfDataGrid.Columns>
 
                     <sfDataGrid:GridTemplateColumn  HeaderText="Roll No"
@@ -91,8 +93,8 @@
                                 <Label Text="{Binding Name}"
                                        TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -106,8 +108,8 @@
                                 <Label Text="{Binding Color}"
                                        TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -121,8 +123,8 @@
                                 <Label Text="{Binding Art}"
                                        TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -154,20 +156,20 @@
                                 </StackLayout>
 
                             </DataTemplate>
-                        </sfDataGrid:GridTemplateColumn.CellTemplate>                         
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Width"
                                                     MappingName="Width"
                                                     Width="100"
                                                     HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">                             
+                                                    HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding Width, Mode=TwoWay}"
                                        TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -181,8 +183,8 @@
                                 <Label Text="{Binding PositionId, Mode=TwoWay}"
                                        TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -196,12 +198,15 @@
                                 <Label Text="{Binding BarcodeId, Mode=TwoWay}"
                                        TextColor="{Binding DaGanNhan, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
                 </sfDataGrid:SfDataGrid.Columns>
+                <sfDataGrid:SfDataGrid.GroupColumnDescriptions>
+                    <sfDataGrid:GroupColumnDescription ColumnName="Art"/>                    
+                </sfDataGrid:SfDataGrid.GroupColumnDescriptions>
                 <sfDataGrid:SfDataGrid.LeftSwipeTemplate>
                     <DataTemplate>
                         <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand">
@@ -222,15 +227,36 @@
                         </Grid>
                     </DataTemplate>
                 </sfDataGrid:SfDataGrid.LeftSwipeTemplate>
+                <sfDataGrid:SfDataGrid.CaptionSummaryRow>
+                    <sfDataGrid:GridGroupSummaryRow Title=" Art : {Key}, Tổng : {socayvai} cây vải, số lượng: {TongSoLuong} mét"
+                           ShowSummaryInRow="True">
+                        <sfDataGrid:GridGroupSummaryRow.SummaryColumns>
+                            <sfDataGrid:GridSummaryColumn Name="TongSoLuong"
+                                      Format="{}{Sum}"
+                                      MappingName="InvoicedMeter" 
+                                      SummaryType="DoubleAggregate" />
+                            <sfDataGrid:GridSummaryColumn Name="socayvai"
+                                       Format="{}{Count}"
+                                       MappingName="Color" 
+                                       SummaryType="DoubleAggregate" />
+                        </sfDataGrid:GridGroupSummaryRow.SummaryColumns>
+                    </sfDataGrid:GridGroupSummaryRow>
+                </sfDataGrid:SfDataGrid.CaptionSummaryRow>
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
+
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} cây vải, số lượng : {TongChieuDai} mét"
                                                     Position="Bottom"
                                                     ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>
                             <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
                                                           Format="{}{Count}"
                                                           MappingName="Color"
-                                                          SummaryType="DoubleAggregate" />
+                                                          SummaryType="DoubleAggregate" 
+                                                          />
+                            <sfDataGrid:GridSummaryColumn Name="TongChieuDai"
+                               Format="{}{Sum}"
+                               MappingName="InvoicedMeter"
+                               SummaryType="DoubleAggregate" />
                         </sfDataGrid:GridTableSummaryRow.SummaryColumns>
                     </sfDataGrid:GridTableSummaryRow>
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
@@ -239,7 +265,7 @@
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
                 <sfbutton:SfButton Text="{Binding TitleButton}"  Command="{Binding QuetOChuaCayVaiCommand}" FontSize="16"
                         CornerRadius="60" HorizontalOptions="FillAndExpand"
-                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>                   
+                         Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

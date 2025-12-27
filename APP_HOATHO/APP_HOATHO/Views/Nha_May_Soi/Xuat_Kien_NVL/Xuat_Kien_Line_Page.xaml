@@ -25,8 +25,8 @@
                                 <Label Text="{Binding Ten_NVL}"
                                        TextColor="Black"
                                        Padding="5,2,5,2"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -41,8 +41,8 @@
                                 <Label Text="{Binding Unit_of_Measure}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -58,8 +58,8 @@
                                 <Label Text="{Binding Quantity, StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="0,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -73,8 +73,8 @@
                                 <Label Text="{Binding Done_Quantity, StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="0,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

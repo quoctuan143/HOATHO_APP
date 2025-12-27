@@ -165,7 +165,7 @@
                                 <sfDataGrid:GridTemplateColumn  MappingName="NGAY_GIO" HeaderText="Ngày Giờ" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding NGAY_GIO , StringFormat='{0:dd-MM-yyyy}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                            <Label Text="{Binding NGAY_GIO , StringFormat='{0:dd-MM-yyyy}'}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -181,7 +181,7 @@
                                 <sfDataGrid:GridTemplateColumn  MappingName="NOI_DUNG" HeaderText="Nội Dung" Width="350" HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding NOI_DUNG}" TextColor="Black" Padding="5,0,0,0"   XAlign="Start" YAlign="Center" />
+                                            <Label Text="{Binding NOI_DUNG}" TextColor="Black" Padding="5,0,0,0"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -193,7 +193,7 @@
                                                 HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding NGUOI_THUC_HIEN}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   XAlign="Start" YAlign="Center" />
+                                            <Label Text="{Binding NGUOI_THUC_HIEN}" TextColor="Black" Padding="5,0,0,0" WidthRequest="140"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -215,7 +215,7 @@
                                                    HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding TINH_TRANG_HIEN_TAI}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                            <Label Text="{Binding TINH_TRANG_HIEN_TAI}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -226,7 +226,7 @@
                                                         Width="100">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding NGUOI_XAC_NHAN}" TextColor="Black" Padding="5,0,0,0" WidthRequest="80"  XAlign="Start" YAlign="Center" />
+                                            <Label Text="{Binding NGUOI_XAC_NHAN}" TextColor="Black" Padding="5,0,0,0" WidthRequest="80"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -262,7 +262,7 @@
                                 <sfDataGrid:GridTemplateColumn  MappingName="NOI_DUNG" HeaderText="Nội Dung"   HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding Description}" TextColor="Black" Padding="5,0,0,0" HorizontalOptions="StartAndExpand"   XAlign="Start" YAlign="Center" />
+                                            <Label Text="{Binding Description}" TextColor="Black" Padding="5,0,0,0" HorizontalOptions="StartAndExpand"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -310,7 +310,7 @@
                                 <sfDataGrid:GridTemplateColumn  MappingName="No_2" HeaderText="Số Máy" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding No_2}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                            <Label Text="{Binding No_2}" TextColor="Black" Padding="5,0,0,0" WidthRequest="120"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -322,7 +322,7 @@
                                                 HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding Thang}" TextColor="Black" Padding="5,0,0,0"    XAlign="Center" YAlign="Center" />
+                                            <Label Text="{Binding Thang}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>
@@ -333,7 +333,7 @@
                                                    HeaderCellTextSize="16">
                                     <sfDataGrid:GridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Label Text="{Binding LoaiBaoTri}" Padding="5,0,5,0"  XAlign="Start" YAlign="Center"  TextColor="Black" />
+                                            <Label Text="{Binding LoaiBaoTri}" Padding="5,0,5,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  TextColor="Black" />
                                         </DataTemplate>
                                     </sfDataGrid:GridTemplateColumn.CellTemplate>
                                 </sfDataGrid:GridTemplateColumn>

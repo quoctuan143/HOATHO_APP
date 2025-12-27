@@ -16,8 +16,8 @@
                                        FontSize="20"
                                        TextColor="{x:StaticResource Primary}"
                                        Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                 <Image Source="vitrikho.png"
                                        WidthRequest="35"
                                        HeightRequest="35"
@@ -37,8 +37,8 @@
                        FontSize="20"
                                        TextColor="{x:StaticResource Primary}"
                                        Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                 <Image Source="vitrikho.png"
                                        WidthRequest="35"
                                        HeightRequest="35"

@@ -83,7 +83,7 @@
                            
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding No_3}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                    <Label Text="{Binding No_3}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,0,0" WidthRequest="120"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                         </sfDataGrid:GridTemplateColumn>
@@ -92,7 +92,7 @@
                         <sfDataGrid:GridTemplateColumn  MappingName="No_2" HeaderText="Số Máy" Width="120"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding No_2}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,0,0" WidthRequest="120"   XAlign="Start" YAlign="Center" />
+                                    <Label Text="{Binding No_2}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,0,0" WidthRequest="120"   HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                            
@@ -105,7 +105,7 @@
                                                 HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding Thang}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,5,0" WidthRequest="140"   XAlign="Center" YAlign="Center" />
+                                    <Label Text="{Binding Thang}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,5,0" WidthRequest="140"   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                             
@@ -117,7 +117,7 @@
                                                 HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding Nam}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,5,0" WidthRequest="140"   XAlign="Center" YAlign="Center" />
+                                    <Label Text="{Binding Nam}" TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" Padding="5,0,5,0" WidthRequest="140"   HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -129,7 +129,7 @@
                                                    HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding LoaiBaoTri}"  XAlign="Start" YAlign="Center"  TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" />
+                                    <Label Text="{Binding LoaiBaoTri}"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                            
@@ -141,7 +141,7 @@
                                                    HeaderCellTextSize="16">
                             <sfDataGrid:GridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding ViTriLuu}"  XAlign="Start" YAlign="Center"  TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" />
+                                    <Label Text="{Binding ViTriLuu}"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  TextColor="{Binding Da_Bao_Tri, Converter={StaticResource Format_Mau_KHTB} }" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
 

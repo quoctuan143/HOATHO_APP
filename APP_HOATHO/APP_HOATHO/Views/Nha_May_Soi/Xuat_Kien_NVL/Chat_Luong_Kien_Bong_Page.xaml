@@ -35,8 +35,8 @@
                                 <Label Text="{Binding Name}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -51,8 +51,8 @@
                                 <Label Text="{Binding PackageId}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -66,8 +66,8 @@
                                 <Label Text="{Binding MIC , StringFormat='{0:#,##0.##}'}"
                                        TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -81,8 +81,8 @@
                                 <Label Text="{Binding SF, StringFormat='{0:#,##0.##}'}"
                                        TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }" 
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center"/>
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"/>
                                        
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
@@ -96,8 +96,8 @@
                                 <Label Text="{Binding UHML, StringFormat='{0:#,##0.##}'}"
                                        TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }" 
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center"/>
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"/>
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -110,8 +110,8 @@
                                 <Label Text="{Binding RD, StringFormat='{0:#,##0.##}'}"
                                        TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center"/>
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center"/>
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -124,8 +124,8 @@
                                 <Label Text="{Binding B, StringFormat='{0:#,##0.##}'}"
                                        TextColor="{Binding Status, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

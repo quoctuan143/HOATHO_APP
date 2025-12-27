@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="76" android:versionName="1.7.76" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
-	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="84" android:versionName="1.7.84" package="com.companyname.app_hoathocorp" android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35" />
 	<application android:label="Hoatho Smart App" android:usesCleartextTraffic="true" android:icon="@mipmap/logo">
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.app_hoathocorp.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
@@ -35,9 +35,6 @@
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-	<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
-	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-	<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />

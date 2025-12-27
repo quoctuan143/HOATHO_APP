@@ -22,8 +22,8 @@
                                 <Label Text="{Binding BarcodeId}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 

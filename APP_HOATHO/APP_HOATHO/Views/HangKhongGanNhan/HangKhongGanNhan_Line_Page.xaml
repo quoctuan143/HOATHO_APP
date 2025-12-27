@@ -70,8 +70,8 @@
                                 <Label Text="{Binding Art}"
                                        TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -89,8 +89,8 @@
                                            HorizontalOptions="FillAndExpand"
                                            WidthRequest="100"
                                            Padding="5,0,0,0"
-                                           XAlign="Start"
-                                           YAlign="Center" />                                     
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center" />                                     
                                 </StackLayout>
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
@@ -105,8 +105,8 @@
                                 <Label Text="{Binding Name}"
                                        TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -120,8 +120,8 @@
                                 <Label Text="{Binding Color}"
                                        TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -138,8 +138,8 @@
                                     <Label Text="{Binding FormatNumberInvoicedMeter, Mode=TwoWay}"
                                            TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"                                             
                                            HorizontalOptions="FillAndExpand"
-                                           XAlign="Start"
-                                           YAlign="Center" />                                       
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center" />                                       
                                 </StackLayout>
 
                             </DataTemplate>
@@ -156,8 +156,8 @@
                                 <Label Text="{Binding PositionId, Mode=TwoWay}"
                                        TextColor="{Binding DaXeplenKe, Converter={StaticResource Format_Mau_KHTB} }"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>                     

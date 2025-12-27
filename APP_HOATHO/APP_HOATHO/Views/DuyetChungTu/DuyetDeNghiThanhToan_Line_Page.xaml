@@ -21,28 +21,28 @@
                     <sfDataGrid:GridTemplateColumn MappingName="InvoiceCode" HeaderText="Số HĐ/Inv/PI" HeaderFontAttribute="Bold" Width="160" HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding InvoiceCode}" TextColor="Black" Padding="5,0,0,0"    XAlign="Start" YAlign="Center" />
+                                <Label Text="{Binding InvoiceCode}" TextColor="Black" Padding="5,0,0,0"    HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  MappingName="Amount" HeaderText="Số tiền TT" Width="100"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding Amount, StringFormat='{0:#,##0.####}'}" TextColor="Black" Padding="0,0,5,0"   XAlign="End" YAlign="Center" />
+                                <Label Text="{Binding Amount, StringFormat='{0:#,##0.####}'}" TextColor="Black" Padding="0,0,5,0"   HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  MappingName="AmountVAT" HeaderText="Tiền VAT" Width="100"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding AmountVAT, StringFormat='{0:#,##0.####}'}" TextColor="Black" Padding="0,0,5,0"   XAlign="End" YAlign="Center" />
+                                <Label Text="{Binding AmountVAT, StringFormat='{0:#,##0.####}'}" TextColor="Black" Padding="0,0,5,0"   HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  MappingName="AmountIncludingVAT" HeaderText="Tiền gồm VAT" Width="100"  HeaderFontAttribute="Bold"  HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding AmountIncludingVAT, StringFormat='{0:#,##0.####}'}" TextColor="Black" Padding="0,0,5,0"   XAlign="End" YAlign="Center" />
+                                <Label Text="{Binding AmountIncludingVAT, StringFormat='{0:#,##0.####}'}" TextColor="Black" Padding="0,0,5,0"   HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

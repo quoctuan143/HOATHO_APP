@@ -29,8 +29,8 @@
                                 <Label Text="{Binding Code}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -46,8 +46,8 @@
                                     <Label Text="{Binding PositionId}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                          
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                                     <Image Source="vitrikho.png"
                                        WidthRequest="25"
                                        HeightRequest="25"

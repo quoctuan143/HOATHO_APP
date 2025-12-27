@@ -105,8 +105,8 @@
                                            TextColor="Black"
                                            Padding="5,0,0,0"
                                            WidthRequest="100"
-                                           XAlign="Start"
-                                           YAlign="Center" />
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -123,8 +123,8 @@
                                            TextColor="Black"
                                            Padding="5,0,0,0"
                                            WidthRequest="100"
-                                           XAlign="Start"
-                                           YAlign="Center" />
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -140,8 +140,8 @@
                                            TextColor="Black"
                                            Padding="5,0,0,0"
                                            WidthRequest="140"
-                                           XAlign="Start"
-                                           YAlign="Center" />
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -157,8 +157,8 @@
                                     <Label Text="{Binding LocationName}"
                                            TextColor="Black"
                                            Padding="5,0,0,0"
-                                           XAlign="Start"
-                                           YAlign="Center" />
+                                           HorizontalTextAlignment="Start"
+                                           VerticalTextAlignment="Center" />
                                 </DataTemplate>
                             </sfDataGrid:GridTemplateColumn.CellTemplate>
                         </sfDataGrid:GridTemplateColumn>

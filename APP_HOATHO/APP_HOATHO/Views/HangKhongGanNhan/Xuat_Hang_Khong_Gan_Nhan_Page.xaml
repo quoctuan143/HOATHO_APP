@@ -61,8 +61,8 @@
                                        Style="{StaticResource styleLablenotwhite}"
                                        Padding="5,0,0,0"
                                        WidthRequest="100"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -76,8 +76,8 @@
                                 <Label Text="{Binding ItemName}"
                                        Style="{StaticResource styleLablenotwhite}"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -91,8 +91,8 @@
                                 <Label Text="{Binding Color}"
                                        Style="{StaticResource styleLablenotwhite}"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -106,8 +106,8 @@
                                 <Label Text="{Binding Art}"
                                        Style="{StaticResource styleLablenotwhite}"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -120,9 +120,9 @@
                             <DataTemplate>
                                 <StackLayout Orientation="Horizontal" Spacing="2">
                                     <Label Text="{Binding InvoicedMeter, StringFormat='{0:#,###.##}'}"
-                                            XAlign="Start"
+                                            HorizontalTextAlignment="Start"
                                            Padding="5,0,0,0"
-                                       YAlign="Center"
+                                       VerticalTextAlignment="Center"
                                       Style="{StaticResource styleLablenotwhite}"                                        
                                            HorizontalOptions="FillAndExpand"
                                        />                                   

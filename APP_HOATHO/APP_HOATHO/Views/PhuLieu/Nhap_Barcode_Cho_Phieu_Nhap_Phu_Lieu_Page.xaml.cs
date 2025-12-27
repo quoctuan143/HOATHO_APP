@@ -51,7 +51,7 @@ namespace APP_HOATHO.Views.PhuLieu
             base.OnAppearing();
             Task.Factory.StartNew(async () =>
             {
-                var a = await viewModel.RunHttpClientGet<LookupValue>("api/qltb/GetDanhSachViTriKho");
+                var a = await viewModel.RunHttpClientGet<LookupValue>("GetDanhSachViTriKhoPhuLieu");
                 ListViTri = a.Lists;
             });
 
@@ -107,8 +107,7 @@ namespace APP_HOATHO.Views.PhuLieu
                     Document_No_ = x.DocumentNo,
                     Item_No_ = x.No_,
                     Quantity = Convert.ToDecimal(x.SoLuongCanNhap),
-                    UserId = Preferences.Get(Config.User, ""),
-                    ViTriLuu = this.ViTriLuu.ToLower() == "vị trí lưu" ? "" : this.ViTriLuu
+                    UserId = Preferences.Get(Config.User, ""),                   
                 }).ToList();
 
                 if (listNhap.Count == 0)

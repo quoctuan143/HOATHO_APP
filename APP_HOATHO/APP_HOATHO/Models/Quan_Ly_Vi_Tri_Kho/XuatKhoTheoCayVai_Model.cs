@@ -87,5 +87,6 @@ namespace APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho
         public int XuatLe { get; set; } = 2;
         public double SoLuongConLai { get; set; }
         public DateTime? NgayXuat { get; set; }
+        public decimal? SoLo {  get; set; }
     }
 }

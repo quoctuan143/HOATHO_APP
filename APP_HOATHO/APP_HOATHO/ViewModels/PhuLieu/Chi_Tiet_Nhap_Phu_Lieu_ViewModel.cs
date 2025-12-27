@@ -174,18 +174,12 @@ namespace APP_HOATHO.ViewModels.PhuLieu
         public string Color_No_ { get; set; }
 
         public decimal? Quantity { get; set; }
-
         public string BarcodeId { get; set; }
-
-        public string Position { get; set; }
-
         [JsonProperty("Document No_")]
         public string Document_No_ { get; set; }
-
-        public DateTime? CreateDate { get; set; }
-
-        public string UserId { get; set; }      
-        public string ViTriLuu { get; set; }
+        public string ExternalDocumentNo { get; set; }
+        public string UserId { get; set; }
+        public int LotNo { get; set; }
 
     }
 

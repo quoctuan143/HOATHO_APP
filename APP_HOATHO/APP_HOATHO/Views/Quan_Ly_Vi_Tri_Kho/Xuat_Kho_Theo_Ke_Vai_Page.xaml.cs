@@ -111,11 +111,10 @@ namespace APP_HOATHO.Views.Quan_Ly_Vi_Tri_Kho
                     viewModel.HideLoading();
                     if (ok.IsSuccessStatusCode)
                     {
-                        await new MessageBox("Xuất kho thành công").Show();
-                        foreach (var item in ListItem)
-                        {
-                            item.Chon = false;
-                        }
+                        listXuat.Clear();
+                        ListItem.Clear();
+                        OnPropertyChanged("ListItem");
+                        await new MessageBox("Xuất kho thành công").Show();                        
                         await Navigation.PopAsync();
                     }
                     else

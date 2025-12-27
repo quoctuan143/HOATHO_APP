@@ -28,8 +28,8 @@
                                 <Label Text="{Binding ItemName}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -46,8 +46,8 @@
                                 <Label Text="{Binding Dvt}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -65,8 +65,8 @@
                                        TextColor="Black"
                                        Padding="5,0,0,0"
                                        WidthRequest="140"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -81,8 +81,8 @@
                                 <Label Text="{Binding Quantity,StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="5,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -97,8 +97,8 @@
                                 <Label Text="{Binding Quota,StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="5,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -113,8 +113,8 @@
                                 <Label Text="{Binding Scrap,StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="5,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -128,8 +128,8 @@
                                 <Label Text="{Binding Demand,StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="5,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -143,8 +143,8 @@
                                 <Label Text="{Binding BrandQuantity,StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="5,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -158,8 +158,8 @@
                                 <Label Text="{Binding PSExportQuantityAmount,StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="5,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>
@@ -173,8 +173,8 @@
                                 <Label Text="{Binding PSLiquidationQuantity,StringFormat='{0:#,##0.##}'}"
                                        TextColor="Black"
                                        Padding="5,0,5,0"
-                                       XAlign="End"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="End"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
                     </sfDataGrid:GridTemplateColumn>

@@ -27,7 +27,7 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
         #region "Command"
         public Command LoadCommand { get; set; }
         public Command DateChangeCommand { get; set; }
-
+        public Command DuyetTatCaCommand { get; set; }
         #endregion
 
         #region "Constructor"
@@ -53,6 +53,42 @@ namespace APP_HOATHO.ViewModels.DuyetChungTu
                     OnPropertyChanged(nameof(ListItem));//cập nhật lại thông tin lên view
 
                 }
+            });
+
+            DuyetTatCaCommand = new Command(async () =>
+            {
+                try
+                {
+                    foreach (var item in ListItem)
+                    {
+                        item.TPKinhDoanhKy = Preferences.Get(Config.User, "");
+                    }
+                    var ok = await (new MessageYesNo("Bạn có muốn duyệt tất cả không?").Show());
+                    if (ok == DialogReturn.OK)
+                    {
+                        ShowLoading("Đang xử lý vui lòng đợi");
+                        var result = await RunHttpClientPost("api/DuyetChungTu/DuyettTatCaDeNghiThanhToan", ListItem.ToList());
+                        if (result.IsSuccessStatusCode)
+                        {
+                            HideLoading();
+                            ShortAlert("Đã duyệt thành công!");
+                            LoadCommand.Execute(null);
+                        }
+                        else
+                        {
+                            HideLoading();
+                            await new MessageBox(await result.Content.ReadAsStringAsync()).Show();
+                        }
+                    }
+                }
+                catch (Exception)
+                {                   
+                }
+                finally
+                {
+                    HideLoading();
+                }
+                
             });
         }
 

@@ -61,8 +61,8 @@
                                        TextColor="Black"
                                        Padding="5,0,0,0"
                                        WidthRequest="100"
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -78,8 +78,8 @@
                                 <Label Text="{Binding Name}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                           
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
@@ -94,8 +94,8 @@
                                 <Label Text="{Binding Description}"
                                        TextColor="Black"
                                        Padding="5,0,0,0"                                           
-                                       XAlign="Start"
-                                       YAlign="Center" />
+                                       HorizontalTextAlignment="Start"
+                                       VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
