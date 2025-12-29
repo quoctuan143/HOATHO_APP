@@ -44,7 +44,7 @@ namespace APP_HOATHO.Views.PhuLieu
 
         public bool FilterRecords(object o)
         {
-            var item = o as Chi_Tiet_Xuat_Phu_Lieu_Model;
+            var item = o as Chi_Tiet_Nhap_Phu_Lieu_Model;
             if (item != null)
             {
                 if (item.Name.ToLower().Contains(filterText) || item.Color.ToLower().Contains(filterText) || item.Art.ToLower().Contains(filterText))

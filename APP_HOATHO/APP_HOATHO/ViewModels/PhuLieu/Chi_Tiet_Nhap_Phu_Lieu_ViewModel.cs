@@ -1,5 +1,6 @@
 ﻿using APP_HOATHO.Dialog;
 using APP_HOATHO.Global;
+using APP_HOATHO.Models;
 using APP_HOATHO.Models.Quan_Ly_Vi_Tri_Kho;
 using APP_HOATHO.Views.PhuLieu;
 using Newtonsoft.Json;
@@ -22,6 +23,7 @@ namespace APP_HOATHO.ViewModels.PhuLieu
         public ObservableCollection<Chi_Tiet_Nhap_Phu_Lieu_Model> ListItem { get => _listItem; set => SetProperty(ref _listItem, value); }
         public Chi_Tiet_Nhap_Phu_Lieu_Model SelectItem { get; set; }
         public ICommand LoadDataCommand { get; set; }
+        public ICommand LoadDataNhapCommand { get; set; }
         public ICommand AddPackingListCommand { get; set; }        
 
         public Chi_Tiet_Nhap_Phu_Lieu_ViewModel(string soChungTu)
@@ -44,11 +46,14 @@ namespace APP_HOATHO.ViewModels.PhuLieu
                 }
 
             });
-
+            
             AddPackingListCommand = new Command(async () => {
                 try
-                {                   
-                    await navigation.PushAsync(new Nhap_Barcode_Cho_Phieu_Nhap_Phu_Lieu_Page(ListItem.ToList()));
+                {
+                    var document = Uri.EscapeDataString(SoChungTu);
+                    var url = $"api/PhuLieu/getChiTietNhapKhoPhuLieuNhapKho?documentNo={document}&itemNo=%";
+                    var a = await RunHttpClientGetObject<List<Chi_Tiet_Nhap_Phu_Lieu_Model>>(url);
+                    await navigation.PushAsync(new Nhap_Barcode_Cho_Phieu_Nhap_Phu_Lieu_Page(a));                   
                 }
                 catch (System.Exception ex)
                 {
@@ -63,17 +68,25 @@ namespace APP_HOATHO.ViewModels.PhuLieu
 
     public class Chi_Tiet_Nhap_Phu_Lieu_Model : PurchaseLine_Model
     {
-        public string DocumentNo { get; set; }  
-        public double? SoLuongDaNhap { get; set; }  
-        double _soLuongCanNhap = 0;
-        public double SoLuongCanNhap { get; set; }
+        public int? LotNo { get; set; }
+        public string DocumentNo { get; set; }
+        double _soLuongDaNhap = 0;
+        public double SoLuongDaNhap { get => _soLuongDaNhap; set => SetProperty(ref _soLuongDaNhap,value); }
+        public bool? DaNhap { get; set; }
         public string FormatSoLuongCanNhap
         {
 
             get {
                 try
                 {
-                    return string.Format("{0:#,##0.##}", SoLuongCanNhap);
+                    if (_soLuongDaNhap > Quantity)
+                    {
+                        new MessageBox("Số lượng nhập vượt quá số lượng còn lại").Show();
+                        _soLuongDaNhap = 0;
+                        OnPropertyChanged("SoLuongDaNhap");
+                    }    
+                    
+                    return string.Format("{0:#,##0.##}", _soLuongDaNhap);
                 }
                 catch (Exception)
                 {
@@ -89,10 +102,10 @@ namespace APP_HOATHO.ViewModels.PhuLieu
                 {
                     try
                     {
-                        FormatNumberString(ref _soLuongCanNhap, value);
-                        SoLuongCanNhap = _soLuongCanNhap;
+                        FormatNumberString(ref _soLuongDaNhap, value);
+                        SoLuongDaNhap = _soLuongDaNhap;
                         OnPropertyChanged("FormatSoLuongCanNhap");
-                        OnPropertyChanged("SoLuongCanNhap");
+                        OnPropertyChanged("SoLuongDaNhap");
                     }
                     catch
                     {
@@ -102,6 +115,7 @@ namespace APP_HOATHO.ViewModels.PhuLieu
                 }
             }
         }
+        public string PhieuNhap { get; set; }
     }
 
     public class Chi_Tiet_Xuat_Phu_Lieu_Model : PurchaseLine_Model
@@ -179,7 +193,8 @@ namespace APP_HOATHO.ViewModels.PhuLieu
         public string Document_No_ { get; set; }
         public string ExternalDocumentNo { get; set; }
         public string UserId { get; set; }
-        public int LotNo { get; set; }
+        public int? LotNo { get; set; }
+        public string PhieuNhap { get; set; }
 
     }
 

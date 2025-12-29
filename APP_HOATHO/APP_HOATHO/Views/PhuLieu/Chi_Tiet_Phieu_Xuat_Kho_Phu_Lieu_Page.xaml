@@ -15,120 +15,137 @@
                        HorizontalOptions="FillAndExpand"
                        TextChanged="SearchBar_TextChanged"></SearchBar>
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"
-                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
-                                   SelectedItem="{Binding SelectItem , Mode=TwoWay}"
-                                   Style="{StaticResource styleDataGrid}"
-                                   SelectionMode="Single">
-                <sfDataGrid:SfDataGrid.Columns>
-
-
+                       ItemsSource="{Binding ListItem, Mode=TwoWay}"                                   
+                       Style="{StaticResource styleDataGrid}"
+                       SelectionMode="Single"
+                       FrozenColumnsCount="1"
+                       LiveDataUpdateMode="AllowSummaryUpdate"
+                       AllowSwiping="True"                      
+                       MaxSwipeOffset="200">
+                <sfDataGrid:SfDataGrid.Columns>                    
                     <sfDataGrid:GridTemplateColumn  HeaderText="Tên NPL"
-                                                    MappingName="Name"
-                                                    Width="150"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
+                                        MappingName="Name"
+                                        Width="150"
+                                        HeaderFontAttribute="Bold"
+                                        HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding Name}"
-                                       TextColor="Black"
-                                       Padding="5,0,0,0"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalTextAlignment="Center" />
+                           TextColor="Black"
+                           Padding="5,0,0,0"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
 
                     <sfDataGrid:GridTemplateColumn  HeaderText="Màu NPL"
-                                                    MappingName="Color"
-                                                    Width="100"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
+                                        MappingName="Color"
+                                        Width="100"
+                                        HeaderFontAttribute="Bold"
+                                        HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding Color}"
-                                       TextColor="Black"
-                                       Padding="5,0,0,0"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalTextAlignment="Center" />
+                           TextColor="Black"
+                           Padding="5,0,0,0"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Art"
-                                                    MappingName="Art"
-                                                    Width="100"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
+                                        MappingName="Art"
+                                        Width="100"
+                                        HeaderFontAttribute="Bold"
+                                        HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding Art}"
-                                       TextColor="Black"
-                                       Padding="5,0,0,0"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalTextAlignment="Center" />
+                           TextColor="Black"
+                           Padding="5,0,0,0"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng"
-                                                    MappingName="Quantity"
-                                                    Width="100"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
+                                        MappingName="Quantity"
+                                        Width="100"
+                                        HeaderFontAttribute="Bold"
+                                        HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Label Text="{Binding Quantity ,StringFormat='{0:#,##0.##}'}"
-                                       TextColor="Black"
-                                       Padding="5,0,0,0"
-                                       WidthRequest="100"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalTextAlignment="Center" />
+                           TextColor="Black"
+                           Padding="5,0,0,0"
+                           WidthRequest="100"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>                    
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Rổ"
+                    MappingName="PackageId"
+                    Width="100"
+                    HeaderFontAttribute="Bold"
+                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PackageId}"
+                               TextColor="Blue"
+                                                   FontAttributes="Bold"
+                               Padding="5,0,0,0"
+                               WidthRequest="100"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng đã xuất"
-                                                    MappingName="SoLuongDaXuat"
-                                                    Width="100"
-                                                    HeaderFontAttribute="Bold"
-                                                    HeaderCellTextSize="16">
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Vị trí"
+                        MappingName="PositionId"
+                        Width="100"
+                        HeaderFontAttribute="Bold"
+                        HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding SoLuongDaXuat ,StringFormat='{0:#,##0.##}'}"
-                                       TextColor="Black"
-                                       Padding="5,0,0,0"
-                                       WidthRequest="100"
-                                       HorizontalTextAlignment="Start"
-                                       VerticalTextAlignment="Center" />
+                                <Label Text="{Binding PositionId}"
+                               TextColor="Red"
+                               FontAttributes="Bold"
+                               Padding="5,0,0,0"
+                               WidthRequest="100"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center" />
                             </DataTemplate>
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity} "
-                                                    Position="Bottom"
-                                                    ShowSummaryInRow="True">
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity:#,###}"
+                                        Position="Bottom"
+                                        ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>
                             <sfDataGrid:GridSummaryColumn Name="TotalQuantity"
-                                                          Format="{}{Sum}"
-                                                          MappingName="Quantity"
-                                                          SummaryType="DoubleAggregate" />
+                                              Format="{}{Sum}"
+                                              MappingName="Quantity"
+                                              SummaryType="DoubleAggregate" />
+                            <sfDataGrid:GridSummaryColumn Name="ChuaNhap"
+                  Format="{}{Sum}"
+                  MappingName="SoLuongDaNhap"
+                  SummaryType="DoubleAggregate" />
                         </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+
                     </sfDataGrid:GridTableSummaryRow>
 
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
-            </sfDataGrid:SfDataGrid>
-            <StackLayout Orientation="Horizontal"
-                         VerticalOptions="End">
-                <sfbutton:SfButton Text="Xuất kho"
-                                   Command="{Binding AddPackingListCommand}"
-                                   FontSize="16"
-                                   CornerRadius="60"
-                                   HorizontalOptions="FillAndExpand"
-                                   Style="{StaticResource stylesfButton }"></sfbutton:SfButton>                
-            </StackLayout>
+                
+            </sfDataGrid:SfDataGrid>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

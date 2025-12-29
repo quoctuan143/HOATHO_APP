@@ -134,6 +134,7 @@ namespace APP_HOATHO.ViewModels
         public ICommand PhieuXuatKhoGomVaiCommand { get; set; }
         public ICommand TaoPhieuXuatKhoGomVaiCommand { get; set; }
         public ICommand ChuyenVaiTuKeASangBCommand { get; set; }
+        public ICommand DieuChuyenPhuLieuCommand { get; set; }
         public ICommand ThongTinChiTietCayVaiCommand { get; set; }
         public ICommand ThongTinChiTietKeVaiCommand { get; set; }
         public ICommand TBSXCommand { get; set; }
@@ -390,6 +391,17 @@ namespace APP_HOATHO.ViewModels
                 try
                 {
                     await Navigation.PushAsync(new ChuyenKeVaiASangB_Page());
+                }
+                catch (Exception ex)
+                {
+                    await new MessageBox(ex.Message).Show();
+                }
+            });
+            DieuChuyenPhuLieuCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Navigation.PushAsync(new Dieu_Chuyen_Phu_Lieu_Page());
                 }
                 catch (Exception ex)
                 {

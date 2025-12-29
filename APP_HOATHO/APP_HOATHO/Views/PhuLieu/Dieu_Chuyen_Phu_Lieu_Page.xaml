@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sfDataGrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
-             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:local2="clr-namespace:APP_HOATHO.Converter"
-             x:Class="APP_HOATHO.Views.PhuLieu.Chi_Tiet_Phieu_Nhap_Kho_Phu_Lieu_Page"
-             Title="Chi tiết nhập kho"
+             x:Class="APP_HOATHO.Views.PhuLieu.Dieu_Chuyen_Phu_Lieu_Page"
+             Title="Điều chuyển phụ liệu"
              BackgroundColor="White"
              Shell.TabBarIsVisible="False">
     <ContentPage.Resources>
@@ -15,16 +15,27 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-           
+
             <sfDataGrid:SfDataGrid x:Name="listChiTiet"
-                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"
-                                   SelectedItem="{Binding SelectItem , Mode=TwoWay}"
-                                   SelectionChanged="listChiTiet_SelectionChanged"
+                                   ItemsSource="{Binding ListItem, Mode=TwoWay}"                                   
                                    Style="{StaticResource styleDataGrid}"
-                                   SelectionMode="Single">
+                                   SelectionMode="Single"
+                                   FrozenColumnsCount="1"
+                                   LiveDataUpdateMode="AllowSummaryUpdate"
+                                   >
                 <sfDataGrid:SfDataGrid.Columns>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Chọn"
+                                                    MappingName="Chon"
+                                                    Width="40"
+                                                    HeaderFontAttribute="Bold"
+                                                    HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Chon, Mode=TwoWay}"/>
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
 
-
+                    </sfDataGrid:GridTemplateColumn>
                     <sfDataGrid:GridTemplateColumn  HeaderText="Tên NPL"
                                                     MappingName="Name"
                                                     Width="150"
@@ -74,7 +85,7 @@
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng"
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Tồn kho"
                                                     MappingName="Quantity"
                                                     Width="100"
                                                     HeaderFontAttribute="Bold"
@@ -91,15 +102,33 @@
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
-                    <sfDataGrid:GridTemplateColumn  HeaderText="Số lượng đã nhập"
-                                                    MappingName="SoLuongDaNhap"
-                                                    Width="100"
+
+                    <sfDataGrid:GridTemplateColumn  HeaderText="SL điều chuyển"
+                                                    MappingName="FormatSoLuongCanNhap"
                                                     HeaderFontAttribute="Bold"
+                                                    Width="120"
                                                     HeaderCellTextSize="16">
                         <sfDataGrid:GridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label Text="{Binding SoLuongDaNhap ,StringFormat='{0:#,##0.##}'}"
-                                       TextColor="{Binding DaNhap , Converter={StaticResource Format_Mau_KHTB}}"
+                                <Entry Text="{Binding FormatSoLuongCanNhap, Mode=TwoWay}"                                            
+                                   Keyboard="Numeric"
+                                   Style="{StaticResource styleEntry}"
+                                   HorizontalOptions="FillAndExpand" 
+                                       IsReadOnly="{Binding DaNhap}"/>
+
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+                    </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Rổ"
+                                MappingName="PackageId"
+                                Width="100"
+                                HeaderFontAttribute="Bold"
+                                HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PackageId}"
+                                       TextColor="Blue"
+                                                           FontAttributes="Bold"
                                        Padding="5,0,0,0"
                                        WidthRequest="100"
                                        HorizontalTextAlignment="Start"
@@ -108,9 +137,27 @@
                         </sfDataGrid:GridTemplateColumn.CellTemplate>
 
                     </sfDataGrid:GridTemplateColumn>
+                    <sfDataGrid:GridTemplateColumn  HeaderText="Phiếu nhập"
+                                 MappingName="PhieuNhap"
+                                 Width="100"
+                                 HeaderFontAttribute="Bold"
+                                 HeaderCellTextSize="16">
+                        <sfDataGrid:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding PhieuNhap}"
+                                TextColor="Blue"
+                                                    FontAttributes="Bold"
+                                Padding="5,0,0,0"
+                                WidthRequest="100"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center" />
+                            </DataTemplate>
+                        </sfDataGrid:GridTemplateColumn.CellTemplate>
+
+                    </sfDataGrid:GridTemplateColumn>
                 </sfDataGrid:SfDataGrid.Columns>
                 <sfDataGrid:SfDataGrid.TableSummaryRows>
-                    <sfDataGrid:GridTableSummaryRow Title="Tổng : {TotalQuantity}, Đã nhập : {DaNhap} "
+                    <sfDataGrid:GridTableSummaryRow Title="Tổng tồn: {TotalQuantity:#,###}"
                                                     Position="Bottom"
                                                     ShowSummaryInRow="True">
                         <sfDataGrid:GridTableSummaryRow.SummaryColumns>
@@ -118,23 +165,37 @@
                                                           Format="{}{Sum}"
                                                           MappingName="Quantity"
                                                           SummaryType="DoubleAggregate" />
-                            <sfDataGrid:GridSummaryColumn Name="DaNhap"
-  Format="{}{Sum}"
-  MappingName="SoLuongDaNhap"
-  SummaryType="DoubleAggregate" />
+                            
                         </sfDataGrid:GridTableSummaryRow.SummaryColumns>
+
                     </sfDataGrid:GridTableSummaryRow>
 
                 </sfDataGrid:SfDataGrid.TableSummaryRows>
+                
             </sfDataGrid:SfDataGrid>
             <StackLayout Orientation="Horizontal"
                          VerticalOptions="End">
-                <sfbutton:SfButton Text="Nhập cả đơn hàng"
-                                   Command="{Binding AddPackingListCommand}"
-                                   FontSize="16"
-                                   CornerRadius="60"
-                                   HorizontalOptions="FillAndExpand"
-                                   Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="{Binding BarcodeId, Mode=TwoWay}"                   
+                    Clicked="SfButton_Clicked"
+                    FontSize="16"
+                    CornerRadius="60"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
+                <sfbutton:SfButton Text="{Binding ToBarcodeId, Mode=TwoWay}"      
+                   Clicked="SfButton_Clicked_1"
+                   FontSize="16"
+                   CornerRadius="60"
+                   HorizontalOptions="FillAndExpand"
+                   Style="{StaticResource  sfbuttonCancel }">
+                </sfbutton:SfButton>
+                <sfbutton:SfButton     
+                   Text="Lưu định vị"
+                   x:Name="btnXuatKho"
+                   Clicked="btnXuatKho_Clicked"
+                   FontSize="16"
+                   CornerRadius="60"
+                   HorizontalOptions="FillAndExpand"
+                   Style="{StaticResource stylesfButton }"></sfbutton:SfButton>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

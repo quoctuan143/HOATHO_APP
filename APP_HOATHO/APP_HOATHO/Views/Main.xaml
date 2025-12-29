@@ -460,6 +460,14 @@
                                                            ActionCommand="{Binding DanhSachPhieuNoNhaMayCommand}"
                                                            Disable="{Binding IsPhieuXuatKho}">
                                     </control:IconMainView>
+                                    <control:IconMainView  Title="Điều chuyển phụ liệu"
+                                                           Grid.Column="1"
+                                                           Grid.Row="4"
+                                                           IconImageSource="phieuxuatkho.png"
+                                                           BadgeText=""
+                                                           ActionCommand="{Binding DieuChuyenPhuLieuCommand}"
+                                                           Disable="{Binding IsPhieuXuatKho}">  
+                                    </control:IconMainView>
                                 </Grid>
                             </StackLayout>
                         </Frame>

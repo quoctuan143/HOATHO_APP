@@ -18,8 +18,7 @@
             <StackLayout Spacing="0" Margin="3">
                 <Grid HorizontalOptions="FillAndExpand" Style="{x:StaticResource styleGrid}"
                   ColumnDefinitions="5*,5*"
-                  RowDefinitions="*,*,*"
-                  HeightRequest="180">
+                  RowDefinitions="auto,auto">
                     <sfinputtext:SfTextInputLayout Hint="Từ ngày"
                                                Grid.Column="0"
                                                IsHintAlwaysFloated="True"
@@ -54,26 +53,9 @@
                                 </Image.Source>
                             </Image>
                         </sfinputtext:SfTextInputLayout.LeadingView>
-                    </sfinputtext:SfTextInputLayout>
-
-                    <control:ButtonSearch Grid.Column="0" Grid.Row="1"
-                                  HorizontalOptions="Start"
-                                  Text="{Binding Customer.Code,Mode=TwoWay}"
-                                  Title="Chọn khách hàng"             
-                                      HeightRequest="50"
-                                  ActionCommand="{Binding ChooseCustomerCommand}" />
-                    <control:ButtonSearch Grid.Column="1" Grid.Row="1"
-                                      Text="{Binding Vendor.Code,Mode=TwoWay}"
-                                      HorizontalOptions="Start"
-                                      Title="Chọn NCC"
-                                      ActionCommand="{Binding ChooseVendorCommand}" />
-                    <control:ButtonSearch Grid.Column="0" Grid.Row="2" Text="{Binding UpdateQR.Code,Mode=TwoWay}"
-                                  Title="Chọn Nhóm"
-                                      HorizontalOptions="Start"
-                                  ActionCommand="{Binding ChooseLocationCommand}" />
+                    </sfinputtext:SfTextInputLayout>                    
                     <sfbutton:SfButton Text="Tìm kiếm" x:Name="btnScan" Command="{Binding FindCommand}" FontSize="16" 
-                                   Grid.Column="1" Grid.Row="2"
-                                   Margin="0,15,0,0"
+                                   Grid.Column="0" Grid.Row="1"                                   
                                    HorizontalOptions="Start"
                                    VerticalOptions="Center"
                         CornerRadius="5"

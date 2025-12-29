@@ -17,15 +17,17 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing;
 
 namespace APP_HOATHO.Views.PhuLieu
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Nhap_Barcode_Cho_Phieu_Nhap_Phu_Lieu_Page : ContentPage,INotifyPropertyChanged
+    public partial class Dieu_Chuyen_Phu_Lieu_Page : ContentPage,INotifyPropertyChanged
     {
-        public List<Chi_Tiet_Nhap_Phu_Lieu_Model> ListItem { get; set; }
+        public ObservableCollection<Chi_Tiet_Nhap_Phu_Lieu_Model> ListItem { get; set; }
         BaseViewModel viewModel = new BaseViewModel  ();
         public string BarcodeId { get; set; }
+        public string ToBarcodeId { get; set; }
         public string ViTriLuu { get; set; }
         ObservableCollection<LookupValue> _listViTri;
         Chi_Tiet_Nhap_Phu_Lieu_Model SelectItem { get; set; }
@@ -38,12 +40,13 @@ namespace APP_HOATHO.Views.PhuLieu
                 OnPropertyChanged("ListViTri");
             }
         }
-        public Nhap_Barcode_Cho_Phieu_Nhap_Phu_Lieu_Page(List<Chi_Tiet_Nhap_Phu_Lieu_Model> list)
+        public Dieu_Chuyen_Phu_Lieu_Page()
         {
             InitializeComponent();
-            BarcodeId = "Quét QR Rổ Chứa";
-            ViTriLuu = "Vị trí lưu";
-            ListItem = list;           
+            ListItem = new  ObservableCollection<Chi_Tiet_Nhap_Phu_Lieu_Model>();
+            BarcodeId = "QR Rổ Chứa";
+            ToBarcodeId = "QR Rổ Đến";
+            ViTriLuu = "Vị trí lưu";                    
             BindingContext = this;
         }
         protected override  void OnAppearing()
@@ -61,7 +64,7 @@ namespace APP_HOATHO.Views.PhuLieu
         {
             try
             {
-                if (this.BarcodeId == "Quét QR Rổ Chứa")
+                if (this.ToBarcodeId == "QR Rổ Đến")
                 {
                     await new MessageBox("Vui lòng quét barcode của thùng trước khi nhập kho").Show();
                     return;
@@ -69,7 +72,7 @@ namespace APP_HOATHO.Views.PhuLieu
 
                 var listNhap = ListItem.Where(x => x.SoLuongDaNhap > 0 && x.Chon == true).Select(x => new PhieuNhapPhuLieuPackingList
                 {
-                    BarcodeId = this.BarcodeId,
+                    BarcodeId = x.PackageId,
                     Color_No_ = x.Color,
                     Document_No_ = x.DocumentNo,
                     Item_No_ = x.No_,
@@ -88,18 +91,21 @@ namespace APP_HOATHO.Views.PhuLieu
                 }
                 string a = JsonConvert.SerializeObject(listNhap);
 
-                var ok = await new MessageYesNo($"Bạn có muốn nhập kho cho rổ có barcode {this.BarcodeId}").Show();
+                var ok = await new MessageYesNo($"Bạn có muốn điều chuyển cho rổ có barcode {this.ToBarcodeId}").Show();
 
                 if (ok == DialogReturn.OK)
                 {
                     viewModel.ShowLoading("Đang lưu, vui lòng đợi");
-                    var runOk = await viewModel.RunHttpClientPost("api/PhuLieu/nhapKhoPhuLieu", listNhap);
+                    var runOk = await viewModel.RunHttpClientPost($"api/PhuLieu/DieuChuyenPhuLieu?packageId={this.ToBarcodeId}", listNhap);
                     viewModel.HideLoading();
                     if (runOk.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        await new MessageBox("Đã nhập kho thành công").Show();
-                        await Navigation.PopAsync();
-                        MessagingCenter.Send(this, "reloadNhapKhoPhuLieu");
+                        await new MessageBox("Đã điều chuyển thành công").Show();
+                        ListItem.Clear();
+                        ListItem = await viewModel.RunHttpClientGetObject<ObservableCollection<Chi_Tiet_Nhap_Phu_Lieu_Model>>($"api/PhuLieu/getTonKhoTheoBarcode?barcodeid={this.BarcodeId}");
+                        OnPropertyChanged(nameof(ListItem));
+                        this.ToBarcodeId = "QR Rổ Đến";
+                        OnPropertyChanged(nameof(ToBarcodeId));
                     }
                     else
                     {
@@ -128,40 +134,27 @@ namespace APP_HOATHO.Views.PhuLieu
                 {
                     this.BarcodeId = result;
                     OnPropertyChanged(nameof(BarcodeId));
+                    viewModel.ShowLoading("Đang load dữ liệu.....");
+                    ListItem = await viewModel.RunHttpClientGetObject<ObservableCollection< Chi_Tiet_Nhap_Phu_Lieu_Model>>($"api/PhuLieu/getTonKhoTheoBarcode?barcodeid={result}");
+                    viewModel.HideLoading();
+                    OnPropertyChanged(nameof(ListItem));
                 });
             };
             await Navigation.PushAsync(scan);
         }
 
-        private void listChiTiet_SwipeEnded(object sender, Syncfusion.SfDataGrid.XForms.SwipeEndedEventArgs e)
+        private async void SfButton_Clicked_1(object sender, EventArgs e)
         {
-            SelectItem = e.RowData as Chi_Tiet_Nhap_Phu_Lieu_Model;
-        }
-
-        private async void btnXoa_Tapped(object sender, EventArgs e)
-        {
-            if (SelectItem != null && SelectItem.RowId > 0)
+            ScanBarcode scan = new ScanBarcode(false, "Quét QR Rổ PL");
+            scan.ScanBarcodeResult += (s, result) =>
             {
-                var ok = await new MessageYesNo($"Bạn có muốn nhập xóa định vị này không?").Show();
-
-                if (ok == DialogReturn.OK)
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel.ShowLoading("Đang xóa, vui lòng đợi");
-                    var runOk = await viewModel.RunHttpClientPost($"api/PhuLieu/XoaPhuLieuDaDinhVi?rowid={SelectItem.RowId}", null);
-                    viewModel.HideLoading();
-                    if (runOk.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        await new MessageBox("Đã xóa định vị kho thành công").Show();
-                        ListItem = ListItem.Where(x=> x.RowId != SelectItem.RowId).ToList();
-                        OnPropertyChanged(nameof(ListItem));
-                    }
-                    else
-                    {
-                        await new MessageBox(runOk.Content.ReadAsStringAsync().ToString()).Show();
-                        return;
-                    }
-                }
-            }
+                    this.ToBarcodeId = result;
+                    OnPropertyChanged(nameof(ToBarcodeId));
+                });
+            };
+            await Navigation.PushAsync(scan);
         }
     }
 }
